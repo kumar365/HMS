@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>AidXpert</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+    <link href="/assets/img/favicon.png" rel="icon">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+
+    <link rel="stylesheet" href="/assets/css/feather.css">
+
+    <link rel="stylesheet" href="/assets/css/custom.css">
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+
+        <header class="header">
+            <nav class="navbar navbar-expand-lg header-nav">
+                <div class="navbar-header">
+                    <a id="mobile_btn" href="javascript:void(0);">
+                        <span class="bar-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </a>
+                    <a href="index" class="navbar-brand logo">
+                        <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                    </a>
+                </div>
+                <div class="main-menu-wrapper">
+                    <div class="menu-header">
+                        <a href="index" class="menu-logo">
+                            <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                        </a>
+                        <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                    <ul class="main-nav">
+                        <li class="active"><a href="findDoctors">Find Doctors</a></li>
+                        <li><a href="consult">Consultation</a></li>
+                        <li><a href="medicineOrder">Medicine Order</a></li>
+                        <li><a href="labTest">Lab Test</a></li>
+                        <li><a href="findSurgeons">Find Surgeons</a></li>
+                        <li><a href="bookAmbulance">Book Ambulance</a></li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Services <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="#">Ambulance Service</a></li>
+                                <li><a href="staffingServices">Healthcare Staffing Services</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Help <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="#">Health Tips</a></li>
+                                <li><a href="#">Help</a></li>
+                                <li><a href="consultantsPanel">Consultants Panel</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav header-navbar-rht">
+                    <!-- <li class="nav-item contact-item">
+        <div class="header-contact-img">
+        <i class="far fa-hospital"></i> 
+        </div>
+        <div class="header-contact-detail">
+        <p class="contact-header">Tollfree Helpline</p>
+        <p class="contact-info-header">1800 1800 45</p>
+        </div>
+        </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link header-login" href="loginEmail">Login / Signup </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="breadcrumb-bar-two">
+            <div class="container">
+                <div class="row align-items-center inner-banner">
+                    <div class="col-md-12 col-12 text-center">
+                        <h2 class="breadcrumb-title">Add Billing</h2>
+                        <nav aria-label="breadcrumb" class="page-breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index">Home</a></li>
+                                <li class="breadcrumb-item" aria-current="page">Add Billing</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+                        <div class="card widget-profile pat-widget-profile">
+                            <div class="card-body">
+                                <div class="pro-widget-content">
+                                    <div class="profile-info-widget">
+                                        <a href="#" class="booking-doc-img">
+                                            <img src="/assets/img/patients/patient.jpg" alt="User Image">
+                                        </a>
+                                        <div class="profile-det-info">
+                                            <h3><a
+                                                    href="patientProfile">{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</a>
+                                            </h3>
+                                            <div class="patient-details">
+                                                <h5><b>Patient ID :</b> PT{{currentUser.id}}</h5>
+                                                <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i>
+                                                    {{currentUser.state.name}}, {{currentUser.country.name}}</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="patient-info">
+                                    <ul>
+                                        <!-- <li>Phone <span>+91-{{currentUser.phoneNumber}}</span></li>
+                                        <li>Age <span>{{currentUser.age}} Years, {{currentUser.gender}}</span></li>
+                                        <li>Blood Group <span>{{currentUser.bloodGroup}}</span></li> -->
+                                        <li>Phone <span>+91- {{currentUser.phoneNumber}}</span></li>
+                                        <li>Age <span>{{currentUser.age}} Years, Male</span></li>
+                                        <li>Blood Group <span>{{currentUser.bloodGroup}}</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-lg-8 col-xl-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title mb-0">Add Billing</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="biller-info">
+                                            <h4 class="d-block">Dr. Ganesh K</h4>
+                                            <span class="d-block text-sm text-muted">Dentist</span>
+                                            <span class="d-block text-sm text-muted">Hyd, India</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 text-sm-end">
+                                        <div class="billing-info">
+                                            <h4 class="d-block">{{bill.createdDate | date:'dd MMM yyyy'}}</h4>
+                                            <span class="d-block text-muted">#INV0001</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="billStatusFlag" class="alert alert-danger" role="alert">
+                                    {{ message }}
+                                </div>
+                                <div class="add-more-item text-end">
+                                    <a href="javascript:void(0);"><i class="fas fa-plus-circle"></i> Add Item</a>
+                                </div>
+                                <div class="card card-table">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover table-center">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="min-width:200px;">Title</th>
+                                                        <th style="min-width:200px;">Amount</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" [(ngModel)]="bill.title" id="title"
+                                                                name="title" class="form-control" #title="ngModel">
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" [(ngModel)]="bill.amount" id="amount"
+                                                                name="amount" class="form-control" #amount="ngModel">
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 text-end">
+                                        <div class="signature-wrap">
+                                            <div class="signature">
+                                                Click here to sign
+                                            </div>
+                                            <div class="sign-name">
+                                                <p class="mb-0">( Dr. Ganesh K )</p>
+                                                <span class="text-muted">Signature</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="submit-section">
+                                            <button type="submit" (click)="saveBills()" class="btn btn-primary submit-btn">Save</button>
+                                            <button type="reset" (click)="clearBills()" class="btn btn-secondary submit-btn">Clear</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="footer-top aos"> <!-- data-aos="fade-up" -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget footer-about">
+                                <div class="footer-logo">
+                                    <img src="/assets/img/logo-whte.png" alt="aidxpert">
+                                </div>
+                                <div class="footer-about-content">
+                                    <p>A healthcare product is the result of the interaction of capital, labour and
+                                        entrepreneurship in the production process, which primarily aims to improve,
+                                        maintain or prevent the deterioration of the health status of persons or reduce
+                                        the consequences of ill health.</p>
+                                    <div class="social-icon">
+                                        <ul>
+                                            <li>
+                                                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget footer-menu">
+                                <h2 class="footer-title">For Patients</h2>
+                                <ul>
+                                    <li><a href="#">Search for Doctors</a></li>
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Training Videos</a></li>
+                                    <li><a href="#">Booking</a></li>
+                                    <li><a href="#">Patient Dashboard</a></li>
+                                    <li><a href="#">Help</a></li>
+                                    <li><a href="consultantsPanel">Consultants Panel</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget footer-menu">
+                                <h2 class="footer-title">For Doctors</h2>
+                                <ul>
+                                    <li><a href="#">Appointments</a></li>
+                                    <li><a href="#">Chat</a></li>
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Register</a></li>
+                                    <li><a href="#">Doctor Dashboard</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget footer-contact">
+                                <h2 class="footer-title">Contact Us</h2>
+                                <div class="footer-contact-info">
+                                    <div class="footer-address">
+                                        <span><i class="fas fa-map-marker-alt"></i></span>
+                                        <p>Pinnacle Prestige, Office No-405 <br />Tilak Road,Sadashiv Peth,Hyd</p>
+                                    </div>
+                                    <p>
+                                        <i class="fas fa-phone-alt"></i>
+                                        +91-9096488159
+                                    </p>
+                                    <p class="mb-0 cf_email">
+                                        <i class="fas fa-envelope"></i>
+                                        <a href="#" style="color:#fff;">info@aidxpert.com</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="container-fluid">
+                    <div class="copyright">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <div class="copyright-text">
+                                    <p class="mb-0">&copy; 2023 AidXpert. All rights reserved. Powered by <a
+                                            href="https://abc.com" target="_blank" style="color:#fff"> Technologies Pvt.
+                                            Ltd.</a></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="copyright-menu">
+                                    <ul class="policy-menu">
+                                        <li><a href="termsConditions">Terms and Conditions</a></li>
+                                        <li><a href="privacyPolicy">Privacy Policy</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="/assets/js/jquery-3.6.4.min.js"></script>
+
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+    <script src="/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+
+    <script src="/assets/js/script.js"></script>
+</body>
+
+</html>

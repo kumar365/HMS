@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>AidXpert</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+    <link href="/assets/img/favicon.png" rel="icon">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+
+    <link rel="stylesheet" href="/assets/css/feather.css">
+
+    <link rel="stylesheet" href="/assets/plugins/daterangepicker/daterangepicker.css">
+
+    <link rel="stylesheet" href="/assets/css/custom.css">
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+
+        <header class="header">
+            <nav class="navbar navbar-expand-lg header-nav">
+                <div class="navbar-header">
+                    <a id="mobile_btn" href="javascript:void(0);">
+                        <span class="bar-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </a>
+                    <a href="index" class="navbar-brand logo">
+                        <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                    </a>
+                </div>
+                <div class="main-menu-wrapper">
+                    <div class="menu-header">
+                        <a href="index" class="menu-logo">
+                            <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                        </a>
+                        <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                    <ul class="main-nav">
+                        <li class="active"><a href="findDoctors">Find Doctors</a></li>
+                        <li><a href="consult">Consultation</a></li>
+                        <li><a href="medicineOrder">Medicine Order</a></li>
+                        <li><a href="labTest">Lab Test</a></li>
+                        <li><a href="findSurgeons">Find Surgeons</a></li>
+                        <li><a href="bookAmbulance">Book Ambulance</a></li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Services <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="#">Ambulance Service</a></li>
+                                <li><a href="staffingServices">Healthcare Staffing Services</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Help <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="#">Health Tips</a></li>
+                                <li><a href="#">Help</a></li>
+                                <li><a href="consultantsPanel">Consultants Panel</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav header-navbar-rht">
+                    <!-- <li class="nav-item contact-item">
+        <div class="header-contact-img">
+        <i class="far fa-hospital"></i> 
+        </div>
+        <div class="header-contact-detail">
+        <p class="contact-header">Tollfree Helpline</p>
+        <p class="contact-info-header">1800 1800 45</p>
+        </div>
+        </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link header-login" href="loginEmail">Login / Signup </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="breadcrumb-bar-two">
+            <div class="container">
+                <div class="row align-items-center inner-banner">
+                    <div class="col-md-12 col-12 text-center">
+                        <h2 class="breadcrumb-title">Booking</h2>
+                        <nav aria-label="breadcrumb" class="page-breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index">Home</a></li>
+                                <li class="breadcrumb-item" aria-current="page">Booking</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content content-space">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-8 col-md-12">
+                        <div class="booking-header">
+                            <h4 class="booking-title">Select Available Slots</h4>
+                        </div>
+                        <div class="booking-date choose-date-book">
+                            <p>Choose Date</p>
+                            <div class="booking-range">
+                                <div class="bookingrange btn">
+                                    <img src="/assets/img/icons/today-icon.svg" alt="">
+                                    <span></span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="card booking-card">
+                            <div class="card-body time-slot-card-body">
+                                <div class="booking-date-slider">
+                                    <ul class="date-slider slick">
+                                        <li class="active">
+                                            <h4>Monday</h4>
+                                            <p>Sep 5</p>
+                                        </li>
+                                        <li>
+                                            <h4>Tuesday</h4>
+                                            <p>Sep 6</p>
+                                        </li>
+                                        <li>
+                                            <h4>Wednesday</h4>
+                                            <p>Sep 7</p>
+                                        </li>
+                                        <li>
+                                            <h4>Thursday</h4>
+                                            <p>Sep 8</p>
+                                        </li>
+                                        <li>
+                                            <h4>Friday</h4>
+                                            <p>Sep 9</p>
+                                        </li>
+                                        <li>
+                                            <h4>Saturday</h4>
+                                            <p>Sep 10</p>
+                                        </li>
+                                        <li>
+                                            <h4>Sunday</h4>
+                                            <p>Sep 11</p>
+                                        </li>
+                                        <li>
+                                            <h4>Monday</h4>
+                                            <p>Sep 12</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4">
+                                        <div class="time-slot time-slot-blk">
+                                            <h4 style="margin-bottom: 1px;">Morning</h4>
+                                            <span style="color: #f9c818;">(3 Slots Available)</span>
+                                            <div class="time-slot-list">
+                                                <ul>
+                                                    <li>
+                                                        <a class="timing" href="javascript:void(0);">
+                                                            <span><i class="feather-clock"></i> 09:00 - 09:30</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="timing" href="javascript:void(0);">
+                                                            <span><i class="feather-clock"></i> 10:00 - 10:30</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="time-slot-open time-slot-morning">
+                                                        <a class="timing" href="javascript:void(0);">
+                                                            <span><i class="feather-clock"></i> 11:00 - 11:30</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <div class="load-more-timings load-more-morning">
+                                                            <a href="javascript:void(0);">Load More</a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4">
+                                        <div class="time-slot time-slot-blk">
+                                            <h4 style="margin-bottom: 1px;">Afternoon</h4>
+                                            <span style="color: #f9c818;">(2 Slots Available)</span>
+                                            <div class="time-slot-list">
+                                                <ul>
+                                                    <li>
+                                                        <a class="timing" href="javascript:void(0);">
+                                                            <span><i class="feather-clock"></i> 12:00 - 12:30</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="timing active" href="javascript:void(0);">
+                                                            <span><i class="feather-clock"></i> 01:00 - 01:30</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4">
+                                        <div class="time-slot time-slot-blk">
+                                            <h4 style="margin-bottom: 1px;">Evening</h4>
+                                            <span style="color: #f9c818;">(3 Slots Available)</span>
+                                            <div class="time-slot-list">
+                                                <ul>
+                                                    <li>
+                                                        <a class="timing" href="javascript:void(0);">
+                                                            <span><i class="feather-clock"></i> 03:00 - 03:30</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="timing" href="javascript:void(0);">
+                                                            <span><i class="feather-clock"></i> 04:00 - 04:30</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="time-slot-open time-slot-evening">
+                                                        <a class="timing" href="javascript:void(0);">
+                                                            <span><i class="feather-clock"></i> 05:00 - 05:30</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <div class="load-more-timings load-more-evening">
+                                                            <a href="javascript:void(0);">Load More</a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="booking-btn">
+                            <a href="patientDetails"
+                                class="btn btn-primary prime-btn justify-content-center align-items-center">
+                                Next <i class="feather-arrow-right-circle"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="booking-header">
+                            <h4 class="booking-title">Booking Summary</h4>
+                        </div>
+                        <div class="card booking-card">
+                            <div class="card-body booking-card-body">
+                                <div class="booking-doctor-details">
+                                    <div class="booking-doctor-left">
+                                        <div class="booking-doctor-img">
+                                            <a href="doctorProfile">
+                                                <img src="/assets/img/doctors/doctor-01.jpg" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="booking-doctor-info">
+                                            <h4><a href="doctorProfile">Dr. Vidya B</a></h4>
+                                            <p>MBBS, Dentist</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card booking-card">
+                            <div class="card-body booking-card-body">
+                                <div class="booking-doctor-details">
+                                    <div class="booking-device">
+                                        <div class="booking-device-img">
+                                            <img src="/assets/img/icons/device-message.svg" alt="">
+                                        </div>
+                                        <div class="booking-doctor-info">
+                                            <h3>We can help you</h3>
+                                            <p class="device-text">Call us +1 888-888-8888 (or) chat with our customer
+                                                support team.</p>
+                                            <a href="chat" class="btn">Chat With Us</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card booking-card mb-0">
+                            <div class="card-body booking-card-body">
+                                <div class="booking-doctor-details">
+                                    <div class="booking-device">
+                                        <div class="booking-device-img">
+                                            <img src="/assets/img/icons/smart-phone.svg" alt="">
+                                        </div>
+                                        <div class="booking-doctor-info">
+                                            <h3>Get the App</h3>
+                                            <p class="device-text">Download our app for better experience and for more
+                                                feature</p>
+                                            <div class="app-images">
+                                                <a href="javascript:void(0);">
+                                                    <img src="/assets/img/google-img.svg" alt="" style="width: 100px;">
+                                                </a>
+                                                <a href="javascript:void(0);">
+                                                    <img src="/assets/img/app-img.svg" alt="" style="width: 100px;">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <footer class="footer">
+
+            <div class="footer-top aos"><!-- data-aos="fade-up" -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-about">
+                                <div class="footer-logo">
+                                    <img src="/assets/img/logo-whte.png" alt="aidxpert">
+                                </div>
+                                <div class="footer-about-content">
+                                    <p>A healthcare product is the result of the interaction of capital, labour and
+                                        entrepreneurship in the production process, which primarily aims to improve,
+                                        maintain or prevent the deterioration of the health status of persons or reduce
+                                        the consequences of ill health.</p>
+                                    <div class="social-icon">
+                                        <ul>
+                                            <li>
+                                                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-menu">
+                                <h2 class="footer-title">For Patients</h2>
+                                <ul>
+                                    <li><a href="#">Search for Doctors</a></li>
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Training Videos</a></li>
+                                    <li><a href="#">Booking</a></li>
+                                    <li><a href="#">Patient Dashboard</a></li>
+                                    <li><a href="#">Help</a></li>
+                                    <li><a href="consultantsPanel">Consultants Panel</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-menu">
+                                <h2 class="footer-title">For Doctors</h2>
+                                <ul>
+                                    <li><a href="#">Appointments</a></li>
+                                    <li><a href="#">Chat</a></li>
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Register</a></li>
+                                    <li><a href="#">Doctor Dashboard</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-contact">
+                                <h2 class="footer-title">Contact Us</h2>
+                                <div class="footer-contact-info">
+                                    <div class="footer-address">
+                                        <span><i class="fas fa-map-marker-alt"></i></span>
+                                        <p>Pinnacle Prestige, Office No-405 <br />Tilak Road,Sadashiv Peth,Hyd</p>
+                                    </div>
+                                    <p>
+                                        <i class="fas fa-phone-alt"></i>
+                                        +91-9096488159
+                                    </p>
+                                    <p class="mb-0 cf_email">
+                                        <i class="fas fa-envelope"></i>
+                                        <a href="#" style="color:#fff;">info@aidxpert.com</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="footer-bottom">
+                <div class="container-fluid">
+
+                    <div class="copyright">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <div class="copyright-text">
+                                    <p class="mb-0">&copy; 2023 AidXpert. All rights reserved. Powered by <a
+                                            href="https://technologies.com" target="_blank"
+                                            style="color:#fff">l Technologies Pvt. Ltd.</a></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+
+                                <div class="copyright-menu">
+                                    <ul class="policy-menu">
+                                        <li><a href="termsConditions">Terms and Conditions</a></li>
+                                        <li><a href="privacyPolicy">Privacy Policy</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+
+    <script src="/assets/js/jquery-3.6.4.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/assets/js/moment.min.js"></script>
+    <script src="/assets/plugins/daterangepicker/daterangepicker.js"></script>
+
+    <script src="/assets/js/slick.js"></script>
+    <script src="/assets/js/aos.js"></script>
+    <script src="/assets/js/script.js"></script>
+</body>
+
+</html>

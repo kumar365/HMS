@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>AidXpert</title>
+
+    <link rel="shortcut icon" href="/assets/img/favicon.png">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+
+    <link rel="stylesheet" href="/assets/plugins/select2/css/select2.min.css">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap-datetimepicker.min.css">
+
+    <link rel="stylesheet" href="/assets/css/aos.css">
+
+    <link rel="stylesheet" href="/assets/css/feather.css">
+
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/custom.css">
+</head>
+
+<body>
+    <div class="main-wrapper home-ten">
+
+        <header class="header">
+            <nav class="navbar navbar-expand-lg header-nav">
+                <div class="navbar-header">
+                    <a id="mobile_btn" href="javascript:void(0);">
+                        <span class="bar-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </a>
+                    <a href="index" class="navbar-brand logo">
+                        <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                    </a>
+                </div>
+                <div class="main-menu-wrapper">
+                    <div class="menu-header">
+                        <a href="index" class="menu-logo">
+                            <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                        </a>
+                        <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                    <ul class="main-nav">
+                        <li><a href="findDoctors">Find Doctors</a></li>
+                        <li><a href="consult">Consultation</a></li>
+                        <li><a href="medicineOrder">Medicine Order</a></li>
+                        <li><a href="labTest">Lab Test</a></li>
+                        <li><a href="findSurgeons">Find Surgeons</a></li>
+                        <li class="active"><a href="bookAmbulance">Book Ambulance</a></li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Services <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="#">Ambulance Service</a></li>
+                                <li><a href="staffingServices">Healthcare Staffing Services</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Help <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="#">Health Tips</a></li>
+                                <li><a href="#">Help</a></li>
+                                <li><a href="consultantsPanel">Consultants Panel</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav header-navbar-rht">
+                    <!-- <li class="nav-item contact-item">
+        <div class="header-contact-img">
+        <i class="far fa-hospital"></i>
+        </div>
+        <div class="header-contact-detail">
+        <p class="contact-header">Tollfree Helpline</p>
+        <p class="contact-info-header">1800 1800 45</p>
+        </div>
+        </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link header-login" href="loginEmail">Login / Signup </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+
+        <section class="banner-slider">
+            <div class="container">
+                <div class="home-banner">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6"><!-- data-aos="fade-down" -->
+                            <p class="explore-text"> <span><i class="fa-solid fa-thumbs-up me-2"></i></span>Fastest &
+                                Most Trusted Ambulance Booking Services in India</p>
+                            <h1>Book The Nearest Ambulance<br>
+                                <span>At Best Price</span>
+                            </h1>
+                            <p>We are here to support you and your loved ones through every step of your healthcare
+                                journey.</p>
+                            <div class="view-all">
+                                <a href="searchAmbulance" class="btn btn-view d-inline-flex align-items-center">View all
+                                    Ambulance<span><i class="feather-arrow-right ms-2"></i></span></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 aos" ><!-- data-aos="fade-up" -->
+                            <div class="banner-imgs">
+                                <img src="/assets/img/ambulance.png" class="img-fluid aos" alt="bannerimage">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="">
+            <div class="container">
+                <div class="search-box-banner">
+                    <form action="searchAmbulance">
+                        <ul class="align-items-center">
+                            <li class="column-group-main">
+                                <div class="form-group">
+                                    <label>Pickup Location</label>
+                                    <div class="group-img">
+                                        <input type="text" class="form-control" placeholder="Enter City or Address">
+                                        <span><i class="feather-map-pin"></i></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="column-group-main">
+                                <div class="form-group">
+                                    <label>Drop Location</label>
+                                    <div class="group-img">
+                                        <input type="text" class="form-control" placeholder="Enter Hospital Name">
+                                        <span><i class="feather-map-pin"></i></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="column-group-main">
+                                <div class="form-group">
+                                    <label>Pickup Date</label>
+                                </div>
+                                <div class="form-group-wrapp">
+                                    <div class="form-group date-widget">
+                                        <div class="group-img">
+                                            <input type="text" class="form-control datetimepicker"
+                                                placeholder="04/11/2023">
+                                            <span><i class="feather-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group time-widge">
+                                        <div class="group-img">
+                                            <input type="text" class="form-control timepicker" placeholder="11:00 AM">
+                                            <span><i class="feather-clock"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="column-group-last">
+                                <div class="form-group">
+                                    <div class="search-btn">
+                                        <button class="btn search-button" type="submit"> <i class="fa fa-search"
+                                                aria-hidden="true"></i>Search</button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <section class="section services">
+            <div class="service-right">
+                <img src="/assets/img/bg/service-right.svg" class="img-fluid" alt="services right">
+            </div>
+            <div class="container">
+
+                <div class="section-heading"><!-- data-aos="fade-down" -->
+                    <h2>How It Works</h2>
+                    <p>One Click and AidXperts Ambulance comes right in front of the door for help.</p>
+                </div>
+
+                <div class="services-work">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-12"><!-- data-aos="fade-down" -->
+                            <div class="services-group">
+                                <div class="services-icon border-secondary">
+                                    <img class="icon-img bg-secondary" src="/assets/img/icons/services-icon-01.svg"
+                                        alt="Choose Locations">
+                                </div>
+                                <div class="services-content">
+                                    <h3>1. Choose Pick-Up Locations</h3>
+                                    <p>Your default pickup point is set to your current GPS location. If you are not
+                                        being picked up at your current location, tap your pickup location on the map
+                                        and update the address.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-12"><!-- data-aos="fade-down" -->
+                            <div class="services-group">
+                                <div class="services-icon border-secondary">
+                                    <img class="icon-img bg-secondary" src="/assets/img/icons/services-icon-01.svg"
+                                        alt="Choose Locations">
+                                </div>
+                                <div class="services-content">
+                                    <h3>2. Enter Drop Location</h3>
+                                    <p>You can enter the location details where the patient needs to be transported by
+                                        simply entering the destination name or dropping a pin.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-12"><!-- data-aos="fade-down" -->
+                            <div class="services-group">
+                                <div class="services-icon border-secondary">
+                                    <img class="icon-img bg-secondary" src="/assets/img/icons/services-icon-01.svg"
+                                        alt="Choose Locations">
+                                </div>
+                                <div class="services-content">
+                                    <h3>3. Book your Ambulance</h3>
+                                    <p>Get Estimated Time of Arrival for Ambulance. Track Ambulance live location in
+                                        real-time with advanced GPS tracking.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section facts-number">
+            <div class="facts-left">
+                <img src="/assets/img/bg/facts-left.png" class="img-fluid" alt="facts left">
+            </div>
+            <div class="facts-right">
+                <img src="/assets/img/bg/facts-right.png" class="img-fluid" alt="facts right">
+            </div>
+            <div class="container">
+                <div class="section-heading"><!-- data-aos="fade-down" -->
+                    <h2 class="title">Insights</h2>
+                    <p class="description">Response Time: Less then 15 mins</p>
+                </div>
+
+                <div class="counter-group">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-12 d-flex"><!-- data-aos="fade-down" -->
+                            <div class="count-group flex-fill">
+                                <div class="customer-count d-flex align-items-center">
+                                    <div class="count-img">
+                                        <img src="/assets/img/icons/bx-heart.svg" alt>
+                                    </div>
+                                    <div class="count-content">
+                                        <h4><span class="counterUp">16</span>K+</h4>
+                                        <p>Lives Saved</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-12 d-flex"><!-- data-aos="fade-down" -->
+                            <div class="count-group flex-fill">
+                                <div class="customer-count d-flex align-items-center">
+                                    <div class="count-img">
+                                        <img src="/assets/img/icons/bx-car.svg" alt>
+                                    </div>
+                                    <div class="count-content">
+                                        <h4><span class="counterUp">150</span>+</h4>
+                                        <p>Cities in India</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-12 d-flex"><!-- data-aos="fade-down" -->
+                            <div class="count-group flex-fill">
+                                <div class="customer-count d-flex align-items-center">
+                                    <div class="count-img">
+                                        <img src="/assets/img/icons/bx-headphone.svg" alt>
+                                    </div>
+                                    <div class="count-content">
+                                        <h4><span class="counterUp">3500</span>+</h4>
+                                        <p>Fleet of Ambulances</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-12 d-flex"><!-- data-aos="fade-down" -->
+                            <div class="count-group flex-fill">
+                                <div class="customer-count d-flex align-items-center">
+                                    <div class="count-img">
+                                        <img src="/assets/img/icons/bx-history.svg" alt>
+                                    </div>
+                                    <div class="count-content">
+                                        <h4><span class="counterUp">200</span>+</h4>
+                                        <p>Partnered Hospitals</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section why-choose popular-explore" style="background-color: #F2F7F6;">
+            <div class="choose-left">
+                <img src="/assets/img/bg/choose-left.png" class="img-fluid" alt="Why Choose Us">
+            </div>
+            <div class="container">
+                <div class="section-heading"><!-- data-aos="fade-down" -->
+                    <h2>Why Choose Us</h2>
+                </div>
+                <div class="row pt-5">
+                    <div class="col-lg-3 col-md-3 aos aos-init aos-animate"><!-- data-aos="fade-up" -->
+                        <div class="work-info">
+                            <div class="work-icon">
+                                <span><img src="/assets/img/number-1.png" alt=""></span>
+                            </div>
+                            <div class="work-content">
+                                <h5>Ease to use & find an ambulance nearby locations</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 aos aos-init aos-animate"><!-- data-aos="fade-up" -->
+                        <div class="work-info">
+                            <div class="work-icon">
+                                <span><img src="/assets/img/number-2.png" alt=""></span>
+                            </div>
+                            <div class="work-content">
+                                <h5>Emergency assistance time of 15 minutes or less</h5>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 aos aos-init aos-animate"><!-- data-aos="fade-up" -->
+                        <div class="work-info">
+                            <div class="work-icon">
+                                <span><img src="/assets/img/number-3.png" alt=""></span>
+                            </div>
+                            <div class="work-content">
+                                <h5>24/7 <br />Emergency <br />Service</h5>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 aos aos-init aos-animate"><!-- data-aos="fade-up" -->
+                        <div class="work-info">
+                            <div class="work-icon">
+                                <span><img src="/assets/img/number-4.png" alt=""></span>
+                            </div>
+                            <div class="work-content">
+                                <h5>Biggest fleet of ambulances across India</h5>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="testimonial-section">
+            <div class="testimonial-shape-img">
+                <div class="testimonial-shape-left">
+                    <img src="/assets/img/shape-04.png" alt="">
+                </div>
+                <div class="testimonial-shape-right">
+                    <img src="/assets/img/shape-05.png" alt="">
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="testimonial-slider slick">
+                            <div class="testimonial-grid">
+                                <div class="testimonial-info">
+                                    <div class="testimonial-img">
+                                        <img src="/assets/img/clients/client-01.jpg" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="testimonial-content">
+                                        <div class="section-inner-header testimonial-header">
+                                            <h6>Testimonials</h6>
+                                            <h2>What Our User Says</h2>
+                                        </div>
+                                        <div class="testimonial-details">
+                                            <p>I have many years of experience in hospital industry out of my experience
+                                                I can say AidXpert is one of
+                                                the best hospital management system which covers every aspects of
+                                                hospital business.</p>
+                                            <h6><span>Ganesh K</span> Hyd</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-grid">
+                                <div class="testimonial-info">
+                                    <div class="testimonial-img">
+                                        <img src="/assets/img/clients/client-02.jpg" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="testimonial-content">
+                                        <div class="section-inner-header testimonial-header">
+                                            <h6>Testimonials</h6>
+                                            <h2>What Our User Says</h2>
+                                        </div>
+                                        <div class="testimonial-details">
+                                            <p>Excellent Customer Support, Software is good and responds well,
+                                                appreciate continuous updates.</p>
+                                            <h6><span>Manisha Mahajan</span> Mumbai</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-grid">
+                                <div class="testimonial-info">
+                                    <div class="testimonial-img">
+                                        <img src="/assets/img/clients/client-03.jpg" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="testimonial-content">
+                                        <div class="section-inner-header testimonial-header">
+                                            <h6>Testimonials</h6>
+                                            <h2>What Our User Says</h2>
+                                        </div>
+                                        <div class="testimonial-details">
+                                            <p>I am very happy with the results of my video consultation on AidXpert.
+                                                They made the whole process seamless and stress-free.</p>
+                                            <h6><span>Ram H</span> Hyd</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section faq-section bg-light-primary" style="padding-top: 50px;">
+            <div class="container">
+
+                <div class="section-heading"><!-- data-aos="fade-down" -->
+                    <h2>Frequently Asked Questions </h2>
+                    <p>Our integrated ambulance transport services were created to assist in saving human lives by
+                        providing an ultimate network of equipped Ambulances.</p>
+                </div>
+
+                <div class="faq-info">
+                    <div class="faq-card bg-white"><!-- data-aos="fade-down" -->
+                        <h4 class="faq-title">
+                            <a class="collapsed" data-bs-toggle="collapse" href="#faqOne" aria-expanded="false">How to
+                                request a ride?</a>
+                        </h4>
+                        <div id="faqOne" class="card-collapse collapse">
+                            <p>Enter your destination address in the "Search" box, or tap a shortcut icon at the bottom
+                                of your screen. Shortcuts include recent destinations from your ride history or custom
+                                "Saved Places" you can set in your app.</p>
+                        </div>
+                    </div>
+                    <div class="faq-card bg-white"><!-- data-aos="fade-down" -->
+                        <h4 class="faq-title">
+                            <a class="collapsed" data-bs-toggle="collapse" href="#faqTwo" aria-expanded="false">How to
+                                contact a driver?</a>
+                        </h4>
+                        <div id="faqTwo" class="card-collapse collapse">
+                            <p>If you wish to contact your driver about a pickup location or talk about other details of
+                                the ride you requested, you can do that through the app.</p>
+                        </div>
+                    </div>
+                    <div class="faq-card bg-white"><!-- data-aos="fade-down" -->
+                        <h4 class="faq-title">
+                            <a class="collapsed" data-bs-toggle="collapse" href="#faqThree" aria-expanded="false">How to
+                                cancelling an Ambulance ride?</a>
+                        </h4>
+                        <div id="faqThree" class="card-collapse collapse">
+                            <p>You can cancel a trip at any time, before or after a driver has accepted your trip
+                                request. If you cancel when the driver is less than 5 minutes away from picking you up,
+                                you will be charged a cancellation fee.</p>
+                        </div>
+                    </div>
+                    <div class="faq-card bg-white"><!-- data-aos="fade-down" -->
+                        <h4 class="faq-title">
+                            <a class="collapsed" data-bs-toggle="collapse" href="#faqFour" aria-expanded="false">Can I
+                                Book ambulance for other?</a>
+                        </h4>
+                        <div id="faqFour" class="card-collapse collapse">
+                            <p>Yes, you can book and share the same to other</p>
+                        </div>
+                    </div>
+                    <div class="faq-card bg-white"><!-- data-aos="fade-down" -->
+                        <h4 class="faq-title">
+                            <a class="collapsed" data-bs-toggle="collapse" href="#faqFive" aria-expanded="false">What if
+                                the vehicle/ambulance does not reach in time?</a>
+                        </h4>
+                        <div id="faqFive" class="card-collapse collapse">
+                            <p>Contact Driver number</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <footer class="footer">
+
+            <div class="footer-top aos"><!-- data-aos="fade-up" -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-about">
+                                <div class="footer-logo">
+                                    <img src="/assets/img/logo-whte.png" alt="aidxpert">
+                                </div>
+                                <div class="footer-about-content">
+                                    <p>A healthcare product is the result of the interaction of capital, labour and
+                                        entrepreneurship in the production process, which primarily aims to improve,
+                                        maintain or prevent the deterioration of the health status of persons or reduce
+                                        the consequences of ill health.</p>
+                                    <div class="social-icon">
+                                        <ul>
+                                            <li>
+                                                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-menu">
+                                <h2 class="footer-title">For Patients</h2>
+                                <ul>
+                                    <li><a href="#">Search for Doctors</a></li>
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Training Videos</a></li>
+                                    <li><a href="#">Booking</a></li>
+                                    <li><a href="#">Patient Dashboard</a></li>
+                                    <li><a href="#">Help</a></li>
+                                    <li><a href="consultantsPanel">Consultants Panel</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-menu">
+                                <h2 class="footer-title">For Doctors</h2>
+                                <ul>
+                                    <li><a href="#">Appointments</a></li>
+                                    <li><a href="#">Chat</a></li>
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Register</a></li>
+                                    <li><a href="#">Doctor Dashboard</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-contact">
+                                <h2 class="footer-title">Contact Us</h2>
+                                <div class="footer-contact-info">
+                                    <div class="footer-address">
+                                        <span><i class="fas fa-map-marker-alt"></i></span>
+                                        <p>Pinnacle Prestige, Office No-405 <br />Tilak Road,Sadashiv Peth,Hyd</p>
+                                    </div>
+                                    <p>
+                                        <i class="fas fa-phone-alt"></i>
+                                        +91-858 505 6006
+                                    </p>
+                                    <p class="mb-0 cf_email">
+                                        <i class="fas fa-envelope"></i>
+                                        <a href="#" style="color:#fff;">info@aidxpert.com</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="sidenav">
+                <a href="consult"><img src="/assets/img/footer-banner.jpg"></a>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="container-fluid">
+
+                    <div class="copyright">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <div class="copyright-text">
+                                    <p class="mb-0">&copy; 2023 AidXpert. All rights reserved. Powered by <a
+                                            href="https://abc.com" target="_blank"
+                                            style="color:#fff">FossGen Technologies Pvt. Ltd.</a></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+
+                                <div class="copyright-menu">
+                                    <ul class="policy-menu">
+                                        <li><a href="termsConditions">Terms and Conditions</a></li>
+                                        <li><a href="privacyPolicy">Privacy Policy</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <a href="ambulanceRegister" class="sticky-divi-button">Join Us</a>
+    <style type="text/css">
+        .sticky-divi-button {
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 16px;
+            background-color: #a61f25;
+            font-family: "Raleway";
+            border-radius: 4px;
+            text-transform: uppercase;
+            text-decoration: none;
+            box-shadow: 0px 25px 28px -21px rgba(194, 180, 190, 1);
+            padding: 20px 10px;
+            z-index: 10;
+            position: fixed;
+            bottom: 50%;
+            right: 0px;
+            transform: rotate(180deg);
+            text-orientation: sideways;
+            writing-mode: vertical-lr;
+        }
+
+        .sticky-divi-button:hover {
+            background-color: #cb3737;
+            /* You can change color button on hover */
+            box-shadow: none;
+            color: #ffffff;
+        }
+    </style>
+    <script src="/assets/js/jquery-3.6.4.min.js"></script>
+
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/assets/plugins/select2/js/select2.min.js"></script>
+
+    <script src="/assets/js/aos.js"></script>
+
+    <script src="/assets/js/backToTop.js"></script>
+
+    <script src="/assets/plugins/moment/moment.min.js"></script>
+    <script src="/assets/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="/assets/js/owl.carousel.min.js"></script>
+    <script src="/assets/js/slick.js"></script>
+    <script src="/assets/js/script.js"></script>
+</body>
+
+</html>

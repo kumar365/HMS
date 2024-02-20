@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>AidXpert</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+  <link href="/assets/img/favicon.png" rel="icon">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+  <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+
+  <link rel="stylesheet" href="/assets/css/feather.css">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap-datetimepicker.min.css">
+
+  <link rel="stylesheet" href="/assets/css/custom.css">
+</head>
+
+<body>
+
+  <div class="main-wrapper">
+
+    <header class="header">
+      <nav class="navbar navbar-expand-lg header-nav">
+        <div class="navbar-header">
+          <a id="mobile_btn" href="javascript:void(0);">
+            <span class="bar-icon">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </a>
+          <a href="index" class="navbar-brand logo">
+            <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+          </a>
+        </div>
+        <div class="main-menu-wrapper">
+          <div class="menu-header">
+            <a href="index" class="menu-logo">
+              <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+            </a>
+            <a id="menu_close" class="menu-close" href="javascript:void(0);">
+              <i class="fas fa-times"></i>
+            </a>
+          </div>
+          <ul class="main-nav">
+            <li class="active"><a href="findDoctors">Find Doctors</a></li>
+            <li><a href="consult">Consultation</a></li>
+            <li><a href="medicineOrder">Medicine Order</a></li>
+            <li><a href="labTest">Lab Test</a></li>
+            <li><a href="findSurgeons">Find Surgeons</a></li>
+            <li><a href="bookAmbulance">Book Ambulance</a></li>
+            <li class="has-submenu">
+              <a href="javascript:void(0);">Services <i class="fas fa-chevron-down"></i></a>
+              <ul class="submenu">
+                <li><a href="#">Ambulance Service</a></li>
+                <li><a href="staffingServices">Healthcare Staffing Services</a></li>
+              </ul>
+            </li>
+            <li class="has-submenu">
+              <a href="javascript:void(0);">Help <i class="fas fa-chevron-down"></i></a>
+              <ul class="submenu">
+                <li><a href="#">Health Tips</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="consultantsPanel">Consultants Panel</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <ul class="nav header-navbar-rht">
+          <!-- <li class="nav-item contact-item">
+        <div class="header-contact-img">
+        <i class="far fa-hospital"></i> 
+        </div>
+        <div class="header-contact-detail">
+        <p class="contact-header">Tollfree Helpline</p>
+        <p class="contact-info-header">1800 1800 45</p>
+        </div>
+        </li> -->
+          <li class="nav-item">
+            <a class="nav-link header-login" href="loginEmail">Login / Signup </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+
+    <div class="breadcrumb-bar-two">
+      <div class="container">
+        <div class="row align-items-center inner-banner">
+          <div class="col-md-12 col-12 text-center">
+            <h2 class="breadcrumb-title">Profile</h2>
+            <nav aria-label="breadcrumb" class="page-breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index">Home</a></li>
+                <li class="breadcrumb-item" aria-current="page">Patient Profile</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar dct-dashbd-lft">
+
+            <div class="card widget-profile pat-widget-profile">
+              <div class="card-body">
+                <div class="pro-widget-content">
+                  <div class="profile-info-widget">
+                    <a href="#" class="booking-doc-img">
+                      <img src="/assets/img/patients/patient9.jpg" alt="User Image">
+                    </a>
+                    <div class="profile-det-info">
+                      <h3>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</h3>
+                      <div class="patient-details">
+                        <h5><b>Patient ID :</b> PT{{currentUser.id}}</h5>
+                        <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i> {{currentUser.state.name}},
+                          {{currentUser.country.name}}</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="patient-info">
+                  <ul>
+                    <li>Phone <span>+91-{{currentUser.phoneNumber}}</span></li>
+                    <li>Age <span>{{currentUser.age}}, {{currentUser.gender}}</span></li>
+                    <li>Blood Group <span>{{currentUser.bloodGroup}}</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+          <div class="col-md-7 col-lg-8 col-xl-9 dct-appoinment">
+            <div class="card">
+              <div class="card-body pt-0">
+                <div class="user-tabs">
+                  <ul class="nav nav-tabs nav-tabs-bottom nav-justified flex-wrap">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#pat_appointments" data-bs-toggle="tab">Appointments</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#pres" data-bs-toggle="tab"><span>Prescription</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#medical" data-bs-toggle="tab"><span class="med-records">Medical
+                          Records</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#billing" data-bs-toggle="tab"><span>Billing</span></a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="tab-content">
+
+                  <div id="pat_appointments" class="tab-pane fade show active">
+                    <div class="card card-table mb-0">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table table-hover table-center mb-0">
+                            <thead>
+                              <tr>
+                                <th>Appt Date</th>
+                                <th>Booking Date</th>
+                                <th>Amount</th>
+                                <th>Follow Up</th>
+                                <th>Consultation Type</th>
+                                <th>Status</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+
+                                <td>14 Feb 2023 <span class="d-block text-info">10.00 AM</span></td>
+                                <td>12 Feb 2023</td>
+                                <td>Rs.600/-</td>
+                                <td>16 Feb 2023</td>
+                                <td class="text-center">
+                                  <div class="consultation-types" style="display: inline-block;">
+                                    <a href="javascript:void(0);"
+                                      style="width: 40px;min-width: 40px;color: #34b74f;border: 1px solid #34b74f;">
+                                      <i class="feather-mic" style="margin-right: 0px;"></i>
+                                    </a>
+                                  </div>
+                                </td>
+                                <td><span class="badge rounded-pill bg-success-light">Confirm</span></td>
+                                <td class="text-end">
+                                  <div class="table-action">
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-success-light">
+                                      <i class="far fa-edit"></i> Edit
+                                    </a>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+
+                                <td>2 Dec 2022 <span class="d-block text-info">5.00 PM</span></td>
+                                <td>2 Dec 2022</td>
+                                <td>Rs.400/-</td>
+                                <td>10 Dec 2022</td>
+                                <td class="text-center">
+                                  <div class="consultation-types" style="display: inline-block;">
+                                    <a href="javascript:void(0);"
+                                      style="width: 40px;min-width: 40px;color: #eb1831;border: 1px solid #eb1831;">
+                                      <i class="feather-video" style="margin-right: 0px;"></i>
+                                    </a>
+
+                                  </div>
+                                </td>
+                                <td><span class="badge rounded-pill bg-success-light">Confirm</span></td>
+                                <td class="text-end">
+                                  <div class="table-action">
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-success-light">
+                                      <i class="far fa-edit"></i> Edit
+                                    </a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="tab-pane fade" id="pres">
+                    <div class="text-end">
+                      <a href="addPrescription" class="add-new-btn">Add Prescription</a>
+                    </div>
+                    <div class="card card-table mb-0">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table table-hover table-center mb-0">
+                            <thead>
+                              <tr>
+                                <th>Date </th>
+                                <th>Name</th>
+                                <th>Created by </th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody *ngFor="let prescription of prescriptionList;">
+                              <tr>
+                                <td>{{prescription.createdDate | date:'dd MMM yyyy'}}</td>
+                                <td>{{prescription.prescriptionName}}</td>
+                                <td>
+                                  <h2 class="table-avatar">
+                                    <a href="doctorProfile" class="avatar avatar-sm me-2">
+                                      <img class="avatar-img rounded-circle"
+                                        src="/assets/img/doctors/doctor-thumb-01.jpg" alt="User Image">
+                                    </a>
+                                    <a href="doctorProfile">Dr. Vidya B <span>Dental</span></a>
+                                  </h2>
+                                </td>
+                                <td class="text-end">
+                                  <div class="table-action">
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-primary-light">
+                                      <i class="fas fa-print"></i> Print
+                                    </a>
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-info-light">
+                                      <i class="far fa-eye"></i> View
+                                    </a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="medical">
+                    <div class="text-end">
+                      <a href="#" (click)="addDetails()" class="add-new-btn" data-bs-toggle="modal"
+                        data-bs-target="#add_medical_records_modal">Add Medical
+                        Records</a>
+                    </div>
+                    <div class="card card-table mb-0">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table table-hover table-center mb-0">
+                            <thead>
+                              <tr>
+                                <th>ID</th>
+                                <th>Date </th>
+                                <th>Description</th>
+                                <th>Attachment</th>
+                                <th>Created</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody *ngFor="let medicalRecords of medicalRecordsList;">
+
+                              <tr>
+                                <td><a href="javascript:void(0);">{{medicalRecords.mrId}}</a></td>
+                                <td>{{medicalRecords.recordDate | date:'dd MMM yyyy'}}</td>
+                                <td>{{medicalRecords.description}}</td>
+                                <td><a href="#">{{medicalRecords.attachment}}</a></td>
+                                <td>
+                                  <h2 class="table-avatar">
+                                    <a href="doctorProfile" class="avatar avatar-sm me-2">
+                                      <img class="avatar-img rounded-circle"
+                                        src="/assets/img/doctors/doctor-thumb-08.jpg" alt="User Image">
+                                    </a>
+                                    <a href="doctorProfile">{{medicalRecords.user.firstName}}
+                                      {{medicalRecords.user.lastName}}<span>Dermatology</span></a>
+                                  </h2>
+                                </td>
+                                <td class="text-end">
+                                  <div class="table-action">
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-primary-light">
+                                      <i class="fas fa-print"></i> Print
+                                    </a>
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-info-light">
+                                      <i class="far fa-eye"></i> View
+                                    </a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="tab-pane" id="billing">
+                    <div class="text-end">
+                      <a class="add-new-btn" href="addBilling">Add Billing</a>
+                    </div>
+                    <div class="card card-table mb-0">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table table-hover table-center mb-0">
+                            <thead>
+                              <tr>
+                                <th>Invoice No</th>
+                                <th>Doctor</th>
+                                <th>Amount</th>
+                                <th>Paid On</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody *ngFor="let bill of billList;">
+
+                              <tr>
+                                <td>
+                                  <a href="invoiceView">#{{bill.invoiceId}}</a>
+                                </td>
+                                <td>
+                                  <h2 class="table-avatar">
+                                    <a href="doctorProfile" class="avatar avatar-sm me-2">
+                                      <img class="avatar-img rounded-circle"
+                                        src="/assets/img/doctors/doctor-thumb-08.jpg" alt="User Image">
+                                    </a>
+                                    <a href="doctorProfile">{{bill.user.firstName}} <span>Dermatology</span></a>
+                                  </h2>
+                                </td>
+                                <td>{{bill.amount}}/-</td>
+                                <td>{{bill.createdDate | date:'dd MMM yyyy'}}</td>
+                                <td class="text-end">
+                                  <div class="table-action">
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-primary-light">
+                                      <i class="fas fa-print"></i> Print
+                                    </a>
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-info-light">
+                                      <i class="far fa-eye"></i> View
+                                    </a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-top aos"><!-- data-aos="fade-up" -->
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-3 col-md-6">
+              <div class="footer-widget footer-about">
+                <div class="footer-logo">
+                  <img src="/assets/img/logo-whte.png" alt="aidxpert">
+                </div>
+                <div class="footer-about-content">
+                  <p>A healthcare product is the result of the interaction of capital, labour and entrepreneurship in
+                    the production process, which primarily aims to improve, maintain or prevent the deterioration of
+                    the health status of persons or reduce the consequences of ill health.</p>
+                  <div class="social-icon">
+                    <ul>
+                      <li>
+                        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+                      </li>
+
+                      <li>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                      </li>
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-lg-3 col-md-6">
+
+              <div class="footer-widget footer-menu">
+                <h2 class="footer-title">For Patients</h2>
+                <ul>
+                  <li><a href="#">Search for Doctors</a></li>
+                  <li><a href="#">Login</a></li>
+                  <li><a href="#">Training Videos</a></li>
+                  <li><a href="#">Booking</a></li>
+                  <li><a href="#">Patient Dashboard</a></li>
+                  <li><a href="#">Help</a></li>
+                  <li><a href="consultantsPanel">Consultants Panel</a></li>
+                </ul>
+              </div>
+
+            </div>
+            <div class="col-lg-3 col-md-6">
+
+              <div class="footer-widget footer-menu">
+                <h2 class="footer-title">For Doctors</h2>
+                <ul>
+                  <li><a href="#">Appointments</a></li>
+                  <li><a href="#">Chat</a></li>
+                  <li><a href="#">Login</a></li>
+                  <li><a href="#">Register</a></li>
+                  <li><a href="#">Doctor Dashboard</a></li>
+                </ul>
+              </div>
+
+            </div>
+            <div class="col-lg-3 col-md-6">
+
+              <div class="footer-widget footer-contact">
+                <h2 class="footer-title">Contact Us</h2>
+                <div class="footer-contact-info">
+                  <div class="footer-address">
+                    <span><i class="fas fa-map-marker-alt"></i></span>
+                    <p>Pinnacle Prestige, Office No-405 <br />Tilak Road,Sadashiv Peth,Hyd</p>
+                  </div>
+                  <p>
+                    <i class="fas fa-phone-alt"></i>
+                    +91-9096488159
+                  </p>
+                  <p class="mb-0 cf_email">
+                    <i class="fas fa-envelope"></i>
+                    <a href="#" style="color:#fff;">info@aidxpert.com</a>
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container-fluid">
+
+          <div class="copyright">
+            <div class="row">
+              <div class="col-md-6 col-lg-6">
+                <div class="copyright-text">
+                  <p class="mb-0">&copy; 2023 AidXpert. All rights reserved. Powered by <a href="https://abc.com"
+                      target="_blank" style="color:#fff"> Technologies
+                      Pvt. Ltd.</a></p>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-6">
+
+                <div class="copyright-menu">
+                  <ul class="policy-menu">
+                    <li><a href="termsConditions">Terms and Conditions</a></li>
+                    <li><a href="privacyPolicy">Privacy Policy</a></li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </footer>
+
+  </div>
+
+
+  <div class="modal fade custom-modal custom-medicalrecord-modal" id="add_medical_records_modal" style="display: none;"
+    data-select2-id="add_medical_records_modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Medical Records</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div *ngIf="medicalRecordsFlag" class="alert alert-danger" role="alert">
+          {{ message }}
+        </div>
+        <form (ngSubmit)="saveMedicalRecords()" #medicalRecordsForm="ngForm" enctype="multipart/form-data">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label>Title Name</label>
+                  <input type="text" [(ngModel)]="medicalRecords.description" id="description" name="description"
+                    class="form-control" #description="ngModel" placeholder="Enter Title Name">
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label>Patient</label>
+                  <select class="form-select" [(ngModel)]="medicalRecords.patientType" id="patientType"
+                    name="patientType" #patientType="ngModel">
+                    <option>Myself</option>
+                    <option>Child_1</option>
+                    <option>Self</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label>Hospital Name</label>
+                  <input type="text" [(ngModel)]="medicalRecords.hospitalName" id="hospitalName" name="hospitalName"
+                    class="form-control" #hospitalName="ngModel" placeholder="Enter Hospital name here..">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label>Upload</label>
+                  <div class="upload-medical-records">
+                    <input type="file" [(ngModel)]="medicalRecords.attachmentFile" id="attachmentFile"
+                      name="attachmentFile" class="form-control" #attachmentFile="ngModel">
+                    <!-- <input type="file" id="file" name="file" class="form-control"> -->
+                    <div class="upload-content dropzone">
+                      <div class="text-center">
+                        <div class="upload-icon mb-2"><img src="/assets/img/upload-icon.png" alt>
+                        </div>
+                        <h5>Drag &amp; Drop</h5>
+                        <h6>or <span class="text-danger">Browse</span></h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label>Symptoms</label>
+                  <input type="text" [(ngModel)]="medicalRecords.symptoms" id="symptoms" name="symptoms"
+                    class="form-control" #symptoms="ngModel">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label>Date</label>
+                  <div class="form-group">
+                    <input type="date" [(ngModel)]="medicalRecords.recordDateString" id="recordDateString"
+                      name="recordDateString" class="form-control" #recordDateString="ngModel">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center mt-4">
+              <div class="submit-section text-center">
+                <button type="submit" id="medical_btn" class="btn btn-primary submit-btn">Submit</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="/assets/js/jquery-3.6.4.min.js"></script>
+
+  <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+  <script src="/assets/js/moment.min.js"></script>
+  <script src="/assets/js/bootstrap-datetimepicker.min.js"></script>
+
+  <script src="/assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+  <script src="/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+  <script src="/assets/js/aos.js"></script>
+  <script src="/assets/js/script.js"></script>
+</body>
+
+</html>

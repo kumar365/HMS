@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>AidXpert</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+    <link href="/assets/img/favicon.png" rel="icon">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+
+    <link rel="stylesheet" href="/assets/css/feather.css">
+
+    <link rel="stylesheet" href="/assets/plugins/daterangepicker/daterangepicker.css">
+
+    <link rel="stylesheet" href="/assets/css/custom.css">
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+
+        <header class="header">
+            <nav class="navbar navbar-expand-lg header-nav">
+                <div class="navbar-header">
+                    <a id="mobile_btn" href="javascript:void(0);">
+                        <span class="bar-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </a>
+                    <a href="index" class="navbar-brand logo">
+                        <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                    </a>
+                </div>
+                <div class="main-menu-wrapper">
+                    <div class="menu-header">
+                        <a href="index" class="menu-logo">
+                            <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                        </a>
+                        <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                    <ul class="main-nav">
+                        <li><a href="findDoctors">Find Doctors</a></li>
+                        <li><a href="consult">Consultation</a></li>
+                        <li><a href="medicineOrder">Medicine Order</a></li>
+                        <li><a href="labTest">Lab Test</a></li>
+                        <li><a href="findSurgeons">Find Surgeons</a></li>
+                        <li><a href="bookAmbulance">Book Ambulance</a></li>
+                        <li class="active" class="has-submenu">
+                            <a href="javascript:void(0);">Services <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="#">Ambulance Service</a></li>
+                                <li><a href="staffingServices">Healthcare Staffing Services</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Help <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="#">Health Tips</a></li>
+                                <li><a href="#">Help</a></li>
+                                <li><a href="consultantsPanel">Consultants Panel</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav header-navbar-rht">
+                    <!-- <li class="nav-item contact-item">
+        <div class="header-contact-img">
+        <i class="far fa-hospital"></i>
+        </div>
+        <div class="header-contact-detail">
+        <p class="contact-header">Tollfree Helpline</p>
+        <p class="contact-info-header">1800 1800 45</p>
+        </div>
+        </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link header-login" href="loginEmail">Login / Signup </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="breadcrumb-bar-two">
+            <div class="container">
+                <div class="row align-items-center inner-banner">
+                    <div class="col-md-12 col-12 text-center">
+                        <h2 class="breadcrumb-title">Healthcare Staffing Services</h2>
+                        <nav aria-label="breadcrumb" class="page-breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index">Home</a></li>
+                                <li class="breadcrumb-item" aria-current="page">Healthcare Staffing Services</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <section class="doctor-divison">
+            <div class="d-flex">
+                <div class="doc-background aos aos-init aos-animate"><!-- data-aos="fade-up" -->
+                    <h3>Do you want staff for your clinic?</h3>
+                    <p>The process of hiring new staff for a medical clinic is a pivotal undertaking that can
+                        significantly impact patient satisfaction, operational efficiency, and the overall reputation of
+                        the practice.</p>
+                    <a data-bs-toggle="modal" href="#doctor_staffing" class="doc-bok-btn" style="color:#fff;">Send
+                        Details</a>
+                </div>
+                <div class="pat-background aos aos-init aos-animate"><!-- data-aos="fade-up" -->
+                    <h3>Are you looking for job?</h3>
+                    <p>Jobs in the medical field vary widely in terms of roles and responsibilities, but there are
+                        certain skills that you should have no matter what kind of medical job you want.</p>
+                    <a data-bs-toggle="modal" href="#student_staffing" class="doc-bok-btn" style="color:#000;">Join
+                        Now</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-12">
+                        <div class="section-inner-header contact-inner-header">
+                            <!-- <h6>We Can Assist You with All of Your Healthcare Needs</h6>
+<h2>A Diverse Network of Ready-to-Work Doctors and Advanced Practitioners</h2> -->
+                            <h6>Get In Touch With Our Team</h6>
+                            <h2>Top candidates are waiting to make a difference at your organization.
+                                Get in touch with us to find your next healthcare hire.</h2>
+                        </div>
+
+                        <div class="card contact-card">
+                            <div class="card-body">
+                                <div class="contact-icon">
+                                    <i class="feather-phone"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Phone Number</h4>
+                                    <p>+91-858 505 6006 </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card contact-card">
+                            <div class="card-body">
+                                <div class="contact-icon">
+                                    <i class="feather-mail"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Email Address</h4>
+                                    <p><a href="#">info@aidxpert.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-12 d-flex">
+                        <div class="card contact-form-card w-100">
+                            <div class="card-body">
+                                <form action="#">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Name</label>
+                                                <input type="text" class="form-control" placeholder="Enter Your Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Email Address</label>
+                                                <input type="text" class="form-control"
+                                                    placeholder="Enter Email Address">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Phone Number</label>
+                                                <input type="text" class="form-control"
+                                                    placeholder="Enter Phone Number">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Hospital Name</label>
+                                                <input type="text" class="form-control"
+                                                    placeholder="Enter Hospital Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Tell us more about your staffing needs</label>
+                                                <textarea class="form-control"
+                                                    placeholder="Tell us more about your staffing needs"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-btn mb-0">
+                                                <button type="submit" class="btn btn-primary prime-btn">Send
+                                                    Message</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <footer class="footer">
+
+            <div class="footer-top aos"><!-- data-aos="fade-up" -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-about">
+                                <div class="footer-logo">
+                                    <img src="/assets/img/logo-whte.png" alt="aidxpert">
+                                </div>
+                                <div class="footer-about-content">
+                                    <p>A healthcare product is the result of the interaction of capital, labour and
+                                        entrepreneurship in the production process, which primarily aims to improve,
+                                        maintain or prevent the deterioration of the health status of persons or reduce
+                                        the consequences of ill health.</p>
+                                    <div class="social-icon">
+                                        <ul>
+                                            <li>
+                                                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-menu">
+                                <h2 class="footer-title">For Patients</h2>
+                                <ul>
+                                    <li><a href="#">Search for Doctors</a></li>
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Training Videos</a></li>
+                                    <li><a href="#">Booking</a></li>
+                                    <li><a href="#">Patient Dashboard</a></li>
+                                    <li><a href="#">Help</a></li>
+                                    <li><a href="consultantsPanel">Consultants Panel</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-menu">
+                                <h2 class="footer-title">For Doctors</h2>
+                                <ul>
+                                    <li><a href="#">Appointments</a></li>
+                                    <li><a href="#">Chat</a></li>
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Register</a></li>
+                                    <li><a href="#">Doctor Dashboard</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-contact">
+                                <h2 class="footer-title">Contact Us</h2>
+                                <div class="footer-contact-info">
+                                    <div class="footer-address">
+                                        <span><i class="fas fa-map-marker-alt"></i></span>
+                                        <p>Pinnacle Prestige, Office No-405 <br />Tilak Road,Sadashiv Peth,Hyd</p>
+                                    </div>
+                                    <p>
+                                        <i class="fas fa-phone-alt"></i>
+                                        +91-858 505 6006
+                                    </p>
+                                    <p class="mb-0 cf_email">
+                                        <i class="fas fa-envelope"></i>
+                                        <a href="#" style="color:#fff;">info@aidxpert.com</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="footer-bottom">
+                <div class="container-fluid">
+
+                    <div class="copyright">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <div class="copyright-text">
+                                    <p class="mb-0">&copy; 2023 AidXpert. All rights reserved. Powered by <a
+                                            href="https://abc.com" target="_blank"
+                                            style="color:#fff">FossGen Technologies Pvt. Ltd.</a></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+
+                                <div class="copyright-menu">
+                                    <ul class="policy-menu">
+                                        <li><a href="termsConditions">Terms and Conditions</a></li>
+                                        <li><a href="privacyPolicy">Privacy Policy</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </footer>
+    </div>
+    <div class="modal fade" id="doctor_staffing" aria-hidden="true" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data" autocomplete="off" id="update_service" action="#">
+                        <input type="hidden" name="csrf_token_name" value="0146f123a4c7ae94253b39bca6bd5a5e">
+                        <div class="service-fields mb-3">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Name<span class="text-danger">*</span></label>
+                                        <input type="hidden" name="name" id="name" value="18">
+                                        <input class="form-control" type="text" name="name" id="name" value required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>Email<span class="text-danger">*</span></label>
+                                    <input type="hidden" name="email" id="email" value="18">
+                                    <input class="form-control" type="text" name="email" id="email" value required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-fields mb-3">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Phone<span class="text-danger">*</span></label>
+                                        <input type="hidden" name="phone" id="phone" value="18">
+                                        <input class="form-control" type="text" name="phone" id="phone" value required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>Clinic Name<span class="text-danger">*</span></label>
+                                    <input type="hidden" name="company" id="company" value="18">
+                                    <input class="form-control" type="text" name="company" id="company" value required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-fields mb-3">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label>Address <span class="text-danger">*</span></label>
+                                        <textarea id="address" class="form-control service-desc"
+                                            name="address"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="submit-section">
+                            <button class="btn btn-primary submit-btn" type="submit" name="form_submit"
+                                value="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="student_staffing" aria-hidden="true" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data" autocomplete="off" id="update_service" action="#">
+                        <input type="hidden" name="csrf_token_name" value="0146f123a4c7ae94253b39bca6bd5a5e">
+                        <div class="service-fields mb-3">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Name<span class="text-danger">*</span></label>
+                                        <input type="hidden" name="name" id="name" value="18">
+                                        <input class="form-control" type="text" name="name" id="name" value required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>Email<span class="text-danger">*</span></label>
+                                    <input type="hidden" name="email" id="email" value="18">
+                                    <input class="form-control" type="text" name="email" id="email" value required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-fields mb-3">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Phone<span class="text-danger">*</span></label>
+                                        <input type="hidden" name="phone" id="phone" value="18">
+                                        <input class="form-control" type="text" name="phone" id="phone" value required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>Degree<span class="text-danger">*</span></label>
+                                    <input type="hidden" name="company" id="company" value="18">
+                                    <input class="form-control" type="text" name="company" id="company" value required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-fields mb-3">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label>Address <span class="text-danger">*</span></label>
+                                        <textarea id="address" class="form-control service-desc"
+                                            name="address"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-fields mb-3">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="service-upload">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <span>Upload Resume *</span>
+                                        <input type="file" name="images[]" id="images" multiple
+                                            accept="image/jpeg, image/png, image/gif,">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="submit-section">
+                            <button class="btn btn-primary submit-btn" type="submit" name="form_submit"
+                                value="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/assets/js/jquery-3.6.4.min.js"></script>
+
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/assets/js/moment.min.js"></script>
+    <script src="/assets/plugins/daterangepicker/daterangepicker.js"></script>
+
+    <script src="/assets/js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>AidXpert</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+    <link href="/assets/img/favicon.png" rel="icon">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+
+    <link rel="stylesheet" href="/assets/css/feather.css">
+
+    <link rel="stylesheet" href="/assets/plugins/fancybox/jquery.fancybox.min.css">
+
+    <link rel="stylesheet" href="/assets/css/custom.css">
+    <style type="text/css">
+        .doctor-widget-one .clini-infos ul li {
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+
+        <header class="header">
+            <nav class="navbar navbar-expand-lg header-nav">
+                <div class="navbar-header">
+                    <a id="mobile_btn" href="javascript:void(0);">
+                        <span class="bar-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </a>
+                    <a href="index" class="navbar-brand logo">
+                        <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                    </a>
+                </div>
+                <div class="main-menu-wrapper">
+                    <div class="menu-header">
+                        <a href="index" class="menu-logo">
+                            <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                        </a>
+                        <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                    <ul class="main-nav">
+                        <li class="active"><a href="findDoctors">Find Doctors</a></li>
+                        <li><a href="consult">Consultation</a></li>
+                        <li><a href="medicineOrder">Medicine Order</a></li>
+                        <li><a href="labTest">Lab Test</a></li>
+                        <li><a href="findSurgeons">Find Surgeons</a></li>
+                        <li><a href="bookAmbulance">Book Ambulance</a></li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Services <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="#">Ambulance Service</a></li>
+                                <li><a href="staffingServices">Healthcare Staffing Services</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Help <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="#">Health Tips</a></li>
+                                <li><a href="#">Help</a></li>
+                                <li><a href="consultantsPanel">Consultants Panel</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav header-navbar-rht">
+                    <!-- <li class="nav-item contact-item">
+        <div class="header-contact-img">
+        <i class="far fa-hospital"></i> 
+        </div>
+        <div class="header-contact-detail">
+        <p class="contact-header">Tollfree Helpline</p>
+        <p class="contact-info-header">1800 1800 45</p>
+        </div>
+        </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link header-login" href="loginEmail">Login / Signup </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+
+        <div class="breadcrumb-bar-two">
+            <div class="container">
+                <div class="row align-items-center inner-banner">
+                    <div class="col-md-12 col-12 text-center">
+                        <h2 class="breadcrumb-title">Doctor Profile</h2>
+                        <nav aria-label="breadcrumb" class="page-breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index">Home</a></li>
+                                <li class="breadcrumb-item" aria-current="page">Doctor Profile</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content">
+            <div class="container">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="doctor-widget-one">
+                            <div class="doc-info-left">
+                                <div class="doctor-img">
+                                    <img src="/assets/img/doctors/doctor-thumb-02.jpg" class="img-fluid"
+                                        alt="User Image">
+                                </div>
+                                <div class="doc-info-cont">
+                                    <h4 class="doc-name">Dr. Ganesh K</h4>
+                                    <p class="doc-speciality">BDS, MDS - Oral & Maxillofacial Surgery</p>
+                                    <p class="recommended success-cont"><i class="fas fa-check as"></i> Medical
+                                        Registration Verified</p>
+                                    <p class="doc-department"><img src="/assets/img/specialities/specialities-05.png"
+                                            class="img-fluid" alt="Speciality">Dentist</p>
+                                    <div class="rating">
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="d-inline-block average-rating">(35)</span>
+                                    </div>
+                                    <div class="clinic-details">
+                                        <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Hyd, India - <a
+                                                href="javascript:void(0);">Get Directions</a></p>
+                                        <ul class="clinic-gallery">
+                                            <li>
+                                                <a href="/assets/img/features/feature-01.jpg" data-fancybox="gallery">
+                                                    <img src="/assets/img/features/feature-01.jpg" alt="Feature">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/assets/img/features/feature-02.jpg" data-fancybox="gallery">
+                                                    <img src="/assets/img/features/feature-02.jpg" alt="Feature Image">
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="/assets/img/features/feature-04.jpg" data-fancybox="gallery">
+                                                    <img src="/assets/img/features/feature-04.jpg" alt="Feature">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="clinic-services">
+                                        <span>Dental Fillings</span>
+                                        <span>Teeth Whitneing</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="doc-info-right"
+                                style="max-width: 300px;width:300px;flex: 0 0 300px;-ms-flex:0 0 300px;">
+                                <div class="clini-infos">
+                                    <ul>
+                                        <li><i class="far fa-thumbs-up"></i> 99%</li>
+                                        <li><i class="far fa-comment"></i> 35 Feedback</li>
+                                        <li><i class="fas fa-map-marker-alt"></i> Hyd, India</li>
+                                        <li><i class="far fa-money-bill-alt"></i> Rs. 500/- </li>
+                                    </ul>
+                                </div>
+                                <div class="doctor-action">
+                                    <a href="javascript:void(0)" class="btn btn-white fav-btn">
+                                        <i class="far fa-bookmark"></i>
+                                    </a>
+                                    <a href="chat" class="btn btn-white msg-btn">
+                                        <i class="far fa-comment-alt"></i>
+                                    </a>
+                                    <a href="javascript:void(0)" class="btn btn-white call-btn" data-bs-toggle="modal"
+                                        data-bs-target="#voice_call">
+                                        <i class="fas fa-phone"></i>
+                                    </a>
+                                    <a href="javascript:void(0)" class="btn btn-white call-btn" data-bs-toggle="modal"
+                                        data-bs-target="#video_call">
+                                        <i class="fas fa-video"></i>
+                                    </a>
+                                </div>
+                                <div class="clinic-booking book-appoint">
+                                    <a class="btn btn-primary" href="booking">Book Appointment</a>
+                                    <a class="btn btn-primary" href="booking2">Book Online Consultation</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-body pt-0">
+
+                        <nav class="user-tabs mb-4">
+                            <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#doc_overview" data-bs-toggle="tab">Overview</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#doc_locations" data-bs-toggle="tab">Locations</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#doc_reviews" data-bs-toggle="tab">Reviews</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#doc_business_hours" data-bs-toggle="tab">Business
+                                        Hours</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#ask_a_question" data-bs-toggle="tab">Ask A Question</a>
+                                </li>
+                            </ul>
+                        </nav>
+
+
+                        <div class="tab-content pt-0">
+
+                            <div role="tabpanel" id="doc_overview" class="tab-pane fade show active">
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-9">
+
+                                        <div class="widget about-widget">
+                                            <h4 class="widget-title">About Me</h4>
+                                            <p>Dr. Ganesh K is an expert and experienced Orthopedician with an
+                                                experience of 22 years, and specialize in Joint Replacement Surgeon. He
+                                                graduated and obtained his MBBS degree from Madurai Medical College,
+                                                Madurai in 1996, and then his po stgraduate MS Degree from G.S.V.M
+                                                Medical College, Kanpur in 2002. He is a Fellowship Trained Joint
+                                                Replacement Surgeon and specializes in Primary and Revision Joint
+                                                Replacement of hip, knee, shoulder and elbow. He has a special interest
+                                                in Unicompartmental Knee Replacement and Computer Navigated Total Knee
+                                                Replacement.</p>
+                                        </div>
+
+
+                                        <div class="widget education-widget">
+                                            <h4 class="widget-title">Education</h4>
+                                            <div class="experience-box">
+                                                <ul class="experience-list">
+                                                    <li>
+                                                        <div class="experience-user">
+                                                            <div class="before-circle"></div>
+                                                        </div>
+                                                        <div class="experience-content">
+                                                            <div class="timeline-content">
+                                                                <a href="#/" class="name">American Dental Medical
+                                                                    University</a>
+                                                                <div>BDS</div>
+                                                                <span class="time">1998 - 2003</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="experience-user">
+                                                            <div class="before-circle"></div>
+                                                        </div>
+                                                        <div class="experience-content">
+                                                            <div class="timeline-content">
+                                                                <a href="#/" class="name">American Dental Medical
+                                                                    University</a>
+                                                                <div>MDS</div>
+                                                                <span class="time">2003 - 2005</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="widget experience-widget">
+                                            <h4 class="widget-title">Work & Experience</h4>
+                                            <div class="experience-box">
+                                                <ul class="experience-list">
+                                                    <li>
+                                                        <div class="experience-user">
+                                                            <div class="before-circle"></div>
+                                                        </div>
+                                                        <div class="experience-content">
+                                                            <div class="timeline-content">
+                                                                <a href="#/" class="name">Glowing Smiles Family Dental
+                                                                    Clinic</a>
+                                                                <span class="time">2010 - Present (5 years)</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="experience-user">
+                                                            <div class="before-circle"></div>
+                                                        </div>
+                                                        <div class="experience-content">
+                                                            <div class="timeline-content">
+                                                                <a href="#/" class="name">Comfort Care Dental Clinic</a>
+                                                                <span class="time">2007 - 2010 (3 years)</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="experience-user">
+                                                            <div class="before-circle"></div>
+                                                        </div>
+                                                        <div class="experience-content">
+                                                            <div class="timeline-content">
+                                                                <a href="#/" class="name">Dream Smile Dental
+                                                                    Practice</a>
+                                                                <span class="time">2005 - 2007 (2 years)</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="service-list">
+                                            <h4>Specializations</h4>
+                                            <ul class="clearfix">
+                                                <li>Children Care</li>
+                                                <li>Dental Care</li>
+                                                <li>Oral and Maxillofacial Surgery </li>
+                                                <li>Orthodontist</li>
+                                                <li>Periodontist</li>
+                                                <li>Prosthodontics</li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div role="tabpanel" id="doc_locations" class="tab-pane fade">
+
+                                <div class="location-list">
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <div class="clinic-content">
+                                                <h4 class="clinic-name"><a href="#">Smile Cute Dental Care Center</a>
+                                                </h4>
+                                                <p class="doc-speciality">MDS - Periodontology and Oral Implantology,
+                                                    BDS</p>
+                                                <div class="rating">
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <span class="d-inline-block average-rating">(4)</span>
+                                                </div>
+                                                <div class="clinic-details mb-0">
+                                                    <h5 class="clinic-direction"> <i class="fas fa-map-marker-alt"></i>
+                                                        Sinhgad Road, Hingne(Kh), Hyd - 411051 <br><a
+                                                            href="javascript:void(0);">Get Directions</a></h5>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="/assets/img/features/feature-01.jpg"
+                                                                data-fancybox="gallery2">
+                                                                <img src="/assets/img/features/feature-01.jpg"
+                                                                    alt="Feature Image">
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/assets/img/features/feature-02.jpg"
+                                                                data-fancybox="gallery2">
+                                                                <img src="/assets/img/features/feature-02.jpg"
+                                                                    alt="Feature Image">
+                                                            </a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="/assets/img/features/feature-04.jpg"
+                                                                data-fancybox="gallery2">
+                                                                <img src="/assets/img/features/feature-04.jpg"
+                                                                    alt="Feature Image">
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-4">
+                                            <div class="clinic-timing">
+                                                <div>
+                                                    <p class="timings-days">
+                                                        <span> Mon - Sat </span>
+                                                    </p>
+                                                    <p class="timings-times">
+                                                        <span>10:00 AM - 2:00 PM</span>
+                                                        <span>4:00 PM - 9:00 PM</span>
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <p class="timings-days">
+                                                        <span>Sun</span>
+                                                    </p>
+                                                    <p class="timings-times">
+                                                        <span>10:00 AM - 2:00 PM</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <div class="consult-price">
+                                                Rs. 500/-
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="location-list">
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <div class="clinic-content">
+                                                <h4 class="clinic-name"><a href="#">The Family Dentistry Clinic</a></h4>
+                                                <p class="doc-speciality">MDS - Periodontology and Oral Implantology,
+                                                    BDS</p>
+                                                <div class="rating">
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <span class="d-inline-block average-rating">(4)</span>
+                                                </div>
+                                                <div class="clinic-details mb-0">
+                                                    <p class="clinic-direction"> <i class="fas fa-map-marker-alt"></i>
+                                                        Vitthalwadi, Hingne(Kh), Hyd - 411051 <br><a
+                                                            href="javascript:void(0);">Get Directions</a></p>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="/assets/img/features/feature-01.jpg"
+                                                                data-fancybox="gallery2">
+                                                                <img src="/assets/img/features/feature-01.jpg"
+                                                                    alt="Feature Image">
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/assets/img/features/feature-02.jpg"
+                                                                data-fancybox="gallery2">
+                                                                <img src="/assets/img/features/feature-02.jpg"
+                                                                    alt="Feature Image">
+                                                            </a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="/assets/img/features/feature-04.jpg"
+                                                                data-fancybox="gallery2">
+                                                                <img src="/assets/img/features/feature-04.jpg"
+                                                                    alt="Feature Image">
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-4">
+                                            <div class="clinic-timing">
+                                                <div>
+                                                    <p class="timings-days">
+                                                        <span> Tue - Fri </span>
+                                                    </p>
+                                                    <p class="timings-times">
+                                                        <span>11:00 AM - 1:00 PM</span>
+                                                        <span>6:00 PM - 11:00 PM</span>
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <p class="timings-days">
+                                                        <span>Sat - Sun</span>
+                                                    </p>
+                                                    <p class="timings-times">
+                                                        <span>8:00 AM - 10:00 AM</span>
+                                                        <span>3:00 PM - 7:00 PM</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <div class="consult-price">
+                                                Rs.600/-
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div role="tabpanel" id="doc_reviews" class="tab-pane fade">
+
+                                <div class="widget review-listing">
+                                    <ul class="comments-list">
+
+                                        <li>
+                                            <div class="comment">
+                                                <img class="avatar avatar-sm rounded-circle" alt="User Image"
+                                                    src="/assets/img/patients/patient.jpg">
+                                                <div class="comment-body">
+                                                    <div class="meta-data">
+                                                        <span class="comment-author">Sumit Kelkar</span>
+                                                        <span class="comment-date">Reviewed 2 Days ago</span>
+                                                        <div class="review-count rating">
+                                                            <i class="fas fa-star filled"></i>
+                                                            <i class="fas fa-star filled"></i>
+                                                            <i class="fas fa-star filled"></i>
+                                                            <i class="fas fa-star filled"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                    </div>
+                                                    <p class="recommended"><i class="far fa-thumbs-up"></i> I recommend
+                                                        the doctor</p>
+                                                    <p class="comment-content">
+                                                        I had a great experience at Dr. Ganesh's office. It was
+                                                        incredibly easy to setup my appointment and the times are very
+                                                        accommodating.
+                                                    </p>
+                                                    <div class="comment-reply">
+                                                        <a class="comment-btn" href="#">
+                                                            <i class="fas fa-reply"></i> Reply
+                                                        </a>
+                                                        <p class="recommend-btn">
+                                                            <span>Recommend?</span>
+                                                            <a href="#" class="like-btn">
+                                                                <i class="far fa-thumbs-up"></i> Yes
+                                                            </a>
+                                                            <a href="#" class="dislike-btn">
+                                                                <i class="far fa-thumbs-down"></i> No
+                                                            </a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </li>
+
+
+                                    </ul>
+
+                                    <div class="all-feedback text-center">
+                                        <a href="#" class="btn btn-primary btn-sm">
+                                            Show all feedback <strong>(167)</strong>
+                                        </a>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="write-review">
+                                    <h4>Write a review for <strong>Dr. Ganesh K</strong></h4>
+
+                                    <form>
+                                        <div class="form-group">
+                                            <label>Review</label>
+                                            <div class="star-rating">
+                                                <input id="star-5" type="radio" name="rating" value="star-5">
+                                                <label for="star-5" title="5 stars">
+                                                    <i class="active fa fa-star"></i>
+                                                </label>
+                                                <input id="star-4" type="radio" name="rating" value="star-4">
+                                                <label for="star-4" title="4 stars">
+                                                    <i class="active fa fa-star"></i>
+                                                </label>
+                                                <input id="star-3" type="radio" name="rating" value="star-3">
+                                                <label for="star-3" title="3 stars">
+                                                    <i class="active fa fa-star"></i>
+                                                </label>
+                                                <input id="star-2" type="radio" name="rating" value="star-2">
+                                                <label for="star-2" title="2 stars">
+                                                    <i class="active fa fa-star"></i>
+                                                </label>
+                                                <input id="star-1" type="radio" name="rating" value="star-1">
+                                                <label for="star-1" title="1 star">
+                                                    <i class="active fa fa-star"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Title of your review</label>
+                                            <input class="form-control" type="text"
+                                                placeholder="If you could say it in one sentence, what would you say?">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Your review</label>
+                                            <textarea id="review_desc" maxlength="100" class="form-control"></textarea>
+                                            <div class="d-flex justify-content-between mt-3"><small
+                                                    class="text-muted"><span id="chars">100</span> characters
+                                                    remaining</small></div>
+                                        </div>
+                                        <hr>
+                                        <div class="form-group">
+                                            <div class="terms-accept">
+                                                <div class="custom-checkbox">
+                                                    <input type="checkbox" id="terms_accept">
+                                                    <label for="terms_accept">I have read and accept <a href="#">Terms
+                                                            &amp; Conditions</a></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="submit-section">
+                                            <button type="submit" class="btn btn-primary submit-btn">Add Review</button>
+                                        </div>
+                                    </form>
+
+                                </div>
+
+                            </div>
+
+
+                            <div role="tabpanel" id="doc_business_hours" class="tab-pane fade">
+                                <div class="row">
+                                    <div class="col-md-6 offset-md-3">
+
+                                        <div class="widget business-widget">
+                                            <div class="widget-content">
+                                                <div class="listing-hours">
+                                                    <div class="listing-day current">
+                                                        <div class="day">Today <span>5 June 2023</span></div>
+                                                        <div class="time-items">
+                                                            <span class="open-status"><span
+                                                                    class="badge bg-success-light">Open
+                                                                    Now</span></span>
+                                                            <span class="time">07:00 AM - 09:00 PM</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="listing-day">
+                                                        <div class="day">Monday</div>
+                                                        <div class="time-items">
+                                                            <span class="time">07:00 AM - 09:00 PM</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="listing-day">
+                                                        <div class="day">Tuesday</div>
+                                                        <div class="time-items">
+                                                            <span class="time">07:00 AM - 09:00 PM</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="listing-day">
+                                                        <div class="day">Wednesday</div>
+                                                        <div class="time-items">
+                                                            <span class="time">07:00 AM - 09:00 PM</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="listing-day">
+                                                        <div class="day">Thursday</div>
+                                                        <div class="time-items">
+                                                            <span class="time">07:00 AM - 09:00 PM</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="listing-day">
+                                                        <div class="day">Friday</div>
+                                                        <div class="time-items">
+                                                            <span class="time">07:00 AM - 09:00 PM</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="listing-day">
+                                                        <div class="day">Saturday</div>
+                                                        <div class="time-items">
+                                                            <span class="time">07:00 AM - 09:00 PM</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="listing-day closed">
+                                                        <div class="day">Sunday</div>
+                                                        <div class="time-items">
+                                                            <span class="time"><span
+                                                                    class="badge bg-danger-light">Closed</span></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div role="tabpanel" id="ask_a_question" class="tab-pane fade">
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-9">
+                                        <div class="doc-review review-listing">
+
+                                            <ul class="comments-list">
+
+                                                <li>
+                                                    <div class="comment">
+                                                        <img class="avatar rounded-circle" alt="User Image"
+                                                            src="/assets/img/patients/patient9.jpg">
+                                                        <div class="comment-body">
+                                                            <div class="meta-data">
+                                                                <span class="comment-author">Loss of smell and
+                                                                    taste</span>
+
+
+                                                            </div>
+
+                                                            <p class="comment-content">
+                                                                Hello all. Actually I was found covid positive before 10
+                                                                days. At present I lost my sense of smell and taste
+                                                                completely. Is this temporary or permanent?? When will I
+                                                                get recovered? Is there any special treatment for this?
+                                                                Even my mom is also suffering from this same prob.
+                                                                Please advise me on this issue.
+                                                            </p>
+                                                            <div class="comment-reply">
+                                                                <a class="comment-btn" href="#">
+                                                                    <i class="fas fa-reply"></i> Reply
+                                                                </a>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <ul class="comments-reply">
+
+                                                        <li>
+                                                            <div class="comment">
+                                                                <img class="avatar rounded-circle" alt="User Image"
+                                                                    src="/assets/img/doctors/doctor-thumb-02.jpg">
+                                                                <div class="comment-body">
+                                                                    <div class="meta-data">
+                                                                        <span class="comment-author">Dr. Ganesh K</span>
+                                                                        <span class="comment-date">Answered 3 Days
+                                                                            ago</span>
+                                                                    </div>
+                                                                    <p class="comment-content">
+                                                                        Usually it should recover in 3- 4 weeks
+                                                                    </p>
+
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                    </ul>
+
+                                                </li>
+
+
+                                                <li>
+                                                    <div class="comment">
+                                                        <img class="avatar rounded-circle" alt="User Image"
+                                                            src="/assets/img/patients/patient10.jpg">
+                                                        <div class="comment-body">
+                                                            <div class="meta-data">
+                                                                <span class="comment-author">Infection, pain</span>
+
+
+                                                            </div>
+                                                            <p class="comment-content">
+                                                                Fever 100F from past 30 hrs, Up - Down, too much pain in
+                                                                throat, gargling done, paracetamol for fever taken.
+                                                            </p>
+                                                            <div class="comment-reply">
+                                                                <a class="comment-btn" href="#">
+                                                                    <i class="fas fa-reply"></i> Reply
+                                                                </a>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+
+
+                                            </ul>
+
+                                        </div>
+
+                                        <div class="card new-comment clearfix">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Ask Your Question?</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <form>
+                                                    <div class="mb-3">
+                                                        <label class="mb-2">Name <span
+                                                                class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="mb-2">Your Email Address <span
+                                                                class="text-danger">*</span></label>
+                                                        <input type="email" class="form-control">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="mb-2">Your Question</label>
+                                                        <textarea rows="4" class="form-control"></textarea>
+                                                    </div>
+                                                    <div class="submit-section">
+                                                        <button class="btn btn-primary submit-btn"
+                                                            type="submit">Submit</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <footer class="footer">
+
+            <div class="footer-top aos"><!-- data-aos="fade-up" -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-about">
+                                <div class="footer-logo">
+                                    <img src="/assets/img/logo-whte.png" alt="aidxpert">
+                                </div>
+                                <div class="footer-about-content">
+                                    <p>A healthcare product is the result of the interaction of capital, labour and
+                                        entrepreneurship in the production process, which primarily aims to improve,
+                                        maintain or prevent the deterioration of the health status of persons or reduce
+                                        the consequences of ill health.</p>
+                                    <div class="social-icon">
+                                        <ul>
+                                            <li>
+                                                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-menu">
+                                <h2 class="footer-title">For Patients</h2>
+                                <ul>
+                                    <li><a href="#">Search for Doctors</a></li>
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Training Videos</a></li>
+                                    <li><a href="#">Booking</a></li>
+                                    <li><a href="#">Patient Dashboard</a></li>
+                                    <li><a href="#">Help</a></li>
+                                    <li><a href="consultantsPanel">Consultants Panel</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-menu">
+                                <h2 class="footer-title">For Doctors</h2>
+                                <ul>
+                                    <li><a href="#">Appointments</a></li>
+                                    <li><a href="#">Chat</a></li>
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Register</a></li>
+                                    <li><a href="#">Doctor Dashboard</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-contact">
+                                <h2 class="footer-title">Contact Us</h2>
+                                <div class="footer-contact-info">
+                                    <div class="footer-address">
+                                        <span><i class="fas fa-map-marker-alt"></i></span>
+                                        <p>Pinnacle Prestige, Office No-405 <br />Tilak Road,Sadashiv Peth,Hyd</p>
+                                    </div>
+                                    <p>
+                                        <i class="fas fa-phone-alt"></i>
+                                        +91-9096488159
+                                    </p>
+                                    <p class="mb-0 cf_email">
+                                        <i class="fas fa-envelope"></i>
+                                        <a href="#" style="color:#fff;">info@aidxpert.com</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="footer-bottom">
+                <div class="container-fluid">
+
+                    <div class="copyright">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <div class="copyright-text">
+                                    <p class="mb-0">&copy; 2023 AidXpert. All rights reserved. Powered by <a
+                                            href="https://abc.com" target="_blank"
+                                            style="color:#fff"> Technologies Pvt. Ltd.</a></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+
+                                <div class="copyright-menu">
+                                    <ul class="policy-menu">
+                                        <li><a href="termsConditions">Terms and Conditions</a></li>
+                                        <li><a href="privacyPolicy">Privacy Policy</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <div class="modal fade call-modal" id="voice_call">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                    <div class="call-box incoming-box">
+                        <div class="call-wrapper">
+                            <div class="call-inner">
+                                <div class="call-user">
+                                    <img alt="User Image" src="/assets/img/doctors/doctor-thumb-02.jpg"
+                                        class="call-avatar">
+                                    <h4>Dr. Ganesh K</h4>
+                                    <span>Connecting...</span>
+                                </div>
+                                <div class="call-items">
+                                    <a href="javascript:void(0);" class="btn call-item call-end" data-bs-dismiss="modal"
+                                        aria-label="Close"><i class="material-icons">call_end</i></a>
+                                    <a href="voiceCall" class="btn call-item call-start"><i
+                                            class="material-icons">call</i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade call-modal" id="video_call">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                    <div class="call-box incoming-box">
+                        <div class="call-wrapper">
+                            <div class="call-inner">
+                                <div class="call-user">
+                                    <img class="call-avatar" src="/assets/img/doctors/doctor-thumb-02.jpg"
+                                        alt="User Image">
+                                    <h4>Dr. Ganesh K</h4>
+                                    <span>Calling ...</span>
+                                </div>
+                                <div class="call-items">
+                                    <a href="javascript:void(0);" class="btn call-item call-end" data-bs-dismiss="modal"
+                                        aria-label="Close"><i class="material-icons">call_end</i></a>
+                                    <a href="videoCall" class="btn call-item call-start"><i
+                                            class="material-icons">videocam</i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/jquery-3.6.4.min.js"></script>
+
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/assets/plugins/fancybox/jquery.fancybox.min.js"></script>
+    <script src="/assets/js/aos.js"></script>
+    <script src="/assets/js/script.js"></script>
+</body>
+
+</html>

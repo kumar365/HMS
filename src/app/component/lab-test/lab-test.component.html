@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>AidXpert</title>
+
+    <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+
+    <link rel="stylesheet" href="/assets/css/feather.css">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap-datetimepicker.min.css">
+
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="/assets/css/aos.css">
+
+    <link rel="stylesheet" href="/assets/css/custom.css">
+</head>
+
+<body>
+
+    <div class="main-wrapper home-ten">
+        <header class="header">
+            <nav class="navbar navbar-expand-lg header-nav">
+                <div class="navbar-header">
+                    <a id="mobile_btn" href="javascript:void(0);">
+                        <span class="bar-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </a>
+                    <a href="index" class="navbar-brand logo">
+                        <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                    </a>
+                </div>
+                <div class="main-menu-wrapper">
+                    <div class="menu-header">
+                        <a href="index" class="menu-logo">
+                            <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                        </a>
+                        <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                    <ul class="main-nav">
+                        <li><a href="findDoctors">Find Doctors</a></li>
+                        <li><a href="consult">Consultation</a></li>
+                        <li><a href="medicineOrder">Medicine Order</a></li>
+                        <li><a href="labTest">Lab Test</a></li>
+                        <li><a href="findSurgeons">Find Surgeons</a></li>
+                        <li><a href="bookAmbulance">Book Ambulance</a></li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Services <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="#">Ambulance Service</a></li>
+                                <li><a href="staffingServices">Healthcare Staffing Services</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Help <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="#">Health Tips</a></li>
+                                <li><a href="#">Help</a></li>
+                                <li><a href="consultantsPanel">Consultants Panel</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav header-navbar-rht">
+                    <!-- <li class="nav-item contact-item">
+        <div class="header-contact-img">
+        <i class="far fa-hospital"></i>
+        </div>
+        <div class="header-contact-detail">
+        <p class="contact-header">Tollfree Helpline</p>
+        <p class="contact-info-header">1800 1800 45</p>
+        </div>
+        </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link header-login" href="loginEmail">Login / Signup </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <section class="banner-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="banner-content aos" > <!-- data-aos="fade-up" -->
+                            <h6>GET UPTO</h6>
+                            <h1>40% <span>OFF</span></h1>
+                            <p>ON ANY DIAGNOSTICS TESTS. <br /><span style="color: #fff;">Book your lab tests
+                                    effortlessly via AidXpert</span></p>
+                            <a href="testCheckout" class="btn plan-btn">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="banner-img aos"> <!-- data-aos="fade-up" -->
+                            <img src="/assets/img/bg/home-10-banner-img.png" class="img-fluid" alt>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="search-box-one search-ten aos" > <!-- data-aos="fade-up" -->
+                            <div class="search-title">
+                                <h5>Search for Test/Package( KFT, Full Body etc.)</h5>
+                            </div>
+                            <form action="testDescription">
+                                <div class="row row-gap">
+                                    <div class="col-lg-3 col-md-12">
+                                        <div class="search-input-ten">
+                                            <span><i class="fa-solid fa-location-dot"></i></span>
+                                            <div class="form-group mb-0">
+                                                <input type="text" class="form-control" placeholder="Location">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="search-input-ten">
+                                            <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                                            <div class="form-group mb-0">
+                                                <input type="text" class="form-control" placeholder="Search for Test">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-12">
+                                        <div class="form-search-btn search-btn-ten w-100">
+                                            <button class="btn" type="submit">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section pres1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-6 col-xl-6">
+                        <h3>Upload Prescription</h3>
+                        <h6 class="pt-1">Not sure which tests to take?</h6>
+                        <p style="color: #000;">Share your prescription with us and our team will call you to book tests
+                            for you.</p>
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 patient-dashboard-top">
+
+                                <div class="card">
+
+                                    <div class="card-body text-center">
+                                        <div class="mb-3">
+                                            <i class="fas fa-solid fa-camera"
+                                                style="font-size: 50px;color: #1ba1cb;"></i>
+                                        </div>
+                                        <h5>Add Prescription</h5>
+                                        <input type="file" accept="image/png, image/jpeg, image/jpg, application/pdf">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 patient-dashboard-top">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <div class="mb-3">
+                                            <i class="fas fa-file-medical-alt"
+                                                style="font-size: 50px;color: #1ba1cb;"></i>
+                                        </div>
+                                        <h5>My Prescription</h5>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="card">
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 d-flex">
+                        <div class="card contact-form-card w-100">
+                            <div class="card-body">
+                                <h4>Prescription Guide</h4>
+                                <ul>
+                                    <li>Prescription should have doctor name and signature</li>
+                                    <li>Patient Name</li>
+                                    <li>Date of Prescription</li>
+                                    <li>Don't crop out any part of the image</li>
+                                    <li>Avoid blurred image</li>
+                                    <li>Ensure suggested tests are cleary visible in the image</li>
+                                </ul>
+                                <a href="#" class="" data-bs-toggle="modal" data-bs-target="#presc">
+                                    <i class="far fa-eye"></i> View Sample Prescription</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section class="specialities-section-one">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 aos"> <!-- data-aos="fade-up" -->
+                        <div class="section-header-one section-header-slider">
+                            <h2 class="section-title">Why Choose <span>AidXpert?</span></h2>
+                            <h6 style="font-size: 16px;font-weight: 500;padding-top: 10px;">Trusted by 10 Lakhs+
+                                satisfied customers</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="specialities-block aos" > <!-- data-aos="fade-up" -->
+                    <ul>
+                        <li>
+                            <div class="specialities-item">
+                                <div class="specialities-img">
+                                    <div class="hexogen"><img src="/assets/img/bg/tick.png" alt></div>
+                                </div>
+                                <p>Free Sample Collection</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="specialities-item">
+                                <div class="specialities-img">
+                                    <div class="hexogen"><img src="/assets/img/bg/tick.png" alt></div>
+                                </div>
+                                <p>Free Report Consultation</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="specialities-item">
+                                <div class="specialities-img">
+                                    <div class="hexogen"><img src="/assets/img/bg/tick.png" alt></div>
+                                </div>
+                                <p>Fast & Accurate
+                                    Test Reports</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="specialities-item">
+                                <div class="specialities-img">
+                                    <div class="hexogen"><img src="/assets/img/bg/tick.png" alt></div>
+                                </div>
+                                <p>20 Lakh+ Satisfied
+                                    Customers</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="specialities-item">
+                                <div class="specialities-img">
+                                    <div class="hexogen"><img src="/assets/img/bg/tick.png" alt></div>
+                                </div>
+                                <p>Best Prices Guaranteed</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="feedback-section-fifteen">
+            <div class="container">
+                <div class="feedback-schedule-all">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="feedback-inner-main">
+                                <img src="/assets/img/feedback-fifteen.png" alt="image" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="feedback-fifteen-content">
+
+                                <h3>Do you want any help for booking test?</h3>
+                                <p>Our experts are here to help you.</p>
+                                <p style="font-size: 40px;">
+                                    <i class="fas fa-phone-alt"></i>
+                                    +91-858 505 6006
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="service-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 aos"> <!-- data-aos="fade-up" -->
+                        <div class="section-header-one section-header-slider">
+                            <h2 class="section-title">Popular <span>Health Checkups </span></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-gap aos" > <!-- data-aos="fade-up" -->
+                    <div class="col-md-6 col-sm-12 col-lg-4">
+                        <div class="listing-card">
+                            <div class="listing-img">
+                                <a href="testDescription"><img src="/assets/img/features/feature-07.jpg"
+                                        class="img-fluid" alt></a>
+                                <div class="fav-item">
+                                    <a href="javascript:void(0)" class="fav-icon">
+                                        <i class="fa fa-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="listing-content">
+                                <div class="listing-details">
+                                    <div class="listing-title">
+                                        <h3>
+                                            <a href="testDescription">AidXpert Annual Health Checkup</a>
+                                        </h3>
+                                    </div>
+                                    <div class="listing-profile-details">
+                                        <div class="listing-user">
+                                            <div class="listing-user-details">
+                                                <span>Included 70 Tests</span>
+                                                <h6>Rs.3999/-</h6>
+                                            </div>
+                                        </div>
+                                        <div class="listing-btn">
+                                            <a href="testCheckout" class="btn consult-btn">Book Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-lg-4">
+                        <div class="listing-card">
+                            <div class="listing-img">
+                                <a href="testDescription"><img src="/assets/img/features/feature-07.jpg"
+                                        class="img-fluid" alt></a>
+                                <div class="fav-item">
+                                    <a href="javascript:void(0)" class="fav-icon">
+                                        <i class="fa fa-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="listing-content">
+                                <div class="listing-details">
+                                    <div class="listing-title">
+                                        <h3>
+                                            <a href="testDescription">AidXpert Annual Health Checkup</a>
+                                        </h3>
+                                    </div>
+                                    <div class="listing-profile-details">
+                                        <div class="listing-user">
+                                            <div class="listing-user-details">
+                                                <span>Included 70 Tests</span>
+                                                <h6>Rs.3999/-</h6>
+                                            </div>
+                                        </div>
+                                        <div class="listing-btn">
+                                            <a href="testCheckout" class="btn consult-btn">Book Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-lg-4">
+                        <div class="listing-card">
+                            <div class="listing-img">
+                                <a href="testDescription"><img src="/assets/img/features/feature-07.jpg"
+                                        class="img-fluid" alt></a>
+                                <div class="fav-item">
+                                    <a href="javascript:void(0)" class="fav-icon">
+                                        <i class="fa fa-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="listing-content">
+                                <div class="listing-details">
+                                    <div class="listing-title">
+                                        <h3>
+                                            <a href="testDescription">AidXpert Womens Health Essentials</a>
+                                        </h3>
+                                    </div>
+                                    <div class="listing-profile-details">
+                                        <div class="listing-user">
+                                            <div class="listing-user-details">
+                                                <span>Included 33 Tests</span>
+                                                <h6>Rs.2500-</h6>
+                                            </div>
+                                        </div>
+                                        <div class="listing-btn">
+                                            <a href="testCheckout" class="btn consult-btn">Book Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-lg-4">
+                        <div class="listing-card">
+                            <div class="listing-img">
+                                <a href="testDescription"><img src="/assets/img/features/feature-07.jpg"
+                                        class="img-fluid" alt></a>
+                                <div class="fav-item">
+                                    <a href="javascript:void(0)" class="fav-icon">
+                                        <i class="fa fa-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="listing-content">
+                                <div class="listing-details">
+                                    <div class="listing-title">
+                                        <h3>
+                                            <a href="testDescription">AidXpert Full Body Checkup</a>
+                                        </h3>
+                                    </div>
+                                    <div class="listing-profile-details">
+                                        <div class="listing-user">
+                                            <div class="listing-user-details">
+                                                <span>Included 107 Tests</span>
+                                                <h6>Rs.3850/-</h6>
+                                            </div>
+                                        </div>
+                                        <div class="listing-btn">
+                                            <a href="testCheckout" class="btn consult-btn">Book Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-lg-4">
+                        <div class="listing-card">
+                            <div class="listing-img">
+                                <a href="testDescription"><img src="/assets/img/features/feature-07.jpg"
+                                        class="img-fluid" alt></a>
+                                <div class="fav-item">
+                                    <a href="javascript:void(0)" class="fav-icon">
+                                        <i class="fa fa-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="listing-content">
+                                <div class="listing-details">
+                                    <div class="listing-title">
+                                        <h3>
+                                            <a href="testDescription">AidXpert Advanced Thyroid Profile</a>
+                                        </h3>
+                                    </div>
+                                    <div class="listing-profile-details">
+                                        <div class="listing-user">
+                                            <div class="listing-user-details">
+                                                <span>Included 20 Tests</span>
+                                                <h6>Rs.3000/-</h6>
+                                            </div>
+                                        </div>
+                                        <div class="listing-btn">
+                                            <a href="testCheckout" class="btn consult-btn">Book Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-lg-4">
+                        <div class="listing-card">
+                            <div class="listing-img">
+                                <a href="testDescription"><img src="/assets/img/features/feature-07.jpg"
+                                        class="img-fluid" alt></a>
+                                <div class="fav-item">
+                                    <a href="javascript:void(0)" class="fav-icon">
+                                        <i class="fa fa-heart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="listing-content">
+                                <div class="listing-details">
+                                    <div class="listing-title">
+                                        <h3>
+                                            <a href="testDescription">AidXpert Healthy Heart Package</a>
+                                        </h3>
+                                    </div>
+                                    <div class="listing-profile-details">
+                                        <div class="listing-user">
+                                            <div class="listing-user-details">
+                                                <span>Included 70 Tests</span>
+                                                <h6>Rs.3999/-</h6>
+                                            </div>
+                                        </div>
+                                        <div class="listing-btn">
+                                            <a href="testCheckout" class="btn consult-btn">Book Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="need-to-know-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 aos"><!-- data-aos="fade-up" -->
+                        <div class="section-header-one section-header-slider">
+                            <h2 class="section-title">Top Booked <span>Diagnostic Tests</span></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-gap aos" ><!-- data-aos="fade-up" -->
+                    <div class="col-md-4 col-sm-12 col-lg-3">
+                        <div class="module-border-wrap">
+                            <div class="listing-card">
+
+                                <div class="listing-content">
+                                    <div class="listing-details">
+                                        <div class="listing-category">
+                                            <a class="listing-category-tag tag-green">Covid Antibody</a><br />
+                                            <span style="font-size: 12px;">Covid Antibody Igg Clia Blood Serum</span>
+                                        </div>
+                                        <div class="listing-profile-details">
+
+                                            <div class="listing-user">
+                                                <div class="listing-user-details">
+                                                    <span>E-Report in 3 Days</span>
+                                                    <h6>Rs. 1300/-</h6>
+                                                </div>
+                                            </div>
+                                            <div class="listing-btn">
+                                                <a href="testCheckout" class="btn consult-btn">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-12 col-lg-3">
+                        <div class="module-border-wrap">
+                            <div class="listing-card">
+
+                                <div class="listing-content">
+                                    <div class="listing-details">
+                                        <div class="listing-category">
+                                            <a class="listing-category-tag tag-green">Lipid Profile</a><br />
+                                            <span style="font-size: 12px;">Known as Lipid Profile Blood</span>
+                                        </div>
+                                        <div class="listing-profile-details">
+
+                                            <div class="listing-user">
+                                                <div class="listing-user-details">
+                                                    <span>E-Report on same day</span>
+                                                    <h6>Rs. 200/-</h6>
+                                                </div>
+                                            </div>
+                                            <div class="listing-btn">
+                                                <a href="testCheckout" class="btn consult-btn">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-12 col-lg-3">
+                        <div class="module-border-wrap">
+                            <div class="listing-card">
+
+                                <div class="listing-content">
+                                    <div class="listing-details">
+                                        <div class="listing-category">
+                                            <a class="listing-category-tag tag-green">Thyroid Profile</a><br />
+                                            <span style="font-size: 12px;">Known as Thyroid Profile Total Blood</span>
+                                        </div>
+                                        <div class="listing-profile-details">
+
+                                            <div class="listing-user">
+                                                <div class="listing-user-details">
+                                                    <span>E-Report on same day</span>
+                                                    <h6>Rs. 500/-</h6>
+                                                </div>
+                                            </div>
+                                            <div class="listing-btn">
+                                                <a href="testCheckout" class="btn consult-btn">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-lg-3">
+                        <div class="module-border-wrap">
+                            <div class="listing-card">
+
+                                <div class="listing-content">
+                                    <div class="listing-details">
+                                        <div class="listing-category">
+                                            <a class="listing-category-tag tag-green">Liver Function Test</a><br />
+                                            <span style="font-size: 12px;">Known as Liver Function Tests Blood</span>
+                                        </div>
+                                        <div class="listing-profile-details">
+
+                                            <div class="listing-user">
+                                                <div class="listing-user-details">
+                                                    <span>E-Report on same day</span>
+                                                    <h6>Rs. 700/-</h6>
+                                                </div>
+                                            </div>
+                                            <div class="listing-btn">
+                                                <a href="testCheckout" class="btn consult-btn">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-lg-3">
+                        <div class="module-border-wrap">
+                            <div class="listing-card">
+
+                                <div class="listing-content">
+                                    <div class="listing-details">
+                                        <div class="listing-category">
+                                            <a class="listing-category-tag tag-green">Dengue NS 1</a><br />
+                                            <span style="font-size: 12px;">Known as Dengue Ns1 Antigen Pcr Blood</span>
+                                        </div>
+                                        <div class="listing-profile-details">
+
+                                            <div class="listing-user">
+                                                <div class="listing-user-details">
+                                                    <span>E-Report in 3 Days</span>
+                                                    <h6>Rs. 400/-</h6>
+                                                </div>
+                                            </div>
+                                            <div class="listing-btn">
+                                                <a href="testCheckout" class="btn consult-btn">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-lg-3">
+                        <div class="module-border-wrap">
+                            <div class="listing-card">
+
+                                <div class="listing-content">
+                                    <div class="listing-details">
+                                        <div class="listing-category">
+                                            <a class="listing-category-tag tag-green">Vitamin B 12</a><br />
+                                            <span style="font-size: 12px;">Known as Vitamin B12 Conventional
+                                                Blood</span>
+                                        </div>
+                                        <div class="listing-profile-details">
+
+                                            <div class="listing-user">
+                                                <div class="listing-user-details">
+                                                    <span>E-Report on Same Day</span>
+                                                    <h6>Rs. 1000/-</h6>
+                                                </div>
+                                            </div>
+                                            <div class="listing-btn">
+                                                <a href="testCheckout" class="btn consult-btn">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-lg-3">
+                        <div class="module-border-wrap">
+                            <div class="listing-card">
+
+                                <div class="listing-content">
+                                    <div class="listing-details">
+                                        <div class="listing-category">
+                                            <a class="listing-category-tag tag-green">Fasting Blood Sugar</a><br />
+                                            <span style="font-size: 12px;">Known as Glucose Fasting Blood Sugar</span>
+                                        </div>
+                                        <div class="listing-profile-details">
+
+                                            <div class="listing-user">
+                                                <div class="listing-user-details">
+                                                    <span>E-Report on Same Day</span>
+                                                    <h6>Rs. 50/-</h6>
+                                                </div>
+                                            </div>
+                                            <div class="listing-btn">
+                                                <a href="testCheckout" class="btn consult-btn">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-lg-3">
+                        <div class="module-border-wrap">
+                            <div class="listing-card">
+
+                                <div class="listing-content">
+                                    <div class="listing-details">
+                                        <div class="listing-category">
+                                            <a class="listing-category-tag tag-green">Urine Examination</a><br />
+                                            <span style="font-size: 12px;">Urine Analysis also called as urine
+                                                routine</span>
+                                        </div>
+                                        <div class="listing-profile-details">
+
+                                            <div class="listing-user">
+                                                <div class="listing-user-details">
+                                                    <span>E-Report on Same Day</span>
+                                                    <h6>Rs. 150/-</h6>
+                                                </div>
+                                            </div>
+                                            <div class="listing-btn">
+                                                <a href="testCheckout" class="btn consult-btn">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section-specialities" style="background-color: #e8f5f9;">
+            <div class="row">
+                <div class="col-md-12 aos"> <!-- data-aos="fade-up" -->
+                    <div class="section-header-one section-header-slider">
+                        <h2 class="section-title">Organ Specific <span>Tests</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-9 aos"> <!-- data-aos="fade-up" -->
+                    <div class="specialities-slider slider">
+                        <div class="speicality-item text-center">
+                            <a href="labOragnSpecificTest">
+                                <div class="speicality-img">
+                                    <img src="/assets/img/specialities/specialities-01.png" class="img-fluid"
+                                        alt="Speciality">
+                                    <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                                </div>
+                            </a>
+                            <a href="labOragnSpecificTest">Kidney</a>
+                        </div>
+                        <div class="speicality-item text-center">
+                            <a href="labOragnSpecificTest">
+                                <div class="speicality-img">
+                                    <img src="/assets/img/specialities/specialities-02.png" class="img-fluid"
+                                        alt="Speciality">
+                                    <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                                </div>
+                            </a>
+                            <a href="labOragnSpecificTest">Brain</a>
+                        </div>
+                        <div class="speicality-item text-center">
+                            <a href="labOragnSpecificTest">
+                                <div class="speicality-img">
+                                    <img src="/assets/img/specialities/specialities-03.png" class="img-fluid"
+                                        alt="Speciality">
+                                    <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                                </div>
+                            </a>
+                            <a href="labOragnSpecificTest">Bones, Joints, Ligaments</a>
+                        </div>
+                        <div class="speicality-item text-center">
+                            <a href="labOragnSpecificTest">
+                                <div class="speicality-img">
+                                    <img src="/assets/img/specialities/specialities-04.png" class="img-fluid"
+                                        alt="Speciality">
+                                    <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                                </div>
+                            </a>
+                            <a href="labOragnSpecificTest">Heart</a>
+                        </div>
+                        <div class="speicality-item text-center">
+                            <a href="labOragnSpecificTest">
+                                <div class="speicality-img">
+                                    <img src="/assets/img/specialities/lungs.png" class="img-fluid" alt="Speciality">
+                                    <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                                </div>
+                            </a>
+                            <a href="labOragnSpecificTest">Lungs</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="need-to-know-section steps-to-follow">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-12 aos"> <!-- data-aos="fade-up" -->
+                        <div class="gallery-box-block">
+                            <div class="gallery-box-right">
+                                <div class="box-detail">
+                                    <div class="steps-list-box">
+                                        <div class="steps-list-img">
+                                            <span>1</span>
+                                            <img src="/assets/img/icons/hreat-pulse.svg" class="img-fluid" alt>
+                                        </div>
+                                        <h6>Select Your Location & Test</h6>
+                                    </div>
+                                </div>
+                                <div class="box-detail">
+                                    <div class="steps-list-box">
+                                        <div class="steps-list-img">
+                                            <span>3</span>
+                                            <img src="/assets/img/icons/hreat-pulse.svg" class="img-fluid" alt>
+                                        </div>
+                                        <h6>Testing Done at Lab</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-box-left">
+                                <div class="box-detail mb-4 ">
+                                    <div class="steps-list-box">
+                                        <div class="steps-list-img">
+                                            <span>2</span>
+                                            <img src="/assets/img/icons/hreat-pulse.svg" class="img-fluid" alt>
+                                        </div>
+
+                                        <h6>Our Collection Agent Will Visit You</h6>
+                                    </div>
+                                </div>
+                                <div class="box-detail">
+                                    <div class="steps-list-box">
+                                        <div class="steps-list-img">
+                                            <span>4</span>
+                                            <img src="/assets/img/icons/hreat-pulse.svg" class="img-fluid" alt>
+                                        </div>
+                                        <h6>View/Download Your Report Online</h6>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-12 aos"> <!-- data-aos="fade-up" -->
+                        <div class="section-header-one section-header-slider">
+                            <h2 class="section-title">India's Most <span>Trusted Lab</span></h2>
+                            <div class="need-to-know-content">
+                                <p>
+                                    Avail home collection through an easy 4-stage process. Visit our website and select
+                                    the prescribed test.
+                                    Choose the Home Collection option. Select the time and date, then pay online or pay
+                                    after availing our service.
+                                    Our collection agent will visit you and take a sample, while following all the
+                                    necessary precautions.
+                                    We will perform the required tests at our state-of-our-art lab.
+                                    Once the results arrive, you can view or download your report online.
+                                    Taking a test couldn’t be easier or safer than at Apollo Diagnostics.
+                                </p>
+                                <div class="content-btn-block d-flex">
+                                    <a href="#" class=" need-to-know-content-btn book-btn me-2">Get App Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="testimonial-section-ten need-to-know-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-12 col-lg-5 aos"> <!-- data-aos="fade-up" -->
+                        <div class="section-header-one section-header-slider">
+                            <h2 class="section-title">What Our <br /><span>Customer Saying</span></h2>
+                            <div class="need-to-know-content">
+                                <p>
+                                    Spending hours in a queue at a diagnostic lab or a hospital is now a thing of the
+                                    past. With AidXperts you can get your lab tests done from the comfort of your home.
+                                    Our highly qualified staff will collect the samples at your preferred time. Book
+                                    your next lab test with AidXperts at the lowest price guaranteed!
+                                </p>
+                                <div class="patient-rating-block">
+                                    <div class="patient-rating">
+                                        <div class="circle-rating">
+                                            <i class="fa-solid fa-circle"></i>
+                                            <i class="fa-solid fa-circle"></i>
+                                            <i class="fa-solid fa-circle"></i>
+                                            <i class="fa-solid fa-circle"></i>
+                                            <i class="fa-solid fa-circle-half-stroke"></i>
+                                            <span>(4.8/5)</span>
+                                        </div>
+                                        <h5>Overall Customer Ratings</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-7 aos"> <!-- data-aos="fade-up" -->
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <div class="testimonial-card">
+                                    <div class="testimonial-user-details">
+                                        <div class="testimonial-user-img">
+                                            <img src="/assets/img/clients/client-07.jpg" class="img-fluid" alt>
+                                        </div>
+                                        <div class="testimonial-user-name">
+                                            <h5>
+                                                Mr. Sudhir Bochare
+                                            </h5>
+                                            <div class="circle-rating">
+                                                <i class="fa-solid fa-circle"></i>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <i class="fa-solid fa-circle-half-stroke"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testmonial-user-coments">
+                                        <h6>“ Awesome Experience ”</h6>
+                                        <p>My first booking experience with AidXpert was simple and hassle-free.
+                                            Selected sample collection slot on their app and the technician arrived
+                                            right on time in the morning. Very impressive</p>
+                                    </div>
+                                </div>
+                                <div class="testimonial-card">
+                                    <div class="testimonial-user-details">
+                                        <div class="testimonial-user-img">
+                                            <img src="/assets/img/clients/client-08.jpg" class="img-fluid" alt>
+                                        </div>
+                                        <div class="testimonial-user-name">
+                                            <h5>
+                                                Mr. Nikhil Dahikar
+                                            </h5>
+                                            <div class="circle-rating">
+                                                <i class="fa-solid fa-circle"></i>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <i class="fa-solid fa-circle-half-stroke"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testmonial-user-coments">
+                                        <h6>“ I am very grateful ”</h6>
+                                        <p>I regularly get tests done for my father, who is a diabetic patient. I like
+                                            the convenience of home sample collection and quick delivery of test reports
+                                            on my email.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="testimonial-card">
+                                    <div class="testimonial-user-details">
+                                        <div class="testimonial-user-img">
+                                            <img src="/assets/img/clients/client-09.jpg" class="img-fluid" alt>
+                                        </div>
+                                        <div class="testimonial-user-name">
+                                            <h5>
+                                                Mrs. Sunita Kulkarni
+                                            </h5>
+                                            <div class="circle-rating">
+                                                <i class="fa-solid fa-circle"></i>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <i class="fa-solid fa-circle"></i>
+                                                <i class="fa-solid fa-circle-half-stroke"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="testmonial-user-coments">
+                                        <h6>“ Excellent Clinician ”</h6>
+                                        <p> Thank you for
+                                            all of your assistance throughout this process as well as quick
+                                            response! Everything went swimmingly yesterday, We get report in
+                                            same day! </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+
+            <div class="footer-top aos"><!-- data-aos="fade-up" -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-about">
+                                <div class="footer-logo">
+                                    <img src="/assets/img/logo-whte.png" alt="aidxpert">
+                                </div>
+                                <div class="footer-about-content">
+                                    <p>A healthcare product is the result of the interaction of capital, labour and
+                                        entrepreneurship in the production process, which primarily aims to improve,
+                                        maintain or prevent the deterioration of the health status of persons or reduce
+                                        the consequences of ill health.</p>
+                                    <div class="social-icon">
+                                        <ul>
+                                            <li>
+                                                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-menu">
+                                <h2 class="footer-title">For Patients</h2>
+                                <ul>
+                                    <li><a href="#">Search for Doctors</a></li>
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Training Videos</a></li>
+                                    <li><a href="#">Booking</a></li>
+                                    <li><a href="#">Patient Dashboard</a></li>
+                                    <li><a href="#">Help</a></li>
+                                    <li><a href="consultantsPanel">Consultants Panel</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-menu">
+                                <h2 class="footer-title">For Doctors</h2>
+                                <ul>
+                                    <li><a href="#">Appointments</a></li>
+                                    <li><a href="#">Chat</a></li>
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Register</a></li>
+                                    <li><a href="#">Doctor Dashboard</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-contact">
+                                <h2 class="footer-title">Contact Us</h2>
+                                <div class="footer-contact-info">
+                                    <div class="footer-address">
+                                        <span><i class="fas fa-map-marker-alt"></i></span>
+                                        <p>Pinnacle Prestige, Office No-405 <br />Tilak Road,Sadashiv Peth,Pune</p>
+                                    </div>
+                                    <p>
+                                        <i class="fas fa-phone-alt"></i>
+                                        +91-858 505 6006
+                                    </p>
+                                    <p class="mb-0 cf_email">
+                                        <i class="fas fa-envelope"></i>
+                                        <a href="#" style="color:#fff;">info@aidxpert.com</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container-fluid">
+
+                    <div class="copyright">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <div class="copyright-text">
+                                    <p class="mb-0">&copy; 2023 AidXpert. All rights reserved. Powered by <a
+                                            href="https://abc.com" target="_blank"
+                                            style="color:#fff">FossGen Technologies Pvt. Ltd.</a></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+
+                                <div class="copyright-menu">
+                                    <ul class="policy-menu">
+                                        <li><a href="termsConditions">Terms and Conditions</a></li>
+                                        <li><a href="privacyPolicy">Privacy Policy</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+    <div class="modal fade custom-modal" id="presc">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="doctor-prescription-container" id="sample">
+                        <div class="doctor-prescription">
+                            <div class="doctor-name theme-info"><b>Dr. Kumar, MBBS, MD</b></div>
+                            <div class="pres-patient-detail">
+                                <form>
+                                    <div class="input-patient">
+                                        <div class="col-xs-6 theme-dark-info">
+                                            <div class="pres-form-inline">
+                                                <label>Name of Patient</label>
+                                                <input type="text" name="p-name" id="p-name" autocomplete="off">
+                                            </div>
+                                            <div class="pres-form-inline">
+                                                <label>Address of Patient</label>
+                                                <input type="text" name="p-address" id="p-address" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 theme-dark-info">
+                                            <div class="pres-form-inline">
+                                                <label>Age</label>
+                                                <input type="text" name="p-age" id="p-age" autocomplete="off">
+                                            </div>
+                                            <div class="pres-form-inline">
+                                                <label>Date of Consultation</label>
+                                                <input type="text" name="p-consult" id="p-consult" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="pres-test">
+                                <h4 class="theme-info">Lab Tests</h4>
+                                <p class="theme-dark-info pres-testname">Lipid Profile</p>
+                            </div>
+                            <div class="medicine-contain">
+                                <!-- <div class="row"> -->
+                                <div class="col-xs-3">
+                                    <h4 class="theme-info">Medicine Name</h4>
+                                    <p class="theme-dark-info">E.g. Metformin</p>
+                                </div>
+                                <div class="col-xs-3">
+                                    <h4 class="theme-info">Strength</h4>
+                                    <p class="theme-dark-info">500mg</p>
+                                </div>
+                                <div class="col-xs-3">
+                                    <h4 class="theme-info">Dose</h4>
+                                    <p class="theme-dark-info">1-0-1</p>
+                                </div>
+                                <div class="col-xs-3">
+                                    <h4 class="theme-info">Duration</h4>
+                                    <p class="theme-dark-info">6 months</p>
+                                </div>
+                                <!-- </div> -->
+                            </div>
+                            <div class="doctor-sign-contain">
+                                <div class="dr-sign">
+                                    <h4>Doctor's signature</h4>
+                                    <div class="dr-stamp theme-dark-info">Doctor's stamp</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="labRegister" class="sticky-divi-button">Register Lab</a>
+    <style type="text/css">
+        .sticky-divi-button {
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 16px;
+            background-color: #a61f25;
+            font-family: "Poppins";
+            border-radius: 4px;
+            text-transform: uppercase;
+            text-decoration: none;
+            box-shadow: 0px 25px 28px -21px rgba(194, 180, 190, 1);
+            padding: 20px 10px;
+            z-index: 10;
+            position: fixed;
+            bottom: 40%;
+            right: 0px;
+            transform: rotate(180deg);
+            text-orientation: sideways;
+            writing-mode: vertical-lr;
+        }
+
+        .sticky-divi-button:hover {
+            background-color: #cb3737;
+            /* You can change color button on hover */
+            box-shadow: none;
+            color: #ffffff;
+        }
+    </style>
+
+    <script src="/assets/js/jquery-3.6.4.min.js"></script>
+
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/assets/js/feather.min.js"></script>
+
+    <script src="/assets/js/moment.min.js"></script>
+    <script src="/assets/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="/assets/js/owl.carousel.min.js"></script>
+
+    <script src="/assets/js/slick.js"></script>
+
+    <script src="/assets/js/aos.js"></script>
+
+    <script src="/assets/js/script.js"></script>
+</body>
+
+</html>

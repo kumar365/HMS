@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>AidXpert</title>
+
+    <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+
+    <link rel="stylesheet" href="/assets/css/feather.css">
+
+    <link rel="stylesheet" href="/assets/plugins/intltelinput/css/intlTelInput.css">
+    <link rel="stylesheet" href="/assets/plugins/intltelinput/css/demo.css">
+
+    <link rel="stylesheet" href="/assets/css/custom.css">
+</head>
+
+<body class="login-body">
+    <div class="main-wrapper">
+        <header class="header">
+            <nav class="navbar navbar-expand-lg header-nav">
+                <div class="navbar-header">
+                    <a id="mobile_btn" href="javascript:void(0);">
+                        <span class="bar-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </a>
+                    <a href="index" class="navbar-brand logo">
+                        <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                    </a>
+                </div>
+                <div class="main-menu-wrapper">
+                    <div class="menu-header">
+                        <a href="index" class="menu-logo">
+                            <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                        </a>
+                        <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                    <ul class="main-nav">
+                        <li class="active"><a href="findDoctors">Find Doctors</a></li>
+                        <li><a href="consult">Consultation</a></li>
+                        <li><a href="medicineOrder">Medicine Order</a></li>
+                        <li><a href="labTest">Lab Test</a></li>
+                        <li><a href="findSurgeons">Find Surgeons</a></li>
+                        <li><a href="bookAmbulance">Book Ambulance</a></li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Services <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="#">Ambulance Service</a></li>
+                                <li><a href="staffingServices">Healthcare Staffing Services</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Help <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="#">Health Tips</a></li>
+                                <li><a href="#">Help</a></li>
+                                <li><a href="consultantsPanel">Consultants Panel</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav header-navbar-rht">
+                    <!-- <li class="nav-item contact-item">
+        <div class="header-contact-img">
+        <i class="far fa-hospital"></i> 
+        </div>
+        <div class="header-contact-detail">
+        <p class="contact-header">Tollfree Helpline</p>
+        <p class="contact-info-header">1800 1800 45</p>
+        </div>
+        </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link header-login" href="loginEmail">Login / Signup </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="login-content-info">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="account-content">
+                            <div class="login-shapes">
+                                <div class="shape-img-left">
+                                    <img src="/assets/img/shape-01.png" alt="">
+                                </div>
+                                <div class="shape-img-right">
+                                    <img src="/assets/img/shape-02.png" alt="">
+                                </div>
+                            </div>
+                            <div class="widget-set">
+                                <div class="account-info">
+                                    <div class="widget-content multistep-form">
+                                        <div *ngIf="showDiv" id="first">
+                                            <div class="login-back">
+                                                <a href="signup"><i class="fa-solid fa-arrow-left-long"></i>
+                                                    Back</a>
+                                            </div>
+                                            <div class="login-title">
+                                                <h3>Doctor Signup</h3>
+                                                <p class="mb-0">Welcome back! Please enter your details.</p>
+                                            </div>
+                                            <div class="widget-setcount">
+                                                <ul id="progressbar">
+                                                    <li class="progress-active">
+                                                        <div class="step-box">
+                                                            <div class="step-icon">
+                                                                <span>
+                                                                    <img src="/assets/img/icons/signup-users.svg"
+                                                                        alt="icon">
+                                                                </span>
+                                                            </div>
+                                                            <div class="step-content">
+                                                                <p>Step 1</p>
+                                                                <h4>Create Account</h4>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="step-box">
+                                                            <div class="step-icon">
+                                                                <span>
+                                                                    <img src="/assets/img/icons/signup-unlock.svg"
+                                                                        alt="icon">
+                                                                </span>
+                                                            </div>
+                                                            <div class="step-content">
+                                                                <p>Step 2</p>
+                                                                <h4>Verify Account</h4>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <form #doctorSignupForm="ngForm" (ngSubmit)="onSubmit()">
+                                                <div class="form-group">
+                                                    <label>Name</label>
+                                                    <input type="text" [(ngModel)]="user.displayName" id="displayName"
+                                                        name="displayName" class="form-control"
+                                                        placeholder="Enter Your Name" #displayName="ngModel">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input type="text" [(ngModel)]="user.email" id="email" name="email"
+                                                        class="form-control" placeholder="Enter Your Email"
+                                                        #email="ngModel">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Phone Number</label>
+                                                    <input type="text" [(ngModel)]="user.phoneNumber" id="phoneNumber"
+                                                        name="phoneNumber" class="form-control"
+                                                        placeholder="Enter Your Phone Number" #phoneNumber="ngModel">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Password
+                                                    </label>
+                                                    <div class="pass-group">
+                                                        <input [type]="showPassword ? 'password' : 'text'"
+                                                            [(ngModel)]="user.password" id="password" name="password"
+                                                            class="form-control pass-input-sub"
+                                                            placeholder="Enter Your Password" #password="ngModel">
+                                                        <span (click)="toggleShow()"
+                                                            [class]="showPassword ? 'feather-eye toggle-password-sub' :'feather-eye-off toggle-password-sub'"></span>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <div class="widget-btn">
+                                                <a (click)="toggleDiv('N')"
+                                                    class="btn btn-primary btn-block next_btn">Next</a>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="!showDiv" class="field-card">
+                                            <div class="login-back">
+                                                <a (click)="toggleDiv('B')" class="prev_btn">
+                                                    <i class="fa-solid fa-arrow-left-long"></i> Back
+                                                </a>
+                                            </div>
+                                            <div *ngIf="messageFlag" class="alert alert-danger" role="alert">
+                                                {{ message }}
+                                            </div>
+                                            <div class="login-title">
+                                                <h3>Security Verification</h3>
+                                                <p class="mb-0">To Secure your Account create complete the following
+                                                    verify request.</p>
+                                            </div>
+                                            <div class="widget-setcount">
+                                                <ul id="progressbar">
+                                                    <li>
+                                                        <div class="step-box">
+                                                            <div class="step-icon">
+                                                                <span>
+                                                                    <img src="/assets/img/icons/signup-users.svg"
+                                                                        alt="icon">
+                                                                </span>
+                                                            </div>
+                                                            <div class="step-content">
+                                                                <p>Step 1</p>
+                                                                <h4>Create Account</h4>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="progress-active">
+                                                        <div class="step-box">
+                                                            <div class="step-icon">
+                                                                <span>
+                                                                    <img src="/assets/img/icons/signup-unlock.svg"
+                                                                        alt="icon">
+                                                                </span>
+                                                            </div>
+                                                            <div class="step-content">
+                                                                <p>Step 2</p>
+                                                                <h4>Verify Account</h4>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <form #doctorSignupForm="ngForm" (ngSubmit)="onSubmit()" class="signup-verfication-form">
+                                                <div class="form-group">
+                                                    <div class="form-group-flex">
+                                                        <label>Phone Number Verfication Code</label>
+                                                        <a href="javascript:void(0);" class="forgot-link">Get Code</a>
+                                                    </div>
+                                                    <div class="pass-group">
+                                                        <input
+                                                            class="form-control form-control-lg group_formcontrol form-control-phone"
+                                                            id="phone-number" name="phone-number" type="text">
+                                                    </div>
+                                                    <p class="signup-code">Enter the 6 digit code sent to {{user.phoneNumber | slice:0:2}}****{{user.phoneNumber | slice:6:10}}</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="form-group-flex">
+                                                        <label>Email Verfication Code</label>
+                                                        <a (click)="getEmailVerificationCode()" class="forgot-link">Get Code</a>
+                                                    </div>
+                                                    <div class="pass-group">
+                                                        <input type="text" class="form-control form-control-phone"
+                                                            placeholder="">
+                                                    </div>
+                                                    <p class="signup-code">Enter the 6 digit code sent to
+                                                        {{user.email | slice:0:2}}****@gmail.com</p>
+                                                </div>
+                                                <div class="mb-3 form-check-box terms-check-box">
+                                                    <div class="form-group-flex">
+                                                        <label class="custom_check">
+                                                            I have read and agree to AidXpert's <a
+                                                                href="termsConditions" target="_blank">Terms of
+                                                                Service</a> and <a href="privacyPolicy"
+                                                                target="_blank">Privacy Policy.</a>
+                                                            <input type="checkbox" name="Terms">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-0">
+                                                    <button class="btn btn-primary btn-block"
+                                                        type="submit">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-top aos"><!-- data-aos="fade-up" -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget footer-about">
+                                <div class="footer-logo">
+                                    <img src="/assets/img/footer-logo.png" alt="logo">
+                                </div>
+                                <div class="footer-about-content">
+                                    <p>A healthcare product is the result of the interaction of capital, labour and
+                                        entrepreneurship in the production process, which primarily aims to improve,
+                                        maintain or prevent the deterioration of the health status of persons or reduce
+                                        the consequences of ill health.</p>
+                                    <div class="social-icon">
+                                        <ul>
+                                            <li>
+                                                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget footer-menu">
+                                <h2 class="footer-title">For Patients</h2>
+                                <ul>
+                                    <li><a href="searchDoctors">Search for Doctors</a></li>
+                                    <li><a href="login">Login</a></li>
+                                    <li><a href="#">Training Videos</a></li>
+                                    <li><a href="booking">Booking</a></li>
+                                    <li><a href="patientDashboard">Patient Dashboard</a></li>
+                                    <li><a href="#">Help</a></li>
+                                    <li><a href="consultantsPanel">Consultants Panel</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget footer-menu">
+                                <h2 class="footer-title">For Doctors</h2>
+                                <ul>
+                                    <li><a href="#">Appointments</a></li>
+                                    <li><a href="chat">Chat</a></li>
+                                    <li><a href="login">Login</a></li>
+                                    <li><a href="doctorRegister">Register</a></li>
+                                    <li><a href="doctorDashboard">Doctor Dashboard</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget footer-contact">
+                                <h2 class="footer-title">Contact Us</h2>
+                                <div class="footer-contact-info">
+                                    <div class="footer-address">
+                                        <span><i class="fas fa-map-marker-alt"></i></span>
+                                        <p>Pinnacle Prestige, Office No-405 <br />Tilak Road,Sadashiv Peth,Hyd</p>
+                                    </div>
+                                    <p>
+                                        <i class="fas fa-phone-alt"></i>
+                                        +91-9096488159
+                                    </p>
+                                    <p class="mb-0 cf_email">
+                                        <i class="fas fa-envelope"></i>
+                                        <a href="#" style="color:#fff;">info@aidxpert.com</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sidenav">
+                <a href="consultation"><img src="/assets/img/footer-banner.jpg"></a>
+            </div>
+            <div class="footer-bottom">
+                <div class="container-fluid">
+                    <div class="copyright">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <div class="copyright-text">
+                                    <p class="mb-0">&copy; 2023 AidXpert. All rights reserved. Powered by <a
+                                            href="https://technologies.com" target="_blank" style="color:#fff">l
+                                            Technologies Pvt. Ltd.</a></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="copyright-menu">
+                                    <ul class="policy-menu">
+                                        <li><a href="termsConditions">Terms and Conditions</a></li>
+                                        <li><a href="privacyPolicy">Privacy Policy</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="mouse-cursor cursor-outer"></div>
+        <div class="mouse-cursor cursor-inner"></div>
+    </div>
+
+    <script src="/assets/js/jquery-3.6.4.min.js"></script>
+    <script src="/assets/js/aos.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/feather.min.js"></script>
+    <script src="/assets/plugins/intltelinput/js/intlTelInput.js"></script>
+    <script src="/assets/plugins/intltelinput/js/utils.js"></script>
+    <script src="/assets/js/script.js" defer></script>
+</body>
+
+</html>

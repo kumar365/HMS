@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>AidXpert</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+    <link href="/assets/img/favicon.png" rel="icon">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+
+    <link rel="stylesheet" href="/assets/css/feather.css">
+
+    <link rel="stylesheet" href="/assets/css/custom.css">
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+        <header class="header">
+            <nav class="navbar navbar-expand-lg header-nav">
+                <div class="navbar-header">
+                    <a id="mobile_btn" href="javascript:void(0);">
+                        <span class="bar-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </a>
+                    <a href="index" class="navbar-brand logo">
+                        <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                    </a>
+                </div>
+                <div class="main-menu-wrapper">
+                    <div class="menu-header">
+                        <a href="index" class="menu-logo">
+                            <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                        </a>
+                        <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                    <ul class="main-nav">
+                        <li class="active"><a href="findDoctors">Find Doctors</a></li>
+                        <li><a href="consult">Consultation</a></li>
+                        <li><a href="medicineOrder">Medicine Order</a></li>
+                        <li><a href="labTest">Lab Test</a></li>
+                        <li><a href="findSurgeons">Find Surgeons</a></li>
+                        <li><a href="bookAmbulance">Book Ambulance</a></li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Services <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="#">Ambulance Service</a></li>
+                                <li><a href="staffingServices">Healthcare Staffing Services</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <ul class="nav header-navbar-rht">
+                    <!-- <li class="nav-item contact-item">
+        <div class="header-contact-img">
+        <i class="far fa-hospital"></i>
+        </div>
+        <div class="header-contact-detail">
+        <p class="contact-header">Tollfree Helpline</p>
+        <p class="contact-info-header">1800 1800 45</p>
+        </div>
+        </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link header-login" href="loginEmail">Login / Signup </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+
+        <div class="breadcrumb-bar-two">
+            <div class="container">
+                <div class="row align-items-center inner-banner">
+                    <div class="col-md-12 col-12 text-center">
+                        <h2 class="breadcrumb-title">Add Ambulance</h2>
+                        <nav aria-label="breadcrumb" class="page-breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index">Home</a></li>
+                                <li class="breadcrumb-item" aria-current="page">Dashboard</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+
+                        <div class="profile-sidebar">
+                            <div class="widget-profile pro-widget-content">
+                                <div class="profile-info-widget">
+                                    <a href="#" class="booking-doc-img">
+                                        <img src="/assets/img/ambulancedriver.jpg" alt="User Image">
+                                    </a>
+                                    <div class="profile-det-info">
+                                        <h3>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</h3>
+                                        <div class="patient-details">
+                                            <h5 class="mb-0">Contact No - +{{currentUser.phoneNumber}}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dashboard-widget">
+                                <nav class="dashboard-menu">
+                                    <ul>
+                                        <li class="active">
+                                            <a href="#">
+                                                <i class="fas fa-columns"></i>
+                                                <span>Profile Overview</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fas fa-calendar-check"></i>
+                                                <span>Your Earnings</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fas fa-user-injured"></i>
+                                                <span>My Wallet</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fas fa-hourglass-start"></i>
+                                                <span>Notifications</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fas fa-user-cog"></i>
+                                                <span>Settings</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fas fa-lock"></i>
+                                                <span>Change Password</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="index">
+                                                <i class="fas fa-sign-out-alt"></i>
+                                                <span>Logout</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-7 col-lg-8 col-xl-9">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card dash-card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-12 col-lg-4">
+                                                <div class="dash-widget dct-border-rht">
+                                                    <div class="circle-bar circle-bar1">
+                                                        <div class="circle-graph1" data-percent="75">
+                                                            <img src="/assets/img/icon-01.png" class="img-fluid"
+                                                                alt="patient">
+                                                        </div>
+                                                    </div>
+                                                    <div class="dash-widget-info">
+                                                        <h6>Total Users</h6>
+                                                        <h3>366</h3>
+                                                        <p class="text-muted">Till Today</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-lg-4">
+                                                <div class="about-section" style="padding: 0px;">
+                                                    <div class="about-img-info">
+                                                        <a href="#">
+                                                            <div class="about-box">
+                                                                <h4>Add Ambulance for Service</h4>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-lg-4">
+                                                <div class="about-section" style="padding: 0px;">
+                                                    <div class="about-img-info">
+                                                        <a href="viewAmbulances">
+                                                            <div class="about-box">
+                                                                <h4>View Added Ambulance</h4>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 align-center">
+                            <div class="col-lg-6">
+                                <div class="login-header">
+                                    <h3 style="color: #44b1c6;">Add Ambulance For Service</h3>
+                                </div>
+                                <div *ngIf="statusFlag" class="alert alert-danger" role="alert">
+                                    {{ message }}
+                                </div>
+                                <form #ambulanceDetailsForm="ngForm" (ngSubmit)="onSubmit()">
+                                    <div class="form-group form-focus">
+                                        <select style="padding:5px 12px 6px;" [(ngModel)]="ambulance.type" id="type"
+                                            name="type" class="form-select form-control" #type="ngModel">
+                                            <option [value]="">Select Ambulance Type</option>
+                                            <option value="Basic Ambulance">Basic Ambulance</option>
+                                            <option value="AC Ambulance">AC Ambulance</option>
+                                            <option value="Mortuary Ambulance">Mortuary Ambulance</option>
+                                            <option value="Pediatric Ambulance">Pediatric Ambulance</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-focus">
+                                        <label class="focus-label">Ambulance Model Number</label>
+                                        <input type="text" [(ngModel)]="ambulance.modelNumber" id="modelNumber"
+                                            name="modelNumber" placeholder="Ambulance Model Number"
+                                            class="form-control floating" #modelNumber="ngModel">
+                                    </div>
+                                    <div class="form-group form-focus">
+                                        <label class="focus-label">Ambulance Registration Number</label>
+                                        <input type="password" [(ngModel)]="ambulance.registrationNumber"
+                                            id="registrationNumber" name="registrationNumber"
+                                            placeholder="Ambulance Registration Number" class="form-control floating"
+                                            #registrationNumber="ngModel">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Upload Ambulance Photo</label>
+                                        <div class="upload-medical-records">
+                                            <input class="form-control" type="file" name="user_file" id="user_files_mr"
+                                                style="min-height: 22px;padding: 7px 14px;">
+                                            <div class="upload-content dropzone">
+                                                <div class="text-center">
+                                                    <div class="upload-icon mb-2"><img src="/assets/img/upload-icon.png"
+                                                            alt=""></div>
+                                                    <h5>Drag &amp; Drop</h5>
+                                                    <h6>or <span class="text-danger">Browse</span></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-focus">
+                                        <label class="focus-label">Addons</label>
+                                        <input type="text" [(ngModel)]="ambulance.addons" id="addons" name="addons"
+                                            placeholder="Addons" class="form-control floating" #addons="ngModel">
+                                    </div>
+                                    <div class="form-group form-focus">
+                                        <label class="focus-label">Driver Email Address</label>
+                                        <input type="text" [(ngModel)]="ambulance.driverEmail" id="driverEmail"
+                                            name="driverEmail" placeholder="Driver Email Address"
+                                            class="form-control floating" #driverEmail="ngModel">
+                                    </div>
+                                    <div class="form-group form-focus">
+                                        <label class="focus-label">Driver Full Name</label>
+                                        <input type="text" [(ngModel)]="ambulance.driverName" id="driverName"
+                                            name="driverName" placeholder="Driver Full Name"
+                                            class="form-control floating" #driverName="ngModel">
+                                    </div>
+                                    <div class="form-group form-focus">
+                                        <label class="focus-label">Driver Number</label>
+                                        <input type="text" [(ngModel)]="ambulance.driverNumber" id="driverNumber"
+                                            name="driverNumber" placeholder="Driver Number"
+                                            class="form-control floating" #driverNumber="ngModel">
+                                    </div>
+                                    <div class="form-group form-focus">
+                                        <label class="focus-label">Location</label>
+                                        <input type="text" [(ngModel)]="ambulance.location" id="location"
+                                            name="location" placeholder="Location"
+                                            class="form-control floating" #location="ngModel">
+                                    </div>
+                                    <div class="form-group form-focus">
+                                        <label class="focus-label">Ambulance Rate</label>
+                                        <input type="text" [(ngModel)]="ambulance.ambulanceRate" id="ambulanceRate"
+                                            name="ambulanceRate" placeholder="Ambulance Rate"
+                                            class="form-control floating" #ambulanceRate="ngModel">
+                                    </div>
+
+                                    <button class="btn btn-primary w-100 btn-lg login-btn" type="submit">Add
+                                        Ambulance</button>
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-top aos"><!-- data-aos="fade-up" -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="footer-widget footer-about">
+                            <div class="footer-logo">
+                                <img src="/assets/img/logo-whte.png" alt="aidxpert">
+                            </div>
+                            <div class="footer-about-content">
+                                <p>A healthcare product is the result of the interaction of capital, labour and
+                                    entrepreneurship in the production process, which primarily aims to improve,
+                                    maintain or prevent the deterioration of the health status of persons or reduce the
+                                    consequences of ill health.</p>
+                                <div class="social-icon">
+                                    <ul>
+                                        <li>
+                                            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="footer-widget footer-menu">
+                            <h2 class="footer-title">For Patients</h2>
+                            <ul>
+                                <li><a href="#">Search for Doctors</a></li>
+                                <li><a href="#">Login</a></li>
+                                <li><a href="#">Training Videos</a></li>
+                                <li><a href="#">Booking</a></li>
+                                <li><a href="#">Patient Dashboard</a></li>
+                                <li><a href="#">Help</a></li>
+                                <li><a href="consultantsPanel">Consultants Panel</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="footer-widget footer-menu">
+                            <h2 class="footer-title">For Doctors</h2>
+                            <ul>
+                                <li><a href="#">Appointments</a></li>
+                                <li><a href="#">Chat</a></li>
+                                <li><a href="#">Login</a></li>
+                                <li><a href="#">Register</a></li>
+                                <li><a href="#">Doctor Dashboard</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="footer-widget footer-contact">
+                            <h2 class="footer-title">Contact Us</h2>
+                            <div class="footer-contact-info">
+                                <div class="footer-address">
+                                    <span><i class="fas fa-map-marker-alt"></i></span>
+                                    <p>Pinnacle Prestige, Office No-405 <br />Tilak Road,Sadashiv Peth,Hyd</p>
+                                </div>
+                                <p>
+                                    <i class="fas fa-phone-alt"></i>
+                                    +91-858 505 6006
+                                </p>
+                                <p class="mb-0 cf_email">
+                                    <i class="fas fa-envelope"></i>
+                                    <a href="#" style="color:#fff;">info@aidxpert.com</a>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="sidenav">
+            <a href="consult"><img src="/assets/img/footer-banner.jpg"></a>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container-fluid">
+
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="copyright-text">
+                                <p class="mb-0">&copy; 2023 AidXpert. All rights reserved. Powered by <a
+                                        href="https://fossgentechnologies.com" target="_blank" style="color:#fff">
+                                        Technologies Pvt. Ltd.</a></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+
+                            <div class="copyright-menu">
+                                <ul class="policy-menu">
+                                    <li><a href="termsConditions">Terms and Conditions</a></li>
+                                    <li><a href="privacyPolicy">Privacy Policy</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </footer>
+
+
+
+
+    <script src="/assets/js/jquery-3.6.4.min.js"></script>
+
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+    <script src="/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+    <script src="/assets/js/aos.js"></script>
+    <script src="/assets/js/circle-progress.min.js"></script>
+    <script src="/assets/js/script.js"></script>
+</body>
+
+</html>

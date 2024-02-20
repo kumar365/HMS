@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>AidXpert</title>
+
+    <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+
+    <link rel="stylesheet" href="/assets/css/feather.css">
+
+    <link rel="stylesheet" href="/assets/plugins/select2/css/select2.min.css">
+
+    <link rel="stylesheet" href="/assets/css/custom.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <header class="header">
+            <nav class="navbar navbar-expand-lg header-nav">
+                <div class="navbar-header">
+                    <a id="mobile_btn" href="javascript:void(0);">
+                        <span class="bar-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </a>
+                    <a href="index" class="navbar-brand logo">
+                        <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                    </a>
+                </div>
+                <div class="main-menu-wrapper">
+                    <div class="menu-header">
+                        <a href="index" class="menu-logo">
+                            <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                        </a>
+                        <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                    <ul class="main-nav">
+                        <li class="active"><a href="findDoctors">Find Doctors</a></li>
+                        <li><a href="consult">Consultation</a></li>
+                        <li><a href="medicineOrder">Medicine Order</a></li>
+                        <li><a href="labTest">Lab Test</a></li>
+                        <li><a href="findSurgeons">Find Surgeons</a></li>
+                        <li><a href="bookAmbulance">Book Ambulance</a></li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Services <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="#">Ambulance Service</a></li>
+                                <li><a href="staffingServices">Healthcare Staffing Services</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Help <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="#">Health Tips</a></li>
+                                <li><a href="#">Help</a></li>
+                                <li><a href="consultantsPanel">Consultants Panel</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav header-navbar-rht">
+                    <!-- <li class="nav-item contact-item">
+        <div class="header-contact-img">
+        <i class="far fa-hospital"></i> 
+        </div>
+        <div class="header-contact-detail">
+        <p class="contact-header">Tollfree Helpline</p>
+        <p class="contact-info-header">1800 1800 45</p>
+        </div>
+        </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link header-login" href="loginEmail">Login / Signup </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="doctor-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="back-link">
+                            <a href="searchAmbulance"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-12">
+                        <div class="paitent-header">
+                            <h4 class="paitent-title">Paitent Details</h4>
+                        </div>
+                        <div class="paitent-appointment">
+                            <form #ambulanceBookingForm="ngForm" (ngSubmit)="onSubmit()">
+                                <div class="form-group">
+                                    <label class="form-group-title">Book ambulance for</label>
+                                    <label class="custom_radio me-4">
+                                        <input type="radio" name="appointment" checked>
+                                        <span class="checkmark"></span> My Self
+                                    </label>
+                                    <label class="custom_radio">
+                                        <input type="radio" name="appointment">
+                                        <span class="checkmark"></span> Others
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group-flex">
+                                        <label class="form-group-title">Type of ambulance</label>
+                                    </div>
+                                    <div class="paitent-dependent-select">
+                                        <select class="select">
+                                            <option>Select</option>
+                                            <option>Basic Ambulance</option>
+                                            <option>ICU Ambulance</option>
+                                            <option>Mortuary Ambulance</option>
+                                            <option>Pediatric Ambulance</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group card-label">
+                                            <label>First Name</label>
+                                            <input class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group card-label">
+                                            <label>Last Name</label>
+                                            <input class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group card-label">
+                                            <label>Email</label>
+                                            <input class="form-control" type="email">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group card-label">
+                                            <label>Phone</label>
+                                            <input class="form-control" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <div class="booking-btn">
+                                        <button type="submit"
+                                            class="btn btn-primary prime-btn justify-content-center align-items-center">
+                                            Proceed to Pay <i class="feather-arrow-right-circle"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="booking-header">
+                            <h4 class="booking-title">Booking Summary</h4>
+                        </div>
+                        <div class="card booking-card">
+                            <div class="card-body booking-card-body">
+                                <div class="booking-doctor-details">
+                                    <div class="booking-doctor-left">
+
+                                        <div class="booking-doctor-info">
+                                            <h4><a href="#" style="color: #fff;">Hyd Healthcare Services</a></h4>
+                                            <p>Contact No:+91984563217</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card booking-card">
+                            <div class="card-body booking-card-body booking-list-body">
+                                <div class="booking-list">
+                                    <div class="booking-date-list">
+                                        <ul>
+                                            <li>Booking Date: <span>Sun, 30 Aug 2022</span></li>
+                                            <li>Booking Time: <span>10.00 AM</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="booking-doctor-right">
+                                        <p>
+                                            <a href="booking">Edit</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card booking-card">
+                            <div class="card-body booking-card-body">
+                                <div class="booking-doctor-details">
+                                    <div class="booking-device">
+                                        <div class="booking-device-img">
+                                            <img src="/assets/img/icons/device-message.svg" alt="">
+                                        </div>
+                                        <div class="booking-doctor-info">
+                                            <h3>We can help you</h3>
+                                            <p class="device-text">Call us +1 888-888-8888 (or) chat with our customer
+                                                support team.</p>
+                                            <a href="chat" class="btn">Chat With Us</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card booking-card mb-0">
+                            <div class="card-body booking-card-body">
+                                <div class="booking-doctor-details">
+                                    <div class="booking-device">
+                                        <div class="booking-device-img">
+                                            <img src="/assets/img/icons/smart-phone.svg" alt="">
+                                        </div>
+                                        <div class="booking-doctor-info">
+                                            <h3>Get the App</h3>
+                                            <p class="device-text">Download our app for better experience and for more
+                                                feature</p>
+                                            <div class="app-images">
+                                                <a href="javascript:void(0);">
+                                                    <img src="/assets/img/google-img.svg" alt="">
+                                                </a>
+                                                <a href="javascript:void(0);">
+                                                    <img src="/assets/img/app-img.svg" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="footer-top aos"> <!-- data-aos="fade-up" -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget footer-about">
+                                <div class="footer-logo">
+                                    <img src="/assets/img/footer-logo.png" alt="logo">
+                                </div>
+                                <div class="footer-about-content">
+                                    <p>A healthcare product is the result of the interaction of capital, labour and
+                                        entrepreneurship in the production process, which primarily aims to improve,
+                                        maintain or prevent the deterioration of the health status of persons or reduce
+                                        the consequences of ill health.</p>
+                                    <div class="social-icon">
+                                        <ul>
+                                            <li>
+                                                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-menu">
+                                <h2 class="footer-title">For Patients</h2>
+                                <ul>
+                                    <li><a href="searchDoctors">Search for Doctors</a></li>
+                                    <li><a href="login">Login</a></li>
+                                    <li><a href="#">Training Videos</a></li>
+                                    <li><a href="booking">Booking</a></li>
+                                    <li><a href="patientDashboard">Patient Dashboard</a></li>
+                                    <li><a href="#">Help</a></li>
+                                    <li><a href="consultantsPanel">Consultants Panel</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-menu">
+                                <h2 class="footer-title">For Doctors</h2>
+                                <ul>
+                                    <li><a href="#">Appointments</a></li>
+                                    <li><a href="chat">Chat</a></li>
+                                    <li><a href="login">Login</a></li>
+                                    <li><a href="doctorRegistration">Register</a></li>
+                                    <li><a href="doctorDashboard">Doctor Dashboard</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-contact">
+                                <h2 class="footer-title">Contact Us</h2>
+                                <div class="footer-contact-info">
+                                    <div class="footer-address">
+                                        <span><i class="fas fa-map-marker-alt"></i></span>
+                                        <p>Pinnacle Prestige, Office No-405 <br />Tilak Road,Sadashiv Peth,Hyd</p>
+                                    </div>
+                                    <p>
+                                        <i class="fas fa-phone-alt"></i>
+                                        +91-9096488159
+                                    </p>
+                                    <p class="mb-0 cf_email">
+                                        <i class="fas fa-envelope"></i>
+                                        <a href="#" style="color:#fff;">info@aidxpert.com</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="footer-bottom">
+                <div class="container-fluid">
+
+                    <div class="copyright">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <div class="copyright-text">
+                                    <p class="mb-0">&copy; 2023 AidXpert. All rights reserved. Powered by <a
+                                            href="https://technologies.com" target="_blank"
+                                            style="color:#fff"> Technologies Pvt. Ltd.</a></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+
+                                <div class="copyright-menu">
+                                    <ul class="policy-menu">
+                                        <li><a href="termsConditions">Terms and Conditions</a></li>
+                                        <li><a href="privacyPolicy">Privacy Policy</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </footer>
+        <div class="mouse-cursor cursor-outer"></div>
+        <div class="mouse-cursor cursor-inner"></div>
+
+    </div>
+
+
+    <script src="/assets/js/jquery-3.6.4.min.js"></script>
+
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/assets/js/feather.min.js"></script>
+
+    <script src="/assets/plugins/select2/js/select2.min.js"></script>
+
+    <script src="/assets/js/script.js"></script>
+</body>
+
+</html>

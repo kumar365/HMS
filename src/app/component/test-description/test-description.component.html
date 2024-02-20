@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>AidXpert</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+    <link href="/assets/img/favicon.png" rel="icon">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+
+    <link rel="stylesheet" href="/assets/css/feather.css">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap-datetimepicker.min.css">
+
+    <link rel="stylesheet" href="/assets/plugins/select2/css/select2.min.css">
+
+    <link rel="stylesheet" href="/assets/plugins/fancybox/jquery.fancybox.min.css">
+
+    <link rel="stylesheet" href="/assets/css/custom.css">
+    <style type="text/css">
+        .faq-info .accordion-content p {
+            padding-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+
+        <header class="header">
+            <nav class="navbar navbar-expand-lg header-nav">
+                <div class="navbar-header">
+                    <a id="mobile_btn" href="javascript:void(0);">
+                        <span class="bar-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </a>
+                    <a href="index" class="navbar-brand logo">
+                        <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                    </a>
+                </div>
+                <div class="main-menu-wrapper">
+                    <div class="menu-header">
+                        <a href="index" class="menu-logo">
+                            <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                        </a>
+                        <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                    <ul class="main-nav">
+                        <li><a href="findDoctors">Find Doctors</a></li>
+                        <li><a href="consult">Consultation</a></li>
+                        <li><a href="medicineOrder">Medicine Order</a></li>
+                        <li class="active"><a href="labTest">Lab Test</a></li>
+                        <li><a href="findSurgeons">Find Surgeons</a></li>
+                        <li><a href="bookAmbulance">Book Ambulance</a></li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Services <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="#">Ambulance Service</a></li>
+                                <li><a href="staffingServices">Healthcare Staffing Services</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Help <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="#">Health Tips</a></li>
+                                <li><a href="#">Help</a></li>
+                                <li><a href="consultantsPanel">Consultants Panel</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav header-navbar-rht">
+                    <!-- <li class="nav-item contact-item">
+        <div class="header-contact-img">
+        <i class="far fa-hospital"></i>
+        </div>
+        <div class="header-contact-detail">
+        <p class="contact-header">Tollfree Helpline</p>
+        <p class="contact-info-header">1800 1800 45</p>
+        </div>
+        </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link header-login" href="loginEmail">Login / Signup </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+
+        <div class="breadcrumb-bar-two">
+            <div class="container">
+                <div class="row align-items-center inner-banner">
+                    <div class="col-md-12 col-12 text-center">
+                        <h2 class="breadcrumb-title">About Test</h2>
+                        <nav aria-label="breadcrumb" class="page-breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index">Home</a></li>
+                                <li class="breadcrumb-item" aria-current="page">T3 T4 TSH</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 col-lg-8 col-xl-8">
+
+                        <div class="card">
+                            <div class="card-body product-description">
+                                <div class="doctor-widget">
+                                    <div class="doc-info-left">
+                                        <div class="doctor-img1">
+                                            <img src="/assets/img/test_page_img2.jpg" class="img-fluid"
+                                                alt="User Image">
+                                        </div>
+                                        <div class="doc-info-cont">
+                                            <h4 class="doc-name mb-2">T3 T4 TSH</h4>
+                                            <!-- <p><span class="text-muted">Also known as Thyroid Profile Total Blood</p> -->
+                                            <div class="clini-infos pt-3">
+                                                <p class="doc-location mb-2"><i class="fa-solid fa-medal"
+                                                        style="color: #1ba1cb;"></i> <b>Certified Labs</b></p>
+                                                <p class="doc-location mb-2 text-ellipse"><i class="fas fa-circle-check"
+                                                        style="color: #28a745;"></i> Free Home Sample Pickup on orders
+                                                    above Rs.400/- </p>
+                                            </div>
+                                            <div class="feature-product pt-4">
+                                                <span><b>Benefits:</b></span>
+                                                <ul>
+                                                    <li>Home sample collection for FREE</li>
+                                                    <li>Get digital report within a day</li>
+                                                    <li>Low Price Guaranteed</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="card">
+                            <div class="card-body pt-0 pb-0">
+
+                                <h3 class="pt-4">Our Partner Labs</h3>
+                                <hr>
+                                <div class="about-contact">
+                                    <div class="about-contact-icon1">
+                                        <span><img src="/assets/img/labicon.jpg" alt="lab"></span>
+                                    </div>
+                                    <div class="about-contact-text1">
+                                        <p style="color: black;">Your examinations will take place at one of our
+                                            affiliated laboratories, ensuring the utmost precision in your result
+                                            reports.</p>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card-body pt-0">
+
+                                <div class="faq-info faq-inner-info mt-5">
+                                    <div class="accordion" id="faq-details">
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingThree">
+                                                <a href="javascript:void(0)" class="accordion-button collapsed"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                                    aria-expanded="false" aria-controls="collapseThree">
+                                                    What is this test?
+                                                </a>
+                                            </h2>
+                                            <div id="collapseThree" class="accordion-collapse collapse"
+                                                aria-labelledby="headingThree" data-bs-parent="#faq-details">
+                                                <div class="accordion-body">
+                                                    <div class="accordion-content">
+                                                        <div class="c-markdown--unstyled">
+                                                            <p>Thyroid Function Test panel measures the levels of total
+                                                                thyroxine <a href="">T-4</a>, total triiodothyronine <a
+                                                                    href="">T-3</a> and thyroid stimulating hormone
+                                                                (TSH) in blood. </p>
+                                                            <p><strong>What is Thyroid Stimulating Hormone?</strong></p>
+                                                            <p>The thyroid stimulating hormone is a pituitary hormone
+                                                                that stimulates the thyroid gland to produce
+                                                                triiodothyronine (T3) and thyroxine (T4) hormones. These
+                                                                hormones help to control the rate at which energy is
+                                                                used in almost every tissue in the body.</p>
+                                                            <p><strong>What are T4 and T3 Hormones?</strong></p>
+                                                            <p>Thyroxine (T4) and Triiodothyronine (T3) which are
+                                                                secreted into the blood binds reversibly to the
+                                                                transport proteins like thyroxine-binding globulin
+                                                                (TBG), thyroxine binding prealbumin (TBPA), and albumin.
+                                                                Remaining unbound T4 and T3 circulates freely in blood
+                                                                and used by the body. This freely circulating Thyroxine
+                                                                (T4) and Triiodothyronine (T3) are known as Free
+                                                                Thyroxine <a href="">FT-4</a> and Free triiodothyronine
+                                                                <a href="">FT-3</a>.
+                                                            </p>
+                                                            <p><strong>What are Hyper and Hypothyroidism?</strong></p>
+                                                            <p>This test is performed to measure whether the thyroid
+                                                                gland is hyperactive (Hyperthyroidism) or underactive
+                                                                (Hypothyroidism). Hyperthyroidism is a condition in
+                                                                which thyroid gland produces excessive hormones. This
+                                                                condition may cause signs and symptoms such as weight
+                                                                loss, irritability, sweating, and irregular heartbeats.
+                                                                Hypothyroidism is a condition in which thyroid gland
+                                                                does not produce enough hormones. This condition may
+                                                                cause weight gain, dry skin, constipation, feeling cold
+                                                                and slow heart rate. Your doctor may ask you to undergo
+                                                                this test if you exhibit any of these signs or symptoms.
+                                                            </p>
+                                                            <p><strong>Why This Test is Done?</strong></p>
+                                                            <p>The doctor may ask to get this test done if the patient
+                                                                is suffering from symptoms like unexplained weight loss
+                                                                or weight gain, fatigue, weakness, difficulty in
+                                                                concentrating which are common symptoms of thyroid
+                                                                disorders. In some cases, this test is performed to find
+                                                                out the effectiveness of the treatment. If a patient is
+                                                                on the treatment of artificial thyroid hormones then the
+                                                                doctor prefers this test to evaluate and to check the
+                                                                thyroid hormone levels in the body. This helps the
+                                                                doctor to rule out the patient’s disease condition.</p>
+                                                            <p><strong>Precautions:</strong></p>
+                                                            <p>Drugs like amiodarone, thiourea, lithium, phenylbutazone,
+                                                                sulfonamides and birth control pills may change the
+                                                                levels of Total Thyroxine <a href="">T4</a> in the
+                                                                blood. Drugs like carbimazole, methimazole may affect
+                                                                the levels of TSH in blood. Hence, all medications
+                                                                should be reported to the doctor before undergoing this
+                                                                test.</p>
+                                                            <p>During pregnancy, T3, T4 levels may be abnormal and
+                                                                usually, it becomes stabilized after a period of time.
+                                                            </p>
+                                                            <p><strong>Pathology test parameters:</strong></p>
+                                                            <p>The Thyroid Profile Total test has the following
+                                                                components i.e:- Total Thyroxine <a href="">T4</a>,
+                                                                Total Triiodothyronine <a href="">T3</a>, and Thyroid
+                                                                Stimulating Hormone <a href="">TSH</a>.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingTwo">
+                                                <a href="javascript:void(0)" class="accordion-button collapsed"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                                    aria-expanded="false" aria-controls="collapseTwo">
+                                                    Test Preparation
+                                                </a>
+                                            </h2>
+                                            <div id="collapseTwo" class="accordion-collapse collapse"
+                                                aria-labelledby="headingTwo" data-bs-parent="#faq-details">
+                                                <div class="accordion-body">
+                                                    <div class="accordion-content">
+                                                        <div>
+                                                            <p>Inform your doctor if you are on any medications, have
+                                                                any allergies or underlying medical conditions before
+                                                                your T3 T4 TSH. Your doctor will give specific
+                                                                instructions depending on your condition on how to
+                                                                prepare for T3 T4 TSH.</p>
+                                                            <div class="c-markdown--unstyled">
+                                                                <p>Fasting is required for about 8-10hrs. Consumption of
+                                                                    water is allowed.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingOne">
+                                                <a href="javascript:void(0)" class="accordion-button collapsed"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                                    aria-expanded="false" aria-controls="collapseOne">
+                                                    Understanding your test results
+                                                </a>
+                                            </h2>
+                                            <div id="collapseOne" class="accordion-collapse collapse"
+                                                aria-labelledby="headingOne" data-bs-parent="#faq-details">
+                                                <div class="accordion-body">
+                                                    <div class="accordion-content">
+                                                        <p>If the test results are in normal range then the thyroid
+                                                            gland is functioning normally and no need for further
+                                                            medical intervention.</p>
+                                                        <p>In the case of increased T3 and T4 levels in the blood than
+                                                            the normal range then it may be due to transient
+                                                            hyperthyroidism, Hashimoto's thyroiditis (an auto-immune
+                                                            disorder where the immune system of own body attacks the
+                                                            thyroid gland and decreases the production of hormones that
+                                                            are required for the body), Grave’s disease (an immune
+                                                            system disorder which results in the overproduction of
+                                                            thyroid hormones), subacute thyroiditis (acute inflammation
+                                                            of the thyroid gland), toxic adenoma (increased hormone
+                                                            production from single large nodule/lump in the thyroid
+                                                            gland), toxic multinodular goiter, thyroid cancer, increased
+                                                            production of thyroid stimulating hormone.</p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-5 col-lg-4 col-xl-4 theiaStickySidebar">
+
+                        <div class="card search-filter">
+                            <div class="card-body">
+                                <div class="clini-infos mt-0">
+                                    <h2>Rs.400 <b class="text-lg strike">Rs.650</b> <span
+                                            class="text-lg text-success"><b>10% off</b></span></h2>
+                                </div>
+
+                                <div class="clinic-details mt-4">
+                                    <div class="clinic-booking">
+                                        <a class="apt-btn" style="background: #1ba1cb;
+color: #fff;" href="testCheckout">Add To Cart</a>
+                                    </div>
+                                </div>
+                                <div class="card flex-fill mt-4 mb-0 duy">
+                                    <p style="font-size: 20px;text-align: left;color: #f5d900;">Do you want any help for
+                                        booking test?</p>
+                                    <p style="font-size:25px;">
+                                        <i class="fas fa-phone-alt"></i>
+                                        +91-9096488159
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card search-filter">
+                            <div class="card-body">
+                                <div class="card flex-fill mt-0 mb-0">
+                                    <ul class="list-group list-group-flush benifits-col">
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <div>
+                                                <i class="fa-solid fa-house-circle-check"></i>
+                                            </div>
+                                            <div>
+                                                <b>Free Sample Collection</b><br><span class="text-sm">For orders above
+                                                    Rs.400/-</span>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <div>
+                                                <i class="fa-solid fa-headset"></i>
+                                            </div>
+                                            <div>
+                                                <b>Support 24/7</b><br><span class="text-sm">Call us anytime</span>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <div>
+                                                <i class="fas fa-hands"></i>
+                                            </div>
+                                            <div>
+                                                <b>100% Safety</b><br><span class="text-sm">Only secure payments</span>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <div>
+                                                <i class="fa-solid fa-file-circle-check"></i>
+                                            </div>
+                                            <div>
+                                                <b>Same Day Report</b><br><span class="text-sm">Digital report will be
+                                                    emailed to you on same day.*</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="footer-top aos"><!-- data-aos="fade-up" -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-about">
+                                <div class="footer-logo">
+                                    <img src="/assets/img/logo-whte.png" alt="aidxpert">
+                                </div>
+                                <div class="footer-about-content">
+                                    <p>A healthcare product is the result of the interaction of capital, labour and
+                                        entrepreneurship in the production process, which primarily aims to improve,
+                                        maintain or prevent the deterioration of the health status of persons or reduce
+                                        the consequences of ill health.</p>
+                                    <div class="social-icon">
+                                        <ul>
+                                            <li>
+                                                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-menu">
+                                <h2 class="footer-title">For Patients</h2>
+                                <ul>
+                                    <li><a href="#">Search for Doctors</a></li>
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Training Videos</a></li>
+                                    <li><a href="#">Booking</a></li>
+                                    <li><a href="#">Patient Dashboard</a></li>
+                                    <li><a href="#">Help</a></li>
+                                    <li><a href="consultantsPanel">Consultants Panel</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-menu">
+                                <h2 class="footer-title">For Doctors</h2>
+                                <ul>
+                                    <li><a href="#">Appointments</a></li>
+                                    <li><a href="#">Chat</a></li>
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Register</a></li>
+                                    <li><a href="#">Doctor Dashboard</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+
+                            <div class="footer-widget footer-contact">
+                                <h2 class="footer-title">Contact Us</h2>
+                                <div class="footer-contact-info">
+                                    <div class="footer-address">
+                                        <span><i class="fas fa-map-marker-alt"></i></span>
+                                        <p>Pinnacle Prestige, Office No-405 <br />Tilak Road,Sadashiv Peth,Hyd</p>
+                                    </div>
+                                    <p>
+                                        <i class="fas fa-phone-alt"></i>
+                                        +91-9096488159
+                                    </p>
+                                    <p class="mb-0 cf_email">
+                                        <i class="fas fa-envelope"></i>
+                                        <a href="#" style="color:#fff;">info@aidxpert.com</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="footer-bottom">
+                <div class="container-fluid">
+
+                    <div class="copyright">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <div class="copyright-text">
+                                    <p class="mb-0">&copy; 2023 AidXpert. All rights reserved. Powered by <a
+                                            href="https://technologies.com" target="_blank" style="color:#fff">l
+                                            Technologies Pvt. Ltd.</a></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+
+                                <div class="copyright-menu">
+                                    <ul class="policy-menu">
+                                        <li><a href="termsConditions">Terms and Conditions</a></li>
+                                        <li><a href="privacyPolicy">Privacy Policy</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <div class="modal fade call-modal" id="voice_call">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                    <div class="call-box incoming-box">
+                        <div class="call-wrapper">
+                            <div class="call-inner">
+                                <div class="call-user">
+                                    <img alt="User Image" src="/assets/img/doctors/doctor-thumb-02.jpg"
+                                        class="call-avatar">
+                                    <h4>Dr. Darren Elder</h4>
+                                    <span>Connecting...</span>
+                                </div>
+                                <div class="call-items">
+                                    <a href="javascript:void(0);" class="btn call-item call-end" data-bs-dismiss="modal"
+                                        aria-label="Close"><i class="material-icons">call_end</i></a>
+                                    <a href="voiceCall" class="btn call-item call-start"><i
+                                            class="material-icons">call</i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade call-modal" id="video_call">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                    <div class="call-box incoming-box">
+                        <div class="call-wrapper">
+                            <div class="call-inner">
+                                <div class="call-user">
+                                    <img class="call-avatar" src="/assets/img/doctors/doctor-thumb-02.jpg"
+                                        alt="User Image">
+                                    <h4>Dr. Darren Elder</h4>
+                                    <span>Calling ...</span>
+                                </div>
+                                <div class="call-items">
+                                    <a href="javascript:void(0);" class="btn call-item call-end" data-bs-dismiss="modal"
+                                        aria-label="Close"><i class="material-icons">call_end</i></a>
+                                    <a href="videoCall" class="btn call-item call-start"><i
+                                            class="material-icons">videocam</i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/jquery-3.6.4.min.js"></script>
+
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+    <script src="/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+
+    <script src="/assets/plugins/select2/js/select2.min.js"></script>
+
+    <script src="/assets/js/moment.min.js"></script>
+    <script src="/assets/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="/assets/plugins/fancybox/jquery.fancybox.min.js"></script>
+    <script src="/assets/js/aos.js"></script>
+    <script src="/assets/js/script.js"></script>
+</body>
+
+</html>
