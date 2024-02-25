@@ -177,43 +177,19 @@
                                 <th></th>
                               </tr>
                             </thead>
-                            <tbody>
+                            <tbody *ngFor="let appointment of appointmentList;">
                               <tr>
 
-                                <td>14 Feb 2023 <span class="d-block text-info">10.00 AM</span></td>
-                                <td>12 Feb 2023</td>
-                                <td>Rs.600/-</td>
-                                <td>16 Feb 2023</td>
+                                <td>{{appointment.date}} <span class="d-block text-info">10.00 AM</span></td>
+                                <td>{{appointment.createdDate}}</td>
+                                <td>Rs.{{appointment.amount}}/-</td>
+                                <td>{{appointment.doctorName}}</td>
                                 <td class="text-center">
                                   <div class="consultation-types" style="display: inline-block;">
                                     <a href="javascript:void(0);"
                                       style="width: 40px;min-width: 40px;color: #34b74f;border: 1px solid #34b74f;">
                                       <i class="feather-mic" style="margin-right: 0px;"></i>
                                     </a>
-                                  </div>
-                                </td>
-                                <td><span class="badge rounded-pill bg-success-light">Confirm</span></td>
-                                <td class="text-end">
-                                  <div class="table-action">
-                                    <a href="javascript:void(0);" class="btn btn-sm bg-success-light">
-                                      <i class="far fa-edit"></i> Edit
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-
-                                <td>2 Dec 2022 <span class="d-block text-info">5.00 PM</span></td>
-                                <td>2 Dec 2022</td>
-                                <td>Rs.400/-</td>
-                                <td>10 Dec 2022</td>
-                                <td class="text-center">
-                                  <div class="consultation-types" style="display: inline-block;">
-                                    <a href="javascript:void(0);"
-                                      style="width: 40px;min-width: 40px;color: #eb1831;border: 1px solid #eb1831;">
-                                      <i class="feather-video" style="margin-right: 0px;"></i>
-                                    </a>
-
                                   </div>
                                 </td>
                                 <td><span class="badge rounded-pill bg-success-light">Confirm</span></td>
