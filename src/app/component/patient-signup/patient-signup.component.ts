@@ -34,20 +34,22 @@ export class PatientSignupComponent implements OnInit {
     }
   }
   validateUserData(): boolean {
+    var validateFlag = false;
     if (this.user.displayName == "" || this.user.displayName == undefined) {
       alert('Please eneter Name');
-      return false;
+      return validateFlag;
     } else if (this.user.email == "" || this.user.email == undefined) {
       alert('Please eneter Email');
-      return false;
+      return validateFlag;
     } else if (this.user.phoneNumber == "" || this.user.phoneNumber == undefined) {
       alert('Please eneter Phone Number');
-      return false;
+      return validateFlag;
     } else if (this.user.password == "" || this.user.password == undefined) {
       alert('Please eneter Password');
-      return false;
+      return validateFlag;
     } else {
-      return true;
+      validateFlag = true;
+      return validateFlag;
     }
   }
 }
