@@ -26,7 +26,7 @@ export class UserService {
 
   }
 
-  public findAll(token:any): Observable<User[]> {
+  public findAll(token: any): Observable<User[]> {
     const httpOptions1 = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
     };
@@ -51,6 +51,15 @@ export class UserService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + useInfo.token })
     };
     return this.httpClient.get<User>(AppConstants.GET_USER_BY_ID + useInfo.id, httpOptions1);
+  }
+  uploadFile(user: User): Observable<MessageResponse> {
+    //console.log('user.token :: ' + user.token);
+    const httpOptions1 = {
+      headers: new HttpHeaders({  'Authorization': "Bearer " + user.token })
+    };
+    var formData=new FormData();
+    formData.append("file",user.profileImage);
+    return this.httpClient.post<any>(AppConstants.UPLOAD_FILE, formData);
   }
   updateProfile(user: User): Observable<MessageResponse> {
     //console.log('user.token :: ' + user.token);

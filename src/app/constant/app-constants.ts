@@ -24,6 +24,7 @@ export class AppConstants {
     public static GET_COUNTRIES = AppConstants.COMMON_URL + 'countries';
     public static GET_STATES = AppConstants.COMMON_URL + 'states/';
     public static GET_DISTRICTS = AppConstants.COMMON_URL + 'districts/';
+    public static UPLOAD_FILE = AppConstants.COMMON_URL + 'uploadFile';
     public static UPDATE_PROFILE = AppConstants.API_URL + 'updateProfile';
     public static ADD_DEPENDENT = AppConstants.API_URL + 'addDependent';
     public static GET_DEPENDENTS_LIST = AppConstants.API_URL + 'dependents/';

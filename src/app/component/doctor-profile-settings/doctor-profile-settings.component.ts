@@ -38,7 +38,7 @@ export class DoctorProfileSettingsComponent implements OnInit {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       //console.log('data ::' + data);
       this.currentUser = data;
-      this.currentUser.country = new Country;
+      //this.currentUser.country = new Country;
       this.currentUser.dateOfBirthString = this.convertDateToDateString(this.currentUser.dateOfBirth);
       this.getCountries();
       this.getStates(this.currentUser.country.id);
@@ -50,6 +50,14 @@ export class DoctorProfileSettingsComponent implements OnInit {
     return [d.getFullYear(), this.pad(d.getMonth() + 1), this.pad(d.getDate())].join('-');
   }
   pad(s: any) { return (s < 10) ? '0' + s : s; }
+
+  uploadFile() {
+    this.currentUser.token = this.storageService.getToken();
+    this.userService.uploadFile(this.currentUser).subscribe((data: MessageResponse) => {
+      this.message = data.message;
+      alert(this.message);
+    });
+  }
 
   onClickSubmit() {
     this.currentUser.token = this.storageService.getToken();

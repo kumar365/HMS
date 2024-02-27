@@ -39,19 +39,32 @@ export class AddBillingComponent implements OnInit {
     });
   }
   saveBills() {
-    this.bill.user = this.currentUser;
-    this.bill.name = this.currentUser.username;
-    this.paymentService.saveBill(this.bill, this.currentUserInfo.token).subscribe((data: ApiResponse) => {
-      this.message = data.message;
-      if (this.message == MessageConstants.BillDetailsMessage) {
-        this.billStatusFlag = true;
-        this.getBillList();
-        this.bill = new Bill;
-        if (this.billStatusFlag) {
-          this.router.navigate(['/patientProfile']);
+    if (this.validateBill()) {
+      this.bill.user = this.currentUser;
+      this.bill.name = this.currentUser.username;
+      this.paymentService.saveBill(this.bill, this.currentUserInfo.token).subscribe((data: ApiResponse) => {
+        this.message = data.message;
+        if (this.message == MessageConstants.BillDetailsMessage) {
+          this.billStatusFlag = true;
+          this.getBillList();
+          this.bill = new Bill;
+          if (this.billStatusFlag) {
+            this.router.navigate(['/patientProfile']);
+          }
         }
-      }
-    });
+      });
+    }
+  }
+  validateBill(): boolean {
+    var validateFlag = false;
+    if (this.bill.title == "" || this.bill.title == undefined) {
+      alert('Please eneter Title');
+    } else if (this.bill.amount <= 0 || this.bill.amount == undefined) {
+      alert('Please eneter Amount');
+    } else {
+      validateFlag = true;
+    }
+    return validateFlag;
   }
   getBillList() {
     this.paymentService.getBillList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: Bill[]) => {

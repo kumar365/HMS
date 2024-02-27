@@ -22,6 +22,7 @@ export class User {
     city!: City;
     state!: State;
     country!: Country;
+    profileImage!: any;
     profileImageName!: string;
     pinCode!: string;
     version!: string;
@@ -38,5 +39,6 @@ export class User {
     token!: string;
     oldPassword!: string;
     newPassword!: string;
+   
     
 }

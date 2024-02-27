@@ -48,11 +48,7 @@ export class AddPrescriptionComponent implements OnInit {
   }
   savePrescription() {
     //alert('inside savePrescription');
-    if (this.prescription.prescriptionName) {
-      alert('Name must be filled out');
-    } else if (this.prescription.quantity == 0) {
-      alert("Quantity must be filled out");
-    } else {
+    if (this.validatePrescription()) {
       console.log('this.currentUserInfo.token ::' + this.currentUserInfo.token);
       this.userService.savePrescription(this.prescription, this.currentUserInfo.token).subscribe((data: MessageResponse) => {
         this.message = data.message;
@@ -66,6 +62,17 @@ export class AddPrescriptionComponent implements OnInit {
         }
       });
     }
+  }
+  validatePrescription(): boolean {
+    var validateFlag = false;
+    if (this.prescription.prescriptionName == "" || this.prescription.prescriptionName == undefined) {
+      alert('Please eneter Name');
+    } else if (this.prescription.quantity <= 0 || this.prescription.quantity == undefined) {
+      alert('Please eneter Quantity');
+    } else {
+      validateFlag = true;
+    }
+    return validateFlag;
   }
   clearPrescription() {
     this.prescription = new Prescription;
