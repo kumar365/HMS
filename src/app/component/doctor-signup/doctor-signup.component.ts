@@ -5,6 +5,7 @@ import { User } from 'src/app/model/user';
 import { AuthService } from 'src/app/service/auth.service';
 
 
+
 @Component({
   selector: 'app-doctor-signup',
   templateUrl: './doctor-signup.component.html',
@@ -16,10 +17,11 @@ export class DoctorSignupComponent implements OnInit {
   user: User = new User;
   showPassword = true;
   showDiv = true;
+  history!: History;
   constructor(private authService: AuthService) { }
+
   ngOnInit(): void {
     this.user = new User;
-    
   }
   toggleShow() {
     this.showPassword = !this.showPassword;
@@ -34,27 +36,59 @@ export class DoctorSignupComponent implements OnInit {
     }
   }
   validateUser(): boolean {
-    var validateFlag = false;
     if (this.user.displayName == "" || this.user.displayName == undefined) {
       alert('Please eneter Name');
-      return validateFlag;
+      return false;
+    } else if (!this.validateName()) {
+      return false;
     } else if (this.user.email == "" || this.user.email == undefined) {
       alert('Please eneter Email');
-      return validateFlag;
+      return false;
+    } else if (!this.validateMail()) {
+      return false;
     } else if (this.user.phoneNumber == "" || this.user.phoneNumber == undefined) {
       alert('Please eneter Phone Number');
-      return validateFlag;
+      return false;
+    } else if (!this.validatePhoneNumber()) {
+      return false;
     } else if (this.user.password == "" || this.user.password == undefined) {
       alert('Please eneter Password');
-      return validateFlag;
+      return false;
     } else if (!this.checkPasswordValidity()) {
       //alert('Please eneter valid Password');
-      return validateFlag;
+      return false;
     } else {
-      validateFlag = true;
-      return validateFlag;
+      return true;
     }
 
+  }
+
+  validateName(): boolean {
+    var nameRegex = /^[A-Za-z ]{3,16}$/;
+    if (nameRegex.test(this.user.displayName)) {
+      return true;
+    } else {
+      alert("Your name is not valid. Only characters A-Z and a-z are acceptable of length 3 to 16.");
+      return false;
+    }
+  }
+  validateMail(): boolean {
+    var mailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+    if (mailRegex.test(this.user.email)) {
+      return true;
+    } else {
+      alert("Your mail is not valid.");
+      return false;
+    }
+  }
+  validatePhoneNumber(): boolean {
+    var phoneNumber = /^[6-9]{1}[0-9]{9}$/;
+    if (phoneNumber.test(this.user.phoneNumber)) {
+      return true;
+    } else {
+      alert("Your Phone Numaber is not valid.");
+      return false;
+    }
   }
   checkPasswordValidity(): boolean {
     var validateFlag = false;
@@ -64,32 +98,27 @@ export class DoctorSignupComponent implements OnInit {
       alert("Password must not contain Whitespaces.");
       return validateFlag;
     }
-
     const isContainsUppercase = /^(?=.*[A-Z]).*$/;
     if (!isContainsUppercase.test(value)) {
       alert("Password must have at least one Uppercase Character.");
       return validateFlag;
     }
-
     const isContainsLowercase = /^(?=.*[a-z]).*$/;
     if (!isContainsLowercase.test(value)) {
       alert("Password must have at least one Lowercase Character.");
       return validateFlag;
     }
-
     const isContainsNumber = /^(?=.*[0-9]).*$/;
     if (!isContainsNumber.test(value)) {
       alert("Password must contain at least one Digit.");
       return validateFlag;
     }
-
     const isContainsSymbol =
       /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/;
     if (!isContainsSymbol.test(value)) {
       alert("Password must contain at least one Special Symbol.");
       return validateFlag;
     }
-
     const isValidLength = /^.{10,16}$/;
     if (!isValidLength.test(value)) {
       alert("Password must be 10-16 Characters Long.");
@@ -124,4 +153,7 @@ export class DoctorSignupComponent implements OnInit {
       });
     }
   }
+
 }
+
+

@@ -102,6 +102,7 @@ import { ViewAmbulancesComponent } from './component/view-ambulances/view-ambula
 import { AmbulanceRegisterComponent } from './component/ambulance-register/ambulance-register.component';
 import { AmbulanceLoginComponent } from './component/ambulance-login/ambulance-login.component';
 import { StaffingServicesComponent } from './component/staffing-services/staffing-services.component';
+import { BackButtonDisableModule } from './module/back-button-disable/back-button-disable.module';
 
 @NgModule({
   declarations: [
@@ -204,12 +205,15 @@ import { StaffingServicesComponent } from './component/staffing-services/staffin
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BackButtonDisableModule.forRoot({
+      preserveScroll: true
+    }),
     MaterialModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [BackButtonDisableModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {
