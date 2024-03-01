@@ -16,6 +16,7 @@ export class AmbulanceBookingComponent implements OnInit {
   statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
+  ambulance: Ambulance = new Ambulance;
   constructor(private route: ActivatedRoute, private router: Router, private storageService: StorageService, private userService: UserService) { }
 
   ngOnInit(): void {

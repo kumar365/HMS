@@ -2,6 +2,7 @@ export class Appointment {
     appointmentId!: any;
     patientName!: string;
     doctorName!: string;
+    consultationType!: string;
     date!: any;
     prescription!: string;
     confirmed!: string;

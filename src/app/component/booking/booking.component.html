@@ -103,41 +103,45 @@
                 </div>
             </div>
         </div>
-
-
         <div class="content content-space">
             <div class="container">
-
                 <div class="row">
                     <div class="col-lg-8 col-md-12">
                         <div class="card">
-
                             <div class="card-body">
                                 <div class="col-12 payment-widget" style="display: flex;">
                                     <div class="col-4 payment-list">
                                         <label class="payment-radio home-sample">
-                                            <input type="radio" name="radio1" checked="">
+                                            <!-- <input type="radio" name="radio1" checked=""> -->
+                                            <input type="radio" [(ngModel)]="appointment.consultationType"
+                                                id="consultationType" name="consultationType" value="Clinic Visit"
+                                                class="form-control" #consultationType="ngModel">
                                             <span class="checkmark"></span>
                                             Clinic Visit
                                         </label>
                                     </div>
                                     <div class="col-4 payment-list">
                                         <label class="payment-radio lab-visit">
-                                            <input type="radio" name="radio1">
+                                            <!-- <input type="radio" name="radio1"> -->
+                                            <input type="radio" [(ngModel)]="appointment.consultationType"
+                                                id="consultationType" name="consultationType" value="Video Consultation"
+                                                class="form-control" #consultationType="ngModel">
                                             <span class="checkmark"></span>
                                             Video Consultation
                                         </label>
                                     </div>
                                     <div class="col-4 payment-list">
                                         <label class="payment-radio lab-visit">
-                                            <input type="radio" name="radio1">
+                                            <!-- <input type="radio" name="radio1"> -->
+                                            <input type="radio" [(ngModel)]="appointment.consultationType"
+                                                id="consultationType" name="consultationType" value="Tele Consultation"
+                                                class="form-control" #consultationType="ngModel">
                                             <span class="checkmark"></span>
                                             Tele Consultation
                                         </label>
                                     </div>
                                 </div>
                                 <div class="booking-header">
-
                                     <h4 class="booking-title">Select Available Slots</h4>
                                 </div>
                                 <div class="booking-date choose-date-book">
@@ -149,9 +153,7 @@
                                             <i class="fas fa-chevron-down"></i>
                                         </div>
                                     </div>
-
                                 </div>
-
                                 <div class="card booking-card">
                                     <div class="card-body time-slot-card-body">
                                         <div class="booking-date-slider">
@@ -283,14 +285,11 @@
                                     </div>
                                 </div>
                                 <div class="submit-section proceed-btn text-end">
-                                    <a href="checkout" class="btn btn-primary submit-btn">Proceed to Pay</a>
+                                    <a (click)="checkConsultationType()" class="btn btn-primary submit-btn">Proceed to Pay</a>
                                 </div>
 
                             </div>
                         </div>
-
-
-
                     </div>
                     <div class="col-lg-4 col-md-12 theiaStickySidebar">
                         <div class="booking-header">
@@ -357,18 +356,13 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-
-
         <footer class="footer">
-
             <div class="footer-top aos"><!-- data-aos="fade-up" -->
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-3 col-md-6">
-
                             <div class="footer-widget footer-about">
                                 <div class="footer-logo">
                                     <img src="/assets/img/logo-whte.png" alt="aidxpert">
@@ -392,10 +386,8 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="col-lg-3 col-md-6">
-
                             <div class="footer-widget footer-menu">
                                 <h2 class="footer-title">For Patients</h2>
                                 <ul>
@@ -408,10 +400,8 @@
                                     <li><a href="consultantsPanel">Consultants Panel</a></li>
                                 </ul>
                             </div>
-
                         </div>
                         <div class="col-lg-3 col-md-6">
-
                             <div class="footer-widget footer-menu">
                                 <h2 class="footer-title">For Doctors</h2>
                                 <ul>
@@ -422,10 +412,8 @@
                                     <li><a href="#">Doctor Dashboard</a></li>
                                 </ul>
                             </div>
-
                         </div>
                         <div class="col-lg-3 col-md-6">
-
                             <div class="footer-widget footer-contact">
                                 <h2 class="footer-title">Contact Us</h2>
                                 <div class="footer-contact-info">
@@ -443,45 +431,34 @@
                                     </p>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
             <div class="footer-bottom">
                 <div class="container-fluid">
-
                     <div class="copyright">
                         <div class="row">
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
                                     <p class="mb-0">&copy; 2023 AidXpert. All rights reserved. Powered by <a
-                                            href="https://abc.com" target="_blank"
-                                            style="color:#fff">FossGen Technologies Pvt. Ltd.</a></p>
+                                            href="https://abc.com" target="_blank" style="color:#fff">FossGen
+                                            Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">
-
                                 <div class="copyright-menu">
                                     <ul class="policy-menu">
                                         <li><a href="termsConditions">Terms and Conditions</a></li>
                                         <li><a href="privacyPolicy">Privacy Policy</a></li>
                                     </ul>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </footer>
-
     </div>
 
     <script src="/assets/js/jquery-3.6.4.min.js"></script>
@@ -489,10 +466,10 @@
     <script src="/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
     <script src="/assets/js/moment.min.js"></script>
     <script src="/assets/plugins/daterangepicker/daterangepicker.js"></script>
-
     <script src="/assets/js/slick.js"></script>
     <script src="/assets/js/aos.js"></script>
     <script src="/assets/js/script.js"></script>
+
 </body>
 
 </html>
