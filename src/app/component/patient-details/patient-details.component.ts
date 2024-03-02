@@ -37,7 +37,6 @@ export class PatientDetailsComponent implements OnInit {
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
-      alert(this.currentUser.id);
       if (this.currentUser == undefined) {
         this.appointment.user = new User;
         this.appointment.user.firstName = "user";
@@ -54,7 +53,7 @@ export class PatientDetailsComponent implements OnInit {
   getDependentList() {
     this.userService.getDependentList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: Dependent[]) => {
       this.dependentList = data;
-      alert(this.dependentList.length);
+
     });
   }
   addDetails() {

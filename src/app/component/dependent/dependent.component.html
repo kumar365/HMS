@@ -117,7 +117,8 @@
                                         <h3>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}
                                         </h3>
                                         <div class="patient-details">
-                                            <h5><i class="fas fa-birthday-cake"></i> {{currentUser.dateOfBirth | date:'dd MMM yyyy'}},
+                                            <h5><i class="fas fa-birthday-cake"></i> {{currentUser.dateOfBirth |
+                                                date:'dd MMM yyyy'}},
                                                 {{currentUser.age}}</h5>
                                             <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i>
                                                 {{currentUser.state.name}}, {{currentUser.country.name}}</h5>
@@ -194,8 +195,8 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="text-end">
-                                            <a href="#modal_form" (click)="addDetails()" data-bs-toggle="modal" class="btn btn-primary btn-sm"
-                                                tabindex="0">Add Dependent</a>
+                                            <a href="#modal_form" (click)="addDetails()" data-bs-toggle="modal"
+                                                class="btn btn-primary btn-sm" tabindex="0">Add Dependent</a>
                                         </div>
                                     </div>
                                 </div>
@@ -234,10 +235,12 @@
                                                         <td>{{dependent.bloodGroup}}</td>
                                                         <td>
                                                             <div class="table-action">
-                                                                <a href="#edit_form" (click)="edit(dependent)" class="btn btn-sm bg-info-light"
+                                                                <a href="#edit_form" (click)="edit(dependent)"
+                                                                    class="btn btn-sm bg-info-light"
                                                                     data-bs-toggle="modal"> <i class="fas fa-edit"></i>
                                                                     Edit</a>
-                                                                <a href="javascript:void(0);" (click)="deactive(dependent)"
+                                                                <a href="javascript:void(0);"
+                                                                    (click)="deactive(dependent)"
                                                                     class="btn btn-sm bg-danger-light"><i
                                                                         class="fas fa-times"></i> Deactive</a>
                                                             </div>
@@ -387,7 +390,7 @@
                 <div *ngIf="dependentFlag" class="alert alert-danger" role="alert">
                     {{ message }}
                 </div>
-                <form (ngSubmit)="onSubmit()" #dependentForm="ngForm" enctype="multipart/form-data" autocomplete="off">
+                <form #dependentForm="ngForm" (ngSubmit)="onSubmit()">
                     <div class="modal-header">
                         <h5 class="modal-title">Add new member</h5>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
@@ -407,8 +410,8 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label mb-10">Phone Number </label>
-                            <input type="text" [(ngModel)]="dependent.phoneNumber" id="phoneNumber"
-                                name="phoneNumber" class="form-control" #phoneNumber="ngModel">
+                            <input type="text" [(ngModel)]="dependent.phoneNumber" id="phoneNumber" name="phoneNumber"
+                                class="form-control" #phoneNumber="ngModel">
                         </div>
                         <div class="form-group">
                             <label class="control-label mb-10">Gender </label>
@@ -422,8 +425,7 @@
                         </div>
                         <div class="form-group">
                             <label>Blood Group</label>
-                            <select name="bloodGroup" id="bloodGroup"
-                                [(ngModel)]="dependent.bloodGroup"
+                            <select name="bloodGroup" id="bloodGroup" [(ngModel)]="dependent.bloodGroup"
                                 class="form-select form-control">
                                 <option>Select</option>
                                 <option value="A-">A-</option>
@@ -438,8 +440,8 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label mb-10">DOB </label>
-                            <input type="date" [(ngModel)]="dependent.dateOfBirthString" id="dateOfBirthString" name="dateOfBirthString"
-                                #dateOfBirthString="ngModel" class="form-control">
+                            <input type="date" [(ngModel)]="dependent.dateOfBirthString" id="dateOfBirthString"
+                                name="dateOfBirthString" #dateOfBirthString="ngModel" class="form-control">
                         </div>
                         <div class="form-group">
                             <label class="control-label mb-10">Photo </label>
@@ -455,12 +457,10 @@
         </div>
     </div>
 
-
     <div id="edit_form" class="modal fade custom-modal" tabindex="-1" role="dialog" aria-modal="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <form (ngSubmit)="onSubmit()" #dependentForm="ngForm" enctype="multipart/form-data" autocomplete="off"
-                    method="post">
+                <form (ngSubmit)="onSubmitEdit()" #editDependentForm="ngForm">
                     <div class="modal-header">
                         <h5 class="modal-title">Edit member</h5>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
@@ -470,18 +470,18 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label class="control-label mb-10"> Name <span class="text-danger">*</span></label>
-                            <input type="text" [(ngModel)]="dependent.name" id="name" name="name" class="form-control"
-                                #name="ngModel">
+                            <input type="text" [(ngModel)]="dependent.name" id="name1" name="name1" class="form-control"
+                                #name1="ngModel">
                         </div>
                         <div class="form-group">
                             <label class="control-label mb-10">Relationship </label>
-                            <input type="text" [(ngModel)]="dependent.relationship" id="relationship"
-                                name="relationship" class="form-control" #relationship="ngModel">
+                            <input type="text" [(ngModel)]="dependent.relationship" id="relationship1"
+                                name="relationship1" class="form-control" #relationship1="ngModel">
                         </div>
                         <div class="form-group">
                             <label class="control-label mb-10">Gender </label>
-                            <select class="form-select form-control" [(ngModel)]="dependent.gender" id="gender"
-                                name="gender" #gender="ngModel">
+                            <select class="form-select form-control" [(ngModel)]="dependent.gender" id="gender1"
+                                name="gender1" #gender1="ngModel">
                                 <option value>Select</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
@@ -489,13 +489,13 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label mb-10">DOB </label>
-                            <input type="date" [(ngModel)]="dependent.dateOfBirthString" id="dateOfBirthString" name="dateOfBirthString"
-                                #dateOfBirthString="ngModel" class="form-control">
+                            <input type="date" [(ngModel)]="dependent.dateOfBirthString" id="dateOfBirthString1"
+                                name="dateOfBirthString1" #dateOfBirthString1="ngModel" class="form-control">
                         </div>
                         <div class="form-group">
                             <label class="control-label mb-10">Photo </label>
-                            <input type="file" [(ngModel)]="dependent.profileImage" id="profileImage"
-                                name="profileImage" #profileImage="ngModel" class="form-control">
+                            <input type="file" [(ngModel)]="dependent.profileImage" id="profileImage1"
+                                name="profileImage1" #profileImage1="ngModel" class="form-control">
                         </div>
                     </div>
                     <div class="modal-footer text-center">

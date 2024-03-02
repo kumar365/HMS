@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { MessageConstants } from 'src/app/constant/message-constants';
 import { ApiResponse } from 'src/app/model/api-response';
 import { Dependent } from 'src/app/model/dependent';
@@ -20,7 +20,7 @@ export class DependentComponent implements OnInit {
   currentUser: User = new User;
   dependent: Dependent = new Dependent;
   dependentList: Dependent[] = [];
-  constructor(private storageService: StorageService, private userService: UserService) { }
+  constructor(private storageService: StorageService, private userService: UserService, private renderer: Renderer2) { }
   ngOnInit(): void {
     this.dependentFlag = false;
     this.currentUserInfo = this.storageService.getUser();
@@ -40,18 +40,93 @@ export class DependentComponent implements OnInit {
     this.dependentFlag = false;
     this.dependent = new Dependent;
   }
+  validateDependentDetails(): boolean {
+    if (this.dependent.name == "" || this.dependent.name == undefined) {
+      alert('Please Enter Name');
+      const element = this.renderer.selectRootElement('#name');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!this.validateName(this.dependent.name)) {
+      return false;
+    } else if (this.dependent.relationship == "" || this.dependent.relationship == undefined) {
+      alert('Please Enter Relationship');
+      const element = this.renderer.selectRootElement('#relationship');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!this.validateName(this.dependent.relationship)) {
+      return false;
+    } else if (this.dependent.phoneNumber == "" || this.dependent.phoneNumber == undefined) {
+      alert('Please Enter Phone Number');
+      const element = this.renderer.selectRootElement('#phoneNumber');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!this.validatePhoneNumber(this.dependent.phoneNumber)) {
+      return false;
+    } else if (this.dependent.gender == "" || this.dependent.gender == undefined) {
+      alert('Please Select the Gender');
+      const element = this.renderer.selectRootElement('#gender');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.dependent.bloodGroup == "" || this.dependent.bloodGroup == undefined) {
+      alert('Please Select the Blood Group');
+      const element = this.renderer.selectRootElement('#bloodGroup');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.dependent.dateOfBirthString == "" || this.dependent.dateOfBirthString == undefined) {
+      alert('Please Enter Date Of Birth');
+      const element = this.renderer.selectRootElement('#dateOfBirthString');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else {
+      return true;
+    }
+  }
+  validateName(name: string): boolean {
+    var nameRegex = /^[A-Za-z ]{3,16}$/;
+    if (nameRegex.test(name)) {
+      return true;
+    } else {
+      alert("Your name is not valid. Only characters A-Z and a-z are acceptable of length 3 to 16.");
+      return false;
+    }
+  }
+
+  validatePhoneNumber(phoneNumber: string): boolean {
+    var phoneNumberRegex = /^[6-9]{1}[0-9]{9}$/;
+    if (phoneNumberRegex.test(phoneNumber)) {
+      return true;
+    } else {
+      alert("Your Phone Numaber is not valid.");
+      return false;
+    }
+  }
   onSubmit() {
-    //alert(this.currentUser.username);
-    this.dependent.user = this.currentUser;
-    this.dependent.active = true;
-    this.userService.saveDependent(this.dependent, this.currentUserInfo.token).subscribe((data: ApiResponse) => {
-      this.message = data.message;
-      if (this.message == MessageConstants.DependentMessage) {
-        this.dependentFlag = true;
-        this.getDependentList();
-        this.dependent = new Dependent;
-      }
-    });
+    if (this.validateDependentDetails()) {
+      this.dependent.user = this.currentUser;
+      this.dependent.active = true;
+      this.userService.saveDependent(this.dependent, this.currentUserInfo.token).subscribe((data: ApiResponse) => {
+        this.message = data.message;
+        if (this.message == MessageConstants.DependentMessage) {
+          this.dependentFlag = true;
+          this.getDependentList();
+          this.dependent = new Dependent;
+        }
+      });
+    }
+  }
+  onSubmitEdit() {
+    if (this.validateDependentDetails()) {
+      this.dependent.user = this.currentUser;
+      this.dependent.active = true;
+      this.userService.saveDependent(this.dependent, this.currentUserInfo.token).subscribe((data: ApiResponse) => {
+        this.message = data.message;
+        if (this.message == MessageConstants.DependentMessage) {
+          this.dependentFlag = true;
+          this.getDependentList();
+          this.dependent = new Dependent;
+        }
+      });
+    }
   }
   getDependentList() {
     //alert(this.currentUserInfo.id);
