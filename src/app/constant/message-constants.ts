@@ -5,6 +5,7 @@ export class MessageConstants {
     public static UpdateProfileMessage = 'Profile updated successfully!';
     public static PasswordDiffMessage = 'New password and confirm password are diffrent';
     public static DependentMessage = 'Dependent added successfully!';
+    public static AppointmentMessage ='Appointment details added successfully!';
     public static MedicalDetailsMessage = 'Medical details added successfully!';
     public static MedicalDetailsDeleteMessage = 'Medical details deleted successfully!';
     public static MedicalRecordsMessage = 'Medical Records added successfully!';

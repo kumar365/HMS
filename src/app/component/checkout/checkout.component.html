@@ -119,25 +119,38 @@
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group card-label">
                                                     <label>First Name</label>
-                                                    <input class="form-control" type="text">
+                                                    <!-- <input class="form-control" type="text"> -->
+                                                    <input type="text" [(ngModel)]="appointment.user.firstName"
+                                                        id="firstName" name="firstName" placeholder="Enter First Name"
+                                                        class="form-control" #firstName="ngModel">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group card-label">
                                                     <label>Last Name</label>
-                                                    <input class="form-control" type="text">
+                                                    <!-- <input class="form-control" type="text"> -->
+                                                    <input type="text" [(ngModel)]="appointment.user.lastName"
+                                                        id="lastName" name="lastName" placeholder="Enter Last Name"
+                                                        class="form-control" #lastName="ngModel">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group card-label">
                                                     <label>Email</label>
-                                                    <input class="form-control" type="email">
+                                                    <!-- <input class="form-control" type="email"> -->
+                                                    <input type="text" [(ngModel)]="appointment.user.email" id="email"
+                                                        name="email" placeholder="Enter email" class="form-control"
+                                                        #email="ngModel">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group card-label">
                                                     <label>Phone</label>
-                                                    <input class="form-control" type="text">
+                                                    <!-- <input class="form-control" type="text"> -->
+                                                    <input type="text" [(ngModel)]="appointment.user.phoneNumber"
+                                                        id="phoneNumber" name="phoneNumber"
+                                                        placeholder="Enter Phone Number" class="form-control"
+                                                        #phoneNumber="ngModel">
                                                 </div>
                                             </div>
                                         </div>
@@ -150,7 +163,10 @@
 
                                         <div class="payment-list">
                                             <label class="payment-radio credit-card-option">
-                                                <input type="radio" name="radio" checked>
+                                                <!-- <input type="radio" name="radio" checked> -->
+                                                <input type="radio" [(ngModel)]="appointment.paymentMethod"
+                                                    value="Credit card" id="paymentMethod" name="paymentMethod"
+                                                    class="form-control" #paymentMethod="ngModel">
                                                 <span class="checkmark"></span>
                                                 Credit card
                                             </label>
@@ -158,13 +174,13 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group card-label">
                                                         <label for="card_name">Name on Card</label>
-                                                        <input class="form-control" id="card_name" type="text">
+                                                        <input class="form-control" id="cardName" type="text">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group card-label">
                                                         <label for="card_number">Card Number</label>
-                                                        <input class="form-control" id="card_number"
+                                                        <input class="form-control" id="cardNumber"
                                                             placeholder="1234  5678  9876  5432" type="text">
                                                     </div>
                                                 </div>
@@ -194,21 +210,25 @@
 
                                         <div class="payment-list">
                                             <label class="payment-radio paypal-option">
-                                                <input type="radio" name="radio">
+                                                <!-- <input type="radio" name="radio"> -->
+                                                <input type="radio" [(ngModel)]="appointment.paymentMethod"
+                                                    value="Paypal" id="paymentMethod" name="paymentMethod"
+                                                    class="form-control" #paymentMethod="ngModel">
                                                 <span class="checkmark"></span>
                                                 Paypal
                                             </label>
                                         </div>
 
-
                                         <div class="terms-accept">
                                             <div class="custom-checkbox">
-                                                <input type="checkbox" id="terms_accept">
-                                                <label for="terms_accept">I have read and accept <a href="#">Terms &amp;
+                                                <input type="checkbox" id="termsAndConditions"
+                                                    (change)="changeTermsAndConditions()">
+                                                <label for="termsAndConditions">I have read and accept <a
+                                                        href="termsConditions" target="_blank">Terms
+                                                        &amp;
                                                         Conditions</a></label>
                                             </div>
                                         </div>
-
 
                                         <div class="submit-section mt-4">
                                             <button type="submit" class="btn btn-primary submit-btn">Confirm and
@@ -349,7 +369,7 @@
                                 <div class="footer-contact-info">
                                     <div class="footer-address">
                                         <span><i class="fas fa-map-marker-alt"></i></span>
-                                        <p>Pinnacle Prestige, Office No-405 <br />Tilak Road,Sadashiv Peth,Hyd</p>
+                                        <p>Pinnacle Prestige, Office No-405 <br />Road 2,Sadashiv Peth,Hyd</p>
                                     </div>
                                     <p>
                                         <i class="fas fa-phone-alt"></i>
@@ -379,9 +399,8 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
-                                    <p class="mb-0">&copy; 2023 AidXpert. All rights reserved. Powered by <a
-                                            href="/" target="_blank"
-                                            style="color:#fff"> Technologies Pvt. Ltd.</a></p>
+                                    <p class="mb-0">&copy; 2023 AidXpert. All rights reserved. Powered by <a href="/"
+                                            target="_blank" style="color:#fff"> Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">

@@ -25,6 +25,7 @@ export class User {
     profileImage!: any;
     profileImageName!: string;
     pinCode!: string;
+    termsAndConditions!: string;
     version!: string;
     ipAddress!: string;
     modifiedBy!: string;

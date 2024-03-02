@@ -105,49 +105,60 @@
                             <h4 class="paitent-title">Patient Details</h4>
                         </div>
                         <div class="paitent-appointment">
-                            <form action="consultation">
+                            <form #patientDetailsForm="ngForm" (ngSubmit)="onSubmit()">
                                 <div class="form-group">
                                     <label class="form-group-title">Appointment for</label>
                                     <label class="custom_radio me-4">
-                                        <input type="radio" name="appointment" checked>
+                                        <!-- <input type="radio" name="appointment" checked> -->
+                                        <input type="radio" [(ngModel)]="appointment.appointmentFor" value="My Self"
+                                            id="appointmentFor" name="appointmentFor" class="form-control"
+                                            #appointmentFor="ngModel">
                                         <span class="checkmark"></span> My Self
                                     </label>
                                     <label class="custom_radio">
-                                        <input type="radio" name="appointment">
+                                        <!-- <input type="radio" name="appointment"> -->
+                                        <input type="radio" [(ngModel)]="appointment.appointmentFor" value="Dependent"
+                                            id="appointmentFor" name="appointmentFor" class="form-control"
+                                            #appointmentFor="ngModel">
                                         <span class="checkmark"></span> Dependent
                                     </label>
                                 </div>
                                 <div class="form-group">
                                     <div class="form-group-flex">
                                         <label class="form-group-title">Choose Dependent</label>
-                                        <a href="javascript:void(0);" class="btn">
+                                        <a href="dependent" class="btn">
                                             <i class="feather-plus"></i> Add
                                         </a>
                                     </div>
                                     <div class="paitent-dependent-select">
-                                        <select class="select">
-                                            <option>Select</option>
-                                            <option>Dependent 01</option>
-                                            <option>Dependent 02</option>
-                                            <option>Dependent 03</option>
-                                            <option>Dependent 04</option>
+                                        <select [(ngModel)]="appointment.dependent" id="dependent" name="dependent"
+                                            class="form-select form-control" #dependent="ngModel">
+                                            <option [value]="">Select</option>
+                                            <option *ngFor="let dependent of dependentList" [value]="dependent.id">
+                                                {{dependent.name}}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-group-title">Do you have insurance?</label>
                                     <label class="custom_radio me-4">
-                                        <input type="radio" name="insurance">
+                                        <!-- <input type="radio" name="insurance"> -->
+                                        <input type="radio" [(ngModel)]="appointment.insurance" value="Yes"
+                                            id="insurance" name="insurance" class="form-control" #insurance="ngModel">
                                         <span class="checkmark"></span> Yes
                                     </label>
                                     <label class="custom_radio">
-                                        <input type="radio" name="insurance" checked>
+                                        <!-- <input type="radio" name="insurance" checked> -->
+                                        <input type="radio" [(ngModel)]="appointment.insurance" value="No"
+                                            id="insurance" name="insurance" class="form-control" #insurance="ngModel">
                                         <span class="checkmark"></span> No
                                     </label>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-group-title">Reason</label>
-                                    <textarea class="form-control" placeholder="Enter Your Reason"></textarea>
+                                    <textarea [(ngModel)]="appointment.reason" placeholder="Enter Your Reason"
+                                        minlength="10" maxlength="400" id="reason" name="reason" class="form-control"
+                                        #reason="ngModel"></textarea>
                                     <p class="characters-text">400 Characters</p>
                                 </div>
                                 <div class="form-group">
@@ -171,7 +182,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-group-title">Symtoms <span>(Optional)</span></label>
-                                    <input type="text" class="form-control" placeholder="Skin Allergy">
+                                    <!-- <input type="text" class="form-control" placeholder="Skin Allergy"> -->
+                                    <input type="text" [(ngModel)]="appointment.symtoms" placeholder="Skin Allergy"
+                                        id="symtoms" name="symtoms" class="form-control" #symtoms="ngModel">
                                 </div>
                                 <div class="form-group mb-0">
                                     <div class="booking-btn">
@@ -339,7 +352,7 @@
                                 <div class="footer-contact-info">
                                     <div class="footer-address">
                                         <span><i class="fas fa-map-marker-alt"></i></span>
-                                        <p>Pinnacle Prestige, Office No-405 <br />Tilak Road,Sadashiv Peth,Hyd</p>
+                                        <p>Pinnacle Prestige, Office No-405 <br />Road 2,KPHB colony,Hyd</p>
                                     </div>
                                     <p>
                                         <i class="fas fa-phone-alt"></i>
@@ -370,8 +383,8 @@
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
                                     <p class="mb-0">&copy; 2023 AidXpert. All rights reserved. Powered by <a
-                                            href="https://technologies.com" target="_blank"
-                                            style="color:#fff">l Technologies Pvt. Ltd.</a></p>
+                                            href="https://technologies.com" target="_blank" style="color:#fff">l
+                                            Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">
@@ -395,8 +408,7 @@
         <div class="mouse-cursor cursor-inner"></div>
 
     </div>
-
-
+   
     <script src="/assets/js/jquery-3.6.4.min.js"></script>
 
     <script src="/assets/js/bootstrap.bundle.min.js"></script>

@@ -52,7 +52,7 @@ export class PatientProfileComponent implements OnInit {
     });
   }
   getAppointmentList() {
-    this.userService.getAppointmentList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: Appointment[]) => {
+    this.userService.getPatientAppointmentList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: Appointment[]) => {
       this.appointmentList = data;
     });
   }

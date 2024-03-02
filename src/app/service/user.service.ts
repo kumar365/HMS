@@ -55,10 +55,10 @@ export class UserService {
   uploadFile(user: User): Observable<MessageResponse> {
     //console.log('user.token :: ' + user.token);
     const httpOptions1 = {
-      headers: new HttpHeaders({  'Authorization': "Bearer " + user.token })
+      headers: new HttpHeaders({ 'Authorization': "Bearer " + user.token })
     };
-    var formData=new FormData();
-    formData.append("file",user.profileImage);
+    var formData = new FormData();
+    formData.append("file", user.profileImage);
     return this.httpClient.post<any>(AppConstants.UPLOAD_FILE, formData);
   }
   updateProfile(user: User): Observable<MessageResponse> {
@@ -159,12 +159,20 @@ export class UserService {
     };
     return this.httpClient.post<ApiResponse>(AppConstants.ADD_APPOINTMENT, appointment, httpOptions1);
   }
-  getAppointmentList(id: any, token: string): Observable<Appointment[]> {
+  getPatientAppointmentList(id: any, token: string): Observable<Appointment[]> {
     //console.log('token :: ' + token);
     const httpOptions1 = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
     };
-    return this.httpClient.get<Appointment[]>(AppConstants.GET_APPOINTMENT_LIST + id, httpOptions1);
+    return this.httpClient.get<Appointment[]>(AppConstants.GET_PATIENT_APPOINTMENT_LIST + id, httpOptions1);
+  }
+
+  getDoctorAppointmentList(id: any, token: string): Observable<Appointment[]> {
+    //console.log('token :: ' + token);
+    const httpOptions1 = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
+    };
+    return this.httpClient.get<Appointment[]>(AppConstants.GET_DOCTOR_APPOINTMENT_LIST + id, httpOptions1);
   }
 }
 

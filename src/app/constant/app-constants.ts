@@ -38,10 +38,12 @@ export class AppConstants {
     public static ADD_AMBULANCE = AppConstants.AMBULANCE_URL + 'addAmbulance';
     public static GET_AMBULANCE_LIST = AppConstants.AMBULANCE_URL + 'ambulances/';
     public static PRESCRIPTION_URL = AppConstants.API_BASE_URL + "prescription/";
-    public static ADD_APPOINTMENT = AppConstants.PRESCRIPTION_URL + 'addAppointment';
-    public static GET_APPOINTMENT_LIST = AppConstants.PRESCRIPTION_URL + 'appointments/';
     public static ADD_PRESCRIPTION = AppConstants.PRESCRIPTION_URL + 'addPrescription';
     public static GET_PRESCRIPTION_LIST = AppConstants.PRESCRIPTION_URL + 'prescriptions/';
+    public static PATIENT_URL = AppConstants.API_BASE_URL + "patient/";
+    public static ADD_APPOINTMENT = AppConstants.PATIENT_URL + 'addAppointment';
+    public static GET_PATIENT_APPOINTMENT_LIST = AppConstants.PATIENT_URL + 'patientAppointments/';
+    public static GET_DOCTOR_APPOINTMENT_LIST = AppConstants.PATIENT_URL + 'doctorAppointments/';
     public static PAYMENT_URL = AppConstants.API_BASE_URL + "payment/";
     public static ADD_BILL = AppConstants.PAYMENT_URL + 'addBill';
     public static GET_BILL_LIST = AppConstants.PAYMENT_URL + 'bills/';
