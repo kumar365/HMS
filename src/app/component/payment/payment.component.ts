@@ -1,9 +1,7 @@
 import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Appointment } from 'src/app/model/appointment';
+import { CardDetails } from 'src/app/model/card-details';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
 import { StorageService } from 'src/app/service/storage.service';
@@ -27,7 +25,7 @@ export class PaymentComponent implements OnInit {
     this.currentUserInfo.token = this.storageService.getToken();
     //alert(this.currentUserInfo.token);
     this.getUserData();
-
+    this.appointment.cardDetails = new CardDetails;
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {

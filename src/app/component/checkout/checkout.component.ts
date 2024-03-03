@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MessageConstants } from 'src/app/constant/message-constants';
 import { ApiResponse } from 'src/app/model/api-response';
 import { Appointment } from 'src/app/model/appointment';
+import { CardDetails } from 'src/app/model/card-details';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
 import { StorageService } from 'src/app/service/storage.service';
@@ -27,6 +28,7 @@ export class CheckoutComponent implements OnInit {
     this.currentUserInfo = this.storageService.getUser();
     this.currentUserInfo.token = this.storageService.getToken();
     this.getUserData();
+    this.appointment.cardDetails = new CardDetails;
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
@@ -72,9 +74,9 @@ export class CheckoutComponent implements OnInit {
       const element = this.renderer.selectRootElement('#nameOnCard');
       setTimeout(() => element.focus(), 0);
       return false;
-    }else if (this.appointment.paymentMethod == "Credit card" && !this.validateCardDetails()) {
+    } else if (this.appointment.paymentMethod == "Credit card" && !this.validateCardDetails()) {
       return false;
-    }  else if (this.appointment.termsAndConditions == "" || this.appointment.termsAndConditions == "N" || this.appointment.termsAndConditions == undefined) {
+    } else if (this.appointment.termsAndConditions == "" || this.appointment.termsAndConditions == "N" || this.appointment.termsAndConditions == undefined) {
       alert('Please Accept Terms & Conditions');
       const element = this.renderer.selectRootElement('#termsAndConditions');
       setTimeout(() => element.focus(), 0);
