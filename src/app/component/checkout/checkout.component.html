@@ -174,34 +174,54 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group card-label">
                                                         <label for="card_name">Name on Card</label>
-                                                        <input class="form-control" id="cardName" type="text">
+                                                        <!-- <input class="form-control" id="cardName" type="text"> -->
+                                                        <input type="text"
+                                                            [(ngModel)]="appointment.cardDetails.nameOnCard"
+                                                            placeholder="Name on Card" id="nameOnCard" name="nameOnCard"
+                                                            class="form-control" #nameOnCard="ngModel">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group card-label">
                                                         <label for="card_number">Card Number</label>
-                                                        <input class="form-control" id="cardNumber"
-                                                            placeholder="1234  5678  9876  5432" type="text">
+                                                        <!-- <input class="form-control" id="cardNumber"
+                                                            placeholder="1234  5678  9876  5432" type="text"> -->
+                                                        <input type="text"
+                                                            [(ngModel)]="appointment.cardDetails.cardNumber"
+                                                            placeholder="xxxx-xxxx-xxxx-xxxx" id="cardNumber"
+                                                            name="cardNumber" class="form-control"
+                                                            #cardNumber="ngModel">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group card-label">
                                                         <label for="expiry_month">Expiry Month</label>
-                                                        <input class="form-control" id="expiry_month" placeholder="MM"
-                                                            type="text">
+                                                        <!-- <input class="form-control" id="expiry_month" placeholder="MM"
+                                                            type="text"> -->
+                                                        <input type="text"
+                                                            [(ngModel)]="appointment.cardDetails.expiryMonth"
+                                                            placeholder="MM" id="expiryMonth" name="expiryMonth"
+                                                            class="form-control" #expiryMonth="ngModel">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group card-label">
                                                         <label for="expiry_year">Expiry Year</label>
-                                                        <input class="form-control" id="expiry_year" placeholder="YY"
-                                                            type="text">
+                                                        <!-- <input class="form-control" id="expiry_year" placeholder="YY"
+                                                            type="text"> -->
+                                                        <input type="text"
+                                                            [(ngModel)]="appointment.cardDetails.expiryYear"
+                                                            placeholder="YYYY" id="expiryYear" name="expiryYear"
+                                                            class="form-control" #expiryYear="ngModel">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group card-label">
                                                         <label for="cvv">CVV</label>
-                                                        <input class="form-control" id="cvv" type="text">
+                                                        <!-- <input class="form-control" id="cvv" type="text"> -->
+                                                        <input type="text" [(ngModel)]="appointment.cardDetails.cvv"
+                                                            placeholder="****" id="cvv" name="cvv" class="form-control"
+                                                            #cvv="ngModel">
                                                     </div>
                                                 </div>
                                             </div>

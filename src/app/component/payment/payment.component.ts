@@ -1,55 +1,102 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+import { Appointment } from 'src/app/model/appointment';
+import { User } from 'src/app/model/user';
+import { UserInfo } from 'src/app/model/user-info';
+import { StorageService } from 'src/app/service/storage.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.css']
 })
-export class PaymentComponent {
-  isUserLoggedIn: boolean = false;
-  isLogOut: boolean = false;
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  @ViewChild(MatPaginator) 
-  paginator!: MatPaginator;
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+export class PaymentComponent implements OnInit {
+  message: any;
+  statusFlag: boolean = false;
+  currentUserInfo: UserInfo = new UserInfo;
+  currentUser: User = new User;
+  appointment: Appointment = new Appointment;
+  constructor(private storageService: StorageService, private userService: UserService,
+    private router: Router, private renderer: Renderer2) { }
+  ngOnInit(): void {
+    this.currentUserInfo = this.storageService.getUser();
+    this.currentUserInfo.token = this.storageService.getToken();
+    //alert(this.currentUserInfo.token);
+    this.getUserData();
+
   }
-  dateRange = new FormGroup({
-    start: new FormControl(),
-    end: new FormControl()
-  });
+  getUserData() {
+    this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
+      this.currentUser = data;
+    });
+  }
+  validatePaymentData(): boolean {
+    if (this.appointment.paymentMethod == "" || this.appointment.paymentMethod == undefined) {
+      alert('Please Select the paymentMethod');
+      const element = this.renderer.selectRootElement('#cardName');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.appointment.paymentMethod == "Debit or Credit Card" && !this.validateCardDetails()) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  validateCardDetails(): boolean {
+    if (this.appointment.paymentMethod == "Debit or Credit Card") {
+      if (this.appointment.cardDetails.nameOnCard == "" || this.appointment.cardDetails.nameOnCard == undefined) {
+        alert('Please Enter Name on Card');
+        const element = this.renderer.selectRootElement('#nameOnCard');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (!this.validateName(this.appointment.cardDetails.nameOnCard)) {
+        return false;
+      } else if (this.appointment.cardDetails.cardNumber == "" || this.appointment.cardDetails.cardNumber == undefined) {
+        alert('Please Enter Card Number');
+        const element = this.renderer.selectRootElement('#cardNumber');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (this.appointment.cardDetails.expiryMonth == "" || this.appointment.cardDetails.expiryMonth == undefined) {
+        alert('Please Enter Expiry Month');
+        const element = this.renderer.selectRootElement('#expiryMonth');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (this.appointment.cardDetails.expiryYear == "" || this.appointment.cardDetails.expiryYear == undefined) {
+        alert('Please Enter Expiry Year');
+        const element = this.renderer.selectRootElement('#expiryYear');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (this.appointment.cardDetails.cvv == "" || this.appointment.cardDetails.cvv == undefined) {
+        alert('Please Enter CVV');
+        const element = this.renderer.selectRootElement('#cvv');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      return false;
+    }
+  }
+  validateName(name: string): boolean {
+    var nameRegex = /^[A-Za-z ]{3,16}$/;
+    if (nameRegex.test(name)) {
+      return true;
+    } else {
+      alert("Your name is not valid. Only characters A-Z and a-z are acceptable of length 3 to 16.");
+      return false;
+    }
+  }
+  onSubmit() {
+    if (this.validatePaymentData()) {
+      this.router.navigate(['/bookingSuccess']);
+    }
+  }
 }
 
-/* Static data */ 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  { position: 11, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 12, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 13, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 14, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 15, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 16, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 17, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 18, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 19, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 20, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-];
+
+

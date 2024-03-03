@@ -69,16 +69,54 @@ export class CheckoutComponent implements OnInit {
       return false;
     } else if (this.appointment.paymentMethod == "" || this.appointment.paymentMethod == undefined) {
       alert('Please Check the paymentMethod');
-      const element = this.renderer.selectRootElement('#cardName');
+      const element = this.renderer.selectRootElement('#nameOnCard');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (this.appointment.termsAndConditions == "" || this.appointment.termsAndConditions == "N" || this.appointment.termsAndConditions == undefined) {
+    }else if (this.appointment.paymentMethod == "Credit card" && !this.validateCardDetails()) {
+      return false;
+    }  else if (this.appointment.termsAndConditions == "" || this.appointment.termsAndConditions == "N" || this.appointment.termsAndConditions == undefined) {
       alert('Please Accept Terms & Conditions');
       const element = this.renderer.selectRootElement('#termsAndConditions');
       setTimeout(() => element.focus(), 0);
       return false;
     } else {
       return true;
+    }
+  }
+  validateCardDetails(): boolean {
+    if (this.appointment.paymentMethod == "Credit card") {
+      if (this.appointment.cardDetails.nameOnCard == "" || this.appointment.cardDetails.nameOnCard == undefined) {
+        alert('Please Enter Name on Card');
+        const element = this.renderer.selectRootElement('#nameOnCard');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (!this.validateName(this.appointment.cardDetails.nameOnCard)) {
+        return false;
+      } else if (this.appointment.cardDetails.cardNumber == "" || this.appointment.cardDetails.cardNumber == undefined) {
+        alert('Please Enter Card Number');
+        const element = this.renderer.selectRootElement('#cardNumber');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (this.appointment.cardDetails.expiryMonth == "" || this.appointment.cardDetails.expiryMonth == undefined) {
+        alert('Please Enter Expiry Month');
+        const element = this.renderer.selectRootElement('#expiryMonth');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (this.appointment.cardDetails.expiryYear == "" || this.appointment.cardDetails.expiryYear == undefined) {
+        alert('Please Enter Expiry Year');
+        const element = this.renderer.selectRootElement('#expiryYear');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (this.appointment.cardDetails.cvv == "" || this.appointment.cardDetails.cvv == undefined) {
+        alert('Please Enter CVV');
+        const element = this.renderer.selectRootElement('#cvv');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      return false;
     }
   }
   validateName(name: string): boolean {

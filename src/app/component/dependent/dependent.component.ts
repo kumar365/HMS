@@ -25,6 +25,7 @@ export class DependentComponent implements OnInit {
     this.dependentFlag = false;
     this.currentUserInfo = this.storageService.getUser();
     this.currentUserInfo.token = this.storageService.getToken();
+    //alert(this.currentUserInfo.token);
     this.getUserData();
     this.getDependentList();
   }

@@ -1,3 +1,4 @@
+import { CardDetails } from "./card-details";
 import { User } from "./user";
 
 export class Appointment {
@@ -21,5 +22,5 @@ export class Appointment {
     createdDate!: any;
     amount!: any;
     dependent!: any;
-    
+    cardDetails!:CardDetails;
 }
