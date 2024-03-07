@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>AidXpert</title>
+    <title>HMS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 
     <link href="/assets/img/favicon.png" rel="icon">
@@ -107,7 +107,8 @@
                                         <img src="/assets/img/ambulancedriver.jpg" alt="User Image">
                                     </a>
                                     <div class="profile-det-info">
-                                        <h3>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</h3>
+                                        <h3>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}
+                                        </h3>
                                         <div class="patient-details">
                                             <h5 class="mb-0">Contact No - +{{currentUser.phoneNumber}}</h5>
                                         </div>
@@ -227,10 +228,12 @@
                                 <form #ambulanceDetailsForm="ngForm" (ngSubmit)="onSubmit()">
                                     <div class="form-group form-focus">
                                         <select style="padding:5px 12px 6px;" [(ngModel)]="ambulance.type" id="type"
-                                            name="type" class="form-select form-control" #type="ngModel">
-                                            <option [value]="">Select Ambulance Type</option>
-                                            <option value="Basic Ambulance">Basic Ambulance</option>
+                                            name="type" class="form-select form-control"
+                                            #type="ngModel">
+                                            <option value="">Select Ambulance Type</option>
                                             <option value="AC Ambulance">AC Ambulance</option>
+                                            <option value="Basic Ambulance">Basic Ambulance</option>
+                                            <option value="ICU Ambulance">ICU Ambulance</option>
                                             <option value="Mortuary Ambulance">Mortuary Ambulance</option>
                                             <option value="Pediatric Ambulance">Pediatric Ambulance</option>
                                         </select>
@@ -290,8 +293,8 @@
                                     <div class="form-group form-focus">
                                         <label class="focus-label">Location</label>
                                         <input type="text" [(ngModel)]="ambulance.location" id="location"
-                                            name="location" placeholder="Location"
-                                            class="form-control floating" #location="ngModel">
+                                            name="location" placeholder="Location" class="form-control floating"
+                                            #location="ngModel">
                                     </div>
                                     <div class="form-group form-focus">
                                         <label class="focus-label">Ambulance Rate</label>
@@ -411,7 +414,7 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-6">
                             <div class="copyright-text">
-                                <p class="mb-0">&copy; 2023 AidXpert. All rights reserved. Powered by <a
+                                <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a
                                         href="https://fossgentechnologies.com" target="_blank" style="color:#fff">
                                         Technologies Pvt. Ltd.</a></p>
                             </div>

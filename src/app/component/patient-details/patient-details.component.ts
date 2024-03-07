@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AppValidations } from 'src/app/constant/app-validations';
 import { MessageConstants } from 'src/app/constant/message-constants';
 import { ApiResponse } from 'src/app/model/api-response';
 import { Appointment } from 'src/app/model/appointment';
@@ -76,29 +77,23 @@ export class PatientDetailsComponent implements OnInit {
       const element = this.renderer.selectRootElement('#reason');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (!this.validateName(this.appointment.reason)) {
+    } else if (!AppValidations.validateName(this.appointment.reason)) {
+      const element = this.renderer.selectRootElement('#reason');
+      setTimeout(() => element.focus(), 0);
       return false;
     } else if (this.appointment.symtoms == "" || this.appointment.symtoms == undefined) {
       alert('Please Enter Symtoms');
       const element = this.renderer.selectRootElement('#symtoms');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (!this.validateName(this.appointment.symtoms)) {
+    } else if (!AppValidations.validateName(this.appointment.symtoms)) {
+      const element = this.renderer.selectRootElement('#symtoms');
+      setTimeout(() => element.focus(), 0);
       return false;
     } else {
       return true;
     }
   }
-  validateName(name: string): boolean {
-    var nameRegex = /^[A-Za-z ]{3,16}$/;
-    if (nameRegex.test(name)) {
-      return true;
-    } else {
-      alert("Your name is not valid. Only characters A-Z and a-z are acceptable of length 3 to 16.");
-      return false;
-    }
-  }
-
   changeTermsAndConditions() {
     this.termsAndConditionsFlag = !this.termsAndConditionsFlag;
     if (this.termsAndConditionsFlag) {

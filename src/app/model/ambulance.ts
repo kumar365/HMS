@@ -5,7 +5,7 @@ export class Ambulance {
     registrationNumber!: string;
     addons!: string;
     location!: string;
-    ambulanceRate!: any;
+    ambulanceRate!: number;
     rating!: any;
     driverEmail!: string;
     driverName!: string;

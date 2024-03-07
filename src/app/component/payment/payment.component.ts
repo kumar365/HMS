@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppValidations } from 'src/app/constant/app-validations';
 import { Appointment } from 'src/app/model/appointment';
 import { CardDetails } from 'src/app/model/card-details';
 import { User } from 'src/app/model/user';
@@ -51,7 +52,9 @@ export class PaymentComponent implements OnInit {
         const element = this.renderer.selectRootElement('#nameOnCard');
         setTimeout(() => element.focus(), 0);
         return false;
-      } else if (!this.validateName(this.appointment.cardDetails.nameOnCard)) {
+      } else if (!AppValidations.validateName(this.appointment.cardDetails.nameOnCard)) {
+        const element = this.renderer.selectRootElement('#nameOnCard');
+        setTimeout(() => element.focus(), 0);
         return false;
       } else if (this.appointment.cardDetails.cardNumber == "" || this.appointment.cardDetails.cardNumber == undefined) {
         alert('Please Enter Card Number');
@@ -68,8 +71,16 @@ export class PaymentComponent implements OnInit {
         const element = this.renderer.selectRootElement('#expiryYear');
         setTimeout(() => element.focus(), 0);
         return false;
+      } else if (!AppValidations.validateExpiryDate(this.appointment.cardDetails.expiryMonth, this.appointment.cardDetails.expiryYear)) {
+        const element = this.renderer.selectRootElement('#expiryMonth');
+        setTimeout(() => element.focus(), 0);
+        return false;
       } else if (this.appointment.cardDetails.cvv == "" || this.appointment.cardDetails.cvv == undefined) {
         alert('Please Enter CVV');
+        const element = this.renderer.selectRootElement('#cvv');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (!AppValidations.validateCVV(this.appointment.cardDetails.cvv)) {
         const element = this.renderer.selectRootElement('#cvv');
         setTimeout(() => element.focus(), 0);
         return false;
@@ -77,15 +88,6 @@ export class PaymentComponent implements OnInit {
         return true;
       }
     } else {
-      return false;
-    }
-  }
-  validateName(name: string): boolean {
-    var nameRegex = /^[A-Za-z ]{3,16}$/;
-    if (nameRegex.test(name)) {
-      return true;
-    } else {
-      alert("Your name is not valid. Only characters A-Z and a-z are acceptable of length 3 to 16.");
       return false;
     }
   }

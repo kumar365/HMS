@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
+import { AppValidations } from 'src/app/constant/app-validations';
 import { MessageConstants } from 'src/app/constant/message-constants';
 import { Ambulance } from 'src/app/model/ambulance';
 import { MessageResponse } from 'src/app/model/message-response';
@@ -18,7 +19,8 @@ export class AddAmbulanceComponent implements OnInit {
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
   ambulance: Ambulance = new Ambulance;
-  constructor(private storageService: StorageService, private userService: UserService) { }
+  constructor(private storageService: StorageService, private userService: UserService,
+    private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
@@ -32,15 +34,76 @@ export class AddAmbulanceComponent implements OnInit {
     });
   }
   onSubmit() {
-    console.log('this.currentUserInfo.token ::' + this.currentUserInfo.token);
-    this.userService.saveAmbulance(this.ambulance, this.currentUserInfo.token).subscribe((data: MessageResponse) => {
-      this.message = data.message;
-      //console.log('this.message::' + this.message);
-      if (this.message == MessageConstants.AmbulanceDetailsMessage) {
-        this.statusFlag = true;
-        this.ambulance = new Ambulance;
-      }
-    });
+    if (this.validateAmbulanceData()) {
+      console.log('this.currentUserInfo.token ::' + this.currentUserInfo.token);
+      this.userService.saveAmbulance(this.ambulance, this.currentUserInfo.token).subscribe((data: MessageResponse) => {
+        this.message = data.message;
+        //console.log('this.message::' + this.message);
+        if (this.message == MessageConstants.AmbulanceDetailsMessage) {
+          this.statusFlag = true;
+          this.ambulance = new Ambulance;
+        }
+      });
+    }
+  }
+
+  validateAmbulanceData(): boolean {
+    if (this.ambulance.type == "" || this.ambulance.type == undefined) {
+      alert('Please Select Ambulance Type');
+      const element = this.renderer.selectRootElement('#type');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.ambulance.modelNumber == "" || this.ambulance.modelNumber == undefined) {
+      alert('Please Eneter Ambulance Model Number');
+      const element = this.renderer.selectRootElement('#modelNumber');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.ambulance.registrationNumber == "" || this.ambulance.registrationNumber == undefined) {
+      alert('Please Eneter Ambulance Registration Number');
+      const element = this.renderer.selectRootElement('#registrationNumber');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.ambulance.addons == "" || this.ambulance.addons == undefined) {
+      alert('Please Enter Ambulance Addons');
+      const element = this.renderer.selectRootElement('#addons');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.ambulance.driverEmail == "" || this.ambulance.driverEmail == undefined) {
+      alert('Please Enter Driver Email');
+      const element = this.renderer.selectRootElement('#driverEmail');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.ambulance.driverName == "" || this.ambulance.driverName == undefined) {
+      alert('Please Enter Driver Name');
+      const element = this.renderer.selectRootElement('#driverName');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validateName(this.ambulance.driverName)) {
+      const element = this.renderer.selectRootElement('#driverName');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.ambulance.driverNumber == "" || this.ambulance.driverNumber == undefined) {
+      alert('Please Enter Driver Number');
+      const element = this.renderer.selectRootElement('#driverNumber');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validatePhoneNumber(this.ambulance.driverNumber)) {
+      const element = this.renderer.selectRootElement('#driverNumber');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.ambulance.location == "" || this.ambulance.location == undefined) {
+      alert('Please Enter Location');
+      const element = this.renderer.selectRootElement('#location');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.ambulance.ambulanceRate <= 0 || this.ambulance.ambulanceRate == undefined) {
+      alert('Please Enter Ambulance Rate >0');
+      const element = this.renderer.selectRootElement('#ambulanceRate');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else {
+      return true;
+    }
   }
 
   reloadPage(): void {

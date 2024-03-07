@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageConstants } from 'src/app/constant/message-constants';
@@ -23,7 +23,8 @@ export class AddBillingComponent implements OnInit {
   billsList: Bill[] = [];
   billStatusFlag: boolean = false;
   formData!: FormGroup;
-  constructor(private storageService: StorageService, private userService: UserService, private paymentService: PaymentService, private router: Router) { }
+  constructor(private storageService: StorageService, private userService: UserService,
+    private paymentService: PaymentService, private router: Router, private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
@@ -39,7 +40,7 @@ export class AddBillingComponent implements OnInit {
     });
   }
   saveBills() {
-    if (this.validateBill()) {
+    if (this.validateBillData()) {
       this.bill.user = this.currentUser;
       this.bill.name = this.currentUser.username;
       this.paymentService.saveBill(this.bill, this.currentUserInfo.token).subscribe((data: ApiResponse) => {
@@ -55,16 +56,20 @@ export class AddBillingComponent implements OnInit {
       });
     }
   }
-  validateBill(): boolean {
-    var validateFlag = false;
+  validateBillData(): boolean {
     if (this.bill.title == "" || this.bill.title == undefined) {
       alert('Please eneter Title');
+      const element = this.renderer.selectRootElement('#title');
+      setTimeout(() => element.focus(), 0);
+      return false;
     } else if (this.bill.amount <= 0 || this.bill.amount == undefined) {
       alert('Please eneter Amount');
+      const element = this.renderer.selectRootElement('#amount');
+      setTimeout(() => element.focus(), 0);
+      return false;
     } else {
-      validateFlag = true;
+      return true;
     }
-    return validateFlag;
   }
   getBillList() {
     this.paymentService.getBillList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: Bill[]) => {

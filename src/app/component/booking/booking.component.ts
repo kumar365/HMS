@@ -32,14 +32,17 @@ export class BookingComponent implements OnInit {
       this.currentUser = data;
     });
   }
-  checkConsultationType(): boolean {
+  onSubmit() {
+    if (this.validateBooking()) {
+      this.router.navigate(['/checkout']);
+    }
+  }
+  validateBooking(): boolean {
     if (this.appointment.consultationType == "" || this.appointment.consultationType == undefined) {
       alert('Please select Consultation Type');
       return false;
     } else {
-      this.router.navigate(['/checkout']);
       return true;
     }
   }
-
 }

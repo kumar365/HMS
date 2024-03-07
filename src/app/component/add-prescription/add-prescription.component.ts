@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppValidations } from 'src/app/constant/app-validations';
 import { MessageConstants } from 'src/app/constant/message-constants';
 import { MessageResponse } from 'src/app/model/message-response';
 import { Prescription } from 'src/app/model/prescription';
@@ -20,7 +21,8 @@ export class AddPrescriptionComponent implements OnInit {
   currentUser: User = new User;
   prescription: Prescription = new Prescription;
   prescriptionList: Prescription[] = [];
-  constructor(private storageService: StorageService, private userService: UserService, private router: Router) { }
+  constructor(private storageService: StorageService, private userService: UserService,
+    private router: Router, private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
@@ -64,15 +66,28 @@ export class AddPrescriptionComponent implements OnInit {
     }
   }
   validatePrescription(): boolean {
-    var validateFlag = false;
     if (this.prescription.prescriptionName == "" || this.prescription.prescriptionName == undefined) {
       alert('Please eneter Name');
+      const element = this.renderer.selectRootElement('#prescriptionName');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validateName(this.prescription.prescriptionName)) {
+      const element = this.renderer.selectRootElement('#prescriptionName');
+      setTimeout(() => element.focus(), 0);
+      return false;
     } else if (this.prescription.quantity <= 0 || this.prescription.quantity == undefined) {
       alert('Please eneter Quantity');
+      const element = this.renderer.selectRootElement('#quantity');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.prescription.prescriptionDays == "" || this.prescription.prescriptionDays == undefined) {
+      alert('Please eneter Days');
+      const element = this.renderer.selectRootElement('#prescriptionDays');
+      setTimeout(() => element.focus(), 0);
+      return false;
     } else {
-      validateFlag = true;
+      return true;
     }
-    return validateFlag;
   }
   clearPrescription() {
     this.prescription = new Prescription;

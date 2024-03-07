@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { AppValidations } from 'src/app/constant/app-validations';
 import { MessageConstants } from 'src/app/constant/message-constants';
 import { ApiResponse } from 'src/app/model/api-response';
 import { Dependent } from 'src/app/model/dependent';
@@ -47,21 +48,27 @@ export class DependentComponent implements OnInit {
       const element = this.renderer.selectRootElement('#name');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (!this.validateName(this.dependent.name)) {
+    } else if (!AppValidations.validateName(this.dependent.name)) {
+      const element = this.renderer.selectRootElement('#name');
+      setTimeout(() => element.focus(), 0);
       return false;
     } else if (this.dependent.relationship == "" || this.dependent.relationship == undefined) {
       alert('Please Enter Relationship');
       const element = this.renderer.selectRootElement('#relationship');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (!this.validateName(this.dependent.relationship)) {
+    } else if (!AppValidations.validateName(this.dependent.relationship)) {
+      const element = this.renderer.selectRootElement('#relationship');
+      setTimeout(() => element.focus(), 0);
       return false;
     } else if (this.dependent.phoneNumber == "" || this.dependent.phoneNumber == undefined) {
       alert('Please Enter Phone Number');
       const element = this.renderer.selectRootElement('#phoneNumber');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (!this.validatePhoneNumber(this.dependent.phoneNumber)) {
+    } else if (!AppValidations.validatePhoneNumber(this.dependent.phoneNumber)) {
+      const element = this.renderer.selectRootElement('#phoneNumber');
+      setTimeout(() => element.focus(), 0);
       return false;
     } else if (this.dependent.gender == "" || this.dependent.gender == undefined) {
       alert('Please Select the Gender');
@@ -80,25 +87,6 @@ export class DependentComponent implements OnInit {
       return false;
     } else {
       return true;
-    }
-  }
-  validateName(name: string): boolean {
-    var nameRegex = /^[A-Za-z ]{3,16}$/;
-    if (nameRegex.test(name)) {
-      return true;
-    } else {
-      alert("Your name is not valid. Only characters A-Z and a-z are acceptable of length 3 to 16.");
-      return false;
-    }
-  }
-
-  validatePhoneNumber(phoneNumber: string): boolean {
-    var phoneNumberRegex = /^[6-9]{1}[0-9]{9}$/;
-    if (phoneNumberRegex.test(phoneNumber)) {
-      return true;
-    } else {
-      alert("Your Phone Numaber is not valid.");
-      return false;
     }
   }
   onSubmit() {
