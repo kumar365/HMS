@@ -90,5 +90,5 @@ export class DoctorChangePasswordComponent implements OnInit {
   reloadPage(): void {
     window.location.reload();
   }
-
+  
 }
