@@ -26,7 +26,7 @@ export class AppValidations {
             return false;
         }
     }
-    static checkPasswordValidity(password: string): boolean {
+    static validatePassword(password: string): boolean {
         const isNonWhiteSpace = /^\S*$/;
         if (!isNonWhiteSpace.test(password)) {
             alert("Password must not contain Whitespaces.");
@@ -60,6 +60,20 @@ export class AppValidations {
         }
         return true;
     }
+    static validateExpiryMonth(exMonth: string): boolean {
+        if (+exMonth > 12) {
+            alert("Month value is not valid.");
+            return false;
+        }
+        return true;
+    }
+    static validateExpiryYear(exYear: string): boolean {
+        if (+exYear < 2024) {
+            alert("Year value is not valid.");
+            return false;
+        }
+        return true;
+    }
     static validateExpiryDate(exMonth: string, exYear: string): boolean {
         var today, someday;
         today = new Date();
@@ -73,8 +87,12 @@ export class AppValidations {
         }
     }
     static validateCVV(cvv: string): boolean {
-        var cvvRegex = /^[0-9]{3, 4}$/;
-        if (cvvRegex.test(cvv)) {
+        let cvvRegex = new RegExp(/^[0-9]{3,4}$/);
+        if (cvv == null) {
+            alert("Your CVV is not valid.");
+            return false;
+        }
+        if (cvvRegex.test(cvv) == true) {
             return true;
         } else {
             alert("Your CVV is not valid.");

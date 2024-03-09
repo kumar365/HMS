@@ -4,6 +4,8 @@ import { AppConstants } from '../constant/app-constants';
 import { User } from '../model/user';
 import { Observable } from 'rxjs';
 import { OtpRequest } from '../model/otp-request';
+import { Ambulance } from '../model/ambulance';
+import { ApiResponse } from '../model/api-response';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -69,6 +71,14 @@ export class AuthService {
     this.user.email = user.email;
     this.user.password = user.password;
     return this.http.post(AppConstants.SIGNUP_DOCTOR, this.user, httpOptions);
+  }
+
+  public registerAmbulance(ambulance: Ambulance): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(AppConstants.SIGNUP_AMBULANCE, ambulance, httpOptions);
+  }
+
+  public loginAmbulance(ambulance: Ambulance): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(AppConstants.SIGNIN_AMBULANCE, ambulance, httpOptions);
   }
 
   signout(): Observable<any> {

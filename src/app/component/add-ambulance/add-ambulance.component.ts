@@ -73,6 +73,10 @@ export class AddAmbulanceComponent implements OnInit {
       const element = this.renderer.selectRootElement('#driverEmail');
       setTimeout(() => element.focus(), 0);
       return false;
+    } else if (!AppValidations.validateMail(this.ambulance.driverEmail)) {
+      const element = this.renderer.selectRootElement('#driverEmail');
+      setTimeout(() => element.focus(), 0);
+      return false;
     } else if (this.ambulance.driverName == "" || this.ambulance.driverName == undefined) {
       alert('Please Enter Driver Name');
       const element = this.renderer.selectRootElement('#driverName');

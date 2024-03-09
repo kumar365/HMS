@@ -69,7 +69,7 @@ export class DoctorSignupComponent implements OnInit {
       const element = this.renderer.selectRootElement('#password');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (!AppValidations.checkPasswordValidity(this.user.password)) {
+    } else if (!AppValidations.validatePassword(this.user.password)) {
       const element = this.renderer.selectRootElement('#password');
       setTimeout(() => element.focus(), 0);
       return false;

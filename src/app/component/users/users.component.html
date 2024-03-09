@@ -1,22 +1,22 @@
 <div class="ccol-xs-7 col-sm-6 col-lg-8">
-    <div class="card-body">
-      <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">User Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of users">
-            <td>{{ user.id }}</td>
-            <td>{{ user.displayName }}</td>
-            <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
-            <td>{{ user.userType }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">User Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.displayName }}</td>
+          <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+          <td>{{ user.userType }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>

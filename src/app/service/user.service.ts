@@ -12,6 +12,7 @@ import { MedicalRecords } from '../model/medical-records';
 import { Ambulance } from '../model/ambulance';
 import { Prescription } from '../model/prescription';
 import { Appointment } from '../model/appointment';
+import { Product } from '../model/product';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -174,5 +175,21 @@ export class UserService {
     };
     return this.httpClient.get<Appointment[]>(AppConstants.GET_DOCTOR_APPOINTMENT_LIST + id, httpOptions1);
   }
+
+  public saveProduct(product: Product, token: String): Observable<ApiResponse> {
+    //console.log('token :: ' + token);
+    const httpOptions1 = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
+    };
+    return this.httpClient.post<ApiResponse>(AppConstants.ADD_PRODUCT, Product, httpOptions1);
+  }
+  getProductList(userInfo: UserInfo): Observable<Product[]> {
+    //console.log('token :: ' + token);
+    const httpOptions1 = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + userInfo.token })
+    };
+    return this.httpClient.get<Product[]>(AppConstants.GET_PRODUCT_LIST + userInfo.id, httpOptions1);
+  }
+
 }
 

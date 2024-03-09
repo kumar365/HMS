@@ -114,7 +114,8 @@
                                         <img src="/assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
                                     </a>
                                     <div class="profile-det-info">
-                                        <h3>Dr. Ganesh K</h3>
+                                        <h3>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}
+                                        </h3>
                                         <div class="patient-details">
                                             <h5 class="mb-0">BDS, MDS - Oral & Maxillofacial Surgery</h5>
                                         </div>
@@ -174,7 +175,6 @@
                                                 <span>Profile Settings</span>
                                             </a>
                                         </li>
-
                                         <li>
                                             <a href="doctorChangePassword">
                                                 <i class="fas fa-lock"></i>
@@ -194,7 +194,7 @@
 
                     </div>
                     <div class="col-md-7 col-lg-8 col-xl-9">
-                        <div class="appointments">
+                        <div class="appointments" *ngFor="let appointment of appointmentList;">
 
                             <div class="appointment-list">
                                 <div class="profile-info-widget">
@@ -202,11 +202,11 @@
                                         <img src="/assets/img/patients/patient9.jpg" alt="User Image">
                                     </a>
                                     <div class="profile-det-info">
-                                        <h3><a href="patientProfile">Sudhir B</a></h3>
+                                        <h3><a href="patientProfile">{{appointment.user.displayName}}</a></h3>
                                         <div class="patient-details">
-                                            <h5><i class="far fa-clock"></i> 14 Sep 2023, 10.00 AM</h5>
-                                            <h5><i class="fas fa-map-marker-alt"></i> Hyd, Telangana</h5>
-                                            <h5 class="mb-0"><i class="fas fa-phone"></i> +91-987846123</h5>
+                                            <h5><i class="far fa-clock"></i> {{appointment.date | date:'dd MMM yyyy' }}</h5>
+                                            <h5><i class="fas fa-map-marker-alt"></i> {{appointment.user.address}}</h5>
+                                            <h5 class="mb-0"><i class="fas fa-phone"></i> +91-{{appointment.user.phoneNumber}}</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -223,184 +223,14 @@
                                     </a>
                                 </div>
                             </div>
-
-                            <div class="appointment-list">
-                                <div class="profile-info-widget">
-                                    <a href="patientProfile" class="booking-doc-img">
-                                        <img src="/assets/img/patients/patient9.jpg" alt="User Image">
-                                    </a>
-                                    <div class="profile-det-info">
-                                        <h3><a href="patientProfile">Sudhir B</a></h3>
-                                        <div class="patient-details">
-                                            <h5><i class="far fa-clock"></i> 14 Sep 2023, 10.00 AM</h5>
-                                            <h5><i class="fas fa-map-marker-alt"></i> Hyd, Telangana</h5>
-                                            <h5 class="mb-0"><i class="fas fa-phone"></i> +91-987846123</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="appointment-action">
-                                    <a href="#" class="btn btn-sm bg-info-light" data-bs-toggle="modal"
-                                        data-bs-target="#appt_details">
-                                        <i class="far fa-eye"></i> View
-                                    </a>
-                                    <a href="javascript:void(0);" class="btn btn-sm bg-success-light">
-                                        <i class="fas fa-check"></i> Accept
-                                    </a>
-                                    <a href="javascript:void(0);" class="btn btn-sm bg-danger-light">
-                                        <i class="fas fa-times"></i> Cancel
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="appointment-list">
-                                <div class="profile-info-widget">
-                                    <a href="patientProfile" class="booking-doc-img">
-                                        <img src="/assets/img/patients/patient9.jpg" alt="User Image">
-                                    </a>
-                                    <div class="profile-det-info">
-                                        <h3><a href="patientProfile">Sudhir B</a></h3>
-                                        <div class="patient-details">
-                                            <h5><i class="far fa-clock"></i> 14 Sep 2023, 10.00 AM</h5>
-                                            <h5><i class="fas fa-map-marker-alt"></i> Hyd, Telangana</h5>
-                                            <h5 class="mb-0"><i class="fas fa-phone"></i> +91-987846123</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="appointment-action">
-                                    <a href="#" class="btn btn-sm bg-info-light" data-bs-toggle="modal"
-                                        data-bs-target="#appt_details">
-                                        <i class="far fa-eye"></i> View
-                                    </a>
-                                    <a href="javascript:void(0);" class="btn btn-sm bg-success-light">
-                                        <i class="fas fa-check"></i> Accept
-                                    </a>
-                                    <a href="javascript:void(0);" class="btn btn-sm bg-danger-light">
-                                        <i class="fas fa-times"></i> Cancel
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="appointment-list">
-                                <div class="profile-info-widget">
-                                    <a href="patientProfile" class="booking-doc-img">
-                                        <img src="/assets/img/patients/patient9.jpg" alt="User Image">
-                                    </a>
-                                    <div class="profile-det-info">
-                                        <h3><a href="patientProfile">Sudhir B</a></h3>
-                                        <div class="patient-details">
-                                            <h5><i class="far fa-clock"></i> 14 Sep 2023, 10.00 AM</h5>
-                                            <h5><i class="fas fa-map-marker-alt"></i> Hyd, Telangana</h5>
-                                            <h5 class="mb-0"><i class="fas fa-phone"></i> +91-987846123</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="appointment-action">
-                                    <a href="#" class="btn btn-sm bg-info-light" data-bs-toggle="modal"
-                                        data-bs-target="#appt_details">
-                                        <i class="far fa-eye"></i> View
-                                    </a>
-                                    <a href="javascript:void(0);" class="btn btn-sm bg-success-light">
-                                        <i class="fas fa-check"></i> Accept
-                                    </a>
-                                    <a href="javascript:void(0);" class="btn btn-sm bg-danger-light">
-                                        <i class="fas fa-times"></i> Cancel
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="appointment-list">
-                                <div class="profile-info-widget">
-                                    <a href="patientProfile" class="booking-doc-img">
-                                        <img src="/assets/img/patients/patient9.jpg" alt="User Image">
-                                    </a>
-                                    <div class="profile-det-info">
-                                        <h3><a href="patientProfile">Sudhir B</a></h3>
-                                        <div class="patient-details">
-                                            <h5><i class="far fa-clock"></i> 14 Sep 2023, 10.00 AM</h5>
-                                            <h5><i class="fas fa-map-marker-alt"></i> Hyd, Telangana</h5>
-                                            <h5 class="mb-0"><i class="fas fa-phone"></i> +91-987846123</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="appointment-action">
-                                    <a href="#" class="btn btn-sm bg-info-light" data-bs-toggle="modal"
-                                        data-bs-target="#appt_details">
-                                        <i class="far fa-eye"></i> View
-                                    </a>
-                                    <a href="javascript:void(0);" class="btn btn-sm bg-success-light">
-                                        <i class="fas fa-check"></i> Accept
-                                    </a>
-                                    <a href="javascript:void(0);" class="btn btn-sm bg-danger-light">
-                                        <i class="fas fa-times"></i> Cancel
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="appointment-list">
-                                <div class="profile-info-widget">
-                                    <a href="patientProfile" class="booking-doc-img">
-                                        <img src="/assets/img/patients/patient9.jpg" alt="User Image">
-                                    </a>
-                                    <div class="profile-det-info">
-                                        <h3><a href="patientProfile">Sudhir B</a></h3>
-                                        <div class="patient-details">
-                                            <h5><i class="far fa-clock"></i> 14 Sep 2023, 10.00 AM</h5>
-                                            <h5><i class="fas fa-map-marker-alt"></i> Hyd, Telangana</h5>
-                                            <h5 class="mb-0"><i class="fas fa-phone"></i> +91-987846123</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="appointment-action">
-                                    <a href="#" class="btn btn-sm bg-info-light" data-bs-toggle="modal"
-                                        data-bs-target="#appt_details">
-                                        <i class="far fa-eye"></i> View
-                                    </a>
-                                    <a href="javascript:void(0);" class="btn btn-sm bg-success-light">
-                                        <i class="fas fa-check"></i> Accept
-                                    </a>
-                                    <a href="javascript:void(0);" class="btn btn-sm bg-danger-light">
-                                        <i class="fas fa-times"></i> Cancel
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="appointment-list">
-                                <div class="profile-info-widget">
-                                    <a href="patientProfile" class="booking-doc-img">
-                                        <img src="/assets/img/patients/patient9.jpg" alt="User Image">
-                                    </a>
-                                    <div class="profile-det-info">
-                                        <h3><a href="patientProfile">Sudhir B</a></h3>
-                                        <div class="patient-details">
-                                            <h5><i class="far fa-clock"></i> 14 Sep 2023, 10.00 AM</h5>
-                                            <h5><i class="fas fa-map-marker-alt"></i> Hyd, Telangana</h5>
-                                            <h5 class="mb-0"><i class="fas fa-phone"></i> +91-987846123</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="appointment-action">
-                                    <a href="#" class="btn btn-sm bg-info-light" data-bs-toggle="modal"
-                                        data-bs-target="#appt_details">
-                                        <i class="far fa-eye"></i> View
-                                    </a>
-                                    <a href="javascript:void(0);" class="btn btn-sm bg-success-light">
-                                        <i class="fas fa-check"></i> Accept
-                                    </a>
-                                    <a href="javascript:void(0);" class="btn btn-sm bg-danger-light">
-                                        <i class="fas fa-times"></i> Cancel
-                                    </a>
-                                </div>
-                            </div>
-
+                                                   
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-
         <footer class="footer">
-
             <div class="footer-top aos"><!-- data-aos="fade-up" -->
                 <div class="container-fluid">
                     <div class="row">
@@ -486,8 +316,6 @@
                 </div>
             </div>
 
-
-
             <div class="footer-bottom">
                 <div class="container-fluid">
 
@@ -496,8 +324,8 @@
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
                                     <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a
-                                            href="https://abc.com" target="_blank"
-                                            style="color:#fff"> Technologies Pvt. Ltd.</a></p>
+                                            href="https://abc.com" target="_blank" style="color:#fff"> Technologies Pvt.
+                                            Ltd.</a></p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">
@@ -519,7 +347,6 @@
         </footer>
 
     </div>
-
 
     <div class="modal fade custom-modal" id="appt_details">
         <div class="modal-dialog modal-dialog-centered">
@@ -566,12 +393,12 @@
         </div>
     </div>
 
-
     <script src="/assets/js/jquery-3.6.4.min.js"></script>
 
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
 
     <script src="/assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+
     <script src="/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
 
     <script src="/assets/js/script.js"></script>

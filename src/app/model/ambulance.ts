@@ -1,5 +1,8 @@
 export class Ambulance {
     id!: any;
+    fullName!: any;
+    mobileNumber!: string;
+    password!: string;
     type!: string;
     modelNumber!: string;
     registrationNumber!: string;
@@ -15,4 +18,5 @@ export class Ambulance {
     ipAddress!: string;
     createdBy!: string;
     createdDate!: string;
+    confirmPassword!: string;
 }

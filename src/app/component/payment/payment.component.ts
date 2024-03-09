@@ -66,8 +66,16 @@ export class PaymentComponent implements OnInit {
         const element = this.renderer.selectRootElement('#expiryMonth');
         setTimeout(() => element.focus(), 0);
         return false;
+      } else if (!AppValidations.validateExpiryMonth(this.appointment.cardDetails.expiryMonth)) {
+        const element = this.renderer.selectRootElement('#expiryMonth');
+        setTimeout(() => element.focus(), 0);
+        return false;
       } else if (this.appointment.cardDetails.expiryYear == "" || this.appointment.cardDetails.expiryYear == undefined) {
         alert('Please Enter Expiry Year');
+        const element = this.renderer.selectRootElement('#expiryYear');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (!AppValidations.validateExpiryYear(this.appointment.cardDetails.expiryYear)) {
         const element = this.renderer.selectRootElement('#expiryYear');
         setTimeout(() => element.focus(), 0);
         return false;

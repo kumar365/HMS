@@ -13,9 +13,11 @@ export class AppConstants {
     public static COMMON_URL = AppConstants.API_BASE_URL + "common/";
     public static AUTH_API = AppConstants.API_URL + "auth/";
     public static SIGNIN = AppConstants.AUTH_API + 'signin';
+    public static SIGNIN_AMBULANCE = AppConstants.AUTH_API + 'signinAmbulance';
     public static SIGNUP = AppConstants.AUTH_API + 'signup';
     public static SIGNUP_PATIENT = AppConstants.AUTH_API + 'signupPatient';
     public static SIGNUP_DOCTOR = AppConstants.AUTH_API + 'signupDoctor';
+    public static SIGNUP_AMBULANCE = AppConstants.AUTH_API + 'signupAmbulance';
     public static SIGNOUT = AppConstants.AUTH_API + 'signout';
     public static SEND_PHONE_NUMBER_VERIFICATION_CODE = AppConstants.AUTH_API + 'sendPhoneNumberVerificationCode';
     public static SEND_EMAIL_VERIFICATION_CODE = AppConstants.AUTH_API + 'sendEmailVerificationCode';
@@ -44,6 +46,8 @@ export class AppConstants {
     public static ADD_APPOINTMENT = AppConstants.PATIENT_URL + 'addAppointment';
     public static GET_PATIENT_APPOINTMENT_LIST = AppConstants.PATIENT_URL + 'patientAppointments/';
     public static GET_DOCTOR_APPOINTMENT_LIST = AppConstants.PATIENT_URL + 'doctorAppointments/';
+    public static ADD_PRODUCT = AppConstants.PATIENT_URL + 'addProduct';
+    public static GET_PRODUCT_LIST = AppConstants.PATIENT_URL + 'products/';
     public static PAYMENT_URL = AppConstants.API_BASE_URL + "payment/";
     public static ADD_BILL = AppConstants.PAYMENT_URL + 'addBill';
     public static GET_BILL_LIST = AppConstants.PAYMENT_URL + 'bills/';

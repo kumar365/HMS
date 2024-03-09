@@ -93,7 +93,6 @@
             </nav>
         </header>
 
-
         <section class="banner-slider">
             <div class="container">
                 <div class="home-banner">
@@ -111,7 +110,7 @@
                                     Ambulance<span><i class="feather-arrow-right ms-2"></i></span></a>
                             </div>
                         </div>
-                        <div class="col-lg-6 aos" ><!-- data-aos="fade-up" -->
+                        <div class="col-lg-6 aos"><!-- data-aos="fade-up" -->
                             <div class="banner-imgs">
                                 <img src="/assets/img/ambulance.png" class="img-fluid aos" alt="bannerimage">
                             </div>
@@ -120,12 +119,10 @@
                 </div>
             </div>
         </section>
-
-
         <div class="">
             <div class="container">
                 <div class="search-box-banner">
-                    <form action="searchAmbulance">
+                    <form #bookAmbulanceForm="ngForm" (ngSubmit)="onSubmit()">
                         <ul class="align-items-center">
                             <li class="column-group-main">
                                 <div class="form-group">
@@ -613,8 +610,8 @@
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
                                     <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a
-                                            href="https://abc.com" target="_blank"
-                                            style="color:#fff">FossGen Technologies Pvt. Ltd.</a></p>
+                                            href="https://abc.com" target="_blank" style="color:#fff">FossGen
+                                            Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">

@@ -116,7 +116,9 @@
                                         <h4 class="card-title">Payment Method</h4>
                                         <div class="payment-list">
                                             <label class="payment-radio credit-card-option">
-                                                <input type="radio" name="radio" checked>
+                                                <input type="radio" [(ngModel)]="appointment.paymentMethod"
+                                                    value="Credit card" id="paymentMethod" name="paymentMethod"
+                                                    class="form-control" #paymentMethod="ngModel">
                                                 <span class="checkmark"></span>
                                                 Credit card / Debit Card
                                             </label>
@@ -124,55 +126,72 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group card-label">
                                                         <label for="card_name">Name on Card</label>
-                                                        <input class="form-control" id="card_name" type="text">
+                                                        <input type="text"
+                                                            [(ngModel)]="appointment.cardDetails.nameOnCard"
+                                                            placeholder="Name on Card" id="nameOnCard" name="nameOnCard"
+                                                            class="form-control" #nameOnCard="ngModel">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group card-label">
                                                         <label for="card_number">Card Number</label>
-                                                        <input class="form-control" id="card_number"
-                                                            placeholder="1234  5678  9876  5432" type="text">
+                                                        <input type="text"
+                                                            [(ngModel)]="appointment.cardDetails.cardNumber"
+                                                            placeholder="xxxx-xxxx-xxxx-xxxx" id="cardNumber"
+                                                            name="cardNumber" class="form-control"
+                                                            #cardNumber="ngModel">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group card-label">
                                                         <label for="expiry_month">Expiry Month</label>
-                                                        <input class="form-control" id="expiry_month" placeholder="MM"
-                                                            type="text">
+                                                        <input type="text"
+                                                            [(ngModel)]="appointment.cardDetails.expiryMonth"
+                                                            placeholder="MM" id="expiryMonth" name="expiryMonth"
+                                                            class="form-control" #expiryMonth="ngModel">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group card-label">
                                                         <label for="expiry_year">Expiry Year</label>
-                                                        <input class="form-control" id="expiry_year" placeholder="YY"
-                                                            type="text">
+                                                        <input type="text"
+                                                            [(ngModel)]="appointment.cardDetails.expiryYear"
+                                                            placeholder="YYYY" id="expiryYear" name="expiryYear"
+                                                            class="form-control" #expiryYear="ngModel">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group card-label">
                                                         <label for="cvv">CVV</label>
-                                                        <input class="form-control" id="cvv" type="text">
+                                                        <input type="text" [(ngModel)]="appointment.cardDetails.cvv"
+                                                            placeholder="****" id="cvv" name="cvv" class="form-control"
+                                                            #cvv="ngModel">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="payment-list">
                                             <label class="payment-radio paypal-option">
-                                                <input type="radio" name="radio">
+                                                <input type="radio" [(ngModel)]="appointment.paymentMethod"
+                                                    value="Paypal" id="paymentMethod" name="paymentMethod"
+                                                    class="form-control" #paymentMethod="ngModel">
                                                 <span class="checkmark"></span>
                                                 Paypal
                                             </label>
                                         </div>
                                         <div class="payment-list">
                                             <label class="payment-radio paypal-option">
-                                                <input type="radio" name="radio">
+                                                <input type="radio" [(ngModel)]="appointment.paymentMethod"
+                                                    value="Paytm" id="paymentMethod" name="paymentMethod"
+                                                    class="form-control" #paymentMethod="ngModel">
                                                 <span class="checkmark"></span>
                                                 Gpay / Paytm
                                             </label>
                                         </div>
                                         <div class="terms-accept">
                                             <div class="custom-checkbox">
-                                                <input type="checkbox" id="terms_accept">
+                                                <input type="checkbox" id="termsAndConditions"
+                                                    (change)="changeTermsAndConditions()">
                                                 <label for="terms_accept">I have read and accept <a
                                                         href="termsConditions" target="_blank">Terms &amp;
                                                         Conditions</a></label>

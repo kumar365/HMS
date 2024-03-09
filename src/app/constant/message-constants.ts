@@ -1,6 +1,7 @@
 export class MessageConstants {
     public static RegisterPatientMessage = 'Patient registered successfully';
     public static RegisterDoctorMessage = 'Doctor registered successfully';
+    public static RegisterAmbulanceMessage ='Ambulance registered successfully';
     public static ChangePasswordMessage = 'Password updated successfully!';
     public static UpdateProfileMessage = 'Profile updated successfully!';
     public static PasswordDiffMessage = 'New password and confirm password are diffrent';

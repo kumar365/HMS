@@ -15,4 +15,5 @@ export class Payment {
     createdBy!: string;
     createdDate!: any;
     cardDetails!: CardDetails;
+    termsAndConditions!: string;
 }

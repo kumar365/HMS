@@ -110,22 +110,37 @@
                                     <div class="login-header">
                                         <h3 style="color: #44b1c6;">Register as Service Provider </h3>
                                     </div>
-
-                                    <form action="#">
+                                    <div *ngIf="statusFlag" class="alert alert-danger" role="alert">
+                                        {{ message }}
+                                    </div>
+                                    <form #ambulanceRegisterForm="ngForm" (ngSubmit)="onSubmit()">
                                         <div class="form-group form-focus">
-                                            <input type="text" class="form-control floating">
+                                            <!-- <input type="text" class="form-control floating"> -->
+                                            <input type="text" [(ngModel)]="ambulance.fullName" id="fullName"
+                                                name="fullName" placeholder="Enter Full Name"
+                                                class="form-control floating" #fullName="ngModel">
                                             <label class="focus-label">Full Name</label>
                                         </div>
                                         <div class="form-group form-focus">
-                                            <input type="text" class="form-control floating">
+                                            <!-- <input type="text" class="form-control floating"> -->
+                                            <input type="text" [(ngModel)]="ambulance.mobileNumber" id="mobileNumber"
+                                                name="mobileNumber" placeholder="Enter Mobile Number"
+                                                class="form-control floating" #mobileNumber="ngModel">
                                             <label class="focus-label">Mobile Number</label>
                                         </div>
                                         <div class="form-group form-focus">
-                                            <input type="password" class="form-control floating">
+                                            <!-- <input type="password" class="form-control floating"> -->
+                                            <input type="password" [(ngModel)]="ambulance.password" id="password"
+                                                name="password" placeholder="Enter Password"
+                                                class="form-control floating" #password="ngModel">
                                             <label class="focus-label">Enter Password</label>
                                         </div>
                                         <div class="form-group form-focus">
-                                            <input type="password" class="form-control floating">
+                                            <!-- <input type="password" class="form-control floating"> -->
+                                            <input type="password" [(ngModel)]="ambulance.confirmPassword"
+                                                id="confirmPassword" name="confirmPassword"
+                                                placeholder="Enter Confirm Password" class="form-control floating"
+                                                #confirmPassword="ngModel">
                                             <label class="focus-label">Confirm Password</label>
                                         </div>
                                         <div class="text-end">
@@ -245,8 +260,8 @@
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
                                     <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a
-                                            href="https://abc.com" target="_blank"
-                                            style="color:#fff"> Technologies Pvt. Ltd.</a></p>
+                                            href="https://abc.com" target="_blank" style="color:#fff"> Technologies Pvt.
+                                            Ltd.</a></p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">
