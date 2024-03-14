@@ -39,7 +39,7 @@ export class ForgotPasswordComponent implements OnInit {
       this.authService.forgotPassword(this.user.email).subscribe((data: ApiResponse) => {
         this.message = data.message;
         if (data.success) {
-          this.statusFlag = true;
+          //this.statusFlag = true;
           window.open(this.message);
         }
       });
