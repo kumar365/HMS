@@ -6,12 +6,12 @@ import { Router } from '@angular/router';
   templateUrl: './health-id-mobile.component.html',
   styleUrls: ['./health-id-mobile.component.css']
 })
-export class HealthIdMobileComponent implements OnInit{
-  constructor(private router: Router) {}
- ngOnInit(): void {
-   
- }
- otp() {
-   this.router.navigate(['/otp']);
- }
+export class HealthIdMobileComponent implements OnInit {
+  constructor(private router: Router) { }
+  ngOnInit(): void {
+
+  }
+  otp() {
+    this.router.navigate(['/otp']);
+  }
 }

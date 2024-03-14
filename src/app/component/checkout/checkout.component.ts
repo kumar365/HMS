@@ -22,7 +22,7 @@ export class CheckoutComponent implements OnInit {
   currentUser: User = new User;
   appointment: Appointment = new Appointment;
   termsAndConditionsFlag: Boolean = false;
-  constructor(private route: ActivatedRoute, private router: Router, private storageService: StorageService,
+  constructor(private router: Router, private storageService: StorageService,
     private userService: UserService, private renderer: Renderer2) { }
 
   ngOnInit(): void {

@@ -162,7 +162,8 @@
                                         <h4 class="card-title">Shipping Details</h4>
                                         <div class="terms-accept">
                                             <div class="custom-checkbox">
-                                                <input type="checkbox" id="terms_accept">
+                                                <input type="checkbox" id="termsAndConditions"
+                                                    (change)="changeTermsAndConditions()">
                                                 <label for="terms_accept">Ship to a different address?</label>
                                             </div>
                                         </div>
@@ -254,7 +255,7 @@
                                                         href="termsConditions">Terms &amp; Conditions</a></label>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="submit-section mt-4">
                                             <button type="submit" class="btn btn-primary submit-btn">Confirm and
                                                 Pay</button>

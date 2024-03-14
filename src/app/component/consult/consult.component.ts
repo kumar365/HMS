@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Appointment } from 'src/app/model/appointment';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
 import { StorageService } from 'src/app/service/storage.service';
@@ -14,6 +15,8 @@ export class ConsultComponent implements OnInit {
   changePasswordFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
+  appointment: Appointment = new Appointment;
+  termsAndConditionsFlag: Boolean = false;
   constructor(private storageService: StorageService, private userService: UserService) { }
 
   ngOnInit(): void {
@@ -25,5 +28,13 @@ export class ConsultComponent implements OnInit {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
     });
+  }
+  changeTermsAndConditions() {
+    this.termsAndConditionsFlag = !this.termsAndConditionsFlag;
+    if (this.termsAndConditionsFlag) {
+      this.appointment.termsAndConditions = 'Y';
+    } else {
+      this.appointment.termsAndConditions = 'N';
+    }
   }
 }
