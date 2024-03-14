@@ -49,7 +49,7 @@ export class ProfileSettingsComponent implements OnInit {
     return [d.getFullYear(), this.pad(d.getMonth() + 1), this.pad(d.getDate())].join('-');
   }
   pad(s: any) { return (s < 10) ? '0' + s : s; }
-  onClickSubmit() {
+  onSubmit() {
     //console.log('this.currentUser.phoneNumber::' + this.currentUser.phoneNumber);
     console.log('this.currentUser.dateOfBirthString::' + this.currentUser.dateOfBirthString);
     this.userService.updateProfile(this.currentUser).subscribe((data: MessageResponse) => {

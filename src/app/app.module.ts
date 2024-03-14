@@ -103,6 +103,7 @@ import { AmbulanceRegisterComponent } from './component/ambulance-register/ambul
 import { AmbulanceLoginComponent } from './component/ambulance-login/ambulance-login.component';
 import { StaffingServicesComponent } from './component/staffing-services/staffing-services.component';
 import { BackButtonDisableModule } from './module/back-button-disable/back-button-disable.module';
+import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -197,7 +198,8 @@ import { BackButtonDisableModule } from './module/back-button-disable/back-butto
     ViewAmbulancesComponent,
     AmbulanceRegisterComponent,
     AmbulanceLoginComponent,
-    StaffingServicesComponent
+    StaffingServicesComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

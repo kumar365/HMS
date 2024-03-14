@@ -201,7 +201,7 @@
 
                     </div>
                     <div class="col-md-7 col-lg-8 col-xl-9">
-                        <form #doctorForm="ngForm" (ngSubmit)="onClickSubmit()" enctype="multipart/form-data">
+                        <form #doctorForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
                             <div class="card">
                                 <div class="card-body">
                                     <div *ngIf="profileStatusFlag" class="alert alert-danger" role="alert">
@@ -219,10 +219,9 @@
                                                     <div class="upload-img">
                                                         <div class="change-photo-btn">
                                                             <span><i class="fa fa-upload"></i> Upload Photo</span>
-                                                            <input type="file"
-                                                                [(ngModel)]="currentUser.profileImage" (change)="uploadFile()"
-                                                                id="profileImage" name="profileImage"
-                                                                class="upload">
+                                                            <input type="file" [(ngModel)]="currentUser.profileImage"
+                                                                (change)="uploadFile()" id="profileImage"
+                                                                name="profileImage" class="upload">
                                                         </div>
                                                         <small class="form-text text-muted">Allowed JPG, GIF or PNG. Max
                                                             size of 2MB</small>
@@ -288,7 +287,7 @@
                                                     #dateOfBirthString="ngModel">
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -348,13 +347,17 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Address Line 1</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" [(ngModel)]="currentUser.address1" id="address1"
+                                                    name="address1" placeholder="Address Line 1" class="form-control"
+                                                    #address1="ngModel">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label">Address Line 2</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" [(ngModel)]="currentUser.address2" id="address2"
+                                                    name="address2" placeholder="Address Line 2" class="form-control"
+                                                    #address2="ngModel">
                                             </div>
                                         </div>
 
@@ -423,7 +426,9 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Doctor Number</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" [(ngModel)]="currentUser.phoneNumber"
+                                                    id="phoneNumber" name="phoneNumber" placeholder="Doctor Number"
+                                                    class="form-control" #phoneNumber="ngModel">
                                             </div>
                                         </div>
 

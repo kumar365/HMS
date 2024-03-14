@@ -78,10 +78,6 @@ export class DoctorSignupComponent implements OnInit {
     }
   }
 
-
-
-
-
   getPhoneNumberVerificationCode() {
     this.authService.sendPhoneNumberVerificationCode(this.user.phoneNumber).subscribe((data: ApiResponse) => {
       this.message = data.message;

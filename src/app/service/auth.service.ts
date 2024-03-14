@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { OtpRequest } from '../model/otp-request';
 import { Ambulance } from '../model/ambulance';
 import { ApiResponse } from '../model/api-response';
+import { ResetPasswordRequest } from '../model/reset-password-request';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,8 +16,10 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
+  
   private user: User = new User;
   private otpRequest: OtpRequest = new OtpRequest;
+  private resetPasswordRequest: ResetPasswordRequest = new ResetPasswordRequest;
   constructor(private http: HttpClient) {
   }
 
@@ -103,6 +106,21 @@ export class AuthService {
   sendEmailVerificationCode(email: string): Observable<any> {
     this.otpRequest.email = email;
     return this.http.post(AppConstants.SEND_EMAIL_VERIFICATION_CODE, this.otpRequest, httpOptions);
+  }
+
+  forgotPassword(email: string): Observable<ApiResponse> {
+    this.otpRequest.email = email;
+    return this.http.post<ApiResponse>(AppConstants.FORGOT_PASSWORD, this.otpRequest, httpOptions);
+  }
+
+  resetPassword(token: string, password: string): Observable<ApiResponse> {
+    this.resetPasswordRequest.token = token;
+    this.resetPasswordRequest.password = password;
+    return this.http.post<ApiResponse>(AppConstants.RESET_PASSWORD, this.resetPasswordRequest, httpOptions);
+  }
+
+  getUserData(token: any) : Observable<User> {
+    return this.http.get<User>(AppConstants.GET_USER_DATA_BY_TOKEN + token, httpOptions);
   }
 
 }

@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       }
    }
 
-   onClickSubmit(data: any) {
+   onSubmit(data: any) {
       this.userName = data.userName;
       this.password = data.password;
 

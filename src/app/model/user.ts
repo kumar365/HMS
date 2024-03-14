@@ -38,8 +38,11 @@ export class User {
     displayName!: string;
     provider!: string;
     token!: string;
+    tokenCreationDate!: any;
     oldPassword!: string;
     newPassword!: string;
-   
+    confirmPassword!: string;
+    address1!: string;
+    address2!: string;
     
 }

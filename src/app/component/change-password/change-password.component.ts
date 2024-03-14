@@ -66,7 +66,7 @@ export class ChangePasswordComponent implements OnInit {
       return true;
     }
   }
-  onClickSubmit(data: any) {
+  onSubmit(data: any) {
     if (this.validateChangePasswordData(data)) {
       this.currentUserInfo.oldPassword = data.oldPassword;
       this.currentUserInfo.newPassword = data.newPassword;

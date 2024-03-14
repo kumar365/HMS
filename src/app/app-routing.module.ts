@@ -91,6 +91,7 @@ import { AmbulanceRegisterComponent } from './component/ambulance-register/ambul
 import { AmbulanceLoginComponent } from './component/ambulance-login/ambulance-login.component';
 import { StaffingServicesComponent } from './component/staffing-services/staffing-services.component';
 import { DoctorProfileComponent } from './component/doctor-profile/doctor-profile.component';
+import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 
 const routes: Routes = [
   { path: 'index', component: HomeComponent },
@@ -166,8 +167,9 @@ const routes: Routes = [
   { path: 'productDescription', component: ProductDescriptionComponent },
   { path: 'profileSettings', component: ProfileSettingsComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'registerSocial', component: RegisterSocialComponent},
+  { path: 'registerSocial', component: RegisterSocialComponent },
   { path: 'reports', component: ReportsComponent },
+  { path: 'resetPassword', component: ResetPasswordComponent },
   { path: 'scheduleTimings', component: ScheduleTimingsComponent },
   { path: 'searchAmbulance', component: SearchAmbulanceComponent },
   { path: 'searchDoctors', component: SearchDoctorsComponent },

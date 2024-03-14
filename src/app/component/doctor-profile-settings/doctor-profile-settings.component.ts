@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { AppValidations } from 'src/app/constant/app-validations';
 import { MessageConstants } from 'src/app/constant/message-constants';
 import { City } from 'src/app/model/city';
 import { Country } from 'src/app/model/country';
@@ -25,7 +26,8 @@ export class DoctorProfileSettingsComponent implements OnInit {
   states: State[] = [];
   cities: City[] = [];
   formData!: FormGroup;
-  constructor(private storageService: StorageService, private userService: UserService, private commonService: CommonService) { }
+  constructor(private storageService: StorageService, private userService: UserService,
+    private commonService: CommonService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
@@ -58,21 +60,74 @@ export class DoctorProfileSettingsComponent implements OnInit {
       alert(this.message);
     });
   }
-
-  onClickSubmit() {
-    this.currentUser.token = this.storageService.getToken();
-    //console.log('this.currentUser.phoneNumber::' + this.currentUser.phoneNumber);
-    //console.log('this.currentUser.dateOfBirthString::' + this.currentUser.dateOfBirthString);
-    this.userService.updateProfile(this.currentUser).subscribe((data: MessageResponse) => {
-      this.message = data.message;
-      //console.log('this.message::' + this.message);
-      if (this.message == MessageConstants.UpdateProfileMessage) {
-        //alert(this.message);
-        this.storageService.saveUser(this.currentUser);
-        this.profileStatusFlag = true;
-        //this.setForm();
-      }
-    });
+  onSubmit() {
+    if (this.validateUserData()) {
+      this.currentUser.token = this.storageService.getToken();
+      this.userService.updateProfile(this.currentUser).subscribe((data: MessageResponse) => {
+        this.message = data.message;
+        if (this.message == MessageConstants.UpdateProfileMessage) {
+          this.storageService.saveUser(this.currentUser);
+          this.profileStatusFlag = true;
+        }
+      });
+    }
+  }
+  validateUserData(): boolean {
+    if (this.currentUser.firstName == "" || this.currentUser.firstName == undefined) {
+      alert('Please eneter First Name');
+      const element = this.renderer.selectRootElement('#firstName');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validateName(this.currentUser.firstName)) {
+      const element = this.renderer.selectRootElement('#firstName');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.currentUser.lastName == "" || this.currentUser.lastName == undefined) {
+      alert('Please eneter Last Name');
+      const element = this.renderer.selectRootElement('#lastName');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validateName(this.currentUser.lastName)) {
+      const element = this.renderer.selectRootElement('#lastName');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.currentUser.phoneNumber == "" || this.currentUser.phoneNumber == undefined) {
+      alert('Please eneter Phone Number');
+      const element = this.renderer.selectRootElement('#phoneNumber');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validatePhoneNumber(this.currentUser.phoneNumber)) {
+      const element = this.renderer.selectRootElement('#phoneNumber');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.currentUser.gender == "" || this.currentUser.gender == undefined) {
+      alert('Please Select Gender');
+      const element = this.renderer.selectRootElement('#gender');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.currentUser.dateOfBirthString == "" || this.currentUser.dateOfBirthString == undefined) {
+      alert('Please Enter Date Of Birth');
+      const element = this.renderer.selectRootElement('#dateOfBirthString');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.currentUser.biography == "" || this.currentUser.biography == undefined) {
+      alert('Please Enter Biography');
+      const element = this.renderer.selectRootElement('#biography');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.currentUser.address1 == "" || this.currentUser.address1 == undefined) {
+      alert('Please Enter Address Line 1');
+      const element = this.renderer.selectRootElement('#address1');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.currentUser.address2 == "" || this.currentUser.address2 == undefined) {
+      alert('Please Enter Address Line 2');
+      const element = this.renderer.selectRootElement('#address2');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else {
+      return true;
+    }
   }
 
   getCountries() {
@@ -98,7 +153,7 @@ export class DoctorProfileSettingsComponent implements OnInit {
   }
   onChangeCountry() {
     let countryId = this.currentUser.country.id;
-    alert(countryId);
+    //alert(countryId);
     if (countryId) {
       this.commonService.findStates(countryId).subscribe((data: State[]) => {
         this.states = data;

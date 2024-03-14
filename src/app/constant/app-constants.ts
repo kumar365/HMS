@@ -21,6 +21,9 @@ export class AppConstants {
     public static SIGNOUT = AppConstants.AUTH_API + 'signout';
     public static SEND_PHONE_NUMBER_VERIFICATION_CODE = AppConstants.AUTH_API + 'sendPhoneNumberVerificationCode';
     public static SEND_EMAIL_VERIFICATION_CODE = AppConstants.AUTH_API + 'sendEmailVerificationCode';
+    public static FORGOT_PASSWORD = AppConstants.AUTH_API + 'forgotPassword';
+    public static RESET_PASSWORD = AppConstants.AUTH_API + 'resetPassword';
+    public static GET_USER_DATA_BY_TOKEN = AppConstants.AUTH_API + 'getUserDataByToken/';
     public static CHANGE_PASSWORD = AppConstants.API_URL + 'changePassword';
     public static GET_USER_BY_ID = AppConstants.API_URL + 'getUserById/';
     public static GET_COUNTRIES = AppConstants.COMMON_URL + 'countries';
