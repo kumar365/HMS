@@ -113,11 +113,13 @@
                                     <p>We'll send a confirmation code to your Phone.</p>
                                     <span>Sign in with <a href="loginEmail">Email</a></span>
                                 </div>
-                                <form action="patientDashboard">
+                                <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()"
+                                    #f="ngForm" novalidate>
                                     <div class="form-group">
                                         <label>Phone Number</label>
-                                        <input class="form-control form-control-lg group_formcontrol" id="phone"
-                                            name="phone" type="text">
+                                        <input type="text" [(ngModel)]="form.phoneNumber" id="phoneNumber"
+                                            name="phoneNumber" class="form-control form-control-lg group_formcontrol"
+                                            #phoneNumber="ngModel" required />
                                     </div>
                                     <div class="form-group">
                                         <div class="form-group-flex">
@@ -125,8 +127,8 @@
                                             <a href="forgotPassword" class="forgot-link">Forgot password?</a>
                                         </div>
                                         <div class="pass-group">
-                                            <input type="password" class="form-control pass-input"
-                                                placeholder="*************">
+                                            <input type="password" [(ngModel)]="form.password" id="password"
+                                                name="password" class="form-control" #password="ngModel" required />
                                             <span class="feather-eye toggle-password"></span>
                                         </div>
                                     </div>
@@ -266,8 +268,8 @@
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
                                     <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a
-                                            href="https://technologies.com" target="_blank"
-                                            style="color:#fff">l Technologies Pvt. Ltd.</a></p>
+                                            href="https://technologies.com" target="_blank" style="color:#fff">l
+                                            Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">

@@ -110,10 +110,12 @@
                                     <p>We'll send a confirmation code to your email.</p>
                                     <span>Sign in with <a href="loginMobile">Phone Number</a></span>
                                 </div>
-                                <form action="patientDashboard">
+                                <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()"
+                                    #f="ngForm" novalidate>
                                     <div class="form-group">
                                         <label>E-mail</label>
-                                        <input type="text" class="form-control" placeholder="example@email.com">
+                                        <input type="text" [(ngModel)]="form.username" id="username" name="username"
+                                            class="form-control" #username="ngModel" required />
                                     </div>
                                     <div class="form-group">
                                         <div class="form-group-flex">
@@ -121,8 +123,8 @@
                                             <a href="forgotPassword" class="forgot-link">Forgot password?</a>
                                         </div>
                                         <div class="pass-group">
-                                            <input type="password" class="form-control pass-input"
-                                                placeholder="*************">
+                                            <input type="password" [(ngModel)]="form.password" id="password"
+                                                name="password" class="form-control" #password="ngModel" required />
                                             <span class="feather-eye toggle-password"></span>
                                         </div>
                                     </div>

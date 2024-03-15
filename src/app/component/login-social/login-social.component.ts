@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
 import { AppConstants } from '../../constant/app-constants';
 import { User } from '../../model/user';
 import { AuthService } from '../../service/auth.service';
 import { StorageService } from '../../service/storage.service';
 import { UserService } from '../../service/user.service';
 import { UserInfo } from 'src/app/model/user-info';
+import { AppValidations } from 'src/app/constant/app-validations';
 
 
 @Component({
@@ -26,36 +27,59 @@ export class LoginSocialComponent implements OnInit {
   githubURL = AppConstants.GITHUB_AUTH_URL;
   linkedinURL = AppConstants.LINKEDIN_AUTH_URL;
 
-  constructor(private authService: AuthService, private storageService: StorageService, private route: ActivatedRoute, private userService: UserService, private router: Router) { }
+  constructor(private authService: AuthService, private storageService: StorageService,
+    private userService: UserService, private router: Router, private renderer: Renderer2) { }
 
   ngOnInit(): void {
-    //const token: string = this.route.snapshot.queryParamMap.get('token');
-    //const error: string = this.route.snapshot.queryParamMap.get('error');
     if (this.storageService.isLoggedIn()) {
       this.isLoggedIn = false;
       this.currentUserInfo = this.storageService.getUser();
     }
   }
-
+  validateLoginForm(): boolean {
+    if (this.form.username == "" || this.form.username == undefined) {
+      alert('Please Enter Email');
+      const element = this.renderer.selectRootElement('#username');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validateMail(this.form.username)) {
+      const element = this.renderer.selectRootElement('#username');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.form.password == "" || this.form.password == undefined) {
+      alert('Please Enter password');
+      const element = this.renderer.selectRootElement('#password');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validatePassword(this.form.password)) {
+      const element = this.renderer.selectRootElement('#password');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else {
+      return true;
+    }
+  }
   onSubmit(): void {
-    this.authService.loginSocial(this.form).subscribe(
-      data => {
-        console.log('data.accessToken::', data.accessToken);
-        console.log('data.user::', data.user);
-        this.storageService.saveUserInfo(data.user);
-        this.storageService.saveToken(data.accessToken);
-        this.getUserData();
-        if (data.accessToken && this.currentUser.userType == 'patient') {
-          this.router.navigate(['/patientDashboard']);
-        } else if (data.accessToken && this.currentUser.userType == 'doctor') {
-          this.router.navigate(['/doctorDashboard']);
+    if (this.validateLoginForm()) {
+      this.authService.loginSocial(this.form).subscribe(
+        data => {
+          console.log('data.accessToken::', data.accessToken);
+          console.log('data.user::', data.user);
+          this.storageService.saveUserInfo(data.user);
+          this.storageService.saveToken(data.accessToken);
+          this.getUserData();
+          if (data.accessToken && this.currentUser.userType == 'patient') {
+            this.router.navigate(['/patientDashboard']);
+          } else if (data.accessToken && this.currentUser.userType == 'doctor') {
+            this.router.navigate(['/doctorDashboard']);
+          }
+        },
+        err => {
+          this.errorMessage = err.error.message;
+          this.isLoginFailed = true;
         }
-      },
-      err => {
-        this.errorMessage = err.error.message;
-        this.isLoginFailed = true;
-      }
-    );
+      );
+    }
   }
 
   getUserData() {

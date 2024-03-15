@@ -13,6 +13,7 @@ export class AppConstants {
     public static COMMON_URL = AppConstants.API_BASE_URL + "common/";
     public static AUTH_API = AppConstants.API_URL + "auth/";
     public static SIGNIN = AppConstants.AUTH_API + 'signin';
+    public static SIGNIN_MOBILE = AppConstants.AUTH_API + 'signinMobile';
     public static SIGNIN_AMBULANCE = AppConstants.AUTH_API + 'signinAmbulance';
     public static SIGNUP = AppConstants.AUTH_API + 'signup';
     public static SIGNUP_PATIENT = AppConstants.AUTH_API + 'signupPatient';

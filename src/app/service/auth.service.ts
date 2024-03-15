@@ -16,7 +16,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
-  
+
   private user: User = new User;
   private otpRequest: OtpRequest = new OtpRequest;
   private resetPasswordRequest: ResetPasswordRequest = new ResetPasswordRequest;
@@ -41,6 +41,13 @@ export class AuthService {
   loginSocial(credentials: any): Observable<any> {
     return this.http.post(AppConstants.SIGNIN, {
       email: credentials.username,
+      password: credentials.password
+    }, httpOptions);
+  }
+
+  loginMobile(credentials: any): Observable<any> {
+    return this.http.post(AppConstants.SIGNIN_MOBILE, {
+      phoneNumber: credentials.phoneNumber,
       password: credentials.password
     }, httpOptions);
   }
@@ -119,7 +126,7 @@ export class AuthService {
     return this.http.post<ApiResponse>(AppConstants.RESET_PASSWORD, this.resetPasswordRequest, httpOptions);
   }
 
-  getUserData(token: any) : Observable<User> {
+  getUserData(token: any): Observable<User> {
     return this.http.get<User>(AppConstants.GET_USER_DATA_BY_TOKEN + token, httpOptions);
   }
 
