@@ -99,4 +99,23 @@ export class AppValidations {
             return false;
         }
     }
+
+    static validateBMI(bmi: string): boolean {
+        var bmiRegex = /^([0-9]+[\.]?[0-9]?[0-9]?|[0-9]+)$/;
+        if (bmiRegex.test(bmi)) {
+            if (+bmi < 0) {
+                alert("BMI should be greater than Zero(>0).");
+                return false;
+            } else if (+bmi > 99) {
+                alert("BMI should not be greater than 99");
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            alert("BMI value not valid");
+            return false;
+        }
+
+    }
 }

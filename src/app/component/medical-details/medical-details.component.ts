@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
+import { AppValidations } from 'src/app/constant/app-validations';
 import { MessageConstants } from 'src/app/constant/message-constants';
 import { ApiResponse } from 'src/app/model/api-response';
 import { MedicalDetails } from 'src/app/model/medical-details';
@@ -19,7 +20,7 @@ export class MedicalDetailsComponent implements OnInit {
   medicalDetails: MedicalDetails = new MedicalDetails;
   medicalDetailsList: MedicalDetails[] = [];
   medicalDetailsFlag: boolean = false;
-  constructor(private storageService: StorageService, private userService: UserService) { }
+  constructor(private storageService: StorageService, private userService: UserService, private renderer: Renderer2) { }
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
     this.currentUserInfo.token = this.storageService.getToken();
@@ -31,21 +32,37 @@ export class MedicalDetailsComponent implements OnInit {
       this.currentUser = data;
     });
   }
-  addDetails(){
+  addDetails() {
     this.medicalDetailsFlag = false;
     this.medicalDetails = new MedicalDetails;
   }
   onSubmit() {
-    this.medicalDetails.user = this.currentUser;
-    this.medicalDetails.name = this.currentUser.username;
-    this.userService.saveMedicalDetails(this.medicalDetails, this.currentUserInfo.token).subscribe((data: ApiResponse) => {
-      this.message = data.message;
-      if (this.message == MessageConstants.MedicalDetailsMessage) {
-        this.medicalDetailsFlag = true;
-        this.getMedicalDetailsList();
-        this.medicalDetails = new MedicalDetails;
-      }
-    });
+    if (this.validateMedicalDetails()) {
+      this.medicalDetails.user = this.currentUser;
+      this.medicalDetails.name = this.currentUser.username;
+      this.userService.saveMedicalDetails(this.medicalDetails, this.currentUserInfo.token).subscribe((data: ApiResponse) => {
+        this.message = data.message;
+        if (this.message == MessageConstants.MedicalDetailsMessage) {
+          this.medicalDetailsFlag = true;
+          this.getMedicalDetailsList();
+          this.medicalDetails = new MedicalDetails;
+        }
+      });
+    }
+  }
+  validateMedicalDetails(): boolean {
+    if (this.medicalDetails.bmi == "" || this.medicalDetails.bmi == undefined) {
+      alert('Please Enter BMI');
+      const element = this.renderer.selectRootElement('#bmi');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validateBMI(this.medicalDetails.bmi)) {
+      const element = this.renderer.selectRootElement('#bmi');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else {
+      return true;
+    }
   }
   getMedicalDetailsList() {
     this.userService.getMedicalDetailsList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: MedicalDetails[]) => {

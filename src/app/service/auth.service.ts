@@ -91,8 +91,8 @@ export class AuthService {
     return this.http.post<ApiResponse>(AppConstants.SIGNIN_AMBULANCE, ambulance, httpOptions);
   }
 
-  signout(): Observable<any> {
-    return this.http.post(AppConstants.SIGNOUT, {}, httpOptions);
+  signout(user:User): Observable<any> {
+    return this.http.post(AppConstants.SIGNOUT, user, httpOptions);
   }
 
   registerSocial(user: any): Observable<any> {
