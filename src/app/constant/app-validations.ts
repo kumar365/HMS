@@ -155,7 +155,7 @@ export class AppValidations {
             return false;
         }
     }
-    
+
     static validateFBC(fbc: string) {
         var fbcRegex = /^\d{1,3}\-\d{1,3}$/;
         if (fbcRegex.test(fbc)) {
@@ -172,6 +172,20 @@ export class AppValidations {
             return true;
         } else {
             alert("BP value not valid");
+            return false;
+        }
+    }
+    static validatePrice(price: string): boolean {
+        var priceRegex = /^\d+(\.\d{1,2})?$/;
+        if (priceRegex.test(price)) {
+            if (+price < 0) {
+                alert("Price should be greater than Zero(>0).");
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            alert("Price value not valid");
             return false;
         }
     }
