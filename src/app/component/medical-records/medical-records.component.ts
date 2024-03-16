@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
+import { AppValidations } from 'src/app/constant/app-validations';
 import { MessageConstants } from 'src/app/constant/message-constants';
 import { ApiResponse } from 'src/app/model/api-response';
 import { MedicalRecords } from 'src/app/model/medical-records';
@@ -19,7 +20,7 @@ export class MedicalRecordsComponent implements OnInit {
   medicalRecords: MedicalRecords = new MedicalRecords;
   medicalRecordsList: MedicalRecords[] = [];
   medicalRecordsFlag: boolean = false;
-  constructor(private storageService: StorageService, private userService: UserService) { }
+  constructor(private storageService: StorageService, private userService: UserService, private renderer: Renderer2) { }
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
     this.currentUserInfo.token = this.storageService.getToken();
@@ -31,21 +32,65 @@ export class MedicalRecordsComponent implements OnInit {
       this.currentUser = data;
     });
   }
-  addDetails(){
+  addDetails() {
     this.medicalRecordsFlag = false;
     this.medicalRecords = new MedicalRecords;
   }
+  validateMedicalRecordData(): boolean {
+    if (this.medicalRecords.description == "" || this.medicalRecords.description == undefined) {
+      alert('Please Enter Title Name');
+      const element = this.renderer.selectRootElement('#description');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validateName(this.medicalRecords.description)) {
+      const element = this.renderer.selectRootElement('#description');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.medicalRecords.patientType == "" || this.medicalRecords.patientType == undefined) {
+      alert('Please Select Patient Type');
+      const element = this.renderer.selectRootElement('#patientType');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.medicalRecords.hospitalName == "" || this.medicalRecords.hospitalName == undefined) {
+      alert('Please Enter Hospital Name');
+      const element = this.renderer.selectRootElement('#hospitalName');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validateName(this.medicalRecords.hospitalName)) {
+      const element = this.renderer.selectRootElement('#hospitalName');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.medicalRecords.symptoms == "" || this.medicalRecords.symptoms == undefined) {
+      alert('Please Enter Symptoms');
+      const element = this.renderer.selectRootElement('#symptoms');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validateName(this.medicalRecords.symptoms)) {
+      const element = this.renderer.selectRootElement('#symptoms');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.medicalRecords.recordDateString == "" || this.medicalRecords.recordDateString == undefined) {
+      alert('Please Enter Date');
+      const element = this.renderer.selectRootElement('#recordDateString');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else {
+      return true;
+    }
+  }
   onSubmit() {
-    this.medicalRecords.user = this.currentUser;
-    this.medicalRecords.name = this.currentUser.username;
-    this.userService.saveMedicalRecords(this.medicalRecords, this.currentUserInfo.token).subscribe((data: ApiResponse) => {
-      this.message = data.message;
-      if (this.message == MessageConstants.MedicalRecordsMessage) {
-        this.medicalRecordsFlag = true;
-        this.getMedicalRecordsList();
-        this.medicalRecords = new MedicalRecords;
-      }
-    });
+    if (this.validateMedicalRecordData()) {
+      this.medicalRecords.user = this.currentUser;
+      this.medicalRecords.name = this.currentUser.username;
+      this.userService.saveMedicalRecords(this.medicalRecords, this.currentUserInfo.token).subscribe((data: ApiResponse) => {
+        this.message = data.message;
+        if (this.message == MessageConstants.MedicalRecordsMessage) {
+          this.medicalRecordsFlag = true;
+          this.getMedicalRecordsList();
+          this.medicalRecords = new MedicalRecords;
+        }
+      });
+    }
   }
   getMedicalRecordsList() {
     this.userService.getMedicalRecordsList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: MedicalRecords[]) => {

@@ -116,6 +116,63 @@ export class AppValidations {
             alert("BMI value not valid");
             return false;
         }
+    }
+    static validateHeartRate(heartRate: string): boolean {
+        var heartRateRegex = /^\d{1,3}$/;
+        if (heartRateRegex.test(heartRate)) {
+            if (+heartRate < 0) {
+                alert("Heart Rate should be greater than Zero(>0).");
+                return false;
+            } else if (+heartRate < 60) {
+                alert("Heart Rate should be greater than 60");
+                return false;
+            } else if (+heartRate > 120) {
+                alert("Heart Rate should not be greater than 120");
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            alert("Heart Rate value not valid");
+            return false;
+        }
+    }
 
+    static validateWeight(weight: string) {
+        var weightRegex = /^\d{1,3}$/;
+        if (weightRegex.test(weight)) {
+            if (+weight < 0) {
+                alert("Weight should be greater than Zero(>0).");
+                return false;
+            } else if (+weight > 200) {
+                alert("weight should not be greater than 200");
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            alert("weight value not valid");
+            return false;
+        }
+    }
+    
+    static validateFBC(fbc: string) {
+        var fbcRegex = /^\d{1,3}\-\d{1,3}$/;
+        if (fbcRegex.test(fbc)) {
+            return true;
+        } else {
+            alert("FBC value not valid");
+            return false;
+        }
+    }
+
+    static validateBP(bp: string): boolean {
+        var bpRegex = /^\d{1,3}\/\d{1,3}$/;
+        if (bpRegex.test(bp)) {
+            return true;
+        } else {
+            alert("BP value not valid");
+            return false;
+        }
     }
 }

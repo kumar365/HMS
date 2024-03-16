@@ -120,10 +120,11 @@
                                         <h3>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}
                                         </h3>
                                         <div class="patient-details">
-                                            <h5><i class="fas fa-birthday-cake"></i> {{currentUser.dateOfBirth | date:'dd MMM yyyy'}},
+                                            <h5><i class="fas fa-birthday-cake"></i> {{currentUser.dateOfBirth |
+                                                date:'dd MMM yyyy'}},
                                                 {{currentUser.age}}</h5>
                                             <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i>
-                                                {{currentUser.state.name}}, {{currentUser.country.name}}</h5>
+                                                <!-- {{currentUser.state.name}}, {{currentUser.country.name}} --></h5>
                                         </div>
                                     </div>
                                 </div>
@@ -389,8 +390,7 @@
                 <div *ngIf="medicalDetailsFlag" class="alert alert-danger" role="alert">
                     {{ message }}
                 </div>
-                <form (ngSubmit)="onSubmit()" #medicalDetailsForm="ngForm" enctype="multipart/form-data"
-                    autocomplete="off" method="post">
+                <form #medicalDetailsForm="ngForm" (ngSubmit)="onSubmit()" method="post">
                     <div class="modal-header">
                         <h5 class="modal-title">Add new data</h5>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
@@ -440,7 +440,7 @@
                 <div *ngIf="medicalDetailsFlag" class="alert alert-danger" role="alert">
                     {{ message }}
                 </div>
-                <form (ngSubmit)="onSubmit()" #medicalDetailsForm="ngForm" enctype="multipart/form-data"
+                <form #editMedicalDetailsForm="ngForm" (ngSubmit)="onSubmitEdit()" enctype="multipart/form-data"
                     autocomplete="off" method="post">
                     <div class="modal-header">
                         <h5 class="modal-title">Add new data</h5>

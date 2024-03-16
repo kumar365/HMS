@@ -36,6 +36,9 @@ export class MedicalDetailsComponent implements OnInit {
     this.medicalDetailsFlag = false;
     this.medicalDetails = new MedicalDetails;
   }
+  onSubmitEdit() {
+    this.onSubmit();
+  }
   onSubmit() {
     if (this.validateMedicalDetails()) {
       this.medicalDetails.user = this.currentUser;
@@ -58,6 +61,38 @@ export class MedicalDetailsComponent implements OnInit {
       return false;
     } else if (!AppValidations.validateBMI(this.medicalDetails.bmi)) {
       const element = this.renderer.selectRootElement('#bmi');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.medicalDetails.heartRate == "" || this.medicalDetails.heartRate == undefined) {
+      alert('Please Enter Heart Rate');
+      const element = this.renderer.selectRootElement('#heartRate');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validateHeartRate(this.medicalDetails.heartRate)) {
+      const element = this.renderer.selectRootElement('#heartRate');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.medicalDetails.weight == "" || this.medicalDetails.weight == undefined) {
+      alert('Please Enter Weight');
+      const element = this.renderer.selectRootElement('#weight');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validateWeight(this.medicalDetails.weight)) {
+      const element = this.renderer.selectRootElement('#weight');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.medicalDetails.fbcStatus == "" || this.medicalDetails.fbcStatus == undefined) {
+      alert('Please Enter FBC');
+      const element = this.renderer.selectRootElement('#fbcStatus');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validateFBC(this.medicalDetails.weight)) {
+      const element = this.renderer.selectRootElement('#weight');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.medicalDetails.orderDateString == "" || this.medicalDetails.orderDateString == undefined) {
+      alert('Please Enter Created Date');
+      const element = this.renderer.selectRootElement('#orderDateString');
       setTimeout(() => element.focus(), 0);
       return false;
     } else {
