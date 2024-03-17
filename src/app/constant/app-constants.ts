@@ -27,6 +27,7 @@ export class AppConstants {
     public static GET_USER_DATA_BY_TOKEN = AppConstants.AUTH_API + 'getUserDataByToken/';
     public static CHANGE_PASSWORD = AppConstants.API_URL + 'changePassword';
     public static GET_USER_BY_ID = AppConstants.API_URL + 'getUserById/';
+    public static GET_PATIENT_BY_ID = AppConstants.API_URL + 'getPatientById/';
     public static GET_COUNTRIES = AppConstants.COMMON_URL + 'countries';
     public static GET_STATES = AppConstants.COMMON_URL + 'states/';
     public static GET_DISTRICTS = AppConstants.COMMON_URL + 'districts/';
@@ -57,14 +58,14 @@ export class AppConstants {
     public static GET_BILL_LIST = AppConstants.PAYMENT_URL + 'bills/';
     public static ADD_INVOICE = AppConstants.PAYMENT_URL + 'addInvoice';
     public static GET_INVOICE_LIST = AppConstants.PAYMENT_URL + 'invoices/';
-
-
-    public static Users = AppConstants.API_URL + 'users';
+    public static MEDICINE_URL = AppConstants.API_BASE_URL + 'medicine/';
+    public static ADD_MEDICINE = AppConstants.MEDICINE_URL + 'addMedicine';
+    public static GET_MEDICINE_BY_ID = AppConstants.MEDICINE_URL + 'getMedicineById';
+    public static DELETE_MEDICINE_BY_ID = AppConstants.MEDICINE_URL + 'deleteMedicineById/';
+    public static USERS = AppConstants.API_URL + 'users';
+    public static GET_PATIENT_LIST = AppConstants.API_URL + 'patientList';
     public static CheckUser = 'checkUser';
-    public static MEDICINE_URL = AppConstants.API_BASE_URL +'medicine/';
-    public static AddMedicine = AppConstants.MEDICINE_URL +'addMedicine';
-    public static GetMedicineById = 'getMedicineById';
-    public static DeleteMedicineById = 'deleteMedicineById/';
+
 
     public static ItemPerPage: number = 50;
     public static PageSize: number[] = [10, 50, 100, 200, 500];

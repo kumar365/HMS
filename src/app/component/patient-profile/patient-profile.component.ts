@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageConstants } from 'src/app/constant/message-constants';
 import { ApiResponse } from 'src/app/model/api-response';
 import { Appointment } from 'src/app/model/appointment';
@@ -17,11 +18,13 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./patient-profile.component.css']
 })
 export class PatientProfileComponent implements OnInit {
-  public imagePath: any;
+  id: any;
   imgURL: any;
+  public imagePath: any;
   public message: string | undefined;
   statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
+  parentUser: User = new User;
   currentUser: User = new User;
   appointmentList: Appointment[] = [];
   prescription: Prescription = new Prescription;
@@ -33,11 +36,18 @@ export class PatientProfileComponent implements OnInit {
   billList: Bill[] = [];
   billFlag: boolean = false;
 
-  constructor(private storageService: StorageService, private userService: UserService, private paymentService: PaymentService) { }
+  constructor(private router: Router,private storageService: StorageService, private activatedRoute: ActivatedRoute, private userService: UserService, private paymentService: PaymentService) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
     this.currentUserInfo.token = this.storageService.getToken();
+    this.activatedRoute.queryParams.subscribe(params => {
+      console.log(params);
+      this.id = params['id'];
+      if (this.id != undefined && this.id > 0) {
+        this.getPatientDataById(this.id);
+      }
+    });
     this.getUserData();
     //this.getAppointmentList();
     this.getPrescriptionList();
@@ -47,17 +57,26 @@ export class PatientProfileComponent implements OnInit {
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
-      //console.log('data ::' + data);
-      this.currentUser = data;
+      this.parentUser = data;
+    });
+  }
+  getPatientDataById(id: any) {
+    this.userService.getPatientDataById(id, this.currentUserInfo.token).subscribe((data: User) => {
+      if (data != null) {
+        this.currentUser = data;
+      } else {
+        alert('In valid user');
+        this.router.navigate(['/myPatients']);
+      }
     });
   }
   getAppointmentList() {
-    this.userService.getPatientAppointmentList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: Appointment[]) => {
+    this.userService.getPatientAppointmentList(this.currentUser.id, this.currentUserInfo.token).subscribe((data: Appointment[]) => {
       this.appointmentList = data;
     });
   }
   getPrescriptionList() {
-    this.userService.getPrescriptionList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: Prescription[]) => {
+    this.userService.getPrescriptionList(this.currentUser.id, this.currentUserInfo.token).subscribe((data: Prescription[]) => {
       this.prescriptionList = data;
       console.log('prescriptionList length ::' + data.length);
     });
@@ -79,12 +98,12 @@ export class PatientProfileComponent implements OnInit {
     });
   }
   getMedicalRecordsList() {
-    this.userService.getMedicalRecordsList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: MedicalRecords[]) => {
+    this.userService.getMedicalRecordsList(this.currentUser.id, this.currentUserInfo.token).subscribe((data: MedicalRecords[]) => {
       this.medicalRecordsList = data;
     });
   }
   getBillList() {
-    this.paymentService.getBillList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: Bill[]) => {
+    this.paymentService.getBillList(this.currentUser.id, this.currentUserInfo.token).subscribe((data: Bill[]) => {
       this.billList = data;
       console.log('billList length ::' + data.length);
     });

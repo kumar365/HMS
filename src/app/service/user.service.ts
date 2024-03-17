@@ -31,11 +31,11 @@ export class UserService {
     const httpOptions1 = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
     };
-    return this.httpClient.get<User[]>(AppConstants.Users, httpOptions1);
+    return this.httpClient.get<User[]>(AppConstants.USERS, httpOptions1);
   }
 
   public save(user: User) {
-    return this.httpClient.post<User>(AppConstants.API_BASE_URL + AppConstants.Users, user, httpOptions);
+    return this.httpClient.post<User>(AppConstants.API_BASE_URL + AppConstants.USERS, user, httpOptions);
   }
 
   public changePassword(useInfo: UserInfo): Observable<MessageResponse> {
@@ -52,6 +52,13 @@ export class UserService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + useInfo.token })
     };
     return this.httpClient.get<User>(AppConstants.GET_USER_BY_ID + useInfo.id, httpOptions1);
+  }
+
+  getPatientDataById(id: any, token: string) {
+    const httpOptions1 = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
+    };
+    return this.httpClient.get<User>(AppConstants.GET_PATIENT_BY_ID + id, httpOptions1);
   }
   uploadFile(user: User): Observable<MessageResponse> {
     //console.log('user.token :: ' + user.token);
@@ -189,6 +196,13 @@ export class UserService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + userInfo.token })
     };
     return this.httpClient.get<Product[]>(AppConstants.GET_PRODUCT_LIST + userInfo.id, httpOptions1);
+  }
+
+  public getPatientList(token: string): Observable<User[]> {
+    const httpOptions1 = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
+    };
+    return this.httpClient.get<User[]>(AppConstants.GET_PATIENT_LIST, httpOptions1);
   }
 
 }
