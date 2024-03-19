@@ -27,7 +27,7 @@ export class PatientDashboardComponent implements OnInit {
     this.currentUserInfo = this.storageService.getUser();
     this.currentUserInfo.token = this.storageService.getToken();
     this.getUserData();
-    //this.getAppointmentList();
+    this.getAppointmentList();
     this.getPrescriptionList();
     this.getMedicalRecordsList();
     this.getBillList();

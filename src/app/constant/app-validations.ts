@@ -189,4 +189,13 @@ export class AppValidations {
             return false;
         }
     }
+    static validateSymptoms(symptoms: string): boolean {
+        var nameRegex = /^[A-Za-z][A-Za-z\'\-]+([\ A-Za-z][A-Za-z\'\-]+)*/;
+        if (nameRegex.test(symptoms)) {
+            return true;
+        } else {
+            alert("Your symptoms is not valid.");
+            return false;
+        }
+    }
 }

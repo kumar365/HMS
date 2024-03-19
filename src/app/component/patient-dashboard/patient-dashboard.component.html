@@ -275,7 +275,7 @@
                                 <th></th>
                               </tr>
                             </thead>
-                            <tbody>
+                            <tbody *ngFor="let appointment of appointmentList;">
                               <tr>
                                 <td>
                                   <h2 class="table-avatar">
@@ -283,15 +283,14 @@
                                       <img class="avatar-img rounded-circle"
                                         src="/assets/img/doctors/doctor-thumb-01.jpg" alt="User Image">
                                     </a>
-                                    <a href="doctorProfile">Dr. Vidya B <span>Dental</span></a>
+                                    <a href="doctorProfile">Dr. {{appointment.doctorName}} <span>Dental</span></a>
                                   </h2>
                                 </td>
-                                <td>14 Nov 2023 <span class="d-block text-info">10.00 AM</span></td>
-                                <td>12 Nov 2023</td>
-                                <td>Rs.500/-</td>
-                                <td>16 Nov 2023</td>
-
-                                <td><span class="badge rounded-pill bg-success-light">Confirm</span></td>
+                                <td>{{appointment.date | date:'dd MMM yyyy'}} <span class="d-block text-info">10.00 AM</span></td>
+                                <td>{{appointment.createdDate | date:'dd MMM yyyy'}}</td>
+                                <td>{{appointment.amount}}/-</td>
+                                <td>{{appointment.followUpDate | date:'dd MMM yyyy'}}</td>
+                                <td><span class="badge rounded-pill bg-success-light">{{appointment.status}}</span></td>
                                 <td class="text-center">
                                   <div class="consultation-types" style="display: inline-block;">
                                     <a href="javascript:void(0);"
@@ -312,41 +311,7 @@
                                   </div>
                                 </td>
                               </tr>
-                              <tr>
-                                <td>
-                                  <h2 class="table-avatar">
-                                    <a href="doctorProfile" class="avatar avatar-sm me-2">
-                                      <img class="avatar-img rounded-circle"
-                                        src="/assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
-                                    </a>
-                                    <a href="doctorProfile">Dr. Ganesh K <span>Dental</span></a>
-                                  </h2>
-                                </td>
-                                <td>12 Nov 2023 <span class="d-block text-info">8.00 PM</span></td>
-                                <td>12 Nov 2023</td>
-                                <td>Rs.600/-</td>
-                                <td>14 Nov 2023</td>
-                                <td><span class="badge rounded-pill bg-success-light">Confirm</span></td>
-                                <td class="text-center">
-                                  <div class="consultation-types" style="display: inline-block;">
-                                    <a href="javascript:void(0);"
-                                      style="width: 40px;min-width: 40px;color: #eb1831;border: 1px solid #eb1831;">
-                                      <i class="feather-video" style="margin-right: 0px;"></i>
-                                    </a>
-
-                                  </div>
-                                </td>
-                                <td class="text-end">
-                                  <div class="table-action">
-                                    <a href="javascript:void(0);" class="btn btn-sm bg-primary-light">
-                                      <i class="fas fa-print"></i> Print
-                                    </a>
-                                    <a href="javascript:void(0);" class="btn btn-sm bg-info-light">
-                                      <i class="far fa-eye"></i> View
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
+                              
                             </tbody>
                           </table>
                         </div>

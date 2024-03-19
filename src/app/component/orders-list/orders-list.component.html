@@ -116,10 +116,13 @@
                                         <img src="/assets/img/clients/client-01.jpg" alt="User Image">
                                     </a>
                                     <div class="profile-det-info">
-                                        <h3>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</h3>
+                                        <h3>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}
+                                        </h3>
                                         <div class="patient-details">
-                                            <h5><i class="fas fa-birthday-cake"></i> {{currentUser.dateOfBirth | date:'dd MMM yyyy'}}, {{currentUser.age}}</h5>
-                                            <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i> {{currentUser.state.name}}, {{currentUser.country.name}}</h5>
+                                            <h5><i class="fas fa-birthday-cake"></i> {{currentUser.dateOfBirth |
+                                                date:'dd MMM yyyy'}}, {{currentUser.age}}</h5>
+                                            <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i>
+                                                {{currentUser.state.name}}, {{currentUser.country.name}}</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -207,43 +210,24 @@
 
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody *ngFor="let orders of ordersList;let i = index">
                                                             <tr>
-                                                                <td>1</td>
-                                                                <td><a href="invoiceView">OD1236547890</a></td>
+                                                                <td>{{i+1}}</td>
+                                                                <td><a href="invoiceView">{{orders.orderId}}</a></td>
                                                                 <td>3 Nov 2023 <span class="d-block text-info">11.00
                                                                         AM</span></td>
-
-
-                                                                <td>Medlife Medical</td>
-                                                                <td class="text-center">2</td>
-                                                                <td class="text-center">Rs.150/-</td>
-                                                                <td>Paytm</td>
+                                                                <td>{{orders.pharmacyName}}</td>
+                                                                <td class="text-center">{{orders.quantity}}</td>
+                                                                <td class="text-center">Rs.{{orders.amount}}/-</td>
+                                                                <td>{{orders.paymentGateway}}</td>
                                                                 <td><span
-                                                                        class="btn btn-sm bg-success-light">Completed</span>
+                                                                        class="btn btn-sm bg-success-light">{{orders.trackOrder}}</span>
                                                                 </td>
-                                                                <td><span class="badge badge-primary">Order
-                                                                        Placed</span></td>
-
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td><a href="invoiceView">OD1236547891</a></td>
-                                                                <td>11 Nov 2023 <span class="d-block text-info">10.00
-                                                                        AM</span></td>
-
-                                                                <td>Medlife Medical</td>
-                                                                <td class="text-center">4</td>
-                                                                <td class="text-center">Rs.400/-</td>
-                                                                <td>GPay</td>
                                                                 <td><span
-                                                                        class="btn btn-sm bg-danger-light">Processing</span>
+                                                                        class="badge badge-primary">{{orders.status}}</span>
                                                                 </td>
-                                                                <td><span class="badge badge-primary">Order
-                                                                        Placed</span></td>
-
                                                             </tr>
-
+                                                            
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -355,8 +339,8 @@
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
                                     <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a
-                                            href="https://technologies.com" target="_blank"
-                                            style="color:#fff">l Technologies Pvt. Ltd.</a></p>
+                                            href="https://technologies.com" target="_blank" style="color:#fff">l
+                                            Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">

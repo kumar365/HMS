@@ -103,26 +103,28 @@
                                 <h4 style="font-weight: bold;">Tell us your symptom or health problem</h4>
                                 <div class="form-group">
                                     <label class="sr-only" for="f1-about-yourself">About yourself</label>
-                                    <textarea name="f1-about-yourself" placeholder="your systems or health problem"
-                                        class="f1-about-yourself form-control" id="f1-about-yourself"></textarea>
+                                    <textarea [(ngModel)]="consultation.symptoms" id="symptoms" name="symptoms"
+                                        class="form-control" rows="5" placeholder="your symptoms or health problems"
+                                        #symptoms="ngModel"></textarea>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-form-label">Choose a relevant speciality</label><br />
                                     <div class="col-md-12">
-                                        <select class="form-select">
-                                            <option>Select a relevant speciality</option>
-                                            <option>Ear, Nose, Throat</option>
-                                            <option>Pediatrics</option>
-                                            <option>General Physician</option>
+                                        <select [(ngModel)]="consultation.speciality" id="speciality" name="speciality"
+                                            class="form-select" #speciality="ngModel">
+                                            <option value="" [selected]="true">Select a relevant speciality</option>
+                                            <option value="Ear, Nose, Throat">Ear, Nose, Throat</option>
+                                            <option value="Pediatrics">Pediatrics</option>
+                                            <option value="General Physician">General Physician</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="f1-first-name">Mobile No</label>
-                                    <input type="text" name="f1-first-name" placeholder="Mobile No"
-                                        class="f1-first-name form-control" id="f1-first-name">
+                                    <input type="text" [(ngModel)]="consultation.phoneNumber" id="phoneNumber"
+                                        name="phoneNumber" placeholder="Enter Phone Number" class="form-control"
+                                        #phoneNumber="ngModel">
                                 </div>
-
                                 <div class="f1-buttons">
                                     <button type="button" (click)="secondDiv()"
                                         class="btn btn-primary btn-next">Next</button>
@@ -154,29 +156,34 @@
                                 <div class="form-group">
                                     <h6>Select Type of Consultation</h6>
                                     <div class="col-md-12">
-                                        <select class="form-select">
-                                            <option>Clinic Visit</option>
-                                            <option>Video Consultation</option>
-                                            <option>Tele Consultation</option>
+                                        <select [(ngModel)]="consultation.consultationType" id="consultationType"
+                                            name="consultationType" class="form-select" #consultationType="ngModel">
+                                            <option value="" [selected]="true">Select Consultation Type</option>
+                                            <option value="Clinic Visit">Clinic Visit</option>
+                                            <option value="Video Consultation">Video Consultation</option>
+                                            <option value="Tele Consultation">Tele Consultation</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <h6>Patient Name</h6>
-                                    <input type="text" name="f1-email" placeholder="Patient Name"
-                                        class="f1-email form-control" id="f1-email">
+                                    <input type="text" [(ngModel)]="consultation.patientName" id="patientName"
+                                        name="patientName" placeholder="Enter Patient Name" class="form-control"
+                                        #patientName="ngModel">
                                 </div>
                                 <h6 style="font-weight: bold;">Do you have any coupon code?</h6>
                                 <div class="form-group">
                                     <label class="sr-only" for="f1-email">Coupon Code</label>
-                                    <input type="text" name="f1-email" placeholder="Coupon Code" class="form-control">
+                                    <input type="text" [(ngModel)]="consultation.couponCode" id="couponCode"
+                                        name="couponCode" placeholder="Coupon Code" class="form-control"
+                                        #couponCode="ngModel">
                                 </div>
                                 <div class="pricing-amount">
                                     <h6 style="color: #44b1c6;">Final Payment</h6>
                                     <h2>Rs. 399<span>/-</span></h2>
 
                                 </div>
-                                <div class="pricing-btn"><a class="btn" href="consultationCheckout">Make
+                                <div class="pricing-btn"><a class="btn" (click)="onSubmit()">Make
                                         Payment</a></div>
                             </div><!-- </fieldset> -->
 

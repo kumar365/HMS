@@ -86,7 +86,7 @@ export class PatientDetailsComponent implements OnInit {
       const element = this.renderer.selectRootElement('#symtoms');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (!AppValidations.validateName(this.appointment.symtoms)) {
+    } else if (!AppValidations.validateSymptoms(this.appointment.symtoms)) {
       const element = this.renderer.selectRootElement('#symtoms');
       setTimeout(() => element.focus(), 0);
       return false;

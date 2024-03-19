@@ -64,6 +64,8 @@ export class AppConstants {
     public static DELETE_MEDICINE_BY_ID = AppConstants.MEDICINE_URL + 'deleteMedicineById/';
     public static USERS = AppConstants.API_URL + 'users';
     public static GET_PATIENT_LIST = AppConstants.API_URL + 'patientList';
+    public static GET_DOCTOR_LIST = AppConstants.API_URL + 'doctorList';
+    public static GET_ORDERS_LIST = AppConstants.API_URL + 'ordersList/';
     public static CheckUser = 'checkUser';
 
 

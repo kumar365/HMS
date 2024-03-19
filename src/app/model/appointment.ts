@@ -22,5 +22,7 @@ export class Appointment {
     createdDate!: any;
     amount!: any;
     dependent!: any;
+    status!: string;
+    followUpDate!: any;
     cardDetails!:CardDetails;
 }

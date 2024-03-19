@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppValidations } from 'src/app/constant/app-validations';
 import { Appointment } from 'src/app/model/appointment';
 import { CardDetails } from 'src/app/model/card-details';
+import { Consultation } from 'src/app/model/consultation';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
 import { StorageService } from 'src/app/service/storage.service';
@@ -18,7 +19,7 @@ export class ConsultationCheckoutComponent implements OnInit {
   statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
-  appointment: Appointment = new Appointment;
+  consultation: Consultation = new Consultation;
   termsAndConditionsFlag: Boolean = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private storageService: StorageService,
@@ -29,7 +30,7 @@ export class ConsultationCheckoutComponent implements OnInit {
     this.currentUserInfo = this.storageService.getUser();
     this.currentUserInfo.token = this.storageService.getToken();
     this.getUserData();
-    this.appointment.cardDetails = new CardDetails;
+    this.consultation.cardDetails = new CardDetails;
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
@@ -38,14 +39,14 @@ export class ConsultationCheckoutComponent implements OnInit {
     });
   }
   validateConsultationCheckoutDetails(): boolean {
-    if (this.appointment.paymentMethod == "" || this.appointment.paymentMethod == undefined) {
+    if (this.consultation.paymentMethod == "" || this.consultation.paymentMethod == undefined) {
       alert('Please Check the paymentMethod');
       const element = this.renderer.selectRootElement('#nameOnCard');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (this.appointment.paymentMethod == "Credit card" && !this.validateCardDetails()) {
+    } else if (this.consultation.paymentMethod == "Credit card" && !this.validateCardDetails()) {
       return false;
-    } else if (this.appointment.termsAndConditions == "" || this.appointment.termsAndConditions == "N" || this.appointment.termsAndConditions == undefined) {
+    } else if (this.consultation.termsAndConditions == "" || this.consultation.termsAndConditions == "N" || this.consultation.termsAndConditions == undefined) {
       alert('Please Accept Terms & Conditions');
       const element = this.renderer.selectRootElement('#termsAndConditions');
       setTimeout(() => element.focus(), 0);
@@ -55,49 +56,49 @@ export class ConsultationCheckoutComponent implements OnInit {
     }
   }
   validateCardDetails(): boolean {
-    if (this.appointment.paymentMethod == "Credit card") {
-      if (this.appointment.cardDetails.nameOnCard == "" || this.appointment.cardDetails.nameOnCard == undefined) {
+    if (this.consultation.paymentMethod == "Credit card") {
+      if (this.consultation.cardDetails.nameOnCard == "" || this.consultation.cardDetails.nameOnCard == undefined) {
         alert('Please Enter Name on Card');
         const element = this.renderer.selectRootElement('#nameOnCard');
         setTimeout(() => element.focus(), 0);
         return false;
-      } else if (!AppValidations.validateName(this.appointment.cardDetails.nameOnCard)) {
+      } else if (!AppValidations.validateName(this.consultation.cardDetails.nameOnCard)) {
         const element = this.renderer.selectRootElement('#nameOnCard');
         setTimeout(() => element.focus(), 0);
         return false;
-      } else if (this.appointment.cardDetails.cardNumber == "" || this.appointment.cardDetails.cardNumber == undefined) {
+      } else if (this.consultation.cardDetails.cardNumber == "" || this.consultation.cardDetails.cardNumber == undefined) {
         alert('Please Enter Card Number');
         const element = this.renderer.selectRootElement('#cardNumber');
         setTimeout(() => element.focus(), 0);
         return false;
-      } else if (this.appointment.cardDetails.expiryMonth == "" || this.appointment.cardDetails.expiryMonth == undefined) {
+      } else if (this.consultation.cardDetails.expiryMonth == "" || this.consultation.cardDetails.expiryMonth == undefined) {
         alert('Please Enter Expiry Month');
         const element = this.renderer.selectRootElement('#expiryMonth');
         setTimeout(() => element.focus(), 0);
         return false;
-      } else if (!AppValidations.validateExpiryMonth(this.appointment.cardDetails.expiryMonth)) {
+      } else if (!AppValidations.validateExpiryMonth(this.consultation.cardDetails.expiryMonth)) {
         const element = this.renderer.selectRootElement('#expiryMonth');
         setTimeout(() => element.focus(), 0);
         return false;
-      } else if (this.appointment.cardDetails.expiryYear == "" || this.appointment.cardDetails.expiryYear == undefined) {
+      } else if (this.consultation.cardDetails.expiryYear == "" || this.consultation.cardDetails.expiryYear == undefined) {
         alert('Please Enter Expiry Year');
         const element = this.renderer.selectRootElement('#expiryYear');
         setTimeout(() => element.focus(), 0);
         return false;
-      } else if (!AppValidations.validateExpiryYear(this.appointment.cardDetails.expiryYear)) {
+      } else if (!AppValidations.validateExpiryYear(this.consultation.cardDetails.expiryYear)) {
         const element = this.renderer.selectRootElement('#expiryYear');
         setTimeout(() => element.focus(), 0);
         return false;
-      } else if (!AppValidations.validateExpiryDate(this.appointment.cardDetails.expiryMonth, this.appointment.cardDetails.expiryYear)) {
+      } else if (!AppValidations.validateExpiryDate(this.consultation.cardDetails.expiryMonth, this.consultation.cardDetails.expiryYear)) {
         const element = this.renderer.selectRootElement('#expiryMonth');
         setTimeout(() => element.focus(), 0);
         return false;
-      } else if (this.appointment.cardDetails.cvv == "" || this.appointment.cardDetails.cvv == undefined) {
+      } else if (this.consultation.cardDetails.cvv == "" || this.consultation.cardDetails.cvv == undefined) {
         alert('Please Enter CVV');
         const element = this.renderer.selectRootElement('#cvv');
         setTimeout(() => element.focus(), 0);
         return false;
-      } else if (!AppValidations.validateCVV(this.appointment.cardDetails.cvv)) {
+      } else if (!AppValidations.validateCVV(this.consultation.cardDetails.cvv)) {
         const element = this.renderer.selectRootElement('#cvv');
         setTimeout(() => element.focus(), 0);
         return false;
@@ -112,9 +113,9 @@ export class ConsultationCheckoutComponent implements OnInit {
   changeTermsAndConditions() {
     this.termsAndConditionsFlag = !this.termsAndConditionsFlag;
     if (this.termsAndConditionsFlag) {
-      this.appointment.termsAndConditions = 'Y';
+      this.consultation.termsAndConditions = 'Y';
     } else {
-      this.appointment.termsAndConditions = 'N';
+      this.consultation.termsAndConditions = 'N';
     }
   }
 
