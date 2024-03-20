@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AppValidations } from 'src/app/constant/app-validations';
 import { MessageConstants } from 'src/app/constant/message-constants';
 import { ApiResponse } from 'src/app/model/api-response';
 import { Appointment } from 'src/app/model/appointment';
@@ -36,7 +37,8 @@ export class PatientProfileComponent implements OnInit {
   billList: Bill[] = [];
   billFlag: boolean = false;
 
-  constructor(private router: Router,private storageService: StorageService, private activatedRoute: ActivatedRoute, private userService: UserService, private paymentService: PaymentService) { }
+  constructor(private router: Router, private storageService: StorageService, private activatedRoute: ActivatedRoute,
+    private userService: UserService, private paymentService: PaymentService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
@@ -46,10 +48,13 @@ export class PatientProfileComponent implements OnInit {
       this.id = params['id'];
       if (this.id != undefined && this.id > 0) {
         this.getPatientDataById(this.id);
+      } else {
+        alert('In valid user');
+        this.router.navigate(['/myPatients']);
       }
     });
     this.getUserData();
-    //this.getAppointmentList();
+    this.getAppointmentList();
     this.getPrescriptionList();
     this.getMedicalRecordsList();
     this.getBillList();
@@ -85,17 +90,62 @@ export class PatientProfileComponent implements OnInit {
     this.medicalRecordsFlag = false;
     this.medicalRecords = new MedicalRecords;
   }
+  validateMedicalRecordsData(): boolean {
+    if (this.medicalRecords.description == "" || this.medicalRecords.description == undefined) {
+      alert('Please Enter Title Name');
+      const element = this.renderer.selectRootElement('#description');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validateName(this.medicalRecords.description)) {
+      const element = this.renderer.selectRootElement('#description');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.medicalRecords.patientType == "" || this.medicalRecords.patientType == undefined) {
+      alert('Please Select Patient Type');
+      const element = this.renderer.selectRootElement('#patientType');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    }
+    else if (this.medicalRecords.hospitalName == "" || this.medicalRecords.hospitalName == undefined) {
+      alert('Please Enter Hospital Name');
+      const element = this.renderer.selectRootElement('#hospitalName');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validateName(this.medicalRecords.hospitalName)) {
+      const element = this.renderer.selectRootElement('#hospitalName');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.medicalRecords.symptoms == "" || this.medicalRecords.symptoms == undefined) {
+      alert('Please Enter Symptoms');
+      const element = this.renderer.selectRootElement('#symptoms');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validateSymptoms(this.medicalRecords.symptoms)) {
+      const element = this.renderer.selectRootElement('#symptoms');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.medicalRecords.recordDateString == "" || this.medicalRecords.recordDateString == undefined) {
+      alert('Please Enter Record Date');
+      const element = this.renderer.selectRootElement('#recordDateString');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else {
+      return true;
+    }
+  }
   saveMedicalRecords() {
-    this.medicalRecords.user = this.currentUser;
-    this.medicalRecords.name = this.currentUser.username;
-    this.userService.saveMedicalRecords(this.medicalRecords, this.currentUserInfo.token).subscribe((data: ApiResponse) => {
-      this.message = data.message;
-      if (this.message == MessageConstants.MedicalRecordsMessage) {
-        this.medicalRecordsFlag = true;
-        this.getMedicalRecordsList();
-        this.medicalRecords = new MedicalRecords;
-      }
-    });
+    if (this.validateMedicalRecordsData()) {
+      this.medicalRecords.user = this.currentUser;
+      this.medicalRecords.name = this.currentUser.username;
+      this.userService.saveMedicalRecords(this.medicalRecords, this.currentUserInfo.token).subscribe((data: ApiResponse) => {
+        this.message = data.message;
+        if (this.message == MessageConstants.MedicalRecordsMessage) {
+          this.medicalRecordsFlag = true;
+          this.getMedicalRecordsList();
+          this.medicalRecords = new MedicalRecords;
+        }
+      });
+    }
   }
   getMedicalRecordsList() {
     this.userService.getMedicalRecordsList(this.currentUser.id, this.currentUserInfo.token).subscribe((data: MedicalRecords[]) => {

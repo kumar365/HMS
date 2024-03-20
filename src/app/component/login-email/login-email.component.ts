@@ -36,7 +36,7 @@ export class LoginEmailComponent implements OnInit {
     }
   }
   validateLoginForm(): boolean {
-    alert('validateLoginForm');
+    //alert('validateLoginForm');
     if (this.form.username == "" || this.form.username == undefined) {
       alert('Please Enter Email');
       const element = this.renderer.selectRootElement('#username');

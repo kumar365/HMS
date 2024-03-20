@@ -120,8 +120,8 @@
                       <h3>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</h3>
                       <div class="patient-details">
                         <h5><b>Patient ID :</b> PT{{currentUser.id}}</h5>
-                        <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i> {{currentUser.state.name}},
-                          {{currentUser.country.name}}</h5>
+                        <!-- <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i> {{currentUser.state.name}},
+                          {{currentUser.country.name}}</h5> -->
                       </div>
                     </div>
                   </div>
@@ -500,7 +500,7 @@
         <div *ngIf="medicalRecordsFlag" class="alert alert-danger" role="alert">
           {{ message }}
         </div>
-        <form (ngSubmit)="saveMedicalRecords()" #medicalRecordsForm="ngForm" enctype="multipart/form-data">
+        <form #medicalRecordsForm="ngForm" (ngSubmit)="saveMedicalRecords()" enctype="multipart/form-data">
           <div class="modal-body">
             <div class="row">
               <div class="col-12 col-md-6">
@@ -512,12 +512,13 @@
               </div>
               <div class="col-12 col-md-6">
                 <div class="form-group">
-                  <label>Patient</label>
+                  <label>Patient type</label>
                   <select class="form-select" [(ngModel)]="medicalRecords.patientType" id="patientType"
                     name="patientType" #patientType="ngModel">
-                    <option>Myself</option>
-                    <option>Child_1</option>
-                    <option>Self</option>
+                    <option value="">Select Patient</option>
+                    <option value="Myself">Myself</option>
+                    <option value="Child_1">Child_1</option>
+                    <option value="Self">Self</option>
                   </select>
                 </div>
               </div>
@@ -538,7 +539,6 @@
                   <div class="upload-medical-records">
                     <input type="file" [(ngModel)]="medicalRecords.attachmentFile" id="attachmentFile"
                       name="attachmentFile" class="form-control" #attachmentFile="ngModel">
-                    <!-- <input type="file" id="file" name="file" class="form-control"> -->
                     <div class="upload-content dropzone">
                       <div class="text-center">
                         <div class="upload-icon mb-2"><img src="/assets/img/upload-icon.png" alt>
@@ -563,7 +563,7 @@
             <div class="row">
               <div class="col-12 col-md-6">
                 <div class="form-group">
-                  <label>Date</label>
+                  <label>Record Date</label>
                   <div class="form-group">
                     <input type="date" [(ngModel)]="medicalRecords.recordDateString" id="recordDateString"
                       name="recordDateString" class="form-control" #recordDateString="ngModel">

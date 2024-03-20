@@ -38,22 +38,22 @@ export class PatientDashboardComponent implements OnInit {
     });
   }
   getAppointmentList() {
-    this.userService.getPatientAppointmentList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: Appointment[]) => {
+    this.userService.getPatientAppointmentList(this.currentUser.id, this.currentUserInfo.token).subscribe((data: Appointment[]) => {
       this.appointmentList = data;
     });
   }
   getPrescriptionList() {
-    this.userService.getPrescriptionList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: Prescription[]) => {
+    this.userService.getPrescriptionList(this.currentUser.id, this.currentUserInfo.token).subscribe((data: Prescription[]) => {
       this.prescriptionList = data;
     });
   }
   getMedicalRecordsList() {
-    this.userService.getMedicalRecordsList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: MedicalRecords[]) => {
+    this.userService.getMedicalRecordsList(this.currentUser.id, this.currentUserInfo.token).subscribe((data: MedicalRecords[]) => {
       this.medicalRecordsList = data;
     });
   }
   getBillList() {
-    this.paymentService.getBillList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: Bill[]) => {
+    this.paymentService.getBillList(this.currentUser.id, this.currentUserInfo.token).subscribe((data: Bill[]) => {
       this.billList = data;
     });
   }

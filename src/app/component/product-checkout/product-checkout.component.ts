@@ -1,8 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppValidations } from 'src/app/constant/app-validations';
-import { MessageConstants } from 'src/app/constant/message-constants';
-import { ApiResponse } from 'src/app/model/api-response';
 import { Appointment } from 'src/app/model/appointment';
 import { CardDetails } from 'src/app/model/card-details';
 import { User } from 'src/app/model/user';

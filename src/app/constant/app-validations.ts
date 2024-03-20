@@ -190,11 +190,20 @@ export class AppValidations {
         }
     }
     static validateSymptoms(symptoms: string): boolean {
-        var nameRegex = /^[A-Za-z][A-Za-z\'\-]+([\ A-Za-z][A-Za-z\'\-]+)*/;
-        if (nameRegex.test(symptoms)) {
+        var symptomsRegex = /^[A-Za-z][A-Za-z\'\-]+([\ A-Za-z][A-Za-z\'\-]+)*/;
+        if (symptomsRegex.test(symptoms)) {
             return true;
         } else {
             alert("Your symptoms is not valid.");
+            return false;
+        }
+    }
+    static validateAddress(address: string): boolean {
+        var addressRegex = /^[a-zA-Z0-9\s,'-]*$/;
+        if (addressRegex.test(address)) {
+            return true;
+        } else {
+            alert("Your address is not valid.");
             return false;
         }
     }
