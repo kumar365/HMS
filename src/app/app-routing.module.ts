@@ -66,7 +66,6 @@ import { DoctorSignupComponent } from './component/doctor-signup/doctor-signup.c
 import { PatientSignupComponent } from './component/patient-signup/patient-signup.component';
 import { PaymentSuccessComponent } from './component/payment-success/payment-success.component';
 import { TestDescriptionComponent } from './component/test-description/test-description.component';
-import { RegisterComponent } from './component/register/register.component';
 import { LoginSocialComponent } from './component/login-social/login-social.component';
 import { RegisterSocialComponent } from './component/register-social/register-social.component';
 import { Booking2Component } from './component/booking2/booking2.component';
@@ -166,7 +165,6 @@ const routes: Routes = [
   { path: 'productCheckout', component: ProductCheckoutComponent },
   { path: 'productDescription', component: ProductDescriptionComponent },
   { path: 'profileSettings', component: ProfileSettingsComponent },
-  { path: 'register', component: RegisterComponent },
   { path: 'registerSocial', component: RegisterSocialComponent },
   { path: 'reports', component: ReportsComponent },
   { path: 'resetPassword', component: ResetPasswordComponent },

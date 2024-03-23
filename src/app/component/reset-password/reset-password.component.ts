@@ -16,7 +16,8 @@ export class ResetPasswordComponent implements OnInit {
   user: User = new User;
   token: any;
   redirectUrl: any;
-  constructor(private authService: AuthService, private activatedRoute: ActivatedRoute, private renderer: Renderer2) { }
+  constructor(private authService: AuthService, private activatedRoute: ActivatedRoute,
+     private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {

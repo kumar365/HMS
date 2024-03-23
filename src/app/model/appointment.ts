@@ -2,15 +2,19 @@ import { CardDetails } from "./card-details";
 import { User } from "./user";
 
 export class Appointment {
-    appointmentId!: any;
+    id!: any;
+    doctorUser!: User;
+    doctorName!: string;
+    appointmentDate!: any;
+    startTime!: any;
+    endTime!: any;
+    status!: string;
+    user!: User;
     appointmentFor!: string;
     patientName!: string;
-    doctorName!: string;
     consultationType!: string;
-    date!: any;
+    price!: number;
     prescription!: string;
-    confirmed!: string;
-    user!: User;
     paymentMethod!: string;
     termsAndConditions!: string;
     insurance!: string;
@@ -22,7 +26,6 @@ export class Appointment {
     createdDate!: any;
     amount!: any;
     dependent!: any;
-    status!: string;
     followUpDate!: any;
     cardDetails!:CardDetails;
 }

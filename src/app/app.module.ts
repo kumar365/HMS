@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -77,7 +76,6 @@ import { DoctorSignupComponent } from './component/doctor-signup/doctor-signup.c
 import { PatientSignupComponent } from './component/patient-signup/patient-signup.component';
 import { PaymentSuccessComponent } from './component/payment-success/payment-success.component';
 import { TestDescriptionComponent } from './component/test-description/test-description.component';
-import { RegisterComponent } from './component/register/register.component';
 import { LoginSocialComponent } from './component/login-social/login-social.component';
 import { RegisterSocialComponent } from './component/register-social/register-social.component';
 import { Booking2Component } from './component/booking2/booking2.component';
@@ -174,7 +172,6 @@ import { ResetPasswordComponent } from './component/reset-password/reset-passwor
     PatientSignupComponent,
     PaymentSuccessComponent,
     TestDescriptionComponent,
-    RegisterComponent,
     LoginSocialComponent,
     RegisterSocialComponent,
     Booking2Component,
@@ -219,7 +216,7 @@ import { ResetPasswordComponent } from './component/reset-password/reset-passwor
   bootstrap: [AppComponent]
 })
 export class AppModule {
-    constructor(library: FaIconLibrary) {
-      library.addIconPacks(fas, far, fab);
-    }
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, far, fab);
+  }
 }
