@@ -528,8 +528,8 @@
                                             <div class="form-group">
                                                 <label>Start Time</label>
                                                 <select [(ngModel)]="doctorSlot.startTime" id="startTime"
-                                                    name="startTime" class="form-select form-control"
-                                                    (change)="updateEndTime()" #startTime="ngModel">
+                                                    name="startTime" (change)="updateEndTime()"
+                                                    class="form-select form-control" #startTime="ngModel">
                                                     <option value="">Select</option>
                                                     <option *ngFor="let startTime of startTimeList" [value]="startTime">
                                                         {{startTime}}</option>
@@ -540,7 +540,8 @@
                                             <div class="form-group">
                                                 <label>End Time</label>
                                                 <select [(ngModel)]="doctorSlot.endTime" id="endTime" name="endTime"
-                                                    class="form-select form-control" #endTime="ngModel">
+                                                    (change)="updateStartTime()" class="form-select form-control"
+                                                    #endTime="ngModel">
                                                     <option value="">Select</option>
                                                     <option *ngFor="let endTime of endTimeList" [value]="endTime">
                                                         {{endTime}}</option>

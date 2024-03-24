@@ -70,6 +70,27 @@ export class ScheduleTimingsComponent implements OnInit {
     this.doctorSlot.startTime = "";
     this.doctorSlot.endTime = "";
   }
+  updateStartTime() {
+    this.doctorSlot.startTime = this.getStartTime(this.doctorSlot.endTime, this.doctorSlot.slotDuration);
+  }
+  getStartTime(endTime: any, increment: any): any {
+    endTime = endTime.toString().split(':');
+    var endHr = parseInt(endTime[0], 10);
+    var endMin = parseInt(endTime[1], 10);
+    increment = parseInt(increment, 10);
+    var startTime = '';
+    if (endMin >= increment) {
+      endMin = endMin - increment;
+    } else {
+      endMin = endMin  - increment ;
+    }
+    if (endMin < 0 ) {
+      endMin = (endMin === 0) ? 0 : endMin + 60;
+      endHr -= 1;
+    }
+    startTime = endHr + ':' + this.pad(endMin);
+    return startTime;
+  }
   updateEndTime() {
     this.doctorSlot.endTime = this.getEndTime(this.doctorSlot.startTime, this.doctorSlot.slotDuration);
   }
@@ -78,8 +99,9 @@ export class ScheduleTimingsComponent implements OnInit {
     startTime = startTime.toString().split(':');
     var startHr = parseInt(startTime[0], 10);
     var startMin = parseInt(startTime[1], 10);
+    increment = parseInt(increment, 10);
     var endTime = '';
-    startMin = startMin + parseInt(increment);
+    startMin = startMin + increment;
     if ((startMin % 60) === 0 || startMin > 60) {
       startMin = (startMin === 60) ? 0 : startMin - 60;
       startHr += 1;
