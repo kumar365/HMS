@@ -269,7 +269,7 @@
                                                             <div id="slot_sunday" class="tab-pane fade">
                                                                 <h4 class="card-title d-flex justify-content-between">
                                                                     <span>Time Slots</span>
-                                                                    <a class="edit-link" data-bs-toggle="modal"
+                                                                    <a class="edit-link" data-bs-toggle="modal" (click)="checkSlotDuration()"
                                                                         href="#add_time_slot"><i
                                                                             class="fa fa-plus-circle"></i> Add Slot</a>
                                                                 </h4>
@@ -509,7 +509,7 @@
     </div>
 
 
-    <div class="modal fade custom-modal" id="add_time_slot">
+    <div class="modal fade custom-modal" id="add_time_slot" *ngIf="showDiv">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">

@@ -33,7 +33,7 @@ export class SearchAmbulanceComponent implements OnInit {
   getAmbulanceList() {
     this.userService.getAmbulanceList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: Ambulance[]) => {
       this.ambulanceList = data;
-      console.log('data ::' + data);
+      console.log('data length::' + data.length);
     });
   }
 }

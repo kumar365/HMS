@@ -11,7 +11,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class ChatComponent implements OnInit {
   message: any;
-  changePasswordFlag: boolean = false;
+  statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
   constructor(private storageService: StorageService, private userService: UserService) { }

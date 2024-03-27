@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
+import { faSleigh } from '@fortawesome/free-solid-svg-icons';
 import { DoctorSlot } from 'src/app/model/doctor-slot';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
@@ -18,7 +19,8 @@ export class ScheduleTimingsComponent implements OnInit {
   doctorSlot: DoctorSlot = new DoctorSlot;
   startTimeList: string[] = [];
   endTimeList: string[] = [];
-  constructor(private storageService: StorageService, private userService: UserService) { }
+  showDiv: boolean = false;
+  constructor(private storageService: StorageService, private userService: UserService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
@@ -30,6 +32,15 @@ export class ScheduleTimingsComponent implements OnInit {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
     });
+  }
+  checkSlotDuration() {
+    if (this.doctorSlot.slotDuration == 0 || this.doctorSlot.slotDuration == undefined) {
+      this.showDiv = false;
+      alert('Please Select Slot Duration');
+      this.doctorSlot.slotDuration = 0;
+    } else {
+      this.showDiv = true;
+    }
   }
   getTimeIntervals() {
     this.startTimeList = [];
@@ -82,9 +93,9 @@ export class ScheduleTimingsComponent implements OnInit {
     if (endMin >= increment) {
       endMin = endMin - increment;
     } else {
-      endMin = endMin  - increment ;
+      endMin = endMin - increment;
     }
-    if (endMin < 0 ) {
+    if (endMin < 0) {
       endMin = (endMin === 0) ? 0 : endMin + 60;
       endHr -= 1;
     }
@@ -111,10 +122,25 @@ export class ScheduleTimingsComponent implements OnInit {
   }
 
   onSubmit() {
-
+    if (this.validateTimings()) {
+      this.showDiv = false;
+    }
   }
 
-  validateTimings() {
+  validateTimings(): boolean {
+    if (this.doctorSlot.startTime == "" || this.doctorSlot.startTime == undefined) {
+      alert('Please Select Start Time');
+      // const element = this.renderer.selectRootElement('#startTime');
+      // setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.doctorSlot.endTime == "" || this.doctorSlot.endTime == undefined) {
+      alert('Please Select End Time');
+      // const element = this.renderer.selectRootElement('#endTime');
+      // setTimeout(() => element.focus(), 0);
+      return false;
+    } else {
+      return true;
+    }
 
   }
 
