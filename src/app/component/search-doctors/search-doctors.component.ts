@@ -19,13 +19,14 @@ export class SearchDoctorsComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
-    this.currentUserInfo.token = this.storageService.getToken();
-    this.getUserData();
-    this.getDoctorsList();
+    if (this.currentUserInfo != null) {
+      this.currentUserInfo.token = this.storageService.getToken();
+      this.getUserData();
+      this.getDoctorsList();
+    }
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
-      //console.log('data ::' + data);
       this.currentUser = data;
     });
   }

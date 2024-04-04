@@ -42,7 +42,14 @@ export class PatientProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
-    this.currentUserInfo.token = this.storageService.getToken();
+    if (this.currentUserInfo != null) {
+      this.currentUserInfo.token = this.storageService.getToken();
+      this.getUserData();
+      this.getAppointmentList();
+      this.getPrescriptionList();
+      this.getMedicalRecordsList();
+      this.getBillList();
+    }
     this.activatedRoute.queryParams.subscribe(params => {
       console.log(params);
       this.id = params['id'];
@@ -53,11 +60,6 @@ export class PatientProfileComponent implements OnInit {
         this.router.navigate(['/myPatients']);
       }
     });
-    this.getUserData();
-    this.getAppointmentList();
-    this.getPrescriptionList();
-    this.getMedicalRecordsList();
-    this.getBillList();
     this.prescription.createdDate = new Date();
   }
   getUserData() {

@@ -24,8 +24,10 @@ export class ScheduleTimingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
-    this.currentUserInfo.token = this.storageService.getToken();
-    this.getUserData();
+    if (this.currentUserInfo != null) {
+      this.currentUserInfo.token = this.storageService.getToken();
+      this.getUserData();
+    }
     this.doctorSlot.slotDuration = 0;
   }
   getUserData() {

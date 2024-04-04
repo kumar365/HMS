@@ -26,13 +26,14 @@ export class AmbCheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
-    this.currentUserInfo.token = this.storageService.getToken();
-    this.getUserData();
+    if (this.currentUserInfo != null) {
+      this.currentUserInfo.token = this.storageService.getToken();
+      this.getUserData();
+    }
     this.ambBooking.cardDetails = new CardDetails;
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
-      //console.log('data ::' + data);
       this.currentUser = data;
     });
   }

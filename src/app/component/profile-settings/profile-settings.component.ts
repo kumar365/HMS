@@ -31,14 +31,14 @@ export class ProfileSettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
-    this.currentUserInfo.token = this.storageService.getToken();
-    this.currentUser.token = this.storageService.getToken();
-    this.getUserData();
-    //console.log('this.currentUser.token ::' + this.currentUser.token);
+    if (this.currentUserInfo != null) {
+      this.currentUserInfo.token = this.storageService.getToken();
+      this.getUserData();
+      this.currentUser.token = this.storageService.getToken();
+    }
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
-      //console.log('data ::' + data);
       this.currentUser = data;
       this.currentUser.dateOfBirthString = this.convertDateToDateString(this.currentUser.dateOfBirth);
       this.getCountries();

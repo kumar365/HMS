@@ -19,7 +19,9 @@ export class MyPatientsComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
-    this.currentUserInfo.token = this.storageService.getToken();
+    if (this.currentUserInfo != null) {
+      this.currentUserInfo.token = this.storageService.getToken();
+    }
     this.getPatientList();
   }
   getPatientList() {

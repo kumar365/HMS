@@ -23,9 +23,11 @@ export class MedicalRecordsComponent implements OnInit {
   constructor(private storageService: StorageService, private userService: UserService, private renderer: Renderer2) { }
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
-    this.currentUserInfo.token = this.storageService.getToken();
-    this.getUserData();
-    this.getMedicalRecordsList();
+    if (this.currentUserInfo != null) {
+      this.currentUserInfo.token = this.storageService.getToken();
+      this.getUserData();
+      this.getMedicalRecordsList();
+    }
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {

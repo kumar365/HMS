@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/model/user';
+import { ActivatedRoute } from '@angular/router';
+import { TestDetails } from 'src/app/model/test-details';
 import { UserInfo } from 'src/app/model/user-info';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
@@ -10,20 +11,24 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./test-description.component.css']
 })
 export class TestDescriptionComponent implements OnInit {
-  message: any;
-  statusFlag: boolean = false;
-  currentUserInfo: UserInfo = new UserInfo;
-  currentUser: User = new User;
-  constructor(private storageService: StorageService, private userService: UserService) { }
+  id!: number;
+  testDetails: TestDetails = new TestDetails;
+  constructor(private storageService: StorageService, private userService: UserService,
+     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.currentUserInfo = this.storageService.getUser();
-    this.currentUserInfo.token = this.storageService.getToken();
-    this.getUserData();
+    this.activatedRoute.queryParams.subscribe(params => {
+      console.log(params);
+      this.id = params['id'];
+      if(this.id == undefined){
+        this.id = 0; 
+      }
+      this.getTestDetails();
+    });
   }
-  getUserData() {
-    this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
-      this.currentUser = data;
+  getTestDetails() {
+    this.userService.getTestDetails(this.id).subscribe((data: TestDetails) => {
+      this.testDetails = data;
     });
   }
 }

@@ -62,15 +62,17 @@ export class AppConstants {
     public static ADD_MEDICINE = AppConstants.MEDICINE_URL + 'addMedicine';
     public static GET_MEDICINE_BY_ID = AppConstants.MEDICINE_URL + 'getMedicineById';
     public static DELETE_MEDICINE_BY_ID = AppConstants.MEDICINE_URL + 'deleteMedicineById/';
-    public static USERS = AppConstants.API_URL + 'users';
     public static GET_PATIENT_LIST = AppConstants.API_URL + 'patientList';
     public static GET_DOCTOR_LIST = AppConstants.API_URL + 'doctorList';
     public static GET_ORDERS_LIST = AppConstants.API_URL + 'ordersList/';
-    public static CheckUser = 'checkUser';
-
+    public static ADD_TEST_DETAILS = AppConstants.COMMON_URL + 'addTestDetails';
+    public static GET_TEST_DETAILS = AppConstants.COMMON_URL + 'testDetails/';
+    public static USERS = AppConstants.API_URL + 'users';
 
     public static ItemPerPage: number = 50;
     public static PageSize: number[] = [10, 50, 100, 200, 500];
     public static AllowFiltering: boolean = true;
     public static IsUserLoggedIn: boolean = false;
+
+    public static CheckUser = 'checkUser';
 }

@@ -14,6 +14,7 @@ import { Prescription } from '../model/prescription';
 import { Appointment } from '../model/appointment';
 import { Product } from '../model/product';
 import { Orders } from '../model/orders';
+import { TestDetails } from '../model/test-details';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -27,7 +28,6 @@ export class UserService {
   constructor(private httpClient: HttpClient) {
 
   }
-
   public findAll(token: any): Observable<User[]> {
     const httpOptions1 = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
@@ -219,6 +219,8 @@ export class UserService {
     };
     return this.httpClient.get<Orders[]>(AppConstants.GET_ORDERS_LIST + userInfo.id, httpOptions1);
   }
-
+  getTestDetails(id: number): Observable<TestDetails> {
+      return this.httpClient.get<TestDetails>(AppConstants.GET_TEST_DETAILS + id, httpOptions);
+  }
 }
 

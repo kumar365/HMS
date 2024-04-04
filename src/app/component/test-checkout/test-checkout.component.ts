@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { TestDetails } from 'src/app/model/test-details';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
 import { StorageService } from 'src/app/service/storage.service';
@@ -10,23 +12,41 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./test-checkout.component.css']
 })
 export class TestCheckoutComponent implements OnInit {
+  id!: number;
   message: any;
   statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
-  constructor(private storageService: StorageService, private userService: UserService) { }
+  testDetails: TestDetails = new TestDetails;
+  constructor(private storageService: StorageService, private userService: UserService,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe(params => {
+      console.log(params);
+      this.id = params['id'];
+      if(this.id == undefined){
+        this.id = 0; 
+      }
+      this.getTestDetails();
+    });
     this.currentUserInfo = this.storageService.getUser();
-    this.currentUserInfo.token = this.storageService.getToken();
-    this.getUserData();
+    if (this.currentUserInfo != null) {
+      this.currentUserInfo.token = this.storageService.getToken();
+      this.getUserData();
+    }
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
     });
   }
-  onSubmit(){
-    
+  getTestDetails() {
+    this.userService.getTestDetails(this.id).subscribe((data: TestDetails) => {
+      this.testDetails = data;
+    });
+  }
+  onSubmit() {
+
   }
 }

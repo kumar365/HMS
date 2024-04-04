@@ -17,20 +17,22 @@ import { UserService } from 'src/app/service/user.service';
 export class PatientDashboardComponent implements OnInit {
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
-  appointmentList: Appointment[]= [];
-  prescriptionList: Prescription[]= [];
+  appointmentList: Appointment[] = [];
+  prescriptionList: Prescription[] = [];
   medicalRecordsList: MedicalRecords[] = [];
   billList: Bill[] = [];
-    
-  constructor(private storageService: StorageService, private userService: UserService,private paymentService: PaymentService) { }
+
+  constructor(private storageService: StorageService, private userService: UserService, private paymentService: PaymentService) { }
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
-    this.currentUserInfo.token = this.storageService.getToken();
-    this.getUserData();
-    this.getAppointmentList();
-    this.getPrescriptionList();
-    this.getMedicalRecordsList();
-    this.getBillList();
+    if (this.currentUserInfo != null) {
+      this.currentUserInfo.token = this.storageService.getToken();
+      this.getUserData();
+      this.getAppointmentList();
+      this.getPrescriptionList();
+      this.getMedicalRecordsList();
+      this.getBillList();
+    }
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {

@@ -20,7 +20,7 @@ export class LoginMobileComponent implements OnInit {
   errorMessage = '';
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
-  
+
   constructor(private authService: AuthService, private storageService: StorageService,
     private userService: UserService, private router: Router, private renderer: Renderer2) { }
 
@@ -57,15 +57,15 @@ export class LoginMobileComponent implements OnInit {
     if (this.validateLoginForm()) {
       this.authService.loginMobile(this.form).subscribe(
         data => {
-          console.log('data.accessToken::', data.accessToken);
-          console.log('data.user::', data.user);
-          this.storageService.saveUserInfo(data.user);
-          this.storageService.saveToken(data.accessToken);
-          this.getUserData();
-          if (data.accessToken && this.currentUser.userType == 'patient') {
-            this.router.navigate(['/patientDashboard']);
-          } else if (data.accessToken && this.currentUser.userType == 'doctor') {
-            this.router.navigate(['/doctorDashboard']);
+          if (data.user != null) {
+            this.storageService.saveUserInfo(data.user);
+            this.storageService.saveToken(data.accessToken);
+            this.getUserData();
+            if (data.accessToken && this.currentUser.userType == 'patient') {
+              this.router.navigate(['/patientDashboard']);
+            } else if (data.accessToken && this.currentUser.userType == 'doctor') {
+              this.router.navigate(['/doctorDashboard']);
+            }
           }
         },
         err => {
@@ -78,10 +78,11 @@ export class LoginMobileComponent implements OnInit {
 
   getUserData() {
     this.currentUserInfo = this.storageService.getUser();
-    this.currentUserInfo.token = this.storageService.getToken();
-    this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
-      this.currentUser = data;
-    });
+    if (this.currentUserInfo != null) {
+      this.currentUserInfo.token = this.storageService.getToken();
+      this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
+        this.currentUser = data;
+      });
+    }
   }
-
-  }
+}

@@ -31,16 +31,19 @@ export class DoctorProfileSettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
-    this.currentUserInfo.token = this.storageService.getToken();
+    if (this.currentUserInfo != null) {
+      this.currentUserInfo.token = this.storageService.getToken();
+    }
     this.currentUser.token = this.storageService.getToken();
     this.getUserData();
     //console.log('this.currentUser.token ::' + this.currentUser.token);
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
-      //console.log('data ::' + data);
       this.currentUser = data;
-      //this.currentUser.country = new Country;
+      if (this.currentUser.country == null || this.currentUser.country == undefined) {
+        this.currentUser.country = new Country;
+      }
       this.currentUser.dateOfBirthString = this.convertDateToDateString(this.currentUser.dateOfBirth);
       this.getCountries();
       this.getStates(this.currentUser.country.id);

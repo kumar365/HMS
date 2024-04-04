@@ -20,17 +20,18 @@ export class MedicineComponent implements OnInit {
   id: any;
   medicineList!: Medicine[];
   expiryDate: any;
-  constructor(private storageService: StorageService,private route: ActivatedRoute, private userService: UserService,
+  constructor(private storageService: StorageService, private route: ActivatedRoute, private userService: UserService,
     private router: Router, private medicineService: MedicineService, private renderer: Renderer2) {
   }
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
-    this.currentUserInfo.token = this.storageService.getToken();
-    this.getUserData();
+    if (this.currentUserInfo != null) {
+      this.currentUserInfo.token = this.storageService.getToken();
+      this.getUserData();
+    }
     this.id = this.route.snapshot.params['id'];
     this.medicineService.findById(this.id).subscribe((data: Medicine) => {
       this.medicine = data;
-      console.log("this.medicine::" + this.medicine);
     });
   }
   getUserData() {
@@ -69,7 +70,7 @@ export class MedicineComponent implements OnInit {
 
   onSubmit() {
     if (this.validateMedicineData()) {
-      this.medicineService.save(this.medicine,this.currentUserInfo.token).subscribe(result => this.gotoMedicineList());
+      this.medicineService.save(this.medicine, this.currentUserInfo.token).subscribe(result => this.gotoMedicineList());
     }
   }
 

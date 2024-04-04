@@ -23,9 +23,10 @@ export class PaymentComponent implements OnInit {
     private router: Router, private renderer: Renderer2) { }
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
-    this.currentUserInfo.token = this.storageService.getToken();
-    //alert(this.currentUserInfo.token);
-    this.getUserData();
+    if (this.currentUserInfo != null) {
+      this.currentUserInfo.token = this.storageService.getToken();
+      this.getUserData();
+    }
     this.appointment.cardDetails = new CardDetails;
   }
   getUserData() {

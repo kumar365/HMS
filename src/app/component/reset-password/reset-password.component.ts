@@ -17,13 +17,15 @@ export class ResetPasswordComponent implements OnInit {
   token: any;
   redirectUrl: any;
   constructor(private authService: AuthService, private activatedRoute: ActivatedRoute,
-     private renderer: Renderer2) { }
+    private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
       console.log(params);
       this.token = params['token'];
-      this.getUserData();
+      if (this.token != undefined) {
+        this.getUserData();
+      }
     });
   }
 
@@ -72,7 +74,7 @@ export class ResetPasswordComponent implements OnInit {
         this.message = data.message;
         if (data.success) {
           this.statusFlag = true;
-         // window.location.href = this.redirectUrl;
+          // window.location.href = this.redirectUrl;
           this.user = new User;
         }
       });

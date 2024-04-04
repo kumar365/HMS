@@ -22,11 +22,13 @@ export class MedicineListComponent implements OnInit {
       private router: Router, private medicineService: MedicineService, private renderer: Renderer2) {
    }
    ngOnInit() {
-      this.currentUserInfo = this.storageService.getUser();
-      this.currentUserInfo.token = this.storageService.getToken();
-      this.getUserData();
       this.title = "Medicine List";
-      this.getMedicineList();
+      this.currentUserInfo = this.storageService.getUser();
+      if (this.currentUserInfo != null) {
+         this.currentUserInfo.token = this.storageService.getToken();
+         this.getUserData();
+         this.getMedicineList();
+      }
    }
    getUserData() {
       this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {

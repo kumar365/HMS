@@ -25,9 +25,11 @@ export class DependentComponent implements OnInit {
   ngOnInit(): void {
     this.dependentFlag = false;
     this.currentUserInfo = this.storageService.getUser();
-    this.currentUserInfo.token = this.storageService.getToken();
-    //alert(this.currentUserInfo.token);
-    this.getUserData();
+    if (this.currentUserInfo != null) {
+      this.currentUserInfo.token = this.storageService.getToken();
+      this.getUserData();
+    }
+   
     this.getDependentList();
   }
   getUserData() {

@@ -28,8 +28,10 @@ export class AddBillingComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
-    this.currentUserInfo.token = this.storageService.getToken();
-    this.getUserData();
+    if (this.currentUserInfo != null) {
+      this.currentUserInfo.token = this.storageService.getToken();
+      this.getUserData();
+    }
     console.log('this.token ::' + this.currentUserInfo.token);
     this.bill.createdDate = new Date();
   }

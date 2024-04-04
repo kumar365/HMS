@@ -18,7 +18,9 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.currentUserInfo = this.storageService.getUser();
-    this.currentUserInfo.token = this.storageService.getToken();
+    if (this.currentUserInfo != null) {
+      this.currentUserInfo.token = this.storageService.getToken();
+    }
     this.getUsersList();
   }
   getUsersList() {
