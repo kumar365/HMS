@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TestDetails } from 'src/app/model/test-details';
 import { UserInfo } from 'src/app/model/user-info';
+import { CommonService } from 'src/app/service/common.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -13,7 +14,7 @@ import { UserService } from 'src/app/service/user.service';
 export class TestDescriptionComponent implements OnInit {
   id!: number;
   testDetails: TestDetails = new TestDetails;
-  constructor(private storageService: StorageService, private userService: UserService,
+  constructor(private storageService: StorageService, private userService: UserService, private commonService: CommonService,
      private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -27,7 +28,7 @@ export class TestDescriptionComponent implements OnInit {
     });
   }
   getTestDetails() {
-    this.userService.getTestDetails(this.id).subscribe((data: TestDetails) => {
+    this.commonService.getTestDetails(this.id).subscribe((data: TestDetails) => {
       this.testDetails = data;
     });
   }

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TestDetails } from 'src/app/model/test-details';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
+import { CommonService } from 'src/app/service/common.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -18,15 +19,15 @@ export class TestCheckoutComponent implements OnInit {
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
   testDetails: TestDetails = new TestDetails;
-  constructor(private storageService: StorageService, private userService: UserService,
+  constructor(private storageService: StorageService, private userService: UserService, private commonService: CommonService,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
       console.log(params);
       this.id = params['id'];
-      if(this.id == undefined){
-        this.id = 0; 
+      if (this.id == undefined) {
+        this.id = 0;
       }
       this.getTestDetails();
     });
@@ -42,7 +43,7 @@ export class TestCheckoutComponent implements OnInit {
     });
   }
   getTestDetails() {
-    this.userService.getTestDetails(this.id).subscribe((data: TestDetails) => {
+    this.commonService.getTestDetails(this.id).subscribe((data: TestDetails) => {
       this.testDetails = data;
     });
   }

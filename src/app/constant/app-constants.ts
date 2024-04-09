@@ -25,14 +25,12 @@ export class AppConstants {
     public static FORGOT_PASSWORD = AppConstants.AUTH_API + 'forgotPassword';
     public static RESET_PASSWORD = AppConstants.AUTH_API + 'resetPassword';
     public static GET_USER_DATA_BY_TOKEN = AppConstants.AUTH_API + 'getUserDataByToken/';
+    public static USERS = AppConstants.API_URL + 'users';
+    public static GET_ORDERS_LIST = AppConstants.API_URL + 'ordersList/';
     public static CHANGE_PASSWORD = AppConstants.API_URL + 'changePassword';
     public static GET_USER_BY_ID = AppConstants.API_URL + 'getUserById/';
-    public static GET_DOCTOR_BY_ID = AppConstants.COMMON_URL + 'getDoctorDetailsById/';
     public static GET_PATIENT_BY_ID = AppConstants.API_URL + 'getPatientById/';
-    public static GET_COUNTRIES = AppConstants.COMMON_URL + 'countries';
-    public static GET_STATES = AppConstants.COMMON_URL + 'states/';
-    public static GET_DISTRICTS = AppConstants.COMMON_URL + 'districts/';
-    public static UPLOAD_FILE = AppConstants.COMMON_URL + 'uploadFile';
+    public static GET_PATIENT_LIST = AppConstants.API_URL + 'patientList';
     public static UPDATE_PROFILE = AppConstants.API_URL + 'updateProfile';
     public static ADD_DEPENDENT = AppConstants.API_URL + 'addDependent';
     public static GET_DEPENDENTS_LIST = AppConstants.API_URL + 'dependents/';
@@ -63,13 +61,14 @@ export class AppConstants {
     public static ADD_MEDICINE = AppConstants.MEDICINE_URL + 'addMedicine';
     public static GET_MEDICINE_BY_ID = AppConstants.MEDICINE_URL + 'getMedicineById';
     public static DELETE_MEDICINE_BY_ID = AppConstants.MEDICINE_URL + 'deleteMedicineById/';
-    public static GET_PATIENT_LIST = AppConstants.API_URL + 'patientList';
+    public static GET_COUNTRIES = AppConstants.COMMON_URL + 'countries';
+    public static GET_STATES = AppConstants.COMMON_URL + 'states/';
+    public static GET_DISTRICTS = AppConstants.COMMON_URL + 'districts/';
+    public static UPLOAD_FILE = AppConstants.COMMON_URL + 'uploadFile';
     public static GET_DOCTOR_LIST = AppConstants.COMMON_URL + 'doctorList';
-    public static GET_ORDERS_LIST = AppConstants.API_URL + 'ordersList/';
     public static ADD_TEST_DETAILS = AppConstants.COMMON_URL + 'addTestDetails';
     public static GET_TEST_DETAILS = AppConstants.COMMON_URL + 'testDetails/';
-    public static USERS = AppConstants.API_URL + 'users';
-
+    public static GET_DOCTOR_BY_ID = AppConstants.COMMON_URL + 'getDoctorDetailsById/';
     public static ItemPerPage: number = 50;
     public static PageSize: number[] = [10, 50, 100, 200, 500];
     public static AllowFiltering: boolean = true;

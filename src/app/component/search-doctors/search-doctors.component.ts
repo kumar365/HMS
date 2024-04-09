@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
+import { CommonService } from 'src/app/service/common.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -21,7 +22,7 @@ export class SearchDoctorsComponent implements OnInit {
   availabilityTomorrowFlag: boolean = false;
   availabilityNext7DaysFlag: boolean = false;
   availabilityNext14DaysFlag: boolean = false;
-  constructor(private storageService: StorageService, private userService: UserService) { }
+  constructor(private storageService: StorageService, private userService: UserService, private commonService: CommonService,) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
@@ -37,7 +38,7 @@ export class SearchDoctorsComponent implements OnInit {
     });
   }
   getDoctorsList() {
-    this.userService.getDoctorsList().subscribe((data: User[]) => {
+    this.commonService.getDoctorsList().subscribe((data: User[]) => {
       this.doctorsList = data;
     });
   }
@@ -47,7 +48,7 @@ export class SearchDoctorsComponent implements OnInit {
     } else {
       this.femaleGenderFlag = !this.femaleGenderFlag;
     }
-    this.userService.getDoctorsListConditional(this.maleGenderFlag).subscribe((data: User[]) => {
+    this.commonService.getDoctorsListConditional(this.maleGenderFlag).subscribe((data: User[]) => {
       this.doctorsList = data;
       console.log('data length::' + data.length);
     });
@@ -65,7 +66,7 @@ export class SearchDoctorsComponent implements OnInit {
     if (type == '4') {
       this.availabilityNext14DaysFlag = !this.availabilityNext14DaysFlag;
     }
-    this.userService.getDoctorsListConditional(this.availabilityTodayFlag).subscribe((data: User[]) => {
+    this.commonService.getDoctorsListConditional(this.availabilityTodayFlag).subscribe((data: User[]) => {
       this.doctorsList = data;
       console.log('data length::' + data.length);
     });

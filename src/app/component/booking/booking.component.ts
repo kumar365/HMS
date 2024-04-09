@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Appointment } from 'src/app/model/appointment';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
+import { CommonService } from 'src/app/service/common.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -20,7 +21,7 @@ export class BookingComponent implements OnInit {
   doctor: User = new User;
   appointment: Appointment = new Appointment;
 
-  constructor(private storageService: StorageService, private userService: UserService,
+  constructor(private storageService: StorageService, private userService: UserService, private commonService: CommonService,
     private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -44,7 +45,7 @@ export class BookingComponent implements OnInit {
     });
   }
   getDoctorData() {
-    this.userService.getDoctorById(this.id).subscribe((data: User) => {
+    this.commonService.getDoctorById(this.id).subscribe((data: User) => {
       this.doctor = data;
     });
   }

@@ -123,7 +123,8 @@
                                         alt="User Image">
                                 </div>
                                 <div class="doc-info-cont">
-                                    <h4 class="doc-name">{{doctor.firstName}}&nbsp;{{doctor.middleName}}&nbsp;{{doctor.lastName}}</h4>
+                                    <h4 class="doc-name">
+                                        {{doctor.firstName}}&nbsp;{{doctor.middleName}}&nbsp;{{doctor.lastName}}</h4>
                                     <p class="doc-speciality">BDS, MDS - Oral & Maxillofacial Surgery</p>
                                     <p class="recommended success-cont"><i class="fas fa-check as"></i> Medical
                                         Registration Verified</p>
@@ -193,7 +194,8 @@
                                 </div>
                                 <div class="clinic-booking book-appoint">
                                     <a class="btn btn-primary" href="booking?id={{doctor.id}}">Book Appointment</a>
-                                    <a class="btn btn-primary" href="booking2?id={{doctor.id}}">Book Online Consultation</a>
+                                    <a class="btn btn-primary" href="booking2?id={{doctor.id}}">Book Online
+                                        Consultation</a>
                                 </div>
                             </div>
                         </div>
@@ -234,7 +236,9 @@
 
                                         <div class="widget about-widget">
                                             <h4 class="widget-title">About Me</h4>
-                                            <p>Dr. {{doctor.firstName}}&nbsp;{{doctor.middleName}}&nbsp;{{doctor.lastName}}&nbsp; is an expert and experienced Orthopedician with an
+                                            <p>Dr.
+                                                {{doctor.firstName}}&nbsp;{{doctor.middleName}}&nbsp;{{doctor.lastName}}&nbsp;
+                                                is an expert and experienced Orthopedician with an
                                                 experience of 22 years, and specialize in Joint Replacement Surgeon. He
                                                 graduated and obtained his MBBS degree from Madurai Medical College,
                                                 Madurai in 1996, and then his po stgraduate MS Degree from G.S.V.M
@@ -363,8 +367,8 @@
                                                 </div>
                                                 <div class="clinic-details mb-0">
                                                     <h5 class="clinic-direction"> <i class="fas fa-map-marker-alt"></i>
-                                                        KPHB colony, Hyd - 500072 <br><a
-                                                            href="javascript:void(0);">Get Directions</a></h5>
+                                                        KPHB colony, Hyd - 500072 <br><a href="javascript:void(0);">Get
+                                                            Directions</a></h5>
                                                     <ul>
                                                         <li>
                                                             <a href="/assets/img/features/feature-01.jpg"
@@ -443,8 +447,8 @@
                                                 </div>
                                                 <div class="clinic-details mb-0">
                                                     <p class="clinic-direction"> <i class="fas fa-map-marker-alt"></i>
-                                                        KPHB, Hyd - 500072 <br><a
-                                                            href="javascript:void(0);">Get Directions</a></p>
+                                                        KPHB, Hyd - 500072 <br><a href="javascript:void(0);">Get
+                                                            Directions</a></p>
                                                     <ul>
                                                         <li>
                                                             <a href="/assets/img/features/feature-01.jpg"
@@ -569,7 +573,9 @@
 
 
                                 <div class="write-review">
-                                    <h4>Write a review for <strong>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</strong></h4>
+                                    <h4>Write a review for
+                                        <strong>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</strong>
+                                    </h4>
 
                                     <form>
                                         <div class="form-group">
@@ -614,7 +620,7 @@
                                             <div class="terms-accept">
                                                 <div class="custom-checkbox">
                                                     <input type="checkbox" id="termsAndConditions"
-                                                    (change)="changeTermsAndConditions()">
+                                                        (change)="changeTermsAndConditions()">
                                                     <label for="terms_accept">I have read and accept <a href="#">Terms
                                                             &amp; Conditions</a></label>
                                                 </div>
@@ -741,7 +747,8 @@
                                                                     src="/assets/img/doctors/doctor-thumb-02.jpg">
                                                                 <div class="comment-body">
                                                                     <div class="meta-data">
-                                                                        <span class="comment-author">{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</span>
+                                                                        <span
+                                                                            class="comment-author">{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</span>
                                                                         <span class="comment-date">Answered 3 Days
                                                                             ago</span>
                                                                     </div>
@@ -793,20 +800,25 @@
                                                 <h4 class="card-title">Ask Your Question?</h4>
                                             </div>
                                             <div class="card-body">
-                                                <form>
+                                                <form #askYourQuestionForm="ngForm" name="form" (ngSubmit)="onSubmit()">
                                                     <div class="mb-3">
                                                         <label class="mb-2">Name <span
                                                                 class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control">
+                                                        <input type="text" id="name" name="name" [(ngModel)]="form.name"
+                                                            class="form-control" #name="ngModel" required />
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="mb-2">Your Email Address <span
                                                                 class="text-danger">*</span></label>
-                                                        <input type="email" class="form-control">
+                                                        <input type="email" id="email" name="email"
+                                                            [(ngModel)]="form.email" class="form-control"
+                                                            #email="ngModel" required />
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="mb-2">Your Question</label>
-                                                        <textarea rows="4" class="form-control"></textarea>
+                                                        <textarea rows="4" id="yourQuestion" name="yourQuestion"
+                                                            [(ngModel)]="form.yourQuestion" class="form-control"
+                                                            #yourQuestion="ngModel" required></textarea>
                                                     </div>
                                                     <div class="submit-section">
                                                         <button class="btn btn-primary submit-btn"
@@ -924,8 +936,8 @@
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
                                     <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a
-                                            href="https://abc.com" target="_blank"
-                                            style="color:#fff"> Technologies Pvt. Ltd.</a></p>
+                                            href="https://abc.com" target="_blank" style="color:#fff"> Technologies Pvt.
+                                            Ltd.</a></p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">
@@ -960,7 +972,8 @@
                                 <div class="call-user">
                                     <img alt="User Image" src="/assets/img/doctors/doctor-thumb-02.jpg"
                                         class="call-avatar">
-                                    <h4>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</h4>
+                                    <h4>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}
+                                    </h4>
                                     <span>Connecting...</span>
                                 </div>
                                 <div class="call-items">
@@ -990,7 +1003,8 @@
                                 <div class="call-user">
                                     <img class="call-avatar" src="/assets/img/doctors/doctor-thumb-02.jpg"
                                         alt="User Image">
-                                    <h4>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</h4>
+                                    <h4>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}
+                                    </h4>
                                     <span>Calling ...</span>
                                 </div>
                                 <div class="call-items">
