@@ -123,7 +123,7 @@
                                         alt="User Image">
                                 </div>
                                 <div class="doc-info-cont">
-                                    <h4 class="doc-name">{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</h4>
+                                    <h4 class="doc-name">{{doctor.firstName}}&nbsp;{{doctor.middleName}}&nbsp;{{doctor.lastName}}</h4>
                                     <p class="doc-speciality">BDS, MDS - Oral & Maxillofacial Surgery</p>
                                     <p class="recommended success-cont"><i class="fas fa-check as"></i> Medical
                                         Registration Verified</p>
@@ -192,8 +192,8 @@
                                     </a>
                                 </div>
                                 <div class="clinic-booking book-appoint">
-                                    <a class="btn btn-primary" href="booking">Book Appointment</a>
-                                    <a class="btn btn-primary" href="booking2">Book Online Consultation</a>
+                                    <a class="btn btn-primary" href="booking?id={{doctor.id}}">Book Appointment</a>
+                                    <a class="btn btn-primary" href="booking2?id={{doctor.id}}">Book Online Consultation</a>
                                 </div>
                             </div>
                         </div>

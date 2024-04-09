@@ -130,14 +130,16 @@
                                                     <ul>
                                                         <li>
                                                             <label class="custom_check d-inline-flex">
-                                                                <input type="checkbox" name="gender">
+                                                                <input type="checkbox" (click)="genderChecked('1')"
+                                                                    name="gender">
                                                                 <span class="checkmark"></span>
                                                                 Male Gender
                                                             </label>
                                                         </li>
                                                         <li>
                                                             <label class="custom_check d-inline-flex">
-                                                                <input type="checkbox" name="gender">
+                                                                <input type="checkbox" (click)="genderChecked('2')"
+                                                                    name="gender">
                                                                 <span class="checkmark"></span>
                                                                 Female Gender
                                                             </label>
@@ -146,7 +148,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
 
                                         <div class="filter-grid">
                                             <h4>
@@ -157,28 +158,36 @@
                                                     <ul>
                                                         <li>
                                                             <label class="custom_check d-inline-flex">
-                                                                <input type="checkbox" name="availability">
+                                                                <input type="checkbox"
+                                                                    (click)="availabilityChecked('1')"
+                                                                    name="availability">
                                                                 <span class="checkmark"></span>
                                                                 Available Today
                                                             </label>
                                                         </li>
                                                         <li>
                                                             <label class="custom_check d-inline-flex">
-                                                                <input type="checkbox" name="availability">
+                                                                <input type="checkbox"
+                                                                    (click)="availabilityChecked('2')"
+                                                                    name="availability">
                                                                 <span class="checkmark"></span>
                                                                 Available Tomorrow
                                                             </label>
                                                         </li>
                                                         <li>
                                                             <label class="custom_check d-inline-flex">
-                                                                <input type="checkbox" name="availability">
+                                                                <input type="checkbox"
+                                                                    (click)="availabilityChecked('3')"
+                                                                    name="availability">
                                                                 <span class="checkmark"></span>
                                                                 Available in Next 7 Days
                                                             </label>
                                                         </li>
                                                         <li>
                                                             <label class="custom_check d-inline-flex">
-                                                                <input type="checkbox" name="availability">
+                                                                <input type="checkbox"
+                                                                    (click)="availabilityChecked('4')"
+                                                                    name="availability">
                                                                 <span class="checkmark"></span>
                                                                 Available in Next 30 Days
                                                             </label>
@@ -480,313 +489,70 @@
                                 </div>
 
                                 <div class="doctors-found">
-                                    <p><span>100 Doctors found for:</span> Dentist in Hyd, Telangana</p>
+                                    <p><span>{{doctorsList.length}} Doctors found for:</span> Dentist in Hyd, Telangana
+                                    </p>
                                 </div>
-                                <div class="card doctor-card">
-                                    <div class="card-body">
-                                        <div class="doctor-widget-one">
-                                            <div class="doc-info-left">
-                                                <div class="doctor-img">
-                                                    <a href="doctorProfile">
-                                                        <img src="/assets/img/doctors/doctor-13.jpg" class="img-fluid"
-                                                            alt="">
-                                                    </a>
-                                                    <div class="favourite-btn">
-                                                        <a href="javascript:void(0)" class="favourite-icon">
-                                                            <i class="fas fa-heart"></i>
+                                <div *ngFor="let doctor of doctorsList">
+                                    <div class="card doctor-card">
+                                        <div class="card-body">
+                                            <div class="doctor-widget-one">
+                                                <div class="doc-info-left">
+                                                    <div class="doctor-img">
+                                                        <a href="doctorProfile">
+                                                            <img src="/assets/img/doctors/doctor-13.jpg"
+                                                                class="img-fluid" alt="">
                                                         </a>
+                                                        <div class="favourite-btn">
+                                                            <a href="javascript:void(0)" class="favourite-icon">
+                                                                <i class="fas fa-heart"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="doc-info-cont">
+                                                        <h4 class="doc-name">
+                                                            <a href="doctorProfile">{{doctor.displayName}}</a>
+                                                            <i class="fas fa-circle-check"></i>
+                                                        </h4>
+                                                        <p class="doc-speciality">MBBS, Dentist</p>
+                                                        <div class="clinic-details">
+                                                            <p class="doc-location">
+                                                                <i class="feather-map-pin"></i>
+                                                                <span>0.9</span> mi - Hyd, {{doctor.address}} <a
+                                                                    href="javascript:void(0);">Get Direction</a>
+                                                            </p>
+                                                            <p class="doc-location">
+                                                                <i class="feather-award"></i> <span>20</span> Years of
+                                                                Experience
+                                                            </p>
+                                                        </div>
+                                                        <div class="reviews-ratings">
+                                                            <p>
+                                                                <span><i class="fas fa-star"></i> 4.5</span> (35
+                                                                Reviews)
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="doc-info-cont">
-                                                    <h4 class="doc-name">
-                                                        <a href="doctorProfile">Dr. Sudhir B</a>
-                                                        <i class="fas fa-circle-check"></i>
-                                                    </h4>
-                                                    <p class="doc-speciality">MBBS, Dentist</p>
-                                                    <div class="clinic-details">
-                                                        <p class="doc-location">
-                                                            <i class="feather-map-pin"></i>
-                                                            <span>0.9</span> mi - Hyd, Telangana <a
-                                                                href="javascript:void(0);">Get Direction</a>
-                                                        </p>
-                                                        <p class="doc-location">
-                                                            <i class="feather-award"></i> <span>20</span> Years of
-                                                            Experience
-                                                        </p>
+                                                <div class="doc-info-right">
+                                                    <div class="clini-infos">
+                                                        <ul>
+                                                            <li>
+                                                                <i class="feather-clock available-icon"></i>
+                                                                <span class="available-date available-today">Available
+                                                                    Today</span>
+                                                            </li>
+                                                            <li><i class="feather-thumbs-up available-icon"></i> 98%
+                                                                <span class="votes">(252 Votes)</span></li>
+                                                            <li>Rs.600/- <i
+                                                                    class="feather-info available-info-icon"></i>
+                                                            </li>
+                                                        </ul>
                                                     </div>
-                                                    <div class="reviews-ratings">
-                                                        <p>
-                                                            <span><i class="fas fa-star"></i> 4.5</span> (35 Reviews)
-                                                        </p>
+                                                    <div class="clinic-booking book-appoint">
+                                                        <a class="btn btn-primary" href="booking?id={{doctor.id}}">Book Appointment</a>
+                                                        <a class="btn btn-primary-light" href="booking2?id={{doctor.id}}">Book Online
+                                                            Consultation</a>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="doc-info-right">
-                                                <div class="clini-infos">
-                                                    <ul>
-                                                        <li>
-                                                            <i class="feather-clock available-icon"></i>
-                                                            <span class="available-date available-today">Available
-                                                                Today</span>
-                                                        </li>
-                                                        <li><i class="feather-thumbs-up available-icon"></i> 98% <span
-                                                                class="votes">(252 Votes)</span></li>
-                                                        <li>Rs.600/- <i class="feather-info available-info-icon"></i>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="clinic-booking book-appoint">
-                                                    <a class="btn btn-primary" href="booking">Book Appointment</a>
-                                                    <a class="btn btn-primary-light" href="booking2">Book Online
-                                                        Consultation</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card doctor-card">
-                                    <div class="card-body">
-                                        <div class="doctor-widget-one">
-                                            <div class="doc-info-left">
-                                                <div class="doctor-img">
-                                                    <a href="doctorProfile">
-                                                        <img src="/assets/img/doctors/doctor-14.jpg" class="img-fluid"
-                                                            alt="">
-                                                    </a>
-                                                    <div class="favourite-btn">
-                                                        <a href="javascript:void(0)" class="favourite-icon">
-                                                            <i class="fas fa-heart"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="doc-info-cont">
-                                                    <h4 class="doc-name">
-                                                        <a href="doctorProfile">Dr. Ganeshk K</a>
-                                                        <i class="fas fa-circle-check"></i>
-                                                    </h4>
-                                                    <p class="doc-speciality">BDS, MDS - Oral & Maxillofacial Surgery
-                                                    </p>
-                                                    <div class="clinic-details">
-                                                        <p class="doc-location">
-                                                            <i class="feather-map-pin"></i>
-                                                            1.1 mi - Hyd, Telangana <a href="javascript:void(0);">Get
-                                                                Direction</a>
-                                                        </p>
-                                                        <p class="doc-location">
-                                                            <i class="feather-award"></i> 15 Years of Experience
-                                                        </p>
-                                                    </div>
-                                                    <div class="reviews-ratings">
-                                                        <p>
-                                                            <span><i class="fas fa-star"></i> 4.3</span> (22 Reviews)
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="doc-info-right">
-                                                <div class="clini-infos">
-                                                    <ul>
-                                                        <li>
-                                                            <i class="feather-clock available-icon"></i>
-                                                            <span class="available-date available-tomorrow">Available
-                                                                Tomorrow</span>
-                                                        </li>
-                                                        <li><i class="feather-thumbs-up available-icon"></i> 90% <span
-                                                                class="votes">(380 Votes)</span></li>
-                                                        <li>Rs.500/- <i class="feather-info available-info-icon"></i>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="clinic-booking book-appoint">
-                                                    <a class="btn btn-primary" href="booking">Book Appointment</a>
-                                                    <a class="btn btn-primary-light" href="booking2">Book Online
-                                                        Consultation</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card doctor-card">
-                                    <div class="card-body">
-                                        <div class="doctor-widget-one">
-                                            <div class="doc-info-left">
-                                                <div class="doctor-img">
-                                                    <a href="doctorProfile">
-                                                        <img src="/assets/img/doctors/doctor-15.jpg" class="img-fluid"
-                                                            alt="">
-                                                    </a>
-                                                    <div class="favourite-btn">
-                                                        <a href="javascript:void(0)" class="favourite-icon">
-                                                            <i class="fas fa-heart"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="doc-info-cont">
-                                                    <h4 class="doc-name">
-                                                        <a href="doctorProfile">Dr. Vidya B</a>
-                                                        <i class="fas fa-circle-check"></i>
-                                                    </h4>
-                                                    <p class="doc-speciality">MBBS, Dentist</p>
-                                                    <div class="clinic-details">
-                                                        <p class="doc-location">
-                                                            <i class="feather-map-pin"></i>
-                                                            <span>0.9</span> mi - Hyd, Telangana <a
-                                                                href="javascript:void(0);">Get Direction</a>
-                                                        </p>
-                                                        <p class="doc-location">
-                                                            <i class="feather-award"></i> <span>20</span> Years of
-                                                            Experience
-                                                        </p>
-                                                    </div>
-                                                    <div class="reviews-ratings">
-                                                        <p>
-                                                            <span><i class="fas fa-star"></i> 4.5</span> (35 Reviews)
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="doc-info-right">
-                                                <div class="clini-infos">
-                                                    <ul>
-                                                        <li>
-                                                            <i class="feather-clock available-icon"></i>
-                                                            <span class="available-date available-today">Available
-                                                                Today</span>
-                                                        </li>
-                                                        <li><i class="feather-thumbs-up available-icon"></i> 98% <span
-                                                                class="votes">(252 Votes)</span></li>
-                                                        <li>Rs.1000/- <i class="feather-info available-info-icon"></i>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="clinic-booking book-appoint">
-                                                    <a class="btn btn-primary" href="booking">Book Appointment</a>
-                                                    <a class="btn btn-primary-light" href="booking2">Book Online
-                                                        Consultation</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card doctor-card">
-                                    <div class="card-body">
-                                        <div class="doctor-widget-one">
-                                            <div class="doc-info-left">
-                                                <div class="doctor-img">
-                                                    <a href="doctorProfile">
-                                                        <img src="/assets/img/doctors/doctor-16.jpg" class="img-fluid"
-                                                            alt="">
-                                                    </a>
-                                                    <div class="favourite-btn">
-                                                        <a href="javascript:void(0)" class="favourite-icon">
-                                                            <i class="fas fa-heart"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="doc-info-cont">
-                                                    <h4 class="doc-name">
-                                                        <a href="doctorProfile">Dr. Ashish Pawar</a>
-                                                        <i class="fas fa-circle-check"></i>
-                                                    </h4>
-                                                    <p class="doc-speciality">MBBS, Dentist</p>
-                                                    <div class="clinic-details">
-                                                        <p class="doc-location">
-                                                            <i class="feather-map-pin"></i>
-                                                            <span>0.9</span> mi - Hyd, Telangana <a
-                                                                href="javascript:void(0);">Get Direction</a>
-                                                        </p>
-                                                        <p class="doc-location">
-                                                            <i class="feather-award"></i> <span>20</span> Years of
-                                                            Experience
-                                                        </p>
-                                                    </div>
-                                                    <div class="reviews-ratings">
-                                                        <p>
-                                                            <span><i class="fas fa-star"></i> 4.5</span> (35 Reviews)
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="doc-info-right">
-                                                <div class="clini-infos">
-                                                    <ul>
-                                                        <li>
-                                                            <i class="feather-clock available-icon"></i>
-                                                            <span class="available-date available-today">Available
-                                                                Today</span>
-                                                        </li>
-                                                        <li><i class="feather-thumbs-up available-icon"></i> 98% <span
-                                                                class="votes">(252 Votes)</span></li>
-                                                        <li>Rs.600/- <i class="feather-info available-info-icon"></i>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="clinic-booking book-appoint">
-                                                    <a class="btn btn-primary" href="booking">Book Appointment</a>
-                                                    <a class="btn btn-primary-light" href="booking2">Book Online
-                                                        Consultation</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card doctor-card">
-                                    <div class="card-body">
-                                        <div class="doctor-widget-one">
-                                            <div class="doc-info-left">
-                                                <div class="doctor-img">
-                                                    <a href="doctorProfile">
-                                                        <img src="/assets/img/doctors/doctor-17.jpg" class="img-fluid"
-                                                            alt="">
-                                                    </a>
-                                                    <div class="favourite-btn">
-                                                        <a href="javascript:void(0)" class="favourite-icon">
-                                                            <i class="fas fa-heart"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="doc-info-cont">
-                                                    <h4 class="doc-name">
-                                                        <a href="doctorProfile">Dr. Nisha Verma</a>
-                                                        <i class="fas fa-circle-check"></i>
-                                                    </h4>
-                                                    <p class="doc-speciality">MBBS, Dentist</p>
-                                                    <div class="clinic-details">
-                                                        <p class="doc-location">
-                                                            <i class="feather-map-pin"></i>
-                                                            <span>0.9</span> mi - Hyd, Telangana <a
-                                                                href="javascript:void(0);">Get Direction</a>
-                                                        </p>
-                                                        <p class="doc-location">
-                                                            <i class="feather-award"></i> <span>20</span> Years of
-                                                            Experience
-                                                        </p>
-                                                    </div>
-                                                    <div class="reviews-ratings">
-                                                        <p>
-                                                            <span><i class="fas fa-star"></i> 4.5</span> (35 Reviews)
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="doc-info-right">
-                                                <div class="clini-infos">
-                                                    <ul>
-                                                        <li>
-                                                            <i class="feather-clock available-icon"></i>
-                                                            <span class="available-date available-today">Available
-                                                                Today</span>
-                                                        </li>
-                                                        <li><i class="feather-thumbs-up available-icon"></i> 98% <span
-                                                                class="votes">(252 Votes)</span></li>
-                                                        <li>Rs.300/- <i class="feather-info available-info-icon"></i>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="clinic-booking book-appoint">
-                                                    <a class="btn btn-primary" href="booking">Book Appointment</a>
-                                                    <a class="btn btn-primary-light" href="booking2">Book Online
-                                                        Consultation</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -930,9 +696,8 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
-                                    <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a
-                                            href="/" target="_blank"
-                                            style="color:#fff"> Technologies Pvt. Ltd.</a></p>
+                                    <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a href="/"
+                                            target="_blank" style="color:#fff"> Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">

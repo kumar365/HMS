@@ -27,6 +27,7 @@ export class AppConstants {
     public static GET_USER_DATA_BY_TOKEN = AppConstants.AUTH_API + 'getUserDataByToken/';
     public static CHANGE_PASSWORD = AppConstants.API_URL + 'changePassword';
     public static GET_USER_BY_ID = AppConstants.API_URL + 'getUserById/';
+    public static GET_DOCTOR_BY_ID = AppConstants.COMMON_URL + 'getDoctorDetailsById/';
     public static GET_PATIENT_BY_ID = AppConstants.API_URL + 'getPatientById/';
     public static GET_COUNTRIES = AppConstants.COMMON_URL + 'countries';
     public static GET_STATES = AppConstants.COMMON_URL + 'states/';
@@ -63,7 +64,7 @@ export class AppConstants {
     public static GET_MEDICINE_BY_ID = AppConstants.MEDICINE_URL + 'getMedicineById';
     public static DELETE_MEDICINE_BY_ID = AppConstants.MEDICINE_URL + 'deleteMedicineById/';
     public static GET_PATIENT_LIST = AppConstants.API_URL + 'patientList';
-    public static GET_DOCTOR_LIST = AppConstants.API_URL + 'doctorList';
+    public static GET_DOCTOR_LIST = AppConstants.COMMON_URL + 'doctorList';
     public static GET_ORDERS_LIST = AppConstants.API_URL + 'ordersList/';
     public static ADD_TEST_DETAILS = AppConstants.COMMON_URL + 'addTestDetails';
     public static GET_TEST_DETAILS = AppConstants.COMMON_URL + 'testDetails/';

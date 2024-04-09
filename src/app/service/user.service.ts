@@ -40,7 +40,7 @@ export class UserService {
   }
 
   public changePassword(useInfo: UserInfo): Observable<MessageResponse> {
-    //console.log('user.token :: ' + useInfo.token);
+
     const httpOptions1 = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + useInfo.token })
     };
@@ -48,13 +48,14 @@ export class UserService {
   }
 
   getUser(useInfo: UserInfo): Observable<User> {
-    //console.log('user.token :: ' + useInfo.token);
     const httpOptions1 = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + useInfo.token })
     };
     return this.httpClient.get<User>(AppConstants.GET_USER_BY_ID + useInfo.id, httpOptions1);
   }
-
+  getDoctorById(id: any): Observable<User> {
+    return this.httpClient.get<User>(AppConstants.GET_DOCTOR_BY_ID + id, httpOptions);
+  }
   getPatientDataById(id: any, token: string) {
     const httpOptions1 = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
@@ -206,11 +207,12 @@ export class UserService {
     return this.httpClient.get<User[]>(AppConstants.GET_PATIENT_LIST, httpOptions1);
   }
 
-  public getDoctorsList(token: string): Observable<User[]> {
-    const httpOptions1 = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
-    };
-    return this.httpClient.get<User[]>(AppConstants.GET_DOCTOR_LIST, httpOptions1);
+  public getDoctorsList(): Observable<User[]> {
+    return this.httpClient.get<User[]>(AppConstants.GET_DOCTOR_LIST, httpOptions);
+  }
+
+  public getDoctorsListConditional(todayFlag: boolean): Observable<User[]> {
+    return this.httpClient.get<User[]>(AppConstants.GET_DOCTOR_LIST, httpOptions);
   }
 
   public getOrdersList(userInfo: UserInfo): Observable<Orders[]> {
@@ -220,7 +222,7 @@ export class UserService {
     return this.httpClient.get<Orders[]>(AppConstants.GET_ORDERS_LIST + userInfo.id, httpOptions1);
   }
   getTestDetails(id: number): Observable<TestDetails> {
-      return this.httpClient.get<TestDetails>(AppConstants.GET_TEST_DETAILS + id, httpOptions);
+    return this.httpClient.get<TestDetails>(AppConstants.GET_TEST_DETAILS + id, httpOptions);
   }
 }
 
