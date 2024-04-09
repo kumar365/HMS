@@ -7,6 +7,7 @@ import { City } from '../model/city';
 import { User } from '../model/user';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { TestDetails } from '../model/test-details';
+import { ApiResponse } from '../model/api-response';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,7 +16,6 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class CommonService {
-
   constructor(private httpClient: HttpClient) { }
 
   public findCountries(): Observable<Country[]> {
@@ -38,8 +38,15 @@ export class CommonService {
   getDoctorById(id: any): Observable<User> {
     return this.httpClient.get<User>(AppConstants.GET_DOCTOR_BY_ID + id, httpOptions);
   }
-  
+
   getTestDetails(id: number): Observable<TestDetails> {
     return this.httpClient.get<TestDetails>(AppConstants.GET_TEST_DETAILS + id, httpOptions);
+  }
+  sendUserQuestion(form: any): Observable<ApiResponse> {
+    return this.httpClient.post<ApiResponse>(AppConstants.SEND_USER_QUESTION, {
+      name: form.name,
+      email: form.email,
+      yourQuestion: form.yourQuestion
+    }, httpOptions);
   }
 }

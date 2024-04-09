@@ -800,6 +800,9 @@
                                                 <h4 class="card-title">Ask Your Question?</h4>
                                             </div>
                                             <div class="card-body">
+                                                <div *ngIf="statusFlag" class="alert alert-danger" role="alert">
+                                                    {{ message }}
+                                                </div>
                                                 <form #askYourQuestionForm="ngForm" name="form" (ngSubmit)="onSubmit()">
                                                     <div class="mb-3">
                                                         <label class="mb-2">Name <span

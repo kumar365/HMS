@@ -69,6 +69,7 @@ export class AppConstants {
     public static ADD_TEST_DETAILS = AppConstants.COMMON_URL + 'addTestDetails';
     public static GET_TEST_DETAILS = AppConstants.COMMON_URL + 'testDetails/';
     public static GET_DOCTOR_BY_ID = AppConstants.COMMON_URL + 'getDoctorDetailsById/';
+    public static SEND_USER_QUESTION = AppConstants.COMMON_URL + 'sendUserQuestion';
     public static ItemPerPage: number = 50;
     public static PageSize: number[] = [10, 50, 100, 200, 500];
     public static AllowFiltering: boolean = true;

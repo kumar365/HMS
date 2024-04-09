@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppValidations } from 'src/app/constant/app-validations';
+import { ApiResponse } from 'src/app/model/api-response';
 import { Appointment } from 'src/app/model/appointment';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
@@ -17,6 +18,7 @@ export class DoctorProfileComponent implements OnInit {
   id: any;
   form: any = {};
   message: any;
+  statusFlag: Boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
   doctor: User = new User;
@@ -87,8 +89,24 @@ export class DoctorProfileComponent implements OnInit {
   }
   onSubmit() {
     if (this.validateAskYourQuestionForm()) {
-
+      this.commonService.sendUserQuestion(this.form).subscribe((data: ApiResponse) => {
+        this.message = data.message;
+        if (data.success) {
+          this.statusFlag = data.success;
+          this.resetForm();
+        }
+        // need to comment below 3 lines
+        alert(this.message);
+        this.statusFlag = true;
+        //this.resetForm();
+      });
     }
+  }
+  resetForm() {
+    this.form.name == '';
+    this.form.email == '';
+    this.form.yourQuestion == '';
+    window.location.reload();
   }
 
 }
