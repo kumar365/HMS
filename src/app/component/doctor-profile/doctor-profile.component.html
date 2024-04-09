@@ -234,7 +234,7 @@
 
                                         <div class="widget about-widget">
                                             <h4 class="widget-title">About Me</h4>
-                                            <p>Dr. Ganesh K is an expert and experienced Orthopedician with an
+                                            <p>Dr. {{doctor.firstName}}&nbsp;{{doctor.middleName}}&nbsp;{{doctor.lastName}}&nbsp; is an expert and experienced Orthopedician with an
                                                 experience of 22 years, and specialize in Joint Replacement Surgeon. He
                                                 graduated and obtained his MBBS degree from Madurai Medical College,
                                                 Madurai in 1996, and then his po stgraduate MS Degree from G.S.V.M
@@ -569,7 +569,7 @@
 
 
                                 <div class="write-review">
-                                    <h4>Write a review for <strong>Dr. Ganesh K</strong></h4>
+                                    <h4>Write a review for <strong>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</strong></h4>
 
                                     <form>
                                         <div class="form-group">
@@ -741,7 +741,7 @@
                                                                     src="/assets/img/doctors/doctor-thumb-02.jpg">
                                                                 <div class="comment-body">
                                                                     <div class="meta-data">
-                                                                        <span class="comment-author">Dr. Ganesh K</span>
+                                                                        <span class="comment-author">{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</span>
                                                                         <span class="comment-date">Answered 3 Days
                                                                             ago</span>
                                                                     </div>
@@ -960,7 +960,7 @@
                                 <div class="call-user">
                                     <img alt="User Image" src="/assets/img/doctors/doctor-thumb-02.jpg"
                                         class="call-avatar">
-                                    <h4>Dr. Ganesh K</h4>
+                                    <h4>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</h4>
                                     <span>Connecting...</span>
                                 </div>
                                 <div class="call-items">
@@ -990,7 +990,7 @@
                                 <div class="call-user">
                                     <img class="call-avatar" src="/assets/img/doctors/doctor-thumb-02.jpg"
                                         alt="User Image">
-                                    <h4>Dr. Ganesh K</h4>
+                                    <h4>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</h4>
                                     <span>Calling ...</span>
                                 </div>
                                 <div class="call-items">
