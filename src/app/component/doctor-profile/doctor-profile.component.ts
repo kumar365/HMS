@@ -95,14 +95,15 @@ export class DoctorProfileComponent implements OnInit {
           this.statusFlag = data.success;
           this.resetForm();
         }
-        // need to comment below 3 lines
+        // need to remove below 2 lines
         alert(this.message);
         this.statusFlag = true;
-        //this.resetForm();
+        this.resetForm();
       });
     }
   }
   resetForm() {
+    this.statusFlag = false;
     this.form.name == '';
     this.form.email == '';
     this.form.yourQuestion == '';

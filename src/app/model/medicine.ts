@@ -2,7 +2,7 @@ export class Medicine {
     id!: any;
     name!: string;
     medicineType!: string;
-    medicineNumber!: string;
+    medicineRegNumber!: string;
     medicinePrice!: string;
     expiryDate!: any;
     units!: string;
