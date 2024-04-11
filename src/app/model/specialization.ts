@@ -1,4 +1,5 @@
 import { DoctorHospital } from "./doctor-hospital";
+import { DoctorSpecialization } from "./doctor-specialization";
 
 export class Specialization {
     id!: number;
@@ -10,5 +11,5 @@ export class Specialization {
     ipAddress!: string;
     createdBy!: string;
     createdDate!: any;
-    doctorHospitals !: DoctorHospital[];
+    doctorSpecializations !: DoctorSpecialization[];
 }
