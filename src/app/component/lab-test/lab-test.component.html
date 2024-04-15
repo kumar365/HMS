@@ -113,7 +113,7 @@
                             <div class="search-title">
                                 <h5>Search for Test/Package( KFT, Full Body etc.)</h5>
                             </div>
-                            <form action="testDescription">
+                            <form #labTestForm="ngForm" (ngSubmit)="onSubmit()">
                                 <div class="row row-gap">
                                     <div class="col-lg-3 col-md-12">
                                         <div class="search-input-ten">

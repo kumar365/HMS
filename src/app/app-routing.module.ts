@@ -91,6 +91,8 @@ import { AmbulanceLoginComponent } from './component/ambulance-login/ambulance-l
 import { StaffingServicesComponent } from './component/staffing-services/staffing-services.component';
 import { DoctorProfileComponent } from './component/doctor-profile/doctor-profile.component';
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
+import { SearchTestsComponent } from './component/search-tests/search-tests.component';
+import { ImageUploadComponent } from './component/image-upload/image-upload.component';
 
 const routes: Routes = [
   { path: 'index', component: HomeComponent },
@@ -133,6 +135,7 @@ const routes: Routes = [
   { path: 'forgotPassword', component: ForgotPasswordComponent },
   { path: 'healthIdCreation', component: HealthIdCreationComponent },
   { path: 'healthIdMobile', component: HealthIdMobileComponent },
+  { path: 'imageUpload', component: ImageUploadComponent },
   { path: 'invoiceView', component: InvoiceViewComponent },
   { path: 'invoices', component: InvoicesComponent },
   { path: 'labCheckout', component: LabCheckoutComponent },
@@ -171,6 +174,7 @@ const routes: Routes = [
   { path: 'scheduleTimings', component: ScheduleTimingsComponent },
   { path: 'searchAmbulance', component: SearchAmbulanceComponent },
   { path: 'searchDoctors', component: SearchDoctorsComponent },
+  { path: 'searchTests', component: SearchTestsComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'staffDashboard', component: StaffDashboardComponent },
   { path: 'staffRegistration', component: StaffRegistrationComponent },

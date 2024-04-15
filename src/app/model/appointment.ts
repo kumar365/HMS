@@ -9,6 +9,7 @@ export class Appointment {
     startTime!: any;
     endTime!: any;
     status!: string;
+    appBookingChannel!: string;
     user!: User;
     appointmentFor!: string;
     patientName!: string;

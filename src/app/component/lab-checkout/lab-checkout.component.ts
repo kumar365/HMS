@@ -1,10 +1,12 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppValidations } from 'src/app/constant/app-validations';
 import { CardDetails } from 'src/app/model/card-details';
 import { TestBooking } from 'src/app/model/test-booking';
+import { TestDetails } from 'src/app/model/test-details';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
+import { CommonService } from 'src/app/service/common.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -14,20 +16,32 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./lab-checkout.component.css']
 })
 export class LabCheckoutComponent implements OnInit {
+  id!: number;
   message: any;
   statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
   testBooking: TestBooking = new TestBooking;
   termsAndConditionsFlag: Boolean = false;
-  constructor(private router: Router, private storageService: StorageService,
-    private userService: UserService, private renderer: Renderer2) { }
+  testDetails: TestDetails = new TestDetails;
+  constructor(private router: Router, private storageService: StorageService, private userService: UserService,
+    private commonService: CommonService, private renderer: Renderer2, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe(params => {
+      console.log(params);
+      this.id = params['id'];
+      if (this.id == undefined) {
+        this.id = 0;
+      }
+      this.getTestDetails();
+    });
     this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();
+    } else {
+      this.testBooking.user = new User;
     }
     this.testBooking.cardDetails = new CardDetails;
   }
@@ -40,6 +54,11 @@ export class LabCheckoutComponent implements OnInit {
     } else {
       this.testBooking.user = this.currentUser;
     }
+  }
+  getTestDetails() {
+    this.commonService.getTestDetails(this.id).subscribe((data: TestDetails) => {
+      this.testDetails = data;
+    });
   }
   validateLabCheckoutDetails(): boolean {
     if (this.testBooking.user.firstName == "" || this.testBooking.user.firstName == undefined) {

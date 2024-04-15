@@ -1,15 +1,15 @@
-import { Education } from "./education";
+import { Qualification } from "./qualification";
 import { User } from "./user";
 
-export class DoctorEducation {
+export class DoctorQualification {
     id!: any;
     doctorUser!: User;
-    education!: Education;
+    qualification!: Qualification;
     university!: string;
     fromYear!: string;
+    toYear!: string;
     address!: string;
     country!: string;
-    toYear!: string;
     version!: string;
     ipAddress!: string;
     createdBy!: string;

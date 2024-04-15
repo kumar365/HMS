@@ -19,8 +19,9 @@ export class TestCheckoutComponent implements OnInit {
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
   testDetails: TestDetails = new TestDetails;
-  constructor(private storageService: StorageService, private userService: UserService, private commonService: CommonService,
-    private activatedRoute: ActivatedRoute) { }
+
+  constructor(private storageService: StorageService, private userService: UserService,
+    private commonService: CommonService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {

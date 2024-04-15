@@ -1,11 +1,14 @@
 export class TestDetails {
     testId!: any;
-    labName!: string;
+    testCategory!: string;
     testName!: string;
+    testCode!: string;
+    testCost!: any;
+    labName!: string;
+    labAddress!: string;
     benefits!: string;
     discription!: string;
-    amount!: number;
-    labAddress!: string;
+    sampleRequirement!: string;
     version!: string;
     ipAddress!: string;
     createdBy!: string;
