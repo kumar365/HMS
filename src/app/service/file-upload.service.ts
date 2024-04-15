@@ -20,6 +20,12 @@ export class FileUploadService {
     return this.http.post<any>(AppConstants.FILE_UPLOAD, formData);
   }
 
+  prescriptionUpload(file: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    return this.http.post<any>(AppConstants.PRESCRIPTION_UPLOAD, formData);
+  }
+
   getFiles(): Observable<any> {
     return this.http.get(AppConstants.FILES);
   }

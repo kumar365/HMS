@@ -72,6 +72,7 @@ export class AppConstants {
     public static GET_DOCTOR_BY_ID = AppConstants.COMMON_URL + 'getDoctorDetailsById/';
     public static SEND_USER_QUESTION = AppConstants.COMMON_URL + 'sendUserQuestion';
     public static FILE_UPLOAD = AppConstants.COMMON_URL + 'fileUpload';
+    public static PRESCRIPTION_UPLOAD = AppConstants.COMMON_URL + 'prescriptionUpload';
     public static FILES = AppConstants.COMMON_URL + 'files';
     public static ItemPerPage: number = 50;
     public static PageSize: number[] = [10, 50, 100, 200, 500];
