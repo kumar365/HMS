@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as Aos from 'aos';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+
 
 
 
@@ -20,6 +23,7 @@ export class FindDoctorsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private storageService: StorageService, private userService: UserService) { }
 
   ngOnInit(): void {
+    Aos.init({ once: true, duration: 1000 });
     this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
