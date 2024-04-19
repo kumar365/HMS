@@ -67,6 +67,7 @@ export class AppConstants {
     public static UPLOAD_FILE = AppConstants.COMMON_URL + 'uploadFile';
     public static GET_DOCTOR_LIST = AppConstants.COMMON_URL + 'doctorList';
     public static ADD_TEST_DETAILS = AppConstants.COMMON_URL + 'addTestDetails';
+    public static GET_AMBULANCES = AppConstants.COMMON_URL + 'getAmbulances';
     public static GET_TEST_DETAILS = AppConstants.COMMON_URL + 'testDetails/';
     public static GET_TEST_DETAILS_LIST = AppConstants.COMMON_URL + 'testDetailsList';
     public static GET_DOCTOR_BY_ID = AppConstants.COMMON_URL + 'getDoctorDetailsById/';

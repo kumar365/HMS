@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Ambulance } from 'src/app/model/ambulance';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
+import { CommonService } from 'src/app/service/common.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -16,15 +17,16 @@ export class SearchAmbulanceComponent implements OnInit {
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
   ambulanceList: Ambulance[] = [];
-  constructor(private storageService: StorageService, private userService: UserService) { }
+  constructor(private storageService: StorageService, private userService: UserService,
+    private commonService: CommonService) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();
-      this.getAmbulanceList();
     }
+    this.getAmbulanceList();
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
@@ -32,9 +34,8 @@ export class SearchAmbulanceComponent implements OnInit {
     });
   }
   getAmbulanceList() {
-    this.userService.getAmbulanceList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: Ambulance[]) => {
+    this.commonService.getAmbulanceList().subscribe((data: Ambulance[]) => {
       this.ambulanceList = data;
-      console.log('data length::' + data.length);
     });
   }
 }

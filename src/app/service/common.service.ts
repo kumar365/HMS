@@ -9,6 +9,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { TestDetails } from '../model/test-details';
 import { ApiResponse } from '../model/api-response';
 import { Appointment } from '../model/appointment';
+import { Ambulance } from '../model/ambulance';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -39,6 +40,9 @@ export class CommonService {
 
   getDoctorById(id: any): Observable<User> {
     return this.httpClient.get<User>(AppConstants.GET_DOCTOR_BY_ID + id, httpOptions);
+  }
+  getAmbulanceList(): Observable<Ambulance[]> {
+    return this.httpClient.get<Ambulance[]>(AppConstants.GET_AMBULANCES, httpOptions);
   }
   getTestDetailsList(): Observable<TestDetails[]> {
     return this.httpClient.get<TestDetails[]>(AppConstants.GET_TEST_DETAILS_LIST, httpOptions);
