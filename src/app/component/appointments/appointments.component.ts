@@ -24,7 +24,6 @@ export class AppointmentsComponent implements OnInit {
       this.getUserData();
     }
     this.getAppointmentList();
-
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {

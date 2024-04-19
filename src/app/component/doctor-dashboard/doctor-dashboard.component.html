@@ -116,7 +116,9 @@
                               <img src="/assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
                            </a>
                            <div class="profile-det-info">
-                              <h3>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</h3>
+                              <h3>
+                                 {{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}
+                              </h3>
                               <div class="patient-details">
                                  <h5 class="mb-0">BDS, MDS - Oral & Maxillofacial Surgery</h5>
                               </div>
@@ -281,23 +283,22 @@
                                                    <th></th>
                                                 </tr>
                                              </thead>
-                                             <tbody>
+                                             <tbody *ngFor="let appointment of appointmentList;">
                                                 <tr>
                                                    <td>
                                                       <h2 class="table-avatar">
-                                                         <a href="patientProfile"
-                                                            class="avatar avatar-sm me-2"><img
+                                                         <a href="patientProfile" class="avatar avatar-sm me-2"><img
                                                                class="avatar-img rounded-circle"
                                                                src="/assets/img/patients/patient9.jpg"
                                                                alt="User Image"></a>
-                                                         <a href="patientProfile">Sudhir B
-                                                            <span>#PT0016</span></a>
+                                                         <a href="patientProfile?id={{appointment.user.id}}">{{appointment.patientName}}
+                                                            <span>#PT{{appointment.id}}</span></a>
                                                       </h2>
                                                    </td>
-                                                   <td>12 Sep 2023 <span class="d-block text-info">10.00 AM</span></td>
-                                                   <td>General</td>
-                                                   <td>New Patient</td>
-                                                   <td class="text-center">Rs.500/-</td>
+                                                   <td>{{appointment.appointmentDate | date:'dd MMM yyyy'}} <span class="d-block text-info">10.00 AM</span></td>
+                                                   <td>{{appointment.consultationType}}</td>
+                                                   <td>{{appointment.appBookingChannel}}</td>
+                                                   <td class="text-center">Rs.{{appointment.price}}/-</td>
                                                    <td class="text-center">
                                                       <div class="consultation-types" style="display: inline-block;">
                                                          <a href="javascript:void(0);"
@@ -323,46 +324,7 @@
                                                       </div>
                                                    </td>
                                                 </tr>
-                                                <tr>
-                                                   <td>
-                                                      <h2 class="table-avatar">
-                                                         <a href="patientProfile"
-                                                            class="avatar avatar-sm me-2"><img
-                                                               class="avatar-img rounded-circle"
-                                                               src="/assets/img/patients/patient7.jpg"
-                                                               alt="User Image"></a>
-                                                         <a href="patientProfile">Sneha K<span>#PT0001</span></a>
-                                                      </h2>
-                                                   </td>
-                                                   <td>13 Sep 2023 <span class="d-block text-info">11.00 AM</span></td>
-                                                   <td>General</td>
-                                                   <td>Old Patient</td>
-                                                   <td class="text-center">Rs. 300/-</td>
-                                                   <td class="text-center">
-                                                      <div class="consultation-types" style="display: inline-block;">
-                                                         <a href="javascript:void(0);"
-                                                            style="width: 40px;min-width: 40px;color: #34b74f;border: 1px solid #34b74f;">
-                                                            <i class="feather-mic" style="margin-right: 0px;"></i>
-                                                         </a>
 
-                                                      </div>
-                                                   </td>
-                                                   <td class="text-end">
-                                                      <div class="table-action">
-                                                         <a href="javascript:void(0);" class="btn btn-sm bg-info-light">
-                                                            <i class="far fa-eye"></i> View
-                                                         </a>
-                                                         <a href="javascript:void(0);"
-                                                            class="btn btn-sm bg-success-light">
-                                                            <i class="fas fa-check"></i> Accept
-                                                         </a>
-                                                         <a href="javascript:void(0);"
-                                                            class="btn btn-sm bg-danger-light">
-                                                            <i class="fas fa-times"></i> Cancel
-                                                         </a>
-                                                      </div>
-                                                   </td>
-                                                </tr>
 
                                              </tbody>
                                           </table>
@@ -392,8 +354,7 @@
                                                 <tr>
                                                    <td>
                                                       <h2 class="table-avatar">
-                                                         <a href="patientProfile"
-                                                            class="avatar avatar-sm me-2"><img
+                                                         <a href="patientProfile" class="avatar avatar-sm me-2"><img
                                                                class="avatar-img rounded-circle"
                                                                src="/assets/img/patients/patient10.jpg"
                                                                alt="User Image"></a>
@@ -432,8 +393,7 @@
                                                 <tr>
                                                    <td>
                                                       <h2 class="table-avatar">
-                                                         <a href="patientProfile"
-                                                            class="avatar avatar-sm me-2"><img
+                                                         <a href="patientProfile" class="avatar avatar-sm me-2"><img
                                                                class="avatar-img rounded-circle"
                                                                src="/assets/img/patients/patient7.jpg"
                                                                alt="User Image"></a>
@@ -473,8 +433,7 @@
                                                 <tr>
                                                    <td>
                                                       <h2 class="table-avatar">
-                                                         <a href="patientProfile"
-                                                            class="avatar avatar-sm me-2"><img
+                                                         <a href="patientProfile" class="avatar avatar-sm me-2"><img
                                                                class="avatar-img rounded-circle"
                                                                src="/assets/img/patients/patient11.jpg"
                                                                alt="User Image"></a>
@@ -621,8 +580,8 @@
                   <div class="row">
                      <div class="col-md-6 col-lg-6">
                         <div class="copyright-text">
-                           <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a
-                                 href="https://abc.com" target="_blank" style="color:#fff">
+                           <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a href="https://abc.com"
+                                 target="_blank" style="color:#fff">
                                  Technologies Pvt. Ltd.</a></p>
                         </div>
                      </div>

@@ -104,6 +104,7 @@ import { BackButtonDisableModule } from './module/back-button-disable/back-butto
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 import { SearchTestsComponent } from './component/search-tests/search-tests.component';
 import { ImageUploadComponent } from './component/image-upload/image-upload.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [
@@ -204,6 +205,7 @@ import { ImageUploadComponent } from './component/image-upload/image-upload.comp
   ],
   imports: [
     BrowserModule,
+    SlickCarouselModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
