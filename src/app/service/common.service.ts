@@ -10,6 +10,7 @@ import { TestDetails } from '../model/test-details';
 import { ApiResponse } from '../model/api-response';
 import { Appointment } from '../model/appointment';
 import { Ambulance } from '../model/ambulance';
+import { Staffing } from '../model/staffing';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -59,5 +60,8 @@ export class CommonService {
   }
   public saveAppointment(appointment: Appointment): Observable<ApiResponse> {
     return this.httpClient.post<ApiResponse>(AppConstants.ADD_APPOINTMENT, appointment, httpOptions);
+  }
+  sendStaffingData(staffing: Staffing): Observable<ApiResponse> {
+    return this.httpClient.post<ApiResponse>(AppConstants.SEND_STAFFFING_DATA, staffing, httpOptions);
   }
 }

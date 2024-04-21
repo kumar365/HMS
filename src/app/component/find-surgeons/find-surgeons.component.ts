@@ -21,7 +21,7 @@ export class FindSurgeonsComponent implements OnInit {
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
   appointment: Appointment = new Appointment;
-  constructor(private router: Router, private storageService: StorageService, private userService: UserService, 
+  constructor(private router: Router, private storageService: StorageService, private userService: UserService,
     private commonService: CommonService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
@@ -80,7 +80,6 @@ export class FindSurgeonsComponent implements OnInit {
     this.appointment.consultationType = 'Clinic Visit';
     this.appointment.user.password = this.appointment.user.email;
     if (this.validateAppointmentDetails()) {
-      alert('onSubmit');
       this.commonService.saveAppointment(this.appointment).subscribe((data: ApiResponse) => {
         this.message = data.message;
         if (this.message == MessageConstants.AppointmentMessage) {

@@ -16,4 +16,5 @@ export class MessageConstants {
     public static BillDetailsMessage = 'Bill details added successfully!';
     public static SendPhoneNumberVerificationCodeMessage = 'Phone Number Verification Code sent successfully!';
     public static SendEmailVerificationCodeMessage = 'Email Verification Code sent successfully!';
+    public static StaffingMessage = 'Staffing needs sent successfully';
 }
