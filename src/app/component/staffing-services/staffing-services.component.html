@@ -467,8 +467,10 @@
                                     <div class="service-upload">
                                         <i class="fas fa-cloud-upload-alt"></i>
                                         <span>Upload Resume *</span>
-                                        <input type="file" [(ngModel)]="staffing2.file" id="file2" name="file2" multiple
-                                            accept="image/*" (change)="selectFile($event)">
+                                        <input type="file" [(ngModel)]="staffing2.file" id="file2" name="file2"
+                                            accept="image/*" (change)="selectFile($event)" #file2="ngModel">
+                                        <!-- <input type="file" [(ngModel)]="staffing2.files" id="file2" name="file2"
+                                            multiple accept="image/*" (change)="selectFile($event)" #file2="ngModel"> -->
                                     </div>
 
                                 </div>

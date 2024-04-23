@@ -61,6 +61,10 @@ export class StaffingServicesComponent implements OnInit {
           console.log(e.target.result);
           this.preview = e.target.result;
         };
+        this.staffing2.file = this.currentFile;
+        for (let i = 0; i < this.selectedFiles.length; i++) {
+          this.staffing2.files.push(this.selectedFiles[i]);
+        }
         reader.readAsDataURL(this.currentFile);
       }
     }

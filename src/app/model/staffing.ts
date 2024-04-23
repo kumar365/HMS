@@ -7,4 +7,5 @@ export class Staffing {
     address!: string;
     degree!: string;
     file!: File;
+    files!: File[];
 }
