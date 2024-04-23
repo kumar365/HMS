@@ -4,4 +4,7 @@ export class Staffing {
     phoneNumber!: string;
     hospitalName!: string;
     staffingNeeds!: string;
+    address!: string;
+    degree!: string;
+    file!: File;
 }

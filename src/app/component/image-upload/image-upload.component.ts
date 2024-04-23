@@ -31,18 +31,14 @@ export class ImageUploadComponent implements OnInit {
 
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
-
       if (file) {
         this.preview = '';
         this.currentFile = file;
-
         const reader = new FileReader();
-
         reader.onload = (e: any) => {
           console.log(e.target.result);
           this.preview = e.target.result;
         };
-
         reader.readAsDataURL(this.currentFile);
       }
     }
@@ -74,7 +70,6 @@ export class ImageUploadComponent implements OnInit {
             } else {
               this.message = 'Could not upload the image!';
             }
-
             this.currentFile = undefined;
           },
         });

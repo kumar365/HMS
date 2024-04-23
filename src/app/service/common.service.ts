@@ -64,4 +64,12 @@ export class CommonService {
   sendStaffingData(staffing: Staffing): Observable<ApiResponse> {
     return this.httpClient.post<ApiResponse>(AppConstants.SEND_STAFFFING_DATA, staffing, httpOptions);
   }
+  sendStaffingDataWithFile(staffing: Staffing): Observable<ApiResponse> {
+    const formData: FormData = new FormData();
+    formData.append('file', staffing.file);
+    formData.append('staffing', new Blob([JSON.stringify(staffing)], {
+      type: 'application/json'
+    }));
+    return this.httpClient.post<ApiResponse>(AppConstants.SEND_STAFFFING_DATA_FILE, formData);
+  }
 }

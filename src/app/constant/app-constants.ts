@@ -73,6 +73,7 @@ export class AppConstants {
     public static GET_DOCTOR_BY_ID = AppConstants.COMMON_URL + 'getDoctorDetailsById/';
     public static SEND_USER_QUESTION = AppConstants.COMMON_URL + 'sendUserQuestion';
     public static SEND_STAFFFING_DATA = AppConstants.COMMON_URL + 'sendStaffingData';
+    public static SEND_STAFFFING_DATA_FILE = AppConstants.COMMON_URL + 'sendStaffingDataWithFile';
     public static FILE_UPLOAD = AppConstants.COMMON_URL + 'fileUpload';
     public static PRESCRIPTION_UPLOAD = AppConstants.COMMON_URL + 'prescriptionUpload';
     public static FILES = AppConstants.COMMON_URL + 'files';
