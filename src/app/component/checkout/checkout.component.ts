@@ -7,6 +7,7 @@ import { Appointment } from 'src/app/model/appointment';
 import { CardDetails } from 'src/app/model/card-details';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
+import { CommonService } from 'src/app/service/common.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -16,16 +17,25 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
+  id: any;
   message: any;
   statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
+  doctor: User = new User;
   appointment: Appointment = new Appointment;
   termsAndConditionsFlag: Boolean = false;
-  constructor(private router: Router, private storageService: StorageService,
-    private userService: UserService, private renderer: Renderer2) { }
+  constructor(private router: Router, private storageService: StorageService, private commonService: CommonService,
+    private userService: UserService, private renderer: Renderer2, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe(params => {
+      console.log(params);
+      this.id = params['id'];
+      if (this.id != undefined) {
+        this.getDoctorData();
+      }
+    });
     this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
@@ -42,6 +52,11 @@ export class CheckoutComponent implements OnInit {
     } else {
       this.appointment.user = this.currentUser;
     }
+  }
+  getDoctorData() {
+    this.commonService.getDoctorById(this.id).subscribe((data: User) => {
+      this.doctor = data;
+    });
   }
   validateAppointmentDetails(): boolean {
     if (this.appointment.user.firstName == "" || this.appointment.user.firstName == undefined) {

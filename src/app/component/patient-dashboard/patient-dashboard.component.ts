@@ -1,10 +1,12 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Appointment } from 'src/app/model/appointment';
 import { Bill } from 'src/app/model/bill';
+import { User } from 'src/app/model/user';
 import { MedicalRecords } from 'src/app/model/medical-records';
 import { Prescription } from 'src/app/model/prescription';
-import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
+import { CommonService } from 'src/app/service/common.service';
 import { PaymentService } from 'src/app/service/payment.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
@@ -15,14 +17,18 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./patient-dashboard.component.css']
 })
 export class PatientDashboardComponent implements OnInit {
+  id: any;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
+  doctor: User = new User;
   appointmentList: Appointment[] = [];
   prescriptionList: Prescription[] = [];
   medicalRecordsList: MedicalRecords[] = [];
   billList: Bill[] = [];
 
-  constructor(private storageService: StorageService, private userService: UserService, private paymentService: PaymentService) { }
+  constructor(private storageService: StorageService, private userService: UserService,
+    private paymentService: PaymentService, private commonService: CommonService) { }
+
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
@@ -37,6 +43,11 @@ export class PatientDashboardComponent implements OnInit {
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
+    });
+  }
+  getDoctorData() {
+    this.commonService.getDoctorById(this.id).subscribe((data: User) => {
+      this.doctor = data;
     });
   }
   getAppointmentList() {

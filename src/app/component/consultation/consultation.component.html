@@ -170,23 +170,23 @@
                             <h4 class="booking-title">Booking Summary</h4>
                         </div>
                         <div class="card booking-card">
-                            <div class="card-body booking-card-body">
+                            <div class="card-body booking-card-body" *ngFor="let doctor of doctorsList">
                                 <div class="booking-doctor-details">
                                     <div class="booking-doctor-left">
                                         <div class="booking-doctor-img">
-                                            <a href="doctorProfile">
+                                            <a href="doctorProfile?id={{doctor.id}}">
                                                 <img src="/assets/img/doctors/doctor-02.jpg" alt>
                                             </a>
                                         </div>
                                         <div class="booking-doctor-info">
-                                            <h4><a href="doctorProfile">{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</a></h4>
+                                            <h4><a href="doctorProfile?id={{doctor.id}}">{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</a></h4>
                                             <p>MBBS, Dentist</p>
                                         </div>
                                     </div>
                                     <div class="booking-doctor-right">
                                         <p>
                                             <i class="fas fa-circle-check"></i>
-                                            <a href="doctorProfileSettings">Edit</a>
+                                            <a href="doctorProfileSettings?id={{doctor.id}}">Edit</a>
                                         </p>
                                     </div>
                                 </div>

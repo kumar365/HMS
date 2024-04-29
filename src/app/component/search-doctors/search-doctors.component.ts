@@ -22,7 +22,8 @@ export class SearchDoctorsComponent implements OnInit {
   availabilityTomorrowFlag: boolean = false;
   availabilityNext7DaysFlag: boolean = false;
   availabilityNext14DaysFlag: boolean = false;
-  constructor(private storageService: StorageService, private userService: UserService, private commonService: CommonService,) { }
+  constructor(private storageService: StorageService, private userService: UserService,
+    private commonService: CommonService) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();

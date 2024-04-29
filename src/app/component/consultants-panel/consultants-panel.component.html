@@ -113,8 +113,6 @@
                     <div class="col-md-5 col-lg-3 col-xl-3 theiaStickySidebar"
                         style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
 
-
-
                         <div class="theiaStickySidebar"
                             style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none;">
                             <div class="card search-filter">
@@ -208,20 +206,20 @@
                                 <h3 class="title pharmacy-title">HMS's Consultants Panel</h3>
                             </div>
                         </div>
-                        <div class="row row-grid">
+                        <div class="row row-grid" *ngFor="let doctor of doctorsList">
 
                             <div class="col-md-6 col-lg-4 col-xl-3">
                                 <div class="card widget-profile pat-widget-profile">
                                     <div class="card-body">
                                         <div class="pro-widget-content">
                                             <div class="profile-info-widget">
-                                                <a href="#" class="booking-doc-img">
+                                                <a href="doctorProfile?id={{doctor.id}}" class="booking-doc-img">
                                                     <img src="/assets/img/dr-profile-pic.jpg" alt="mdurairaj">
                                                 </a>
                                                 <div class="profile-det-info">
-                                                    <h3><a href="#">Dr. Manoj Durairaj</a></h3>
+                                                    <h3><a href="doctorProfile?id={{doctor.id}}">{{doctor.displayName}}</a></h3>
                                                     <div class="patient-details">
-                                                        <h5>Dr. Manoj Durairajis a cardiac surgeon, practicing Pediatric
+                                                        <h5>{{doctor.displayName}} a cardiac surgeon, practicing Pediatric
                                                             and Adult Cardiac Surgery.</h5>
                                                         <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i> Hyd,
                                                             India</h5>
@@ -236,31 +234,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-lg-4 col-xl-3">
-                                <div class="card widget-profile pat-widget-profile">
-                                    <div class="card-body">
-                                        <div class="pro-widget-content">
-                                            <div class="profile-info-widget">
-                                                <a href="#" class="booking-doc-img">
-                                                    <img src="/assets/img/dr-rokde.jpg" alt="dr-rokde">
-                                                </a>
-                                                <div class="profile-det-info">
-                                                    <h3><a href="#">Dr. Prashant Rokade</a></h3>
-                                                    <div class="patient-details">
-                                                        <h5>M S Orthopedic- Consultant & Surgeon</h5>
-                                                        <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i> Hyd,
-                                                            India</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="patient-info text-center">
-                                            <a href="http://www.smshnewsangvi.com/doctor-john/"
-                                                class="btn btn-sm bg-primary-light" target="_blank">Go to Website</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
 
                         </div>
                     </div>

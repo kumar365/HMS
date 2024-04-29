@@ -9,6 +9,7 @@ import { MedicalRecords } from 'src/app/model/medical-records';
 import { Prescription } from 'src/app/model/prescription';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
+import { CommonService } from 'src/app/service/common.service';
 import { PaymentService } from 'src/app/service/payment.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
@@ -27,6 +28,7 @@ export class PatientProfileComponent implements OnInit {
   currentUserInfo: UserInfo = new UserInfo;
   parentUser: User = new User;
   currentUser: User = new User;
+  doctor: User = new User;
   appointmentList: Appointment[] = [];
   prescription: Prescription = new Prescription;
   prescriptionList: Prescription[] = [];
@@ -37,7 +39,7 @@ export class PatientProfileComponent implements OnInit {
   billList: Bill[] = [];
   billFlag: boolean = false;
 
-  constructor(private router: Router, private storageService: StorageService, private activatedRoute: ActivatedRoute,
+  constructor(private router: Router, private storageService: StorageService, private activatedRoute: ActivatedRoute, private commonService: CommonService,
     private userService: UserService, private paymentService: PaymentService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
@@ -65,6 +67,11 @@ export class PatientProfileComponent implements OnInit {
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.parentUser = data;
+    });
+  }
+  getDoctorData() {
+    this.commonService.getDoctorById(this.id).subscribe((data: User) => {
+      this.doctor = data;
     });
   }
   getPatientDataById(id: any) {

@@ -7,6 +7,7 @@ import { Appointment } from 'src/app/model/appointment';
 import { Dependent } from 'src/app/model/dependent';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
+import { CommonService } from 'src/app/service/common.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -16,10 +17,12 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./patient-details.component.css']
 })
 export class PatientDetailsComponent implements OnInit {
+  id: any;
   message: any;
   statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
+  doctor: User = new User;
   appointment: Appointment = new Appointment;
   termsAndConditionsFlag: Boolean = false;
   dependent: Dependent = new Dependent;
@@ -27,7 +30,7 @@ export class PatientDetailsComponent implements OnInit {
   dependentFlag: boolean = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private storageService: StorageService,
-    private userService: UserService, private renderer: Renderer2) { }
+    private userService: UserService, private commonService: CommonService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
@@ -51,6 +54,11 @@ export class PatientDetailsComponent implements OnInit {
       }
       this.appointment.paymentMethod = "On line";
       this.appointment.termsAndConditions = "Y";
+    });
+  }
+  getDoctorData() {
+    this.commonService.getDoctorById(this.id).subscribe((data: User) => {
+      this.doctor = data;
     });
   }
   getDependentList() {

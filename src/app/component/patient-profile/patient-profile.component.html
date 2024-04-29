@@ -231,11 +231,11 @@
                                 <td>{{prescription.prescriptionName}}</td>
                                 <td>
                                   <h2 class="table-avatar">
-                                    <a href="doctorProfile" class="avatar avatar-sm me-2">
+                                    <a href="doctorProfile?id={{doctor.id}}" class="avatar avatar-sm me-2">
                                       <img class="avatar-img rounded-circle"
                                         src="/assets/img/doctors/doctor-thumb-01.jpg" alt="User Image">
                                     </a>
-                                    <a href="doctorProfile">Dr. Vidya B <span>Dental</span></a>
+                                    <a href="doctorProfile?id={{doctor.id}}">Dr. Vidya B <span>Dental</span></a>
                                   </h2>
                                 </td>
                                 <td class="text-end">
@@ -284,11 +284,11 @@
                                 <td><a href="#">{{medicalRecords.attachment}}</a></td>
                                 <td>
                                   <h2 class="table-avatar">
-                                    <a href="doctorProfile" class="avatar avatar-sm me-2">
+                                    <a href="doctorProfile?id={{doctor.id}}" class="avatar avatar-sm me-2">
                                       <img class="avatar-img rounded-circle"
                                         src="/assets/img/doctors/doctor-thumb-08.jpg" alt="User Image">
                                     </a>
-                                    <a href="doctorProfile">{{medicalRecords.user.firstName}}
+                                    <a href="doctorProfile?id={{doctor.id}}">{{medicalRecords.user.firstName}}
                                       {{medicalRecords.user.lastName}}<span>Dermatology</span></a>
                                   </h2>
                                 </td>
@@ -336,11 +336,11 @@
                                 </td>
                                 <td>
                                   <h2 class="table-avatar">
-                                    <a href="doctorProfile" class="avatar avatar-sm me-2">
+                                    <a href="doctorProfile?id={{doctor.id}}" class="avatar avatar-sm me-2">
                                       <img class="avatar-img rounded-circle"
                                         src="/assets/img/doctors/doctor-thumb-08.jpg" alt="User Image">
                                     </a>
-                                    <a href="doctorProfile">{{bill.user.firstName}} <span>Dermatology</span></a>
+                                    <a href="doctorProfile?id={{doctor.id}}">{{bill.user.firstName}} <span>Dermatology</span></a>
                                   </h2>
                                 </td>
                                 <td>{{bill.amount}}/-</td>

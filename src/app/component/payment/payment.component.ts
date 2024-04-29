@@ -5,6 +5,7 @@ import { Appointment } from 'src/app/model/appointment';
 import { CardDetails } from 'src/app/model/card-details';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
+import { CommonService } from 'src/app/service/common.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -14,13 +15,17 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
+  id: any;
   message: any;
   statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
+  doctor: User = new User;
   appointment: Appointment = new Appointment;
-  constructor(private storageService: StorageService, private userService: UserService,
+
+  constructor(private storageService: StorageService, private userService: UserService, private commonService: CommonService,
     private router: Router, private renderer: Renderer2) { }
+
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
@@ -32,6 +37,11 @@ export class PaymentComponent implements OnInit {
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
+    });
+  }
+  getDoctorData() {
+    this.commonService.getDoctorById(this.id).subscribe((data: User) => {
+      this.doctor = data;
     });
   }
   validatePaymentData(): boolean {

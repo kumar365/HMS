@@ -279,11 +279,11 @@
                               <tr>
                                 <td>
                                   <h2 class="table-avatar">
-                                    <a href="doctorProfile" class="avatar avatar-sm me-2">
+                                    <a href="doctorProfile?id={{doctor.id}}" class="avatar avatar-sm me-2">
                                       <img class="avatar-img rounded-circle"
                                         src="/assets/img/doctors/doctor-thumb-01.jpg" alt="User Image">
                                     </a>
-                                    <a href="doctorProfile">Dr. {{appointment.doctorName}} <span>Dental</span></a>
+                                    <a href="doctorProfile?id={{doctor.id}}">Dr. {{appointment.doctorName}} <span>Dental</span></a>
                                   </h2>
                                 </td>
                                 <td>{{appointment.appointmentDate | date:'dd MMM yyyy'}} <span class="d-block text-info">10.00 AM</span></td>
@@ -338,11 +338,11 @@
                                 <td>{{prescription.patientName}}</td>
                                 <td>
                                   <h2 class="table-avatar">
-                                    <a href="doctorProfile" class="avatar avatar-sm me-2">
+                                    <a href="doctorProfile?id={{doctor.id}}" class="avatar avatar-sm me-2">
                                       <img class="avatar-img rounded-circle"
                                         src="/assets/img/doctors/doctor-thumb-01.jpg" alt="User Image">
                                     </a>
-                                    <a href="doctorProfile">{{prescription.createdBy}} <span>Dental</span></a>
+                                    <a href="doctorProfile?id={{doctor.id}}">{{prescription.createdBy}} <span>Dental</span></a>
                                   </h2>
                                 </td>
                                 <td class="text-end">
@@ -387,11 +387,11 @@
                                 <td><a href="#">{{medicalRecords.attachment}}</a></td>
                                 <td>
                                   <h2 class="table-avatar">
-                                    <a href="doctorProfile" class="avatar avatar-sm me-2">
+                                    <a href="doctorProfile?id={{doctor.id}}" class="avatar avatar-sm me-2">
                                       <img class="avatar-img rounded-circle"
                                         src="/assets/img/doctors/doctor-thumb-01.jpg" alt="User Image">
                                     </a>
-                                    <a href="doctorProfile">{{medicalRecords.createdBy}} <span>Dental</span></a>
+                                    <a href="doctorProfile?id={{doctor.id}}">{{medicalRecords.createdBy}} <span>Dental</span></a>
                                   </h2>
                                 </td>
                                 <td class="text-end">
@@ -434,11 +434,11 @@
                                 </td>
                                 <td>
                                   <h2 class="table-avatar">
-                                    <a href="doctorProfile" class="avatar avatar-sm me-2">
+                                    <a href="doctorProfile?id={{doctor.id}}" class="avatar avatar-sm me-2">
                                       <img class="avatar-img rounded-circle"
                                         src="/assets/img/doctors/doctor-thumb-01.jpg" alt="User Image">
                                     </a>
-                                    <a href="doctorProfile">{{bill.createdBy}}<span>Dental</span></a>
+                                    <a href="doctorProfile?id={{doctor.id}}">{{bill.createdBy}}<span>Dental</span></a>
                                   </h2>
                                 </td>
                                 <td>{{bill.amount}}/-</td>

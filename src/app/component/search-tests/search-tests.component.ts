@@ -11,10 +11,12 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./search-tests.component.css']
 })
 export class SearchTestsComponent implements OnInit {
+  id: any;
   message: any;
   statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
+  doctor: User = new User;
   testDetailsList: TestDetails[] = [];
   maleGenderFlag: boolean = false;
   femaleGenderFlag: boolean = false;
@@ -36,6 +38,11 @@ export class SearchTestsComponent implements OnInit {
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
+    });
+  }
+  getDoctorData() {
+    this.commonService.getDoctorById(this.id).subscribe((data: User) => {
+      this.doctor = data;
     });
   }
   getTestDetailsList() {

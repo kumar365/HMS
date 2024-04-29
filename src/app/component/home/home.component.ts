@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
+  doctor: User = new User;
   constructor(private storageService: StorageService, private userService: UserService) { }
 
   ngOnInit(): void {
