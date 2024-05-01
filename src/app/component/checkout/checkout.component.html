@@ -119,7 +119,7 @@
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group card-label">
                                                     <label>First Name</label>
-                                                    <input type="text" [(ngModel)]="appointment.user.firstName"
+                                                    <input type="text" [(ngModel)]="appointment.patientUser.firstName"
                                                         id="firstName" name="firstName" placeholder="Enter First Name"
                                                         class="form-control" #firstName="ngModel">
                                                 </div>
@@ -127,7 +127,7 @@
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group card-label">
                                                     <label>Last Name</label>
-                                                    <input type="text" [(ngModel)]="appointment.user.lastName"
+                                                    <input type="text" [(ngModel)]="appointment.patientUser.lastName"
                                                         id="lastName" name="lastName" placeholder="Enter Last Name"
                                                         class="form-control" #lastName="ngModel">
                                                 </div>
@@ -135,7 +135,7 @@
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group card-label">
                                                     <label>Email</label>
-                                                    <input type="text" [(ngModel)]="appointment.user.email" id="email"
+                                                    <input type="text" [(ngModel)]="appointment.patientUser.email" id="email"
                                                         name="email" placeholder="Enter email" class="form-control"
                                                         #email="ngModel">
                                                 </div>
@@ -143,7 +143,7 @@
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group card-label">
                                                     <label>Phone</label>
-                                                    <input type="text" [(ngModel)]="appointment.user.phoneNumber"
+                                                    <input type="text" [(ngModel)]="appointment.patientUser.phoneNumber"
                                                         id="phoneNumber" name="phoneNumber"
                                                         placeholder="Enter Phone Number" class="form-control"
                                                         #phoneNumber="ngModel">

@@ -340,10 +340,10 @@
                                       <img class="avatar-img rounded-circle"
                                         src="/assets/img/doctors/doctor-thumb-08.jpg" alt="User Image">
                                     </a>
-                                    <a href="doctorProfile?id={{doctor.id}}">{{bill.user.firstName}} <span>Dermatology</span></a>
+                                    <a href="doctorProfile?id={{doctor.id}}">{{bill.patientUser.firstName}} <span>Dermatology</span></a>
                                   </h2>
                                 </td>
-                                <td>{{bill.amount}}/-</td>
+                                <td>{{bill.billAmount}}/-</td>
                                 <td>{{bill.createdDate | date:'dd MMM yyyy'}}</td>
                                 <td class="text-end">
                                   <div class="table-action">

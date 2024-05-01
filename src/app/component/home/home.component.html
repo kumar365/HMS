@@ -10,16 +10,13 @@
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/feather.css">
-
     <link rel="stylesheet" href="/assets/css/aos.css">
-
     <link rel="stylesheet" href="/assets/css/custom.css">
 </head>
 
 <body>
 
     <div class="main-wrapper">
-
         <header class="header">
             <nav class="navbar navbar-expand-lg header-nav">
                 <div class="navbar-header">
@@ -30,13 +27,13 @@
                             <span></span>
                         </span>
                     </a>
-                    <a href="/#" class="navbar-brand logo">
+                    <a href="index" class="navbar-brand logo">
                         <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
                     </a>
                 </div>
                 <div class="main-menu-wrapper">
                     <div class="menu-header">
-                        <a href="/#" class="menu-logo">
+                        <a href="index" class="menu-logo">
                             <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
                         </a>
                         <a id="menu_close" class="menu-close" href="javascript:void(0);">
@@ -44,17 +41,17 @@
                         </a>
                     </div>
                     <ul class="main-nav">
-                        <li class="active"><a href="findDoctors">Find Doctors</a></li>
-                        <li><a href="consult">Consultation</a></li>
-                        <li><a href="medicineOrder">Medicine Order</a></li>
-                        <li><a href="labTest">Lab Test</a></li>
-                        <li><a href="findSurgeons">Find Surgeons</a></li>
-                        <li><a href="bookAmbulance">Book Ambulance</a></li>
+                        <li class="active"><a href="/findDoctors">Find Doctors</a></li>
+                        <li><a href="/consult">Consultation</a></li>
+                        <li><a href="/medicineOrder">Medicine Order</a></li>
+                        <li><a href="/labTest">Lab Test</a></li>
+                        <li><a href="/findSurgeons">Find Surgeons</a></li>
+                        <li><a href="/bookAmbulance">Book Ambulance</a></li>
                         <li class="has-submenu">
                             <a href="javascript:void(0);">Services <i class="fas fa-chevron-down"></i></a>
                             <ul class="submenu">
                                 <li><a href="searchAmbulance">Ambulance Service</a></li>
-                                <li><a href="staffingServices">Healthcare Staffing Services</a></li>
+                                <li><a href="/staffingServices">Healthcare Staffing Services</a></li>
                             </ul>
                         </li>
                         <li class="has-submenu">
@@ -69,14 +66,14 @@
                 </div>
                 <ul class="nav header-navbar-rht">
                     <!-- <li class="nav-item contact-item">
-    <div class="header-contact-img">
-    <i class="far fa-hospital"></i>
-    </div>
-    <div class="header-contact-detail">
-    <p class="contact-header">Tollfree Helpline</p>
-    <p class="contact-info-header">1800 1800 45</p>
-    </div>
-    </li> -->
+<div class="header-contact-img">
+<i class="far fa-hospital"></i>
+</div>
+<div class="header-contact-detail">
+<p class="contact-header">Tollfree Helpline</p>
+<p class="contact-info-header">1800 1800 45</p>
+</div>
+</li> -->
                     <li class="nav-item">
                         <a class="nav-link header-login" href="/login">Login / Signup </a>
                     </li>
@@ -86,31 +83,29 @@
         <section class="section section-search">
             <div class="container-fluid">
                 <div class="banner-wrapper">
-                    <div class="banner-header text-center aos"><!-- data-aos="fade-up" -->
+                    <div class="banner-header text-center aos" data-aos="fade-up"><!-- data-aos="fade-up" -->
                         <h1>Search Doctor, Make an Appointment</h1>
                         <p>Discover the best doctors, clinic & hospital the city nearest to you.</p>
                     </div>
-
                     <div class="search-box">
-                        <form action="searchDoctors">
-                            <div class="form-group search-location aos"><!-- data-aos="fade-up" -->
+                        <form #searchDoctorForm="ngForm" (ngSubmit)="onSubmit()">
+                            <div class="form-group search-location aos" data-aos="fade-up"><!-- data-aos="fade-up" -->
                                 <input type="text" class="form-control" placeholder="Search Location">
                                 <span class="form-text">Based on your Location</span>
                             </div>
-                            <div class="form-group search-info aos"><!-- data-aos="fade-up" -->
+                            <div class="form-group search-info aos" data-aos="fade-up"><!-- data-aos="fade-up" -->
                                 <input type="text" class="form-control"
                                     placeholder="Search Doctors, Clinics, Hospitals, Diseases Etc">
                                 <span class="form-text">Ex : Dental or Sugar Check up etc</span>
                             </div>
-                            <button type="submit" class="btn btn-primary search-btn mt-0 aos"><!-- data-aos="fade-up" --><i
+                            <button type="submit"
+                                class="btn btn-primary search-btn mt-0 aos"><!-- data-aos="fade-up" --><i
                                     class="fas fa-search"></i> <span>Search</span></button>
                         </form>
                     </div>
-
                 </div>
             </div>
         </section>
-
         <section class="section category-sec">
             <div class="container-fluid">
                 <div class="row">
@@ -119,7 +114,8 @@
                             <h2>What are you looking for?</h2>
                         </div>
                         <div class="row">
-                            <div class="col-md-4 aos aos-init aos-animate"><!-- data-aos="fade-up" -->
+                            <div class="col-md-4 aos aos-init aos-animate" data-aos="fade-up">
+                                <!-- data-aos="fade-up" -->
                                 <div class="set-category">
                                     <div class="d-flex align-items-center">
                                         <div class="img-holder">
@@ -130,14 +126,15 @@
                                             <h3>Visit a Doctor</h3>
                                             <p>We hire the best specialists to deliver top-notch diagnostic services for
                                                 you.</p>
-                                            <a href="searchDoctors" class="book-now">Visit Now <i
+                                            <a href="/searchDoctors" class="book-now">Visit Now <i
                                                     class="fas fa-long-arrow-alt-right"></i></a>
                                         </div>
                                     </div>
                                     <h1>01</h1>
                                 </div>
                             </div>
-                            <div class="col-md-4 aos aos-init aos-animate"><!-- data-aos="fade-up" -->
+                            <div class="col-md-4 aos aos-init aos-animate" data-aos="fade-up">
+                                <!-- data-aos="fade-up" -->
                                 <div class="set-category light">
                                     <div class="d-flex align-items-center">
                                         <div class="img-holder">
@@ -155,7 +152,8 @@
                                     <h1>02</h1>
                                 </div>
                             </div>
-                            <div class="col-md-4 aos aos-init aos-animate"><!-- data-aos="fade-up" -->
+                            <div class="col-md-4 aos aos-init aos-animate" data-aos="fade-up">
+                                <!-- data-aos="fade-up" -->
                                 <div class="set-category lighter">
                                     <div class="d-flex align-items-center">
                                         <div class="img-holder">
@@ -166,7 +164,7 @@
                                             <h3>Find a Lab</h3>
                                             <p>We use the first-class medical equipment for timely diagnostics of
                                                 various diseases.</p>
-                                            <a href="userForm" class="book-now">Book Now <i
+                                            <a href="#" class="book-now">Book Now <i
                                                     class="fas fa-long-arrow-alt-right"></i></a>
                                         </div>
                                     </div>
@@ -178,7 +176,6 @@
                 </div>
             </div>
         </section>
-
         <section class="section section-specialities">
             <div class="container-fluid">
                 <div class="section-header text-center aos"><!-- data-aos="fade-up" -->
@@ -188,86 +185,72 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-9 aos"><!-- data-aos="fade-up" -->
-
-                        <div class="specialities-slider slider">
-
+                        <!-- <div class="specialities-slider slider"> -->
                             <div class="speicality-item text-center">
-                                <a href="consultation">
+                                <a href="/newConsultation">
                                     <div class="speicality-img">
                                         <img src="/assets/img/specialities/specialities-01.png" class="img-fluid"
                                             alt="Speciality">
                                         <span><i class="fa fa-circle" aria-hidden="true"></i></span>
                                     </div>
                                 </a>
-                                <p><a href="consultation">Urology</a><BR />
-                                    <a href="consultation" style="color:#44b1c6;">CONSULT NOW</a>
+                                <p><a href="/newConsultation">Urology</a><BR />
+                                    <a href="/newConsultation" style="color:#44b1c6;">CONSULT NOW</a>
                                 </p>
                             </div>
-
-
                             <div class="speicality-item text-center">
-                                <a href="consultation">
+                                <a href="/newConsultation">
                                     <div class="speicality-img">
                                         <img src="/assets/img/specialities/specialities-02.png" class="img-fluid"
                                             alt="Speciality">
                                         <span><i class="fa fa-circle" aria-hidden="true"></i></span>
                                     </div>
                                 </a>
-                                <p><a href="consultation">Neurology</a><BR />
-                                    <a href="consultation" style="color:#44b1c6;">CONSULT NOW</a>
+                                <p><a href="/newConsultation">Neurology</a><BR />
+                                    <a href="/newConsultation" style="color:#44b1c6;">CONSULT NOW</a>
                                 </p>
                             </div>
-
-
                             <div class="speicality-item text-center">
-                                <a href="consultation">
+                                <a href="/newConsultation">
                                     <div class="speicality-img">
                                         <img src="/assets/img/specialities/specialities-03.png" class="img-fluid"
                                             alt="Speciality">
                                         <span><i class="fa fa-circle" aria-hidden="true"></i></span>
                                     </div>
                                 </a>
-                                <p><a href="consultation">Orthopedic</a><BR />
-                                    <a href="consultation" style="color:#44b1c6;">CONSULT NOW</a>
+                                <p><a href="/newConsultation">Orthopedic</a><BR />
+                                    <a href="/newConsultation" style="color:#44b1c6;">CONSULT NOW</a>
                                 </p>
                             </div>
-
-
                             <div class="speicality-item text-center">
-                                <a href="consultation">
+                                <a href="/newConsultation">
                                     <div class="speicality-img">
                                         <img src="/assets/img/specialities/specialities-04.png" class="img-fluid"
                                             alt="Speciality">
                                         <span><i class="fa fa-circle" aria-hidden="true"></i></span>
                                     </div>
                                 </a>
-                                <p><a href="consultation">Cardiologist</a><BR />
-                                    <a href="consultation" style="color:#44b1c6;">CONSULT NOW</a>
+                                <p><a href="/newConsultation">Cardiologist</a><BR />
+                                    <a href="/newConsultation" style="color:#44b1c6;">CONSULT NOW</a>
                                 </p>
                             </div>
-
-
                             <div class="speicality-item text-center">
-                                <a href="consultation">
+                                <a href="/newConsultation">
                                     <div class="speicality-img">
                                         <img src="/assets/img/specialities/specialities-05.png" class="img-fluid"
                                             alt="Speciality">
                                         <span><i class="fa fa-circle" aria-hidden="true"></i></span>
                                     </div>
                                 </a>
-                                <p><a href="consultation">Dentist</a><BR />
-                                    <a href="consultation" style="color:#44b1c6;">CONSULT NOW</a>
+                                <p><a href="/newConsultation">Dentist</a><BR />
+                                    <a href="/newConsultation" style="color:#44b1c6;">CONSULT NOW</a>
                                 </p>
                             </div>
-
-                        </div>
-
+                        <!-- </div> -->
                     </div>
                 </div>
             </div>
         </section>
-
-
         <section class="section section-doctor">
             <div class="container-fluid">
                 <div class="row">
@@ -285,10 +268,9 @@
                                 Finserv Health App and website.</p>
                         </div>
                     </div>
-                    <div class="col-lg-8 aos"><!-- data-aos="fade-up" -->
-                        <div class="doctor-slider slider">
-
-                            <div class="profile-widget">
+                    <div><!-- data-aos="fade-up" -->
+                        <div class="row blog-grid-row">
+                            <div class="profile-widget col-md-6 col-lg-3 col-sm-12 aos">
                                 <div class="doc-img">
                                     <a href="#">
                                         <img class="img-fluid" alt="User Image" src="/assets/img/doctors/doctor-01.jpg">
@@ -329,14 +311,12 @@
                                             <a href="doctorProfile?id={{doctor.id}}" class="btn view-btn">View Profile</a>
                                         </div>
                                         <div class="col-6">
-                                            <a href="/#" class="btn book-btn">Book Now</a>
+                                            <a href="booking" class="btn book-btn">Book Now</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
-                            <div class="profile-widget">
+                            <div class="profile-widget col-md-6 col-lg-3 col-sm-12 aos">
                                 <div class="doc-img">
                                     <a href="#">
                                         <img class="img-fluid" alt="User Image" src="/assets/img/doctors/doctor-02.jpg">
@@ -377,14 +357,12 @@
                                             <a href="doctorProfile?id={{doctor.id}}" class="btn view-btn">View Profile</a>
                                         </div>
                                         <div class="col-6">
-                                            <a href="/#" class="btn book-btn">Book Now</a>
+                                            <a href="booking" class="btn book-btn">Book Now</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
-                            <div class="profile-widget">
+                            <div class="profile-widget col-md-6 col-lg-3 col-sm-12 aos">
                                 <div class="doc-img">
                                     <a href="#">
                                         <img class="img-fluid" alt="User Image" src="/assets/img/doctors/doctor-03.jpg">
@@ -425,14 +403,12 @@
                                             <a href="doctorProfile?id={{doctor.id}}" class="btn view-btn">View Profile</a>
                                         </div>
                                         <div class="col-6">
-                                            <a href="/#" class="btn book-btn">Book Now</a>
+                                            <a href="booking" class="btn book-btn">Book Now</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
-                            <div class="profile-widget">
+                            <div class="profile-widget col-md-6 col-lg-3 col-sm-12 aos">
                                 <div class="doc-img">
                                     <a href="#">
                                         <img class="img-fluid" alt="User Image" src="/assets/img/doctors/doctor-04.jpg">
@@ -473,20 +449,16 @@
                                             <a href="doctorProfile?id={{doctor.id}}" class="btn view-btn">View Profile</a>
                                         </div>
                                         <div class="col-6">
-                                            <a href="/#" class="btn book-btn">Book Now</a>
+                                            <a href="booking" class="btn book-btn">Book Now</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-
         <section class="testimonial-section">
             <div class="testimonial-shape-img">
                 <div class="testimonial-shape-left">
@@ -556,26 +528,20 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-
         <section class="section section-blogs">
             <div class="container-fluid">
-
                 <div class="section-header text-center aos"><!-- data-aos="fade-up" -->
                     <h2>Read top articles from health experts</h2>
                     <p class="sub-title">Health articles that keep you informed about good health practices and achieve
                         your goals.</p>
                 </div>
-
                 <div class="row blog-grid-row">
                     <div class="col-md-6 col-lg-3 col-sm-12 aos"><!-- data-aos="fade-up" -->
-
                         <div class="blog grid-blog">
                             <div class="blog-image">
                                 <a href="#"><img class="img-fluid" src="/assets/img/blog/blog-01.jpg"
@@ -597,10 +563,8 @@
                                     a fantastic experience anytime there’s a healthcare need.</p>
                             </div>
                         </div>
-
                     </div>
                     <div class="col-md-6 col-lg-3 col-sm-12 aos"><!-- data-aos="fade-up" -->
-
                         <div class="blog grid-blog">
                             <div class="blog-image">
                                 <a href="#"><img class="img-fluid" src="/assets/img/blog/blog-02.jpg"
@@ -611,7 +575,8 @@
                                     <li>
                                         <div class="post-author">
                                             <a href="#"><img src="/assets/img/doctors/doctor-thumb-02.jpg"
-                                                    alt="Post Author"> <span>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</span></a>
+                                                    alt="Post Author">
+                                                <span>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</span></a>
                                         </div>
                                     </li>
                                     <li><i class="far fa-clock"></i> 23 Jan 2023</li>
@@ -622,10 +587,8 @@
                                     Patients no longer have to be worried about the wait times in your clinic.</p>
                             </div>
                         </div>
-
                     </div>
                     <div class="col-md-6 col-lg-3 col-sm-12 aos"><!-- data-aos="fade-up" -->
-
                         <div class="blog grid-blog">
                             <div class="blog-image">
                                 <a href="#"><img class="img-fluid" src="/assets/img/blog/blog-03.jpg"
@@ -646,10 +609,8 @@
                                     park, walk or sit in a waiting room when you're sick</p>
                             </div>
                         </div>
-
                     </div>
                     <div class="col-md-6 col-lg-3 col-sm-12 aos"><!-- data-aos="fade-up" -->
-
                         <div class="blog grid-blog">
                             <div class="blog-image">
                                 <a href="#"><img class="img-fluid" src="/assets/img/blog/blog-04.jpg"
@@ -670,23 +631,18 @@
                                     leave time from work or arrange for child care.</p>
                             </div>
                         </div>
-
                     </div>
                 </div>
-                <div class="view-all text-center aos"><!-- data-aos="fade-up" -->
+                <div class="view-all text-center aos" data-aos="fade-up"><!-- data-aos="fade-up" -->
                     <a href="#" class="btn btn-primary">View All</a>
                 </div>
             </div>
         </section>
-
-
         <footer class="footer">
-
             <div class="footer-top">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-3 col-md-6">
-
                             <div class="footer-widget footer-about">
                                 <div class="footer-logo">
                                     <img src="/assets/img/footer-logo.png" alt="logo">
@@ -710,10 +666,8 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="col-lg-3 col-md-6">
-
                             <div class="footer-widget footer-menu">
                                 <h2 class="footer-title">For Patients</h2>
                                 <ul>
@@ -726,10 +680,8 @@
                                     <li><a href="consultantsPanel">Consultants Panel</a></li>
                                 </ul>
                             </div>
-
                         </div>
                         <div class="col-lg-3 col-md-6">
-
                             <div class="footer-widget footer-menu">
                                 <h2 class="footer-title">For Doctors</h2>
                                 <ul>
@@ -740,10 +692,8 @@
                                     <li><a href="doctorDashboard">Doctor Dashboard</a></li>
                                 </ul>
                             </div>
-
                         </div>
                         <div class="col-lg-3 col-md-6">
-
                             <div class="footer-widget footer-contact">
                                 <h2 class="footer-title">Contact Us</h2>
                                 <div class="footer-contact-info">
@@ -761,50 +711,40 @@
                                     </p>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
             <div class="sidenav">
-                <a href="/#"><img src="/assets/img/footer-banner.jpg"></a>
+                <a href="consultation"><img src="/assets/img/footer-banner.jpg"></a>
             </div>
-
             <div class="sidenav">
-                <a href="/#"><img src="/assets/img/footer-banner.jpg"></a>
+                <a href="consultation"><img src="/assets/img/footer-banner.jpg"></a>
             </div>
-
             <div class="footer-bottom">
                 <div class="container-fluid">
-
                     <div class="copyright">
                         <div class="row">
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
-                                    <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a href=""
+                                    <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a href="/"
                                             target="_blank" style="color:#fff"> Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">
-
                                 <div class="copyright-menu">
                                     <ul class="policy-menu">
                                         <li><a href="termsConditions">Terms and Conditions</a></li>
                                         <li><a href="privacyPolicy">Privacy Policy</a></li>
                                     </ul>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </footer>
     </div>
-
-
     <div class="progress-wrap active-progress">
         <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
             <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
@@ -812,18 +752,11 @@
             </path>
         </svg>
     </div>
-
-
     <script src="/assets/js/jquery-3.6.4.min.js"></script>
-
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
-
     <script src="/assets/js/slick.js"></script>
-
     <script src="/assets/js/backToTop.js"></script>
-
     <script src="/assets/js/aos.js"></script>
-
     <script src="/assets/js/script.js"></script>
 </body>
 

@@ -6,12 +6,13 @@ export class Bill {
     name!: string;
     orderId!: any;
     invoiceId!: Invoice;
-    user!: User;
+    patientUser!: User;
     title!: string;
-    amount!: any;
-    type!: string;
+    billAmount!: any;
+    billType!: string;
     billingDateString!: string;
     billingDate!: any;
+    paymentStatus!: string;
     version!: string;
     ipAddress!: string;
     createdBy!: string;

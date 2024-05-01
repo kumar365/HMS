@@ -109,14 +109,12 @@
                                 <div class="form-group">
                                     <label class="form-group-title">Appointment for</label>
                                     <label class="custom_radio me-4">
-                                        <!-- <input type="radio" name="appointment" checked> -->
                                         <input type="radio" [(ngModel)]="appointment.appointmentFor" value="My Self"
                                             id="appointmentFor" name="appointmentFor" class="form-control"
                                             #appointmentFor="ngModel">
                                         <span class="checkmark"></span> My Self
                                     </label>
                                     <label class="custom_radio">
-                                        <!-- <input type="radio" name="appointment"> -->
                                         <input type="radio" [(ngModel)]="appointment.appointmentFor" value="Dependent"
                                             id="appointmentFor" name="appointmentFor" class="form-control"
                                             #appointmentFor="ngModel">
@@ -142,13 +140,11 @@
                                 <div class="form-group">
                                     <label class="form-group-title">Do you have insurance?</label>
                                     <label class="custom_radio me-4">
-                                        <!-- <input type="radio" name="insurance"> -->
                                         <input type="radio" [(ngModel)]="appointment.insurance" value="Yes"
                                             id="insurance" name="insurance" class="form-control" #insurance="ngModel">
                                         <span class="checkmark"></span> Yes
                                     </label>
                                     <label class="custom_radio">
-                                        <!-- <input type="radio" name="insurance" checked> -->
                                         <input type="radio" [(ngModel)]="appointment.insurance" value="No"
                                             id="insurance" name="insurance" class="form-control" #insurance="ngModel">
                                         <span class="checkmark"></span> No
@@ -182,7 +178,6 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-group-title">Symtoms <span>(Optional)</span></label>
-                                    <!-- <input type="text" class="form-control" placeholder="Skin Allergy"> -->
                                     <input type="text" [(ngModel)]="appointment.symtoms" placeholder="Skin Allergy"
                                         id="symtoms" name="symtoms" class="form-control" #symtoms="ngModel">
                                 </div>
@@ -211,7 +206,8 @@
                                             </a>
                                         </div>
                                         <div class="booking-doctor-info">
-                                            <h4><a href="doctorProfile?id={{doctor.id}}">Dr. Vidya B</a></h4>
+                                            <h4><a href="doctorProfile?id={{doctor.id}}">{{this.doctor.displayName}}</a>
+                                            </h4>
                                             <p>MBBS, Dentist</p>
                                         </div>
                                     </div>
@@ -224,7 +220,7 @@
                                 <div class="booking-list">
                                     <div class="booking-date-list">
                                         <ul>
-                                            <li>Booking Date: <span>Sun, 30 Aug 2022</span></li>
+                                            <li>Booking Date: <span>{{currentDate | date:'dd MMM yyyy'}}</span></li>
                                             <li>Booking Time: <span>10.00AM to 11:00AM</span></li>
                                         </ul>
                                     </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
 import { StorageService } from 'src/app/service/storage.service';
@@ -15,7 +16,7 @@ export class HomeComponent implements OnInit {
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
   doctor: User = new User;
-  constructor(private storageService: StorageService, private userService: UserService) { }
+  constructor(private router: Router,private storageService: StorageService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
@@ -29,5 +30,9 @@ export class HomeComponent implements OnInit {
       this.currentUser = data;
     });
   }
+  onSubmit() {
+    this.router.navigate(['/searchDoctors']);
+  }
+
 }
 

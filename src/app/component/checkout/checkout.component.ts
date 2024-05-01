@@ -48,9 +48,9 @@ export class CheckoutComponent implements OnInit {
       this.currentUser = data;
     });
     if (this.currentUser.firstName == "" || this.currentUser.firstName == undefined) {
-      this.appointment.user = new User;
+      this.appointment.patientUser = new User;
     } else {
-      this.appointment.user = this.currentUser;
+      this.appointment.patientUser = this.currentUser;
     }
   }
   getDoctorData() {
@@ -59,39 +59,39 @@ export class CheckoutComponent implements OnInit {
     });
   }
   validateAppointmentDetails(): boolean {
-    if (this.appointment.user.firstName == "" || this.appointment.user.firstName == undefined) {
+    if (this.appointment.patientUser.firstName == "" || this.appointment.patientUser.firstName == undefined) {
       alert('Please Enter First Name');
       const element = this.renderer.selectRootElement('#firstName');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (!AppValidations.validateName(this.appointment.user.firstName)) {
+    } else if (!AppValidations.validateName(this.appointment.patientUser.firstName)) {
       const element = this.renderer.selectRootElement('#firstName');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (this.appointment.user.lastName == "" || this.appointment.user.lastName == undefined) {
+    } else if (this.appointment.patientUser.lastName == "" || this.appointment.patientUser.lastName == undefined) {
       alert('Please Enter Last Name');
       const element = this.renderer.selectRootElement('#lastName');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (!AppValidations.validateName(this.appointment.user.lastName)) {
+    } else if (!AppValidations.validateName(this.appointment.patientUser.lastName)) {
       const element = this.renderer.selectRootElement('#lastName');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (this.appointment.user.email == "" || this.appointment.user.email == undefined) {
+    } else if (this.appointment.patientUser.email == "" || this.appointment.patientUser.email == undefined) {
       alert('Please Enter Email');
       const element = this.renderer.selectRootElement('#email');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (!AppValidations.validateMail(this.appointment.user.email)) {
+    } else if (!AppValidations.validateMail(this.appointment.patientUser.email)) {
       const element = this.renderer.selectRootElement('#email');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (this.appointment.user.phoneNumber == "" || this.appointment.user.phoneNumber == undefined) {
+    } else if (this.appointment.patientUser.phoneNumber == "" || this.appointment.patientUser.phoneNumber == undefined) {
       alert('Please Enter Phone Number');
       const element = this.renderer.selectRootElement('#phoneNumber');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (!AppValidations.validatePhoneNumber(this.appointment.user.phoneNumber)) {
+    } else if (!AppValidations.validatePhoneNumber(this.appointment.patientUser.phoneNumber)) {
       const element = this.renderer.selectRootElement('#phoneNumber');
       setTimeout(() => element.focus(), 0);
       return false;

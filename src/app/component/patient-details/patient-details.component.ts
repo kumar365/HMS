@@ -23,16 +23,24 @@ export class PatientDetailsComponent implements OnInit {
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
   doctor: User = new User;
+  currentDate: Date = new Date;
   appointment: Appointment = new Appointment;
   termsAndConditionsFlag: Boolean = false;
   dependent: Dependent = new Dependent;
   dependentList: Dependent[] = [];
   dependentFlag: boolean = false;
 
-  constructor(private route: ActivatedRoute, private router: Router, private storageService: StorageService,
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private storageService: StorageService,
     private userService: UserService, private commonService: CommonService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe(params => {
+      console.log(params);
+      this.id = params['id'];
+      if (this.id != undefined) {
+        this.getDoctorData();
+      }
+    });
     this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
@@ -44,13 +52,13 @@ export class PatientDetailsComponent implements OnInit {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
       if (this.currentUser == undefined) {
-        this.appointment.user = new User;
-        this.appointment.user.firstName = "user";
-        this.appointment.user.lastName = "kumar";
-        this.appointment.user.email = "user@gmail.com";
-        this.appointment.user.phoneNumber = "9090909090";
+        this.appointment.patientUser = new User;
+        this.appointment.patientUser.firstName = "user";
+        this.appointment.patientUser.lastName = "kumar";
+        this.appointment.patientUser.email = "user@gmail.com";
+        this.appointment.patientUser.phoneNumber = "9090909090";
       } else {
-        this.appointment.user = this.currentUser;
+        this.appointment.patientUser = this.currentUser;
       }
       this.appointment.paymentMethod = "On line";
       this.appointment.termsAndConditions = "Y";
@@ -115,7 +123,7 @@ export class PatientDetailsComponent implements OnInit {
 
   onSubmit() {
     if (this.validateAppointmentDetails()) {
-      this.userService.saveAppointment(this.appointment, this.currentUserInfo.token).subscribe((data: ApiResponse) => {
+      this.commonService.saveAppointment(this.appointment).subscribe((data: ApiResponse) => {
         this.message = data.message;
         if (this.message == MessageConstants.AppointmentMessage) {
           this.statusFlag = true;

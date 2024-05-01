@@ -50,6 +50,7 @@ export class Booking2Component implements OnInit {
     });
   }
   onNext() {
-    this.router.navigate(['/patientDetails']);
+    //let url: string = "/patientDetails?id=" + this.id;
+    this.router.navigate(["/patientDetails"]);
   }
 }

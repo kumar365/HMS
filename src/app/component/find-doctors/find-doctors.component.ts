@@ -21,7 +21,7 @@ export class FindDoctorsComponent implements OnInit {
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
   doctor: User = new User;
-  constructor(private route: ActivatedRoute, private router: Router, private storageService: StorageService, private userService: UserService) { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private storageService: StorageService, private userService: UserService) { }
 
   ngOnInit(): void {
     Aos.init({ once: true, duration: 1000 });

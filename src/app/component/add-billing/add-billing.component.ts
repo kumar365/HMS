@@ -43,7 +43,7 @@ export class AddBillingComponent implements OnInit {
   }
   saveBills() {
     if (this.validateBillData()) {
-      this.bill.user = this.currentUser;
+      this.bill.patientUser = this.currentUser;
       this.bill.name = this.currentUser.username;
       this.paymentService.saveBill(this.bill, this.currentUserInfo.token).subscribe((data: ApiResponse) => {
         this.message = data.message;
@@ -64,7 +64,7 @@ export class AddBillingComponent implements OnInit {
       const element = this.renderer.selectRootElement('#title');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (this.bill.amount <= 0 || this.bill.amount == undefined) {
+    } else if (this.bill.billAmount <= 0 || this.bill.billAmount == undefined) {
       alert('Please eneter Amount');
       const element = this.renderer.selectRootElement('#amount');
       setTimeout(() => element.focus(), 0);

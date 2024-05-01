@@ -30,7 +30,7 @@ export class FindSurgeonsComponent implements OnInit {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();
     }
-    this.appointment.user = new User;
+    this.appointment.patientUser = new User;
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
@@ -38,30 +38,30 @@ export class FindSurgeonsComponent implements OnInit {
     });
   }
   validateAppointmentDetails(): boolean {
-    if (this.appointment.user.firstName == "" || this.appointment.user.firstName == undefined) {
+    if (this.appointment.patientUser.firstName == "" || this.appointment.patientUser.firstName == undefined) {
       alert('Please Enter Name');
       const element = this.renderer.selectRootElement('#firstName');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (!AppValidations.validateName(this.appointment.user.firstName)) {
+    } else if (!AppValidations.validateName(this.appointment.patientUser.firstName)) {
       const element = this.renderer.selectRootElement('#firstName');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (this.appointment.user.email == "" || this.appointment.user.email == undefined) {
+    } else if (this.appointment.patientUser.email == "" || this.appointment.patientUser.email == undefined) {
       alert('Please Enter Email');
       const element = this.renderer.selectRootElement('#email');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (!AppValidations.validateMail(this.appointment.user.email)) {
+    } else if (!AppValidations.validateMail(this.appointment.patientUser.email)) {
       const element = this.renderer.selectRootElement('#email');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (this.appointment.user.phoneNumber == "" || this.appointment.user.phoneNumber == undefined) {
+    } else if (this.appointment.patientUser.phoneNumber == "" || this.appointment.patientUser.phoneNumber == undefined) {
       alert('Please Enter Phone Number');
       const element = this.renderer.selectRootElement('#phoneNumber');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (!AppValidations.validatePhoneNumber(this.appointment.user.phoneNumber)) {
+    } else if (!AppValidations.validatePhoneNumber(this.appointment.patientUser.phoneNumber)) {
       const element = this.renderer.selectRootElement('#phoneNumber');
       setTimeout(() => element.focus(), 0);
       return false;
@@ -78,7 +78,7 @@ export class FindSurgeonsComponent implements OnInit {
     this.appointment.termsAndConditions = 'Y';
     this.appointment.paymentMethod = 'offline';
     this.appointment.consultationType = 'Clinic Visit';
-    this.appointment.user.password = this.appointment.user.email;
+    this.appointment.patientUser.password = this.appointment.patientUser.email;
     if (this.validateAppointmentDetails()) {
       this.commonService.saveAppointment(this.appointment).subscribe((data: ApiResponse) => {
         this.message = data.message;

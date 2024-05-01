@@ -10,9 +10,9 @@ export class Appointment {
     endTime!: any;
     status!: string;
     appBookingChannel!: string;
-    user!: User;
-    appointmentFor!: string;
+    patientUser!: User;
     patientName!: string;
+    appointmentFor!: string;
     consultationType!: string;
     price!: number;
     prescription!: string;
