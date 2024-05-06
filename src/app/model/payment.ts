@@ -2,12 +2,14 @@ import { CardDetails } from "./card-details";
 
 export class Payment {
     paymentId!: any;
+    paymentAmount!: any;
     invoiceId!: any;
     userId!: any;
     productId!: any;
     paymentType!: string;
     paymentDate!: any;
-    amount!: any;
+    paymentMethod!: string;
+    paymentStatus!: string;
     version!: string;
     ipAddress!: string;
     modifiedBy!: string;

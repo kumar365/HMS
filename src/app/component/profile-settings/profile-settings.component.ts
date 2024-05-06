@@ -34,16 +34,25 @@ export class ProfileSettingsComponent implements OnInit {
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();
-      this.currentUser.token = this.storageService.getToken();
     }
+    this.getCountries();
+    this.getStates(this.currentUser.country.id);
+    this.getCities(this.currentUser.state.id);
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
+      if (this.currentUser.country == null || this.currentUser.country == undefined) {
+        this.currentUser.country = new Country;
+      }
+      if (this.currentUser.state == null || this.currentUser.state == undefined) {
+        this.currentUser.state = new State;
+      }
+      if (this.currentUser.city == null || this.currentUser.city == undefined) {
+        this.currentUser.city = new City;
+      }
       this.currentUser.dateOfBirthString = this.convertDateToDateString(this.currentUser.dateOfBirth);
-      this.getCountries();
-      this.getStates(this.currentUser.country.id);
-      this.getCities(this.currentUser.state.id);
+      this.currentUser.token = this.storageService.getToken();
     });
   }
   convertDateToDateString(orderDate: any) {
@@ -153,21 +162,17 @@ export class ProfileSettingsComponent implements OnInit {
     this.commonService.findCountries().subscribe((data: Country[]) => {
       this.countries = data;
       this.states = [];
-      //console.log('this.countries::' + this.countries);
     });
   }
-  getStates(country: number) {
-    console.log('country::', country);
-    this.commonService.findStates(country).subscribe((stateData: State[]) => {
+  getStates(countryId: number) {
+    this.commonService.findStates(countryId).subscribe((stateData: State[]) => {
       this.states = stateData;
       this.cities = [];
-      //console.log('this.states::' + this.states);
     });
   }
-  getCities(state: number) {
-    this.commonService.findCities(state).subscribe((cityData: City[]) => {
+  getCities(stateId: number) {
+    this.commonService.findCities(stateId).subscribe((cityData: City[]) => {
       this.cities = cityData;
-      //console.log('this.cities::' + this.cities);
     });
   }
   onChangeCountry() {
@@ -176,9 +181,7 @@ export class ProfileSettingsComponent implements OnInit {
       this.commonService.findStates(countryId).subscribe((data: State[]) => {
         this.states = data;
         this.cities = [];
-        //console.log('this.states::' + this.states);
       });
-
     } else {
       this.states = [];
       this.cities = [];
@@ -189,7 +192,6 @@ export class ProfileSettingsComponent implements OnInit {
     if (stateId) {
       this.commonService.findCities(stateId).subscribe((data: City[]) => {
         this.cities = data;
-        //console.log('this.cities::' + this.cities);
       });
     } else {
       this.cities = [];

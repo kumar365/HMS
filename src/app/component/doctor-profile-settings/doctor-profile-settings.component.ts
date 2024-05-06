@@ -4,6 +4,7 @@ import { AppValidations } from 'src/app/constant/app-validations';
 import { MessageConstants } from 'src/app/constant/message-constants';
 import { City } from 'src/app/model/city';
 import { Country } from 'src/app/model/country';
+import { Hospital } from 'src/app/model/hospital';
 import { MessageResponse } from 'src/app/model/message-response';
 import { State } from 'src/app/model/state';
 import { User } from 'src/app/model/user';
@@ -33,10 +34,15 @@ export class DoctorProfileSettingsComponent implements OnInit {
     this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
+      this.getUserData();
     }
-    this.currentUser.token = this.storageService.getToken();
-    this.getUserData();
-    //console.log('this.currentUser.token ::' + this.currentUser.token);
+    this.getCountries();
+    if (this.currentUser.country != null && this.currentUser.country != undefined) {
+      this.getStates(this.currentUser.country.id);
+    }
+    if (this.currentUser.state != null && this.currentUser.state != undefined) {
+      this.getCities(this.currentUser.state.id);
+    }
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
@@ -44,10 +50,17 @@ export class DoctorProfileSettingsComponent implements OnInit {
       if (this.currentUser.country == null || this.currentUser.country == undefined) {
         this.currentUser.country = new Country;
       }
+      if (this.currentUser.state == null || this.currentUser.state == undefined) {
+        this.currentUser.state = new State;
+      }
+      if (this.currentUser.city == null || this.currentUser.city == undefined) {
+        this.currentUser.city = new City;
+      }
+      if (this.currentUser.hospital == null || this.currentUser.hospital == undefined) {
+        this.currentUser.hospital = new Hospital;
+      }
       this.currentUser.dateOfBirthString = this.convertDateToDateString(this.currentUser.dateOfBirth);
-      this.getCountries();
-      this.getStates(this.currentUser.country.id);
-      this.getCities(this.currentUser.state.id);
+      this.currentUser.token = this.storageService.getToken();
     });
   }
   convertDateToDateString(orderDate: any) {
@@ -118,14 +131,9 @@ export class DoctorProfileSettingsComponent implements OnInit {
       const element = this.renderer.selectRootElement('#biography');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (this.currentUser.address1 == "" || this.currentUser.address1 == undefined) {
-      alert('Please Enter Address Line 1');
-      const element = this.renderer.selectRootElement('#address1');
-      setTimeout(() => element.focus(), 0);
-      return false;
-    } else if (this.currentUser.address2 == "" || this.currentUser.address2 == undefined) {
-      alert('Please Enter Address Line 2');
-      const element = this.renderer.selectRootElement('#address2');
+    } else if (this.currentUser.address == "" || this.currentUser.address == undefined) {
+      alert('Please Enter Address');
+      const element = this.renderer.selectRootElement('#address');
       setTimeout(() => element.focus(), 0);
       return false;
     } else {
@@ -137,33 +145,37 @@ export class DoctorProfileSettingsComponent implements OnInit {
     this.commonService.findCountries().subscribe((data: Country[]) => {
       this.countries = data;
       this.states = [];
-      //console.log('this.countries::' + this.countries);
     });
   }
-  getStates(country: number) {
-    console.log('country::', country);
-    this.commonService.findStates(country).subscribe((stateData: State[]) => {
-      this.states = stateData;
-      this.cities = [];
-      //console.log('this.states::' + this.states);
-    });
+  getStates(countryId: number) {
+    if (countryId > 0) {
+      this.commonService.findStates(countryId).subscribe((stateData: State[]) => {
+        this.states = stateData;
+        alert('this.states size:: ' + this.states.length);
+        this.cities = [];
+      });
+    }
   }
-  getCities(state: number) {
-    this.commonService.findCities(state).subscribe((cityData: City[]) => {
-      this.cities = cityData;
-      //console.log('this.cities::' + this.cities);
-    });
+  getCities(stateId: number) {
+    if (stateId > 0) {
+      this.commonService.findCities(stateId).subscribe((cityData: City[]) => {
+        this.cities = cityData;
+        alert('this.cities size:: ' + this.cities.length);
+      });
+    }
   }
   onChangeCountry() {
     let countryId = this.currentUser.country.id;
-    //alert(countryId);
     if (countryId) {
       this.commonService.findStates(countryId).subscribe((data: State[]) => {
         this.states = data;
         this.cities = [];
-        //console.log('this.states::' + this.states);
       });
-
+      for (let index = 0; index < this.countries.length; index++) {
+        if (this.countries[index].id == countryId) {
+          this.currentUser.country = this.countries[index];
+        }
+      }
     } else {
       this.states = [];
       this.cities = [];
@@ -174,10 +186,21 @@ export class DoctorProfileSettingsComponent implements OnInit {
     if (stateId) {
       this.commonService.findCities(stateId).subscribe((data: City[]) => {
         this.cities = data;
-        //console.log('this.cities::' + this.cities);
       });
+      for (let index = 0; index < this.states.length; index++) {
+        if (this.states[index].id == stateId) {
+          this.currentUser.state = this.states[index];
+        }
+      }
     } else {
       this.cities = [];
+    }
+  }
+  onChangeCity() {
+    for (let index = 0; index < this.cities.length; index++) {
+      if (this.cities[index].id == this.currentUser.city.id) {
+        this.currentUser.city = this.cities[index];
+      }
     }
   }
   reloadPage(): void {

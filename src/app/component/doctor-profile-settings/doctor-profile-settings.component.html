@@ -264,7 +264,7 @@
                                                 <label>Phone Number</label>
                                                 <input type="text" [(ngModel)]="currentUser.phoneNumber"
                                                     id="phoneNumber" name="phoneNumber" placeholder="mobile" required
-                                                    class="form-control" #phoneNumber="ngModel">
+                                                    class="form-control" #phoneNumber="ngModel" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -287,7 +287,24 @@
                                                     #dateOfBirthString="ngModel">
                                             </div>
                                         </div>
-
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Blood Group</label>
+                                                <select [(ngModel)]="currentUser.bloodGroup" id="bloodGroup"
+                                                    name="bloodGroup" class="form-select form-control"
+                                                    #bloodGroup="ngModel">
+                                                    <option value="">Select Blood Group</option>
+                                                    <option value="A-">A-</option>
+                                                    <option value="A+">A+</option>
+                                                    <option value="B-">B-</option>
+                                                    <option value="B+">B+</option>
+                                                    <option value="AB-">AB-</option>
+                                                    <option value="AB+">AB+</option>
+                                                    <option value="O-">O-</option>
+                                                    <option value="O+">O+</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -308,13 +325,18 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Clinic Name</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" [(ngModel)]="currentUser.hospital.name"
+                                                    id="hospitalName" name="hospitalName" placeholder="Clinic Name"
+                                                    class="form-control" #hospitalName="ngModel">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Clinic Address</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" [(ngModel)]="currentUser.hospital.address"
+                                                    id="hospitalAddress" name="hospitalAddress"
+                                                    placeholder="Clinic Address" class="form-control"
+                                                    #hospitalAddress="ngModel">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -346,22 +368,14 @@
                                     <div class="row form-row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Address Line 1</label>
-                                                <input type="text" [(ngModel)]="currentUser.address1" id="address1"
-                                                    name="address1" placeholder="Address Line 1" class="form-control"
-                                                    #address1="ngModel">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label">Address Line 2</label>
-                                                <input type="text" [(ngModel)]="currentUser.address2" id="address2"
-                                                    name="address2" placeholder="Address Line 2" class="form-control"
-                                                    #address2="ngModel">
+                                                <label>Address</label>
+                                                <input type="text" [(ngModel)]="currentUser.address" id="address"
+                                                    name="address" placeholder="Address" class="form-control"
+                                                    #address="ngModel">
                                             </div>
                                         </div>
 
-                                        <div class="col-12 col-md-6">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label">Country</label>
                                                 <select [(ngModel)]="currentUser.country.id" id="country" name="country"
@@ -375,7 +389,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label">State / Province</label>
+                                                <label class="control-label">State</label>
                                                 <select [(ngModel)]="currentUser.state.id" id="state" name="state"
                                                     (change)="onChangeState()" class="form-select form-control"
                                                     #state="ngModel">
@@ -389,7 +403,8 @@
                                             <div class="form-group">
                                                 <label class="control-label">City</label>
                                                 <select [(ngModel)]="currentUser.city.id" id="city" name="city"
-                                                    class="form-select form-control" #city="ngModel">
+                                                    (change)="onChangeCity()" class="form-select form-control"
+                                                    #city="ngModel">
                                                     <option [value]="null">Select</option>
                                                     <option *ngFor="let city of cities" [value]="city.id">
                                                         {{city.name}}</option>
@@ -415,23 +430,6 @@
                                                 <input type="text" class="form-control">
                                             </div>
                                         </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Clinic Number</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Doctor Number</label>
-                                                <input type="text" [(ngModel)]="currentUser.phoneNumber"
-                                                    id="phoneNumber" name="phoneNumber" placeholder="Doctor Number"
-                                                    class="form-control" #phoneNumber="ngModel">
-                                            </div>
-                                        </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -538,7 +536,7 @@
                                     <h4 class="card-title">Experience</h4>
                                     <div class="experience-info">
                                         <div class="row form-row experience-cont">
-                                            <div class="col-12 col-md-10 col-lg-11">
+                                            <div class="col-12 col-md-10 col-lg-12">
                                                 <div class="row form-row">
                                                     <div class="col-12 col-md-6 col-lg-4">
                                                         <div class="form-group">
@@ -546,13 +544,13 @@
                                                             <input type="text" class="form-control">
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 col-md-6 col-lg-4">
+                                                    <div class="col-12 col-md-6 col-lg-2">
                                                         <div class="form-group">
                                                             <label>From</label>
                                                             <input type="text" class="form-control">
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 col-md-6 col-lg-4">
+                                                    <div class="col-12 col-md-6 col-lg-2">
                                                         <div class="form-group">
                                                             <label>To</label>
                                                             <input type="text" class="form-control">
