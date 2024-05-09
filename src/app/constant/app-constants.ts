@@ -62,8 +62,10 @@ export class AppConstants {
     public static GET_MEDICINE_BY_ID = AppConstants.MEDICINE_URL + 'getMedicineById';
     public static DELETE_MEDICINE_BY_ID = AppConstants.MEDICINE_URL + 'deleteMedicineById/';
     public static GET_COUNTRIES = AppConstants.COMMON_URL + 'countries';
-    public static GET_STATES = AppConstants.COMMON_URL + 'states/';
-    public static GET_DISTRICTS = AppConstants.COMMON_URL + 'districts/';
+    public static GET_STATES = AppConstants.COMMON_URL + 'states';
+    public static GET_STATES_BY_ID = AppConstants.COMMON_URL + 'states/';
+    public static GET_DISTRICTS = AppConstants.COMMON_URL + 'districts';
+    public static GET_DISTRICTS_BY_ID  = AppConstants.COMMON_URL + 'districts/';
     public static UPLOAD_FILE = AppConstants.COMMON_URL + 'uploadFile';
     public static GET_DOCTOR_LIST = AppConstants.COMMON_URL + 'doctorList';
     public static ADD_TEST_DETAILS = AppConstants.COMMON_URL + 'addTestDetails';

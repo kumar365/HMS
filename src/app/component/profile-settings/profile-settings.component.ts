@@ -36,8 +36,8 @@ export class ProfileSettingsComponent implements OnInit {
       this.getUserData();
     }
     this.getCountries();
-    this.getStates(this.currentUser.country.id);
-    this.getCities(this.currentUser.state.id);
+    this.getStates();
+    this.getCities();
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
@@ -164,24 +164,41 @@ export class ProfileSettingsComponent implements OnInit {
       this.states = [];
     });
   }
-  getStates(countryId: number) {
-    this.commonService.findStates(countryId).subscribe((stateData: State[]) => {
+  getStates() {
+    this.commonService.findStates().subscribe((stateData: State[]) => {
       this.states = stateData;
       this.cities = [];
     });
   }
-  getCities(stateId: number) {
-    this.commonService.findCities(stateId).subscribe((cityData: City[]) => {
+  getStatesById(countryId: number) {
+    if (countryId > 0) {
+      this.commonService.findStatesByCountryId(countryId).subscribe((stateData: State[]) => {
+        this.states = stateData;
+        this.cities = [];
+      });
+    }
+  }
+  getCities() {
+    this.commonService.findCities().subscribe((cityData: City[]) => {
       this.cities = cityData;
     });
   }
+  getCitiesById(stateId: number) {
+    if (stateId > 0) {
+      this.commonService.findCitiesByStateId(stateId).subscribe((cityData: City[]) => {
+        this.cities = cityData;
+      });
+    }
+  }
   onChangeCountry() {
     let countryId = this.currentUser.country.id;
-    if (countryId) {
-      this.commonService.findStates(countryId).subscribe((data: State[]) => {
-        this.states = data;
-        this.cities = [];
-      });
+    if (countryId > 0) {
+      this.getStatesById(countryId);
+      for (let index = 0; index < this.countries.length; index++) {
+        if (this.countries[index].id == countryId) {
+          this.currentUser.country = this.countries[index];
+        }
+      }
     } else {
       this.states = [];
       this.cities = [];
@@ -189,12 +206,22 @@ export class ProfileSettingsComponent implements OnInit {
   }
   onChangeState() {
     let stateId = this.currentUser.state.id;
-    if (stateId) {
-      this.commonService.findCities(stateId).subscribe((data: City[]) => {
-        this.cities = data;
-      });
+    if (stateId > 0) {
+      this.getCitiesById(stateId);
+      for (let index = 0; index < this.states.length; index++) {
+        if (this.states[index].id == stateId) {
+          this.currentUser.state = this.states[index];
+        }
+      }
     } else {
       this.cities = [];
+    }
+  }
+  onChangeCity() {
+    for (let index = 0; index < this.cities.length; index++) {
+      if (this.cities[index].id == this.currentUser.city.id) {
+        this.currentUser.city = this.cities[index];
+      }
     }
   }
   reloadPage(): void {

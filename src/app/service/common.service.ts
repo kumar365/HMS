@@ -25,11 +25,17 @@ export class CommonService {
   public findCountries(): Observable<Country[]> {
     return this.httpClient.get<Country[]>(AppConstants.GET_COUNTRIES, httpOptions);
   }
-  public findStates(countryId: number): Observable<State[]> {
-    return this.httpClient.get<State[]>(AppConstants.GET_STATES + countryId, httpOptions);
+  public findStates(): Observable<State[]> {
+    return this.httpClient.get<State[]>(AppConstants.GET_STATES, httpOptions);
   }
-  public findCities(stateId: number): Observable<City[]> {
-    return this.httpClient.get<City[]>(AppConstants.GET_DISTRICTS + stateId, httpOptions);
+  public findStatesByCountryId(countryId: number): Observable<State[]> {
+    return this.httpClient.get<State[]>(AppConstants.GET_STATES_BY_ID + countryId, httpOptions);
+  }
+  public findCities(): Observable<City[]> {
+    return this.httpClient.get<City[]>(AppConstants.GET_DISTRICTS, httpOptions);
+  }
+  public findCitiesByStateId(stateId: number): Observable<City[]> {
+    return this.httpClient.get<City[]>(AppConstants.GET_DISTRICTS_BY_ID + stateId, httpOptions);
   }
   public getDoctorsList(): Observable<User[]> {
     return this.httpClient.get<User[]>(AppConstants.GET_DOCTOR_LIST, httpOptions);

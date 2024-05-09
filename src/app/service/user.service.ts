@@ -64,10 +64,15 @@ export class UserService {
     return this.httpClient.post<any>(AppConstants.UPLOAD_FILE, formData);
   }
   public updateProfile(user: User): Observable<MessageResponse> {
+    const formData: FormData = new FormData();
+    formData.append('file', user.profileImage);
+    formData.append('user', new Blob([JSON.stringify(user)], {
+      type: 'application/json'
+    }));
     const httpOptions1 = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + user.token })
+      headers: new HttpHeaders({ 'Authorization': "Bearer " + user.token })
     };
-    return this.httpClient.post<any>(AppConstants.UPDATE_PROFILE, user, httpOptions1);
+    return this.httpClient.post<ApiResponse>(AppConstants.UPDATE_PROFILE, formData, httpOptions1);
   }
   public saveDependent(dependent: Dependent, token: String): Observable<ApiResponse> {
     const httpOptions1 = {

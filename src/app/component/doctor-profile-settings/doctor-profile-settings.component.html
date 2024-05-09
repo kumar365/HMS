@@ -99,7 +99,7 @@
                         <h2 class="breadcrumb-title">Profile Setting</h2>
                         <nav aria-label="breadcrumb" class="page-breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index">Home</a></li>
+                                <li class="breadcrumb-item"><a href="doctorDashboard">Home</a></li>
                                 <li class="breadcrumb-item" aria-current="page">Profile Setting</li>
                             </ol>
                         </nav>
@@ -117,7 +117,9 @@
                             <div class="widget-profile pro-widget-content">
                                 <div class="profile-info-widget">
                                     <a href="#" class="booking-doc-img">
-                                        <img src="/assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
+                                        <div *ngIf=retrievedImage>
+                                            <img [src]="retrievedImage" alt="User Image">
+                                        </div>
                                     </a>
                                     <div class="profile-det-info">
                                         <h3>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}
@@ -213,15 +215,17 @@
                                             <div class="form-group">
                                                 <div class="change-avatar">
                                                     <div class="profile-img">
-                                                        <img src="/assets/img/doctors/doctor-thumb-02.jpg"
-                                                            alt="User Image">
+                                                        <div *ngIf=retrievedImage>
+                                                            <img [src]="retrievedImage" alt="User Image">
+                                                        </div>
                                                     </div>
                                                     <div class="upload-img">
                                                         <div class="change-photo-btn">
                                                             <span><i class="fa fa-upload"></i> Upload Photo</span>
                                                             <input type="file" [(ngModel)]="currentUser.profileImage"
-                                                                (change)="uploadFile()" id="profileImage"
-                                                                name="profileImage" class="upload">
+                                                                id="profileImage" name="profileImage" accept="image/*"
+                                                                class="upload" (change)="selectFile($event)"
+                                                                #profileImage="ngModel">
                                                         </div>
                                                         <small class="form-text text-muted">Allowed JPG, GIF or PNG. Max
                                                             size of 2MB</small>

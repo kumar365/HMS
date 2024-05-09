@@ -23,7 +23,9 @@ export class User {
     city!: City;
     state!: State;
     country!: Country;
-    profileImage!: any;
+    profileImage!: File;
+    files!: File[];
+    imageData!: any;
     profileImageName!: string;
     pinCode!: string;
     termsAndConditions!: string;
