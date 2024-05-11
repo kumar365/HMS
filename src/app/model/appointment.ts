@@ -14,7 +14,7 @@ export class Appointment {
     patientName!: string;
     appointmentFor!: string;
     consultationType!: string;
-    price!: number;
+    amountPaid!: number;
     prescription!: string;
     paymentMethod!: string;
     termsAndConditions!: string;
@@ -25,7 +25,6 @@ export class Appointment {
     ipAddress!: string;
     createdBy!: string;
     createdDate!: any;
-    amount!: any;
     dependent!: any;
     followUpDate!: any;
     cardDetails!:CardDetails;

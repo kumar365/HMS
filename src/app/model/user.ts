@@ -46,4 +46,5 @@ export class User {
     newPassword!: string;
     confirmPassword!: string;
     hospital!: Hospital;
+    refId!: any;
 }

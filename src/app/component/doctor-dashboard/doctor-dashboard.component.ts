@@ -16,20 +16,29 @@ export class DoctorDashboardComponent implements OnInit {
   changePasswordFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
+  patientList: User[] = [];
   appointmentList: Appointment[] = [];
+  currentDate: any;
   constructor(private storageService: StorageService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
+    this.currentDate = new Date;
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();
+      this.getPatientList();
       this.getAppointmentList();
     }
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
+    });
+  }
+  getPatientList() {
+    this.userService.getPatientListById(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: User[]) => {
+      this.patientList = data;
     });
   }
   getAppointmentList() {

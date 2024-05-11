@@ -21,7 +21,6 @@
 <body>
 
     <div class="main-wrapper">
-
         <header class="header">
             <nav class="navbar navbar-expand-lg header-nav">
                 <div class="navbar-header">
@@ -101,12 +100,53 @@
                 </div>
             </div>
         </div>
+        <div class="breadcrumb-bar-two">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card dash-card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-6">
+                                        <div class="dash-widget dct-border-rht">
+                                            <div class="circle-bar circle-bar1">
+                                                <div class="circle-graph1" data-percent="75">
+                                                    <img src="/assets/img/icon-01.png" class="img-fluid" alt="patient">
+                                                </div>
+                                            </div>
+                                            <div class="dash-widget-info">
+                                                <h6>Total Appoinments</h6>
+                                                <h3>{{this.appointmentList.length}}</h3>
+                                                <p class="text-muted">Till {{currentDate | date:'dd, MMM yyyy'}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-lg-6">
+                                        <div class="dash-widget dct-border-rht">
+                                            <div class="circle-bar circle-bar2">
+                                                <div class="circle-graph2" data-percent="65">
+                                                    <img src="/assets/img/icon-02.png" class="img-fluid" alt="Patient">
+                                                </div>
+                                            </div>
+                                            <div class="dash-widget-info">
+                                                <h6>Today Appoinments</h6>
+                                                <h3>{{this.appointmentList.length}}</h3>
+                                                <p class="text-muted">{{currentDate | date:'dd, MMM yyyy'}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="content">
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
-
                         <div class="profile-sidebar">
                             <div class="widget-profile pro-widget-content">
                                 <div class="profile-info-widget">
@@ -195,7 +235,6 @@
                     </div>
                     <div class="col-md-7 col-lg-8 col-xl-9">
                         <div class="appointments" *ngFor="let appointment of appointmentList;">
-
                             <div class="appointment-list">
                                 <div class="profile-info-widget">
                                     <a href="patientProfile" class="booking-doc-img">
@@ -204,26 +243,29 @@
                                     <div class="profile-det-info">
                                         <h3><a href="patientProfile">{{appointment.patientUser.displayName}}</a></h3>
                                         <div class="patient-details">
-                                            <h5><i class="far fa-clock"></i> {{appointment.appointmentDate | date:'dd MMM yyyy' }}</h5>
-                                            <h5><i class="fas fa-map-marker-alt"></i> {{appointment.patientUser.address}}</h5>
-                                            <h5 class="mb-0"><i class="fas fa-phone"></i> +91-{{appointment.patientUser.phoneNumber}}</h5>
+                                            <h5><i class="far fa-clock"></i> {{appointment.appointmentDate | date:'dd
+                                                MMM yyyy' }}</h5>
+                                            <h5><i class="fas fa-map-marker-alt"></i>
+                                                {{appointment.patientUser.address}}</h5>
+                                            <h5 class="mb-0"><i class="fas fa-phone"></i>
+                                                +91-{{appointment.patientUser.phoneNumber}}</h5>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="appointment-action">
-                                    <a href="#" class="btn btn-sm bg-info-light" data-bs-toggle="modal"
+                                    <a href="#" (click)="onView(appointment.id)" class="btn btn-sm bg-info-light" data-bs-toggle="modal"
                                         data-bs-target="#appt_details">
                                         <i class="far fa-eye"></i> View
                                     </a>
-                                    <a href="javascript:void(0);" class="btn btn-sm bg-success-light">
+                                    <a href="javascript:void(0);" (click)="onAccept(appointment.id)" class="btn btn-sm bg-success-light">
                                         <i class="fas fa-check"></i> Accept
                                     </a>
-                                    <a href="javascript:void(0);" class="btn btn-sm bg-danger-light">
+                                    <a href="javascript:void(0);" (click)="onCancel(appointment.id)" class="btn btn-sm bg-danger-light">
                                         <i class="fas fa-times"></i> Cancel
                                     </a>
                                 </div>
                             </div>
-                                                   
+
                         </div>
                     </div>
                 </div>
@@ -363,13 +405,13 @@
                             <div class="details-header">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <span class="title">#APT0001</span>
-                                        <span class="text">21 Aug 2023 10:00 AM</span>
+                                        <span class="title">#APT{{this.appointment.id}}</span>
+                                        <span class="text">{{this.appointment.appointmentDate | date:'dd MMM yyyy' }} 10:00 AM</span>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="text-end">
                                             <button type="button" class="btn bg-success-light btn-sm"
-                                                id="topup_status">Completed</button>
+                                                id="topup_status">{{this.appointment.status}}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -377,15 +419,15 @@
                         </li>
                         <li>
                             <span class="title">Status:</span>
-                            <span class="text">Completed</span>
+                            <span class="text">{{this.appointment.status}}</span>
                         </li>
                         <li>
                             <span class="title">Confirm Date:</span>
-                            <span class="text">20 Aug 2023</span>
+                            <span class="text">{{this.appointment.appointmentDate | date:'dd MMM yyyy' }}</span>
                         </li>
                         <li>
                             <span class="title">Paid Amount</span>
-                            <span class="text">Rs.500/-</span>
+                            <span class="text">Rs.{{this.appointment.amountPaid}}/-</span>
                         </li>
                     </ul>
                 </div>

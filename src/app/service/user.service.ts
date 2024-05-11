@@ -152,6 +152,12 @@ export class UserService {
     };
     return this.httpClient.post<ApiResponse>(AppConstants.ADD_APPOINTMENT, appointment, httpOptions1);
   }
+  public cancelAppointment(appointment: Appointment, token: String): Observable<ApiResponse> {
+    const httpOptions1 = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
+    };
+    return this.httpClient.post<ApiResponse>(AppConstants.CANCEL_APPOINTMENT, appointment, httpOptions1);
+  }
   public getPatientAppointmentList(id: any, token: string): Observable<Appointment[]> {
     const httpOptions1 = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
@@ -181,6 +187,12 @@ export class UserService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
     };
     return this.httpClient.get<User[]>(AppConstants.GET_PATIENT_LIST, httpOptions1);
+  }
+  public getPatientListById(id: any, token: string): Observable<User[]> {
+    const httpOptions1 = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
+    };
+    return this.httpClient.get<User[]>(AppConstants.GET_PATIENT_LIST + '/' + id, httpOptions1);
   }
   public getOrdersList(userInfo: UserInfo): Observable<Orders[]> {
     const httpOptions1 = {

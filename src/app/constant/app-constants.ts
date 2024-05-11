@@ -50,6 +50,7 @@ export class AppConstants {
     public static ADD_APPOINTMENT = AppConstants.PATIENT_URL + 'addAppointment';
     public static GET_PATIENT_APPOINTMENT_LIST = AppConstants.PATIENT_URL + 'patientAppointments/';
     public static GET_DOCTOR_APPOINTMENT_LIST = AppConstants.PATIENT_URL + 'doctorAppointments/';
+    public static CANCEL_APPOINTMENT = AppConstants.PATIENT_URL + 'cancelAppointment';
     public static ADD_PRODUCT = AppConstants.PATIENT_URL + 'addProduct';
     public static GET_PRODUCT_LIST = AppConstants.PATIENT_URL + 'products/';
     public static PAYMENT_URL = AppConstants.API_BASE_URL + "payment/";
