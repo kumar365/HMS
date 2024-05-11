@@ -170,6 +170,12 @@ export class UserService {
     };
     return this.httpClient.get<Appointment[]>(AppConstants.GET_DOCTOR_APPOINTMENT_LIST + id, httpOptions1);
   }
+  public getDoctorAppointmentListToday(id: any, token: string): Observable<Appointment[]> {
+    const httpOptions1 = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
+    };
+    return this.httpClient.get<Appointment[]>(AppConstants.GET_DOCTOR_APPOINTMENT_LIST_TODAY + id, httpOptions1);
+  }
   public saveProduct(product: Product, token: String): Observable<ApiResponse> {
     const httpOptions1 = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
@@ -187,6 +193,12 @@ export class UserService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
     };
     return this.httpClient.get<User[]>(AppConstants.GET_PATIENT_LIST, httpOptions1);
+  }
+  public getTodayPatientList(token: string): Observable<User[]> {
+    const httpOptions1 = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
+    };
+    return this.httpClient.get<User[]>(AppConstants.GET_PATIENT_LIST_TODAY, httpOptions1);
   }
   public getPatientListById(id: any, token: string): Observable<User[]> {
     const httpOptions1 = {

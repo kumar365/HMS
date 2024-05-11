@@ -24,6 +24,7 @@ export class LabCheckoutComponent implements OnInit {
   testBooking: TestBooking = new TestBooking;
   termsAndConditionsFlag: Boolean = false;
   testDetails: TestDetails = new TestDetails;
+  retrievedImage: any;
   constructor(private router: Router, private storageService: StorageService, private userService: UserService,
     private commonService: CommonService, private renderer: Renderer2, private activatedRoute: ActivatedRoute) { }
 
@@ -48,6 +49,9 @@ export class LabCheckoutComponent implements OnInit {
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
+      if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
+      }
     });
     if (this.currentUser.firstName == "" || this.currentUser.firstName == undefined) {
       this.testBooking.user = new User;

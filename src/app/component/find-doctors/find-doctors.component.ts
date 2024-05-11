@@ -21,6 +21,7 @@ export class FindDoctorsComponent implements OnInit {
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
   doctor: User = new User;
+  retrievedImage: any;
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private storageService: StorageService, private userService: UserService) { }
 
   ngOnInit(): void {
@@ -34,6 +35,9 @@ export class FindDoctorsComponent implements OnInit {
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
+      if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
+      }
     });
   }
 

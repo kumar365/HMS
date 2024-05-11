@@ -38,7 +38,7 @@ export class PatientProfileComponent implements OnInit {
   bill: Bill = new Bill;
   billList: Bill[] = [];
   billFlag: boolean = false;
-
+  retrievedImage: any;
   constructor(private router: Router, private storageService: StorageService, private activatedRoute: ActivatedRoute, private commonService: CommonService,
     private userService: UserService, private paymentService: PaymentService, private renderer: Renderer2) { }
 
@@ -78,6 +78,9 @@ export class PatientProfileComponent implements OnInit {
     this.userService.getPatientDataById(id, this.currentUserInfo.token).subscribe((data: User) => {
       if (data != null) {
         this.currentUser = data;
+      if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
+      }
       } else {
         alert('In valid user');
         this.router.navigate(['/myPatients']);

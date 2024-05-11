@@ -257,7 +257,9 @@
 
                                 <div class="booking-doc-info">
                                     <a href="doctorProfile?id={{doctor.id}}" class="booking-doc-img">
-                                        <img src="/assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
+                                         <div *ngIf=retrievedImage>
+                                            <img [src]="retrievedImage" alt="User Image">
+                                        </div>
                                     </a>
                                     <div class="booking-info">
                                         <h4><a href="doctorProfile?id={{doctor.id}}">{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</a></h4>

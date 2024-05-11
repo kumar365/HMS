@@ -14,20 +14,29 @@ export class MyPatientsComponent implements OnInit {
   statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
-  patientsList!: User[];
+  patientList!: User[];
+  retrievedImage: any;
   constructor(private storageService: StorageService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
+      this.getUserData();
     }
     this.getPatientList();
   }
+  getUserData() {
+    this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
+      this.currentUser = data;
+      if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
+      }
+    });
+  }
   getPatientList() {
-    this.currentUser.token = this.storageService.getToken();
-    this.userService.getPatientList(this.currentUserInfo.token).subscribe((data: User[]) => {
-      this.patientsList = data;
+    this.userService.getPatientListById(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: User[]) => {
+      this.patientList = data;
     });
   }
 }

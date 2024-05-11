@@ -25,6 +25,7 @@ export class CheckoutComponent implements OnInit {
   doctor: User = new User;
   appointment: Appointment = new Appointment;
   termsAndConditionsFlag: Boolean = false;
+  retrievedImage: any;
   constructor(private router: Router, private storageService: StorageService, private commonService: CommonService,
     private userService: UserService, private renderer: Renderer2, private activatedRoute: ActivatedRoute) { }
 
@@ -46,6 +47,9 @@ export class CheckoutComponent implements OnInit {
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
+      if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
+      }
     });
     if (this.currentUser.firstName == "" || this.currentUser.firstName == undefined) {
       this.appointment.patientUser = new User;

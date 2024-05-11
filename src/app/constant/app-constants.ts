@@ -31,6 +31,7 @@ export class AppConstants {
     public static GET_USER_BY_ID = AppConstants.API_URL + 'getUserById/';
     public static GET_PATIENT_BY_ID = AppConstants.API_URL + 'getPatientById/';
     public static GET_PATIENT_LIST = AppConstants.API_URL + 'patientList';
+    public static GET_PATIENT_LIST_TODAY = AppConstants.API_URL + 'patientListToday';
     public static UPDATE_PROFILE = AppConstants.API_URL + 'updateProfile';
     public static ADD_DEPENDENT = AppConstants.API_URL + 'addDependent';
     public static GET_DEPENDENTS_LIST = AppConstants.API_URL + 'dependents/';
@@ -50,6 +51,7 @@ export class AppConstants {
     public static ADD_APPOINTMENT = AppConstants.PATIENT_URL + 'addAppointment';
     public static GET_PATIENT_APPOINTMENT_LIST = AppConstants.PATIENT_URL + 'patientAppointments/';
     public static GET_DOCTOR_APPOINTMENT_LIST = AppConstants.PATIENT_URL + 'doctorAppointments/';
+    public static GET_DOCTOR_APPOINTMENT_LIST_TODAY = AppConstants.PATIENT_URL + 'doctorAppointmentsToday/';
     public static CANCEL_APPOINTMENT = AppConstants.PATIENT_URL + 'cancelAppointment';
     public static ADD_PRODUCT = AppConstants.PATIENT_URL + 'addProduct';
     public static GET_PRODUCT_LIST = AppConstants.PATIENT_URL + 'products/';

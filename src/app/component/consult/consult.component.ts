@@ -21,6 +21,7 @@ export class ConsultComponent implements OnInit {
   appointment: Appointment = new Appointment;
   termsAndConditionsFlag: Boolean = false;
   doctor: User = new User;
+  retrievedImage: any;
   constructor(private storageService: StorageService, private userService: UserService,
      private commonService: CommonService, private activatedRoute: ActivatedRoute) { }
 
@@ -41,6 +42,9 @@ export class ConsultComponent implements OnInit {
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
+      if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
+      }
     });
   }
   getDoctorData() {

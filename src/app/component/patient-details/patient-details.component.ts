@@ -29,7 +29,7 @@ export class PatientDetailsComponent implements OnInit {
   dependent: Dependent = new Dependent;
   dependentList: Dependent[] = [];
   dependentFlag: boolean = false;
-
+  retrievedImage: any;
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private storageService: StorageService,
     private userService: UserService, private commonService: CommonService, private renderer: Renderer2) { }
 
@@ -51,6 +51,9 @@ export class PatientDetailsComponent implements OnInit {
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
+      if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
+      }
       if (this.currentUser == undefined) {
         this.appointment.patientUser = new User;
         this.appointment.patientUser.firstName = "user";

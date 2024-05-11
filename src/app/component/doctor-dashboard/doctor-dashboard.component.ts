@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiResponse } from 'src/app/model/api-response';
 import { Appointment } from 'src/app/model/appointment';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
@@ -17,8 +18,12 @@ export class DoctorDashboardComponent implements OnInit {
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
   patientList: User[] = [];
+  patientListToday: User[] = [];
+  appointment: Appointment = new Appointment;
   appointmentList: Appointment[] = [];
+  appointmentListToday: Appointment[] = [];
   currentDate: any;
+  retrievedImage: any;
   constructor(private storageService: StorageService, private userService: UserService) { }
 
   ngOnInit(): void {
@@ -28,12 +33,17 @@ export class DoctorDashboardComponent implements OnInit {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();
       this.getPatientList();
+      this.getTodayPatientList();
       this.getAppointmentList();
+      this.getTodayAppointmentList();
     }
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
+      if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
+      }
     });
   }
   getPatientList() {
@@ -41,9 +51,50 @@ export class DoctorDashboardComponent implements OnInit {
       this.patientList = data;
     });
   }
+  getTodayPatientList() {
+    this.userService.getTodayPatientList(this.currentUserInfo.token).subscribe((data: User[]) => {
+      this.patientListToday = data;
+    });
+  }
   getAppointmentList() {
     this.userService.getDoctorAppointmentList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: Appointment[]) => {
       this.appointmentList = data;
     });
+  }
+  getTodayAppointmentList() {
+    this.userService.getDoctorAppointmentListToday(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: Appointment[]) => {
+      this.appointmentListToday = data;
+    });
+  }
+  onView(appointmentId: any) {
+    for (let index = 0; index < this.appointmentList.length; index++) {
+      if (this.appointmentList[index].id == appointmentId) {
+        this.appointment = this.appointmentList[index];
+      }
+    }
+  }
+  onAccept(appointmentId: any) {
+    for (let index = 0; index < this.appointmentList.length; index++) {
+      if (this.appointmentList[index].id == appointmentId) {
+        this.appointment = this.appointmentList[index];
+        this.appointment.status = 'Accepted';
+        this.userService.cancelAppointment(this.appointment, this.currentUserInfo.token).subscribe((data: ApiResponse) => {
+          this.message = data.message;
+          alert(data.message);
+        });
+      }
+    }
+  }
+  onCancel(appointmentId: any) {
+    for (let index = 0; index < this.appointmentList.length; index++) {
+      if (this.appointmentList[index].id == appointmentId) {
+        this.appointment = this.appointmentList[index];
+        this.appointment.status = 'Cancelled';
+        this.userService.cancelAppointment(this.appointment, this.currentUserInfo.token).subscribe((data: ApiResponse) => {
+          this.message = data.message;
+          alert(data.message);
+        });
+      }
+    }
   }
 }

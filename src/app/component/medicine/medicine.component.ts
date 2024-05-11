@@ -14,12 +14,13 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./medicine.component.css']
 })
 export class MedicineComponent implements OnInit {
+  id: any;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
   medicine: Medicine = new Medicine();
-  id: any;
   medicineList!: Medicine[];
   expiryDate: any;
+  retrievedImage: any;
   constructor(private storageService: StorageService, private route: ActivatedRoute, private userService: UserService,
     private router: Router, private medicineService: MedicineService, private renderer: Renderer2) {
   }
@@ -37,6 +38,9 @@ export class MedicineComponent implements OnInit {
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
+      if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
+      }
     });
   }
   validateMedicineData(): boolean {

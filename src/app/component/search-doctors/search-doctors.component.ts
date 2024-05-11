@@ -22,6 +22,7 @@ export class SearchDoctorsComponent implements OnInit {
   availabilityTomorrowFlag: boolean = false;
   availabilityNext7DaysFlag: boolean = false;
   availabilityNext14DaysFlag: boolean = false;
+  retrievedImage: any;
   constructor(private storageService: StorageService, private userService: UserService,
     private commonService: CommonService) { }
 
@@ -36,6 +37,9 @@ export class SearchDoctorsComponent implements OnInit {
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
+      if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
+      }
     });
   }
   getDoctorsList() {

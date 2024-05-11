@@ -21,6 +21,7 @@ export class FindSurgeonsComponent implements OnInit {
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
   appointment: Appointment = new Appointment;
+  retrievedImage: any;
   constructor(private router: Router, private storageService: StorageService, private userService: UserService,
     private commonService: CommonService, private renderer: Renderer2) { }
 
@@ -35,6 +36,9 @@ export class FindSurgeonsComponent implements OnInit {
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
+      if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
+      }
     });
   }
   validateAppointmentDetails(): boolean {

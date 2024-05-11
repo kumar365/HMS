@@ -18,6 +18,7 @@ export class MedicineListComponent implements OnInit {
    currentUserInfo: UserInfo = new UserInfo;
    currentUser: User = new User;
    medicineList!: Medicine[];
+   retrievedImage: any;
    constructor(private storageService: StorageService, private route: ActivatedRoute, private userService: UserService,
       private router: Router, private medicineService: MedicineService, private renderer: Renderer2) {
    }
@@ -33,6 +34,9 @@ export class MedicineListComponent implements OnInit {
    getUserData() {
       this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
          this.currentUser = data;
+      if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
+      }
       });
    }
    delete(medicine: Medicine): void {

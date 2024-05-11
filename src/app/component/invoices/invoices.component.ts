@@ -14,6 +14,7 @@ export class InvoicesComponent implements OnInit {
   statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
+  retrievedImage: any;
   constructor(private storageService: StorageService, private userService: UserService) { }
 
   ngOnInit(): void {
@@ -26,6 +27,9 @@ export class InvoicesComponent implements OnInit {
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
+      if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
+      }
     });
   }
 }

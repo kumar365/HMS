@@ -17,7 +17,9 @@ export class AppointmentsComponent implements OnInit {
   currentUser: User = new User;
   appointment: Appointment = new Appointment;
   appointmentList: Appointment[] = [];
+  appointmentListToday: Appointment[] = [];
   currentDate: any;
+  retrievedImage: any;
   constructor(private storageService: StorageService, private userService: UserService) { }
 
   ngOnInit(): void {
@@ -28,15 +30,24 @@ export class AppointmentsComponent implements OnInit {
       this.getUserData();
     }
     this.getAppointmentList();
+    this.getTodayAppointmentList();
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
+      if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
+      }
     });
   }
   getAppointmentList() {
     this.userService.getDoctorAppointmentList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: Appointment[]) => {
       this.appointmentList = data;
+    });
+  }
+  getTodayAppointmentList() {
+    this.userService.getDoctorAppointmentListToday(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: Appointment[]) => {
+      this.appointmentListToday = data;
     });
   }
   onView(appointmentId: any) {

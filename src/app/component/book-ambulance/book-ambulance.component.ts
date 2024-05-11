@@ -19,6 +19,7 @@ export class BookAmbulanceComponent implements OnInit {
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
   ambulance: Ambulance = new Ambulance;
+  retrievedImage: any;
   constructor(private storageService: StorageService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
@@ -31,6 +32,9 @@ export class BookAmbulanceComponent implements OnInit {
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
+      if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
+      }
     });
   }
   onSubmit() {

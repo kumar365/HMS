@@ -21,6 +21,7 @@ export class AddPrescriptionComponent implements OnInit {
   currentUser: User = new User;
   prescription: Prescription = new Prescription;
   prescriptionList: Prescription[] = [];
+  retrievedImage: any;
   constructor(private storageService: StorageService, private userService: UserService,
     private router: Router, private renderer: Renderer2) { }
 
@@ -36,6 +37,9 @@ export class AddPrescriptionComponent implements OnInit {
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
       this.currentUser = data;
+      if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
+      }
     });
   }
   isChecked(event: any, time: string) {

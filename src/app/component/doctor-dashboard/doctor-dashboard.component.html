@@ -113,7 +113,9 @@
                      <div class="widget-profile pro-widget-content">
                         <div class="profile-info-widget">
                            <a href="#" class="booking-doc-img">
-                              <img src="/assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
+                              <div *ngIf=retrievedImage>
+                                 <img [src]="retrievedImage" alt="User Image">
+                              </div>
                            </a>
                            <div class="profile-det-info">
                               <h3>
@@ -226,7 +228,7 @@
                                        </div>
                                        <div class="dash-widget-info">
                                           <h6>Today Patient</h6>
-                                          <h3>{{this.patientList.length}}</h3>
+                                          <h3>{{this.patientListToday.length}}</h3>
                                           <p class="text-muted">{{currentDate | date:'dd, MMM yyyy'}}</p>
                                        </div>
                                     </div>
@@ -287,18 +289,20 @@
                                                 <tr>
                                                    <td>
                                                       <h2 class="table-avatar">
-                                                         <a href="patientProfile" class="avatar avatar-sm me-2"><img
+                                                         <a href="patientProfile?id={{appointment.patientUser.id}}"
+                                                            class="avatar avatar-sm me-2"><img
                                                                class="avatar-img rounded-circle"
                                                                src="/assets/img/patients/patient9.jpg"
                                                                alt="User Image"></a>
-                                                         <a href="patientProfile?id={{appointment.patientUser.id}}">{{appointment.patientName}}
-                                                            <span>#PT{{appointment.id}}</span></a>
+                                                         <a href="patientProfile?id={{appointment.patientUser.id}}">{{appointment.patientUser.displayName}}
+                                                            <span>#PT{{appointment.patientUser.id}}</span></a>
                                                       </h2>
                                                    </td>
                                                    <td>{{appointment.appointmentDate | date:'dd MMM yyyy'}} <span
-                                                         class="d-block text-info">10.00 AM</span></td>
+                                                         class="d-block text-info">{{appointment.startTime | date:
+                                                         "HH:mm"}} AM</span></td>
+                                                   <td>{{appointment.reason}}</td>
                                                    <td>{{appointment.consultationType}}</td>
-                                                   <td>{{appointment.appBookingChannel}}</td>
                                                    <td class="text-center">Rs.{{appointment.amountPaid}}/-</td>
                                                    <td class="text-center">
                                                       <div class="consultation-types" style="display: inline-block;">
@@ -351,21 +355,25 @@
                                                    <th></th>
                                                 </tr>
                                              </thead>
-                                             <tbody>
+                                             <tbody *ngFor="let appointment of appointmentListToday;">
                                                 <tr>
                                                    <td>
                                                       <h2 class="table-avatar">
-                                                         <a href="patientProfile" class="avatar avatar-sm me-2"><img
+                                                         <a href="patientProfile?id={{appointment.patientUser.id}}"
+                                                            class="avatar avatar-sm me-2"><img
                                                                class="avatar-img rounded-circle"
                                                                src="/assets/img/patients/patient10.jpg"
                                                                alt="User Image"></a>
-                                                         <a href="patientProfile">Sunil K <span>#PT0006</span></a>
+                                                         <a href="patientProfile?id={{appointment.patientUser.id}}">{{appointment.patientUser.displayName}}
+                                                            <span>#PT{{appointment.patientUser.id}}</span></a>
                                                       </h2>
                                                    </td>
-                                                   <td>9 Sep 2023 <span class="d-block text-info">6.00 PM</span></td>
-                                                   <td>Fever</td>
-                                                   <td>Old Patient</td>
-                                                   <td class="text-center">Rs.300/-</td>
+                                                   <td>{{appointment.appointmentDate | date:'dd MMM yyyy'}} <span
+                                                         class="d-block text-info">{{appointment.startTime | date:
+                                                         "HH:mm"}} PM</span></td>
+                                                   <td>{{appointment.reason}}</td>
+                                                   <td>{{appointment.consultationType}}</td>
+                                                   <td class="text-center">Rs.{{appointment.amountPaid}}/-</td>
                                                    <td class="text-center">
                                                       <div class="consultation-types" style="display: inline-block;">
                                                          <a href="javascript:void(0);"
@@ -391,85 +399,7 @@
                                                       </div>
                                                    </td>
                                                 </tr>
-                                                <tr>
-                                                   <td>
-                                                      <h2 class="table-avatar">
-                                                         <a href="patientProfile" class="avatar avatar-sm me-2"><img
-                                                               class="avatar-img rounded-circle"
-                                                               src="/assets/img/patients/patient7.jpg"
-                                                               alt="User Image"></a>
-                                                         <a href="patientProfile">Monika G
-                                                            <span>#PT0006</span></a>
-                                                      </h2>
-                                                   </td>
-                                                   <td>9 Sep 2023 <span class="d-block text-info">5.00 PM</span></td>
-                                                   <td>General</td>
-                                                   <td>Old Patient</td>
-                                                   <td class="text-center">Rs.300/-</td>
-                                                   <td class="text-center">
-                                                      <div class="consultation-types" style="display: inline-block;">
-                                                         <a href="javascript:void(0);"
-                                                            style="width: 40px;min-width: 40px;color: #34b74f;border: 1px solid #34b74f;">
-                                                            <i class="feather-mic" style="margin-right: 0px;"></i>
-                                                         </a>
 
-                                                      </div>
-                                                   </td>
-                                                   <td class="text-end">
-                                                      <div class="table-action">
-                                                         <a href="javascript:void(0);" class="btn btn-sm bg-info-light">
-                                                            <i class="far fa-eye"></i> View
-                                                         </a>
-                                                         <a href="javascript:void(0);"
-                                                            class="btn btn-sm bg-success-light">
-                                                            <i class="fas fa-check"></i> Accept
-                                                         </a>
-                                                         <a href="javascript:void(0);"
-                                                            class="btn btn-sm bg-danger-light">
-                                                            <i class="fas fa-times"></i> Cancel
-                                                         </a>
-                                                      </div>
-                                                   </td>
-                                                </tr>
-                                                <tr>
-                                                   <td>
-                                                      <h2 class="table-avatar">
-                                                         <a href="patientProfile" class="avatar avatar-sm me-2"><img
-                                                               class="avatar-img rounded-circle"
-                                                               src="/assets/img/patients/patient11.jpg"
-                                                               alt="User Image"></a>
-                                                         <a href="patientProfile">Swami G<span>#PT0006</span></a>
-                                                      </h2>
-                                                   </td>
-                                                   <td>14 Nov 2019 <span class="d-block text-info">4.00 PM</span></td>
-                                                   <td>General</td>
-                                                   <td>Old Patient</td>
-                                                   <td class="text-center">Rs.300/-</td>
-                                                   <td class="text-center">
-                                                      <div class="consultation-types" style="display: inline-block;">
-                                                         <a href="javascript:void(0);"
-                                                            style="width: 40px;min-width: 40px;color: #34b74f;border: 1px solid #34b74f;">
-                                                            <i class="feather-mic" style="margin-right: 0px;"></i>
-                                                         </a>
-
-                                                      </div>
-                                                   </td>
-                                                   <td class="text-end">
-                                                      <div class="table-action">
-                                                         <a href="javascript:void(0);" class="btn btn-sm bg-info-light">
-                                                            <i class="far fa-eye"></i> View
-                                                         </a>
-                                                         <a href="javascript:void(0);"
-                                                            class="btn btn-sm bg-success-light">
-                                                            <i class="fas fa-check"></i> Accept
-                                                         </a>
-                                                         <a href="javascript:void(0);"
-                                                            class="btn btn-sm bg-danger-light">
-                                                            <i class="fas fa-times"></i> Cancel
-                                                         </a>
-                                                      </div>
-                                                   </td>
-                                                </tr>
                                              </tbody>
                                           </table>
                                        </div>
