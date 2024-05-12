@@ -37,9 +37,9 @@ export class DoctorProfileSettingsComponent implements OnInit {
     private commonService: CommonService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
-    this.currentUserInfo = this.storageService.getUser();
+    this.currentUserInfo = this.storageService.getDoctorUser();
     if (this.currentUserInfo != null) {
-      this.currentUserInfo.token = this.storageService.getToken();
+      this.currentUserInfo.token = this.storageService.getDoctorToken();
       this.getUserData();
     } else {
       this.router.navigate(['/loginEmail']);
@@ -67,7 +67,7 @@ export class DoctorProfileSettingsComponent implements OnInit {
         this.currentUser.hospital = new Hospital;
       }
       this.currentUser.dateOfBirthString = this.convertDateToDateString(this.currentUser.dateOfBirth);
-      this.currentUser.token = this.storageService.getToken();
+      this.currentUser.token = this.storageService.getDoctorToken();
     });
   }
   convertDateToDateString(orderDate: any) {
@@ -77,7 +77,7 @@ export class DoctorProfileSettingsComponent implements OnInit {
   pad(s: any) { return (s < 10) ? '0' + s : s; }
 
   uploadFile() {
-    this.currentUser.token = this.storageService.getToken();
+    this.currentUser.token = this.storageService.getDoctorToken();
     this.userService.uploadFile(this.currentUser).subscribe((data: MessageResponse) => {
       this.message = data.message;
       alert(this.message);
@@ -108,11 +108,11 @@ export class DoctorProfileSettingsComponent implements OnInit {
 
   onSubmit() {
     if (this.validateUserData()) {
-      this.currentUser.token = this.storageService.getToken();
+      this.currentUser.token = this.storageService.getDoctorToken();
       this.userService.updateProfile(this.currentUser).subscribe((data: MessageResponse) => {
         this.message = data.message;
         if (this.message == MessageConstants.UpdateProfileMessage) {
-          this.storageService.saveUser(this.currentUser);
+          this.storageService.saveDoctorUser(this.currentUser);
           this.profileStatusFlag = true;
         }
       });

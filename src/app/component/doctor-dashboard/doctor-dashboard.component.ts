@@ -28,10 +28,10 @@ export class DoctorDashboardComponent implements OnInit {
   constructor(private router: Router, private storageService: StorageService, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.currentUserInfo = this.storageService.getUser();
+    this.currentUserInfo = this.storageService.getDoctorUser();
     this.currentDate = new Date;
     if (this.currentUserInfo != null) {
-      this.currentUserInfo.token = this.storageService.getToken();
+      this.currentUserInfo.token = this.storageService.getDoctorToken();
       this.getUserData();
       this.getPatientList();
       this.getTodayPatientList();

@@ -26,9 +26,9 @@ export class DoctorChangePasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.setForm();
-    this.currentUserInfo = this.storageService.getUser();
+    this.currentUserInfo = this.storageService.getDoctorUser();
     if (this.currentUserInfo != null) {
-      this.currentUserInfo.token = this.storageService.getToken();
+      this.currentUserInfo.token = this.storageService.getDoctorToken();
       this.getUserData();
     } else {
       this.router.navigate(['/loginEmail']);

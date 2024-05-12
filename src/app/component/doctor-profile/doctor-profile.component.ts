@@ -36,9 +36,9 @@ export class DoctorProfileComponent implements OnInit {
         this.getDoctorData();
       }
     });
-    this.currentUserInfo = this.storageService.getUser();
+    this.currentUserInfo = this.storageService.getDoctorUser();
     if (this.currentUserInfo != null) {
-      this.currentUserInfo.token = this.storageService.getToken();
+      this.currentUserInfo.token = this.storageService.getDoctorToken();
       this.getUserData();
     } else {
       this.router.navigate(['/loginEmail']);

@@ -29,6 +29,14 @@ export class LoginMobileComponent implements OnInit {
       this.isLoggedIn = false;
       this.currentUserInfo = this.storageService.getUser();
     }
+    if (this.storageService.isPatientLoggedIn()) {
+      this.isLoggedIn = false;
+      this.currentUserInfo = this.storageService.getPatientUser();
+    }
+    if (this.storageService.isDoctorLoggedIn()) {
+      this.isLoggedIn = false;
+      this.currentUserInfo = this.storageService.getDoctorUser();
+    }
   }
   validateLoginForm(): boolean {
     if (this.form.phoneNumber == "" || this.form.phoneNumber == undefined) {
@@ -62,8 +70,14 @@ export class LoginMobileComponent implements OnInit {
             this.storageService.saveToken(data.accessToken);
             this.getUserData();
             if (data.accessToken && this.currentUser.userType == 'patient') {
+              this.storageService.savePatientUserInfo(data.user);
+              this.storageService.savePatientToken(data.accessToken);
+              this.getPatientUserData();
               this.router.navigate(['/patientDashboard']);
-            } else if (data.accessToken && this.currentUser.userType == 'doctor') {
+            } else if (data.accessToken && this.currentUser.userType  == 'doctor') {
+              this.storageService.saveDoctorUserInfo(data.user);
+              this.storageService.saveDoctorToken(data.accessToken);
+              this.getDoctorUserData();
               this.router.navigate(['/doctorDashboard']);
             }
           }
@@ -75,11 +89,29 @@ export class LoginMobileComponent implements OnInit {
       );
     }
   }
-
   getUserData() {
     this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
+      this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
+        this.currentUser = data;
+      });
+    }
+  }
+  getPatientUserData() {
+    this.currentUserInfo = this.storageService.getPatientUser();
+    if (this.currentUserInfo != null) {
+      this.currentUserInfo.token = this.storageService.getPatientToken();
+      this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
+        this.currentUser = data;
+      });
+    }
+  }
+
+  getDoctorUserData() {
+    this.currentUserInfo = this.storageService.getDoctorUser();
+    if (this.currentUserInfo != null) {
+      this.currentUserInfo.token = this.storageService.getDoctorToken();
       this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
         this.currentUser = data;
       });

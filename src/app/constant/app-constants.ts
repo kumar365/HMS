@@ -2,6 +2,10 @@
 export class AppConstants {
     public static USER_KEY = 'auth-user';
     public static TOKEN_KEY = 'auth-token';
+    public static USER_KEY_PATIENT = 'auth-user-patient';
+    public static TOKEN_KEY_PATIENT = 'auth-token-patient';
+    public static USER_KEY_DOCTOR = 'auth-user-doctor';
+    public static TOKEN_KEY_DOCTOR = 'auth-token-doctor';
     public static API_BASE_URL = 'http://localhost:9000/';
     private static OAUTH2_URL = AppConstants.API_BASE_URL + "oauth2/authorization/";
     private static REDIRECT_URL = "?redirect_uri=http://localhost:9000/login";
