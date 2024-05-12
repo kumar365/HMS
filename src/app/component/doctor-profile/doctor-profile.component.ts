@@ -1,5 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppValidations } from 'src/app/constant/app-validations';
 import { ApiResponse } from 'src/app/model/api-response';
 import { Appointment } from 'src/app/model/appointment';
@@ -25,7 +25,7 @@ export class DoctorProfileComponent implements OnInit {
   appointment: Appointment = new Appointment;
   termsAndConditionsFlag: Boolean = false;
   retrievedImage: any;
-  constructor(private storageService: StorageService, private userService: UserService,
+  constructor(private storageService: StorageService, private userService: UserService, private router: Router,
     private commonService: CommonService, private activatedRoute: ActivatedRoute, private renderer: Renderer2) { }
 
   ngOnInit(): void {
@@ -40,6 +40,8 @@ export class DoctorProfileComponent implements OnInit {
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();
+    } else {
+      this.router.navigate(['/loginEmail']);
     }
   }
   getUserData() {

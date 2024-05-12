@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AppValidations } from 'src/app/constant/app-validations';
 import { MessageConstants } from 'src/app/constant/message-constants';
 import { MessageResponse } from 'src/app/model/message-response';
@@ -20,7 +21,8 @@ export class DoctorChangePasswordComponent implements OnInit {
   currentUser: User = new User;
   formData!: FormGroup;
   retrievedImage: any;
-  constructor(private storageService: StorageService, private userService: UserService, private renderer: Renderer2) { }
+  constructor(private router: Router, private storageService: StorageService, 
+    private userService: UserService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.setForm();
@@ -28,6 +30,8 @@ export class DoctorChangePasswordComponent implements OnInit {
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();
+    } else {
+      this.router.navigate(['/loginEmail']);
     }
 
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AppValidations } from 'src/app/constant/app-validations';
 import { MessageConstants } from 'src/app/constant/message-constants';
 import { City } from 'src/app/model/city';
@@ -32,7 +33,7 @@ export class DoctorProfileSettingsComponent implements OnInit {
   progress = 0;
   preview = '';
   retrievedImage: any;
-  constructor(private storageService: StorageService, private userService: UserService,
+  constructor(private storageService: StorageService, private userService: UserService, private router: Router,
     private commonService: CommonService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
@@ -40,6 +41,8 @@ export class DoctorProfileSettingsComponent implements OnInit {
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();
+    } else {
+      this.router.navigate(['/loginEmail']);
     }
     this.getCountries();
     this.getStates();

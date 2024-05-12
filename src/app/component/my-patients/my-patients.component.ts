@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
 import { StorageService } from 'src/app/service/storage.service';
@@ -16,13 +17,15 @@ export class MyPatientsComponent implements OnInit {
   currentUser: User = new User;
   patientList!: User[];
   retrievedImage: any;
-  constructor(private storageService: StorageService, private userService: UserService) { }
+  constructor(private router: Router, private storageService: StorageService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();
+    } else {
+      this.router.navigate(['/loginEmail']);
     }
     this.getPatientList();
   }

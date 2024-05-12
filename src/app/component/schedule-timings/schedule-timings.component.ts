@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
 import { faSleigh } from '@fortawesome/free-solid-svg-icons';
 import { DoctorSlot } from 'src/app/model/doctor-slot';
 import { User } from 'src/app/model/user';
@@ -21,13 +22,16 @@ export class ScheduleTimingsComponent implements OnInit {
   endTimeList: string[] = [];
   showDiv: boolean = false;
   retrievedImage: any;
-  constructor(private storageService: StorageService, private userService: UserService, private renderer: Renderer2) { }
+  constructor(private router: Router, private storageService: StorageService,
+    private userService: UserService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();
+    } else {
+      this.router.navigate(['/loginEmail']);
     }
     this.doctorSlot.slotDuration = 0;
   }

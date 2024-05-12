@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DoctorSlot } from 'src/app/model/doctor-slot';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
@@ -17,13 +18,15 @@ export class AvailableTimingsComponent implements OnInit {
   currentUser: User = new User;
   doctorSlot: DoctorSlot = new DoctorSlot;
   retrievedImage: any;
-  constructor(private storageService: StorageService, private userService: UserService) { }
+  constructor(private router: Router, private storageService: StorageService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();
+    } else {
+      this.router.navigate(['/loginEmail']);
     }
   }
   getUserData() {

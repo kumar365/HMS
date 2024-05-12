@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiResponse } from 'src/app/model/api-response';
 import { Appointment } from 'src/app/model/appointment';
 import { User } from 'src/app/model/user';
@@ -24,7 +25,7 @@ export class DoctorDashboardComponent implements OnInit {
   appointmentListToday: Appointment[] = [];
   currentDate: any;
   retrievedImage: any;
-  constructor(private storageService: StorageService, private userService: UserService) { }
+  constructor(private router: Router, private storageService: StorageService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
@@ -36,6 +37,8 @@ export class DoctorDashboardComponent implements OnInit {
       this.getTodayPatientList();
       this.getAppointmentList();
       this.getTodayAppointmentList();
+    } else {
+      this.router.navigate(['/loginEmail']);
     }
   }
   getUserData() {
