@@ -108,7 +108,7 @@
                                         </div>
                                     </a>
                                     <div class="profile-det-info">
-                                        <h3>Dr. Darren Elder</h3>
+                                        <h3>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</h3>
                                         <div class="patient-details">
                                             <h5 class="mb-0">BDS, MDS - Oral & Maxillofacial Surgery</h5>
                                         </div>
@@ -200,7 +200,7 @@
                                                 <div class="profile-det-info">
                                                     <h3><a href="patientProfile?id={{patient.id}}">{{patient.displayName}}</a></h3>
                                                     <div class="patient-details">
-                                                        <h5><b>Patient ID :</b> {{patient.id}}</h5>
+                                                        <h5><b>Patient ID :</b>PT{{patient.id}}</h5>
                                                         <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i>
                                                             {{patient.address}}</h5>
                                                     </div>
@@ -210,7 +210,8 @@
                                         <div class="patient-info">
                                             <ul>
                                                 <li>Phone <span>+91-{{patient.phoneNumber}}</span></li>
-                                                <li>Age <span>{{patient.age}}, {{patient.gender}}</span></li>
+                                                <li>Age <span>{{patient.age}}</span></li>
+                                                <li>Gender <span>{{patient.gender}}</span></li>
                                                 <li>Blood Group <span>{{patient.bloodGroup}}</span></li>
                                             </ul>
                                         </div>
