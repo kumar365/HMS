@@ -64,6 +64,7 @@ export class AppConstants {
     public static GET_BILL_LIST = AppConstants.PAYMENT_URL + 'bills/';
     public static ADD_INVOICE = AppConstants.PAYMENT_URL + 'addInvoice';
     public static GET_INVOICE_LIST = AppConstants.PAYMENT_URL + 'invoices/';
+    public static GET_INVOICE_BY_ID = AppConstants.PAYMENT_URL + 'invoiceById/';
     public static MEDICINE_URL = AppConstants.API_BASE_URL + 'medicine/';
     public static ADD_MEDICINE = AppConstants.MEDICINE_URL + 'addMedicine';
     public static GET_MEDICINE_BY_ID = AppConstants.MEDICINE_URL + 'getMedicineById';
@@ -72,7 +73,7 @@ export class AppConstants {
     public static GET_STATES = AppConstants.COMMON_URL + 'states';
     public static GET_STATES_BY_ID = AppConstants.COMMON_URL + 'states/';
     public static GET_DISTRICTS = AppConstants.COMMON_URL + 'districts';
-    public static GET_DISTRICTS_BY_ID  = AppConstants.COMMON_URL + 'districts/';
+    public static GET_DISTRICTS_BY_ID = AppConstants.COMMON_URL + 'districts/';
     public static UPLOAD_FILE = AppConstants.COMMON_URL + 'uploadFile';
     public static GET_DOCTOR_LIST = AppConstants.COMMON_URL + 'doctorList';
     public static ADD_TEST_DETAILS = AppConstants.COMMON_URL + 'addTestDetails';

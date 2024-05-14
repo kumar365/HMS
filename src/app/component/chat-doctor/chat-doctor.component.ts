@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as Aos from 'aos';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
 import { StorageService } from 'src/app/service/storage.service';
@@ -18,6 +19,7 @@ export class ChatDoctorComponent implements OnInit {
   constructor(private storageService: StorageService, private userService: UserService) { }
 
   ngOnInit(): void {
+    Aos.init({ once: true, duration: 1000 });
     this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();

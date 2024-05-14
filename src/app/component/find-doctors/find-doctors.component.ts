@@ -5,7 +5,7 @@ import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+
 
 
 
@@ -22,7 +22,8 @@ export class FindDoctorsComponent implements OnInit {
   currentUser: User = new User;
   doctor: User = new User;
   retrievedImage: any;
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private storageService: StorageService, private userService: UserService) { }
+  constructor(private router: Router, private storageService: StorageService, 
+    private userService: UserService) { }
 
   ngOnInit(): void {
     Aos.init({ once: true, duration: 1000 });

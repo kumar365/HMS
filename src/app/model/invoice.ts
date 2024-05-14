@@ -5,9 +5,11 @@ import { User } from "./user";
 export class Invoice {
     invoiceID!: any;
     patientUser!:User;
+    doctorUser!:User;
     patientName!: string;
     appointmentID!: any;
     invoice!: string;
+    amount!: number;
     product!: Product;
     disount!: Discount;
     version!: string;

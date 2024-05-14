@@ -114,12 +114,13 @@
                             <div class="widget-profile pro-widget-content">
                                 <div class="profile-info-widget">
                                     <a href="#" class="booking-doc-img">
-                                         <div *ngIf=retrievedImage>
+                                        <div *ngIf=retrievedImage>
                                             <img [src]="retrievedImage" alt="User Image">
                                         </div>
                                     </a>
                                     <div class="profile-det-info">
-                                        <h3>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</h3>
+                                        <h3>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}
+                                        </h3>
                                         <div class="patient-details">
                                             <h5 class="mb-0">BDS, MDS - Oral & Maxillofacial Surgery</h5>
                                         </div>
@@ -187,7 +188,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                             <a href="logout">
+                                            <a href="logout">
                                                 <i class="fas fa-sign-out-alt"></i>
                                                 <span>Logout</span>
                                             </a>
@@ -213,10 +214,10 @@
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody *ngFor="let invoice of invoiceList;">
                                             <tr>
                                                 <td>
-                                                    <a href="invoiceView">#INV-0010</a>
+                                                    <a href="invoiceView">#INV-{{invoice.invoiceID}}</a>
                                                 </td>
                                                 <td>
                                                     <h2 class="table-avatar">
@@ -225,14 +226,16 @@
                                                                 src="/assets/img/patients/patient9.jpg"
                                                                 alt="User Image">
                                                         </a>
-                                                        <a href="#">Richard Wilson <span>#PT0016</span></a>
+                                                        <a href="#">{{invoice.patientUser.displayName}}
+                                                            <span>#PT{{invoice.patientUser.id}}</span></a>
                                                     </h2>
                                                 </td>
-                                                <td>Rs.400/-</td>
-                                                <td>4 Sep 2023</td>
+                                                <td>Rs.{{invoice.amount}}/-</td>
+                                                <td>{{invoice.createdDate | date:'dd MMM yyyy'}}</td>
                                                 <td class="text-end">
                                                     <div class="table-action">
-                                                        <a href="invoiceView" class="btn btn-sm bg-info-light">
+                                                        <a href="invoiceView?id={{invoice.invoiceID}}"
+                                                            class="btn btn-sm bg-info-light">
                                                             <i class="far fa-eye"></i> View
                                                         </a>
                                                         <a href="javascript:void(0);"
@@ -243,63 +246,7 @@
                                                 </td>
                                             </tr>
 
-                                            <tr>
-                                                <td>
-                                                    <a href="invoiceView">#INV-0010</a>
-                                                </td>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="#" class="avatar avatar-sm me-2">
-                                                            <img class="avatar-img rounded-circle"
-                                                                src="/assets/img/patients/patient9.jpg"
-                                                                alt="User Image">
-                                                        </a>
-                                                        <a href="#">Richard Wilson <span>#PT0016</span></a>
-                                                    </h2>
-                                                </td>
-                                                <td>Rs.400/-</td>
-                                                <td>4 Sep 2023</td>
-                                                <td class="text-end">
-                                                    <div class="table-action">
-                                                        <a href="invoiceView" class="btn btn-sm bg-info-light">
-                                                            <i class="far fa-eye"></i> View
-                                                        </a>
-                                                        <a href="javascript:void(0);"
-                                                            class="btn btn-sm bg-primary-light">
-                                                            <i class="fas fa-print"></i> Print
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
 
-                                            <tr>
-                                                <td>
-                                                    <a href="invoiceView">#INV-0010</a>
-                                                </td>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="#" class="avatar avatar-sm me-2">
-                                                            <img class="avatar-img rounded-circle"
-                                                                src="/assets/img/patients/patient9.jpg"
-                                                                alt="User Image">
-                                                        </a>
-                                                        <a href="#">Richard Wilson <span>#PT0016</span></a>
-                                                    </h2>
-                                                </td>
-                                                <td>Rs.400/-</td>
-                                                <td>4 Sep 2023</td>
-                                                <td class="text-end">
-                                                    <div class="table-action">
-                                                        <a href="invoiceView" class="btn btn-sm bg-info-light">
-                                                            <i class="far fa-eye"></i> View
-                                                        </a>
-                                                        <a href="javascript:void(0);"
-                                                            class="btn btn-sm bg-primary-light">
-                                                            <i class="fas fa-print"></i> Print
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
 
                                         </tbody>
                                     </table>
@@ -408,8 +355,8 @@
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
                                     <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a
-                                            href="https://technologies.com" target="_blank"
-                                            style="color:#fff">l Technologies Pvt. Ltd.</a></p>
+                                            href="https://technologies.com" target="_blank" style="color:#fff">l
+                                            Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">
