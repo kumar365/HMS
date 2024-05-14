@@ -43,6 +43,12 @@ export class InvoicesComponent implements OnInit {
   getInvoiceList() {
     this.paymentService.getInvoiceList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: Invoice[]) => {
       this.invoiceList = data;
+      for (let index = 0; index < this.invoiceList.length; index++) {
+        this.invoiceList[index].retrievedImage = this.retrievedImage;
+        if (this.invoiceList[index].patientUser != null && this.invoiceList[index].patientUser.imageData != null && this.invoiceList[index].patientUser.imageData != undefined) {
+          this.invoiceList[index].retrievedImage = 'data:image/jpeg;base64,' + this.invoiceList[index].patientUser.imageData;
+        }
+      }
     });
   }
 }

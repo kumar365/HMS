@@ -16,4 +16,5 @@ export class Invoice {
     ipAddress!: string;
     createdBy!: string;
     createdDate!: string;
+    retrievedImage!: any;
 }

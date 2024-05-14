@@ -222,9 +222,10 @@
                                                 <td>
                                                     <h2 class="table-avatar">
                                                         <a href="#" class="avatar avatar-sm me-2">
-                                                            <img class="avatar-img rounded-circle"
-                                                                src="/assets/img/patients/patient9.jpg"
-                                                                alt="User Image">
+                                                            <div *ngIf=invoice.retrievedImage>
+                                                                <img class="avatar-img rounded-circle"
+                                                                    [src]="invoice.retrievedImage" alt="User Image">
+                                                            </div>
                                                         </a>
                                                         <a href="#">{{invoice.patientUser.displayName}}
                                                             <span>#PT{{invoice.patientUser.id}}</span></a>
