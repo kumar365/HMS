@@ -8,6 +8,15 @@ export class AppValidations {
             return false;
         }
     }
+    static validateMedicineName(name: string): boolean {
+        var nameRegex = /^[A-Za-z ]{3,50}$/;
+        if (nameRegex.test(name)) {
+            return true;
+        } else {
+            alert("Your name is not valid. Only characters A-Z and a-z are acceptable of length 3 to 16.");
+            return false;
+        }
+    }
     static validateMail(email: string): boolean {
         var mailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
         if (mailRegex.test(email)) {

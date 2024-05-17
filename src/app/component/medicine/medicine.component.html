@@ -1,60 +1,333 @@
-<br>
-<h1 style="text-align: center;">Add Medicine</h1>
-<div class="col-lg-8" style="padding-left: 500px;">
-   <div class="card-body">
-      <form (ngSubmit)="onSubmit()" #medicineForm="ngForm">
-         <div class="form-group">
-            <label for="name">Medicine Name</label>
-            <input type="text" [(ngModel)]="medicine.name" class="form-control" id="name" name="name"
-               placeholder="Enter medicine name" required #name="ngModel">
-            <!-- <div [hidden]="!name.pristine" class="alert alert-danger">Name is required</div> -->
-         </div>
-         <div class="form-group">
-            <label for="name">Medicine Price</label>
-            <input type="text" [(ngModel)]="medicine.medicinePrice" class="form-control" id="medicinePrice"
-               name="medicinePrice" placeholder="Enter medicine price" required #medicinePrice="ngModel">
-            <!-- <div [hidden]="!medicinePrice.pristine" class="alert alert-danger">Medicine Price is required</div> -->
-         </div>
-         <div class="form-group">
-            <label for="expiryDate">Expiry Date</label>
-            <input matInput [matDatepicker]="picker" appAutocompleteOff class="form-control" id="expiryDate"
-               name="expiryDate" (dateChange)=getValidDate() [(ngModel)]="medicine.expiryDate"
-               placeholder="Select Expiry Date" required #expiryDate="ngModel" />
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker> </mat-datepicker>
+<!DOCTYPE html>
+<html lang="en">
 
-            <!-- <div [hidden]="!expiryDate.pristine" class="alert alert-danger">Expiry Date is required</div> -->
+<head>
+   <meta charset="utf-8">
+   <title>HMS</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+   <link href="/assets/img/favicon.png" rel="icon">
+
+   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+
+   <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+   <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+
+   <link rel="stylesheet" href="/assets/css/feather.css">
+
+   <link rel="stylesheet" href="/assets/css/bootstrap-datetimepicker.min.css">
+
+   <link rel="stylesheet" href="/assets/plugins/select2/css/select2.min.css">
+
+   <link rel="stylesheet" href="/assets/css/custom.css">
+</head>
+
+<body>
+
+   <div class="main-wrapper">
+      <header class="header">
+         <nav class="navbar navbar-expand-lg header-nav">
+            <div class="navbar-header">
+               <a id="mobile_btn" href="javascript:void(0);">
+                  <span class="bar-icon">
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                  </span>
+               </a>
+               <a href="index" class="navbar-brand logo">
+                  <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+               </a>
+            </div>
+            <div class="main-menu-wrapper">
+               <div class="menu-header">
+                  <a href="index" class="menu-logo">
+                     <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                  </a>
+                  <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                     <i class="fas fa-times"></i>
+                  </a>
+               </div>
+               <ul class="main-nav">
+                  <li><a href="findDoctors">Find Doctors</a></li>
+                  <li><a href=" consult">Consultation</a></li>
+                  <li class="active"><a href="medicineOrder">Medicine Order</a></li>
+                  <li><a href="labTest">Lab Test</a></li>
+                  <li><a href="findSurgeons">Find Surgeons</a></li>
+                  <li><a href="bookAmbulance">Book Ambulance</a></li>
+                  <li class="has-submenu">
+                     <a href="javascript:void(0);">Services <i class="fas fa-chevron-down"></i></a>
+                     <ul class="submenu">
+                        <li><a href="searchAmbulance">Ambulance Service</a></li>
+                        <li><a href="staffingServices">Healthcare Staffing Services</a></li>
+                     </ul>
+                  </li>
+                  <li class="has-submenu">
+                     <a href="javascript:void(0);">Help <i class="fas fa-chevron-down"></i></a>
+                     <ul class="submenu">
+                        <li><a href="#">Health Tips</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="consultantsPanel">Consultants Panel</a></li>
+                     </ul>
+                  </li>
+               </ul>
+            </div>
+            <ul class="nav header-navbar-rht">
+               <!-- <li class="nav-item contact-item">
+        <div class="header-contact-img">
+        <i class="far fa-hospital"></i>
+        </div>
+        <div class="header-contact-detail">
+        <p class="contact-header">Tollfree Helpline</p>
+        <p class="contact-info-header">1800 1800 45</p>
+        </div>
+        </li> -->
+               <li class="nav-item">
+                  <a class="nav-link header-login" href="loginEmail">Login / Signup </a>
+               </li>
+            </ul>
+         </nav>
+      </header>
+
+      <div class="breadcrumb-bar-two">
+         <div class="container">
+            <div class="row align-items-center inner-banner">
+               <div class="col-md-12 col-12 text-center">
+                  <h2 class="breadcrumb-title">Add Medicine</h2>
+                  <nav aria-label="breadcrumb" class="page-breadcrumb">
+                     <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index">Home</a></li>
+                        <li class="breadcrumb-item" aria-current="page">Add Medicine</li>
+                     </ol>
+                  </nav>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="content">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-7 col-lg-8 col-xl-12">
+                  <div class="card">
+                     <div class="card-body" style="padding-left: 200px;">
+                        <div *ngIf="statusFlag" class="alert alert-danger" role="alert">
+                           {{ message }}
+                        </div>
+                        <form #userForm="ngForm" (ngSubmit)="onSubmit()">
+                           <div class="row form-row">
+                              <div class="col-12 col-md-12">
+                                 <div class="form-group">
+                                    <div class="change-avatar">
+                                       <div class="profile-img">
+                                          <img src="/assets/img/patients/patient8.jpg" alt="User Image">
+                                       </div>
+                                       <div class="upload-img">
+                                          <div class="change-photo-btn">
+                                             <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                             <input type="file" [(ngModel)]="medicine.medicineImage" id="medicineImage"
+                                                name="medicineImage" accept="image/*" class="upload"
+                                                (change)="selectFile($event)" #medicineImage="ngModel">
+                                          </div>
+                                          <small class="form-text text-muted">Allowed JPG, GIF or PNG. Max
+                                             size of 2MB</small>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
+                                    <label for="name">Medicine Name</label>
+                                    <input type="text" [(ngModel)]="medicine.name" class="form-control" id="name"
+                                       name="name" placeholder="Enter medicine name" required #name="ngModel">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
+                                    <label for="name">Medicine Price</label>
+                                    <input type="text" [(ngModel)]="medicine.medicinePrice" class="form-control"
+                                       id="medicinePrice" name="medicinePrice" placeholder="Enter medicine price"
+                                       required #medicinePrice="ngModel">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
+                                    <label>Expiry Date</label>
+                                    <input type="date" [(ngModel)]="medicine.expiryDateString" id="expiryDateString"
+                                       name="expiryDateString" placeholder="Enter Expiry Date" class="form-control"
+                                       #expiryDateString="ngModel">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
+                                    <label>Units</label>
+                                    <input type="text" [(ngModel)]="medicine.units" class="form-control" id="units"
+                                       name="units" (change)="getTotalQTY()" placeholder="Units number" required
+                                       #units="ngModel">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
+                                    <label>Quantity Per Unit</label>
+                                    <input type="text" [(ngModel)]="medicine.quantityPerUnit" class="form-control"
+                                       id="quantityPerUnit" name="quantityPerUnit" (change)="getTotalQTY()"
+                                       placeholder="Enter Quantity Per Unit" required #quantityPerUnit="ngModel">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
+                                    <label>Total Quantity</label>
+                                    <input type="text" [(ngModel)]="medicine.totalQuantity" class="form-control"
+                                       id="totalQuantity" name="totalQuantity" placeholder="Enter Total Quantity"
+                                       readonly #totalQuantity="ngModel">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
+                                    <label>Is Prescription Required</label>
+                                    <select [(ngModel)]="medicine.isPrescriptionRequired" id="isPrescriptionRequired"
+                                       name="isPrescriptionRequired" class="form-select form-control"
+                                       #isPrescriptionRequired="ngModel" required>
+                                       <option value="">Please Select</option>
+                                       <option value="Y">Yes</option>
+                                       <option value="N">No</option>
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
+                                    <label>Discount Percentage</label>
+                                    <input type="text" [(ngModel)]="medicine.discount" class="form-control"
+                                       id="discount" name="discount" placeholder="Enter discount" required
+                                       #discount="ngModel">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="submit-section">
+                              <button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <footer class="footer">
+         <div class="footer-top">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-lg-3 col-md-6">
+                     <div class="footer-widget footer-about">
+                        <div class="footer-logo">
+                           <img src="/assets/img/footer-logo.png" alt="logo">
+                        </div>
+                        <div class="footer-about-content">
+                           <p>A healthcare product is the result of the interaction of capital, labour and
+                              entrepreneurship in the production process, which primarily aims to improve,
+                              maintain or prevent the deterioration of the health status of persons or reduce
+                              the consequences of ill health.</p>
+                           <div class="social-icon">
+                              <ul>
+                                 <li>
+                                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+                                 </li>
+
+                                 <li>
+                                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                 </li>
+
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+
+                  </div>
+                  <div class="col-lg-3 col-md-6">
+                     <div class="footer-widget footer-menu">
+                        <h2 class="footer-title">For Patients</h2>
+                        <ul>
+                           <li><a href="searchDoctors">Search for Doctors</a></li>
+                           <li><a href="login">Login</a></li>
+                           <li><a href="#">Training Videos</a></li>
+                           <li><a href="booking">Booking</a></li>
+                           <li><a href="patientDashboard">Patient Dashboard</a></li>
+                           <li><a href="#">Help</a></li>
+                           <li><a href="consultantsPanel">Consultants Panel</a></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col-lg-3 col-md-6">
+                     <div class="footer-widget footer-menu">
+                        <h2 class="footer-title">For Doctors</h2>
+                        <ul>
+                           <li><a href="#">Appointments</a></li>
+                           <li><a href="chat">Chat</a></li>
+                           <li><a href="login">Login</a></li>
+                           <li><a href="doctorRegistration">Register</a></li>
+                           <li><a href="doctorDashboard">Doctor Dashboard</a></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col-lg-3 col-md-6">
+                     <div class="footer-widget footer-contact">
+                        <h2 class="footer-title">Contact Us</h2>
+                        <div class="footer-contact-info">
+                           <div class="footer-address">
+                              <span><i class="fas fa-map-marker-alt"></i></span>
+                              <p>Pinnacle Prestige, Office No-405 <br />Road 2,KPHB colony,Hyd</p>
+                           </div>
+                           <p>
+                              <i class="fas fa-phone-alt"></i>
+                              +91-9096488159
+                           </p>
+                           <p class="mb-0 cf_email">
+                              <i class="fas fa-envelope"></i>
+                              <a href="#" style="color:#fff;"> info@hms.com</a>
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
          </div>
 
-         <div class="form-group">
-            <label for="units">Units</label>
-            <input type="text" [(ngModel)]="medicine.units" class="form-control" id="units" name="units"
-               placeholder="Units number" required #units="ngModel">
-            <!-- <div [hidden]="!units.pristine" class="alert alert-danger">Units is required</div> -->
-         </div>
-         <div class="form-group">
-            <label for="quantityPerUnit">Quantity Per Unit</label>
-            <input type="text" [(ngModel)]="medicine.quantityPerUnit" class="form-control" id="quantityPerUnit"
-               name="quantityPerUnit" (change)="getTotalQTY()" placeholder="Quantity Per Unit number" required
-               #quantityPerUnit="ngModel">
-            <!-- <div [hidden]="!quantityPerUnit.pristine" class="alert alert-danger">Units is required</div> -->
+         <div class="sidenav">
+            <a href="consultation"><img src="/assets/img/footer-banner.jpg"></a>
          </div>
 
-         <div class="form-group">
-            <label for="totalQuantity">Total Quantity</label>
-            <input type="text" [(ngModel)]="medicine.totalQuantity" class="form-control" id="totalQuantity"
-               name="totalQuantity" placeholder="Enter totalQuantity" required #totalQuantity="ngModel">
-            <!-- <div [hidden]="!totalQuantity.pristine" class="alert alert-danger">Total Quantity is required</div> -->
+         <div class="footer-bottom">
+            <div class="container-fluid">
+               <div class="copyright">
+                  <div class="row">
+                     <div class="col-md-6 col-lg-6">
+                        <div class="copyright-text">
+                           <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a href="/" target="_blank"
+                                 style="color:#fff"> Technologies Pvt. Ltd.</a></p>
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-lg-6">
+                        <div class="copyright-menu">
+                           <ul class="policy-menu">
+                              <li><a href="termsConditions">Terms and Conditions</a></li>
+                              <li><a href="privacyPolicy">Privacy Policy</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
          </div>
-         <div class="form-group">
-            <label for="isPrescriptionRequired">Is Prescription Required</label>
-            <input type="text" [(ngModel)]="medicine.isPrescriptionRequired" class="form-control"
-               id="isPrescriptionRequired" name="isPrescriptionRequired" placeholder="Enter isPrescriptionRequired"
-               required #isPrescriptionRequired="ngModel">
-            <!-- <div [hidden]="!isPrescriptionRequired.pristine" class="alert alert-danger">IsPrescriptionRequired is
-               required</div> -->
-         </div>
-         <button type="submit"  class="btn btn-info">Submit</button>
-      </form>
+      </footer>
    </div>
-</div>
+   <script src="/assets/js/jquery-3.6.4.min.js"></script>
+   <script src="/assets/js/bootstrap.bundle.min.js"></script>
+   <script src="/assets/plugins/select2/js/select2.min.js"></script>
+   <script src="/assets/js/moment.min.js"></script>
+   <script src="/assets/js/bootstrap-datetimepicker.min.js"></script>
+   <script src="/assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+   <script src="/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+   <script src="/assets/js/script.js"></script>
+</body>
+
+</html>

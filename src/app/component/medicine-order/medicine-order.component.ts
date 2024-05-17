@@ -1,8 +1,10 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Medicine } from 'src/app/model/medicine';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
 import { FileUploadService } from 'src/app/service/file-upload.service';
+import { MedicineService } from 'src/app/service/medicine.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -20,14 +22,17 @@ export class MedicineOrderComponent implements OnInit {
   statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
+  medicineList!: Medicine[];
   retrievedImage: any;
-  constructor(private storageService: StorageService, private userService: UserService, private uploadService: FileUploadService) { }
+  constructor(private storageService: StorageService, private userService: UserService,
+    private medicineService: MedicineService, private uploadService: FileUploadService) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();
+      this.getMedicineList();
     }
   }
   getUserData() {
@@ -35,6 +40,16 @@ export class MedicineOrderComponent implements OnInit {
       this.currentUser = data;
       if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
         this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
+      }
+    });
+  }
+  getMedicineList() {
+    this.medicineService.findAll(this.currentUserInfo.token).subscribe((data: Medicine[]) => {
+      this.medicineList = data;
+      for (let index = 0; index < this.medicineList.length; index++) {
+        if (this.medicineList[index].imageData != null && this.medicineList[index].imageData != undefined) {
+          this.medicineList[index].retrievedImage = 'data:image/jpeg;base64,' + this.medicineList[index].imageData;
+        }
       }
     });
   }
@@ -63,7 +78,7 @@ export class MedicineOrderComponent implements OnInit {
     }
   }
   upload(): void {
-    
+
     this.progress = 0;
 
     if (this.selectedFiles) {

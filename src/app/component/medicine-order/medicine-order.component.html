@@ -107,7 +107,8 @@
                                         <li class="list-inline-item">Consulation with the preferred doctor</li>
                                     </ul>
                                     <div class="d-inline-block">
-                                        <a href="medicineOrder#contents" class="btn book-btn1" tabindex="0">Order Now</a>
+                                        <a href="medicineOrder#contents" class="btn book-btn1" tabindex="0">Order
+                                            Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +127,8 @@
                                         <li class="list-inline-item">Consulation with the preferred doctor</li>
                                     </ul>
                                     <div class="d-inline-block">
-                                        <a href="medicineOrder#contents" class="btn book-btn1" tabindex="0">Order Now</a>
+                                        <a href="medicineOrder#contents" class="btn book-btn1" tabindex="0">Order
+                                            Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -230,25 +232,27 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12 col-lg-4 col-xl-4 product-custom">
+                            <div class="col-md-12 col-lg-4 col-xl-4 product-custom" *ngFor="let medicine of medicineList">
                                 <div class="profile-widget">
                                     <div class="doc-img">
-                                        <a href="/productDescription" tabindex="-1">
-                                            <img class="img-fluid" alt="Product image"
-                                                src="/assets/img/products/product.jpg">
+                                        <a href="/productDescription?id={{medicine.id}}" tabindex="-1">
+                                            <div *ngIf=medicine.retrievedImage>
+                                                <img  [src]="medicine.retrievedImage"
+                                                    alt="Product image">
+                                            </div>
                                         </a>
-                                        <a href="javascript:void(0)" class="fav-btn" tabindex="-1">
+                                        <!-- <a href="javascript:void(0)" class="fav-btn" tabindex="-1">
                                             <i class="far fa-bookmark"></i>
-                                        </a>
+                                        </a> -->
                                     </div>
                                     <div class="pro-content">
                                         <h3 class="title pb-4">
-                                            <a href="/productDescription" tabindex="-1">Benzaxapine Croplex</a>
+                                            <a href="/productDescription?id={{medicine.id}}" tabindex="-1">{{medicine.name}}</a>
                                         </h3>
                                         <div class="row align-items-center">
                                             <div class="col-lg-6">
-                                                <span class="price">Rs.19.00</span>
-                                                <span class="price-strike">Rs.45.00</span>
+                                                <span class="price">Rs.{{medicine.medicinePrice}}</span>
+                                                <span class="price-strike">Rs.{{medicine.medicinePrice}}</span>
                                             </div>
                                             <div class="col-lg-6 text-end">
                                                 <a href="cart" class="cart-icon"><i
@@ -258,387 +262,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12 col-lg-4 col-xl-4 product-custom">
-                                <div class="profile-widget">
-                                    <div class="doc-img">
-                                        <a href="/productDescription" tabindex="-1">
-                                            <img class="img-fluid" alt="Product image"
-                                                src="/assets/img/products/product13.jpg">
-                                        </a>
-                                        <a href="javascript:void(0)" class="fav-btn" tabindex="-1">
-                                            <i class="far fa-bookmark"></i>
-                                        </a>
-                                    </div>
-                                    <div class="pro-content">
-                                        <h3 class="title pb-4">
-                                            <a href="/productDescription" tabindex="-1">Rapalac Neuronium</a>
-                                        </h3>
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-6">
-                                                <span class="price">Rs.16.00</span>
-                                            </div>
-                                            <div class="col-lg-6 text-end">
-                                                <a href="cart" class="cart-icon"><i
-                                                        class="fas fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-4 col-xl-4 product-custom">
-                                <div class="profile-widget">
-                                    <div class="doc-img">
-                                        <a href="/productDescription" tabindex="-1">
-                                            <img class="img-fluid" alt="Product image"
-                                                src="/assets/img/products/product1.jpg">
-                                        </a>
-                                        <a href="javascript:void(0)" class="fav-btn" tabindex="-1">
-                                            <i class="far fa-bookmark"></i>
-                                        </a>
-                                    </div>
-                                    <div class="pro-content">
-                                        <h3 class="title pb-4">
-                                            <a href="/productDescription" tabindex="-1">Ombinazol Bonibamol</a>
-                                        </h3>
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-6">
-                                                <span class="price">Rs.22.00</span>
-                                            </div>
-                                            <div class="col-lg-6 text-end">
-                                                <a href="cart" class="cart-icon"><i
-                                                        class="fas fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-4 col-xl-4 product-custom">
-                                <div class="profile-widget">
-                                    <div class="doc-img">
-                                        <a href="/productDescription" tabindex="-1">
-                                            <img class="img-fluid" alt="Product image"
-                                                src="/assets/img/products/product2.jpg">
-                                        </a>
-                                        <a href="javascript:void(0)" class="fav-btn" tabindex="-1">
-                                            <i class="far fa-bookmark"></i>
-                                        </a>
-                                    </div>
-                                    <div class="pro-content">
-                                        <h3 class="title pb-4">
-                                            <a href="/productDescription" tabindex="-1">Dantotate Dantodazole</a>
-                                        </h3>
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-6">
-                                                <span class="price">Rs.10.00</span>
-                                                <span class="price-strike">Rs.12.00</span>
-                                            </div>
-                                            <div class="col-lg-6 text-end">
-                                                <a href="cart" class="cart-icon"><i
-                                                        class="fas fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-4 col-xl-4 product-custom">
-                                <div class="profile-widget">
-                                    <div class="doc-img">
-                                        <a href="/productDescription" tabindex="-1">
-                                            <img class="img-fluid" alt="Product image"
-                                                src="/assets/img/products/product12.jpg">
-                                        </a>
-                                        <a href="javascript:void(0)" class="fav-btn" tabindex="-1">
-                                            <i class="far fa-bookmark"></i>
-                                        </a>
-                                    </div>
-                                    <div class="pro-content">
-                                        <h3 class="title pb-4">
-                                            <a href="/productDescription" tabindex="-1">Acetrace Amionel</a>
-                                        </h3>
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-6">
-                                                <span class="price">Rs.7.00</span>
-                                            </div>
-                                            <div class="col-lg-6 text-end">
-                                                <a href="cart" class="cart-icon"><i
-                                                        class="fas fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-4 col-xl-4 product-custom">
-                                <div class="profile-widget">
-                                    <div class="doc-img">
-                                        <a href="/productDescription" tabindex="-1">
-                                            <img class="img-fluid" alt="Product image"
-                                                src="/assets/img/products/product11.jpg">
-                                        </a>
-                                        <a href="javascript:void(0)" class="fav-btn" tabindex="-1">
-                                            <i class="far fa-bookmark"></i>
-                                        </a>
-                                    </div>
-                                    <div class="pro-content">
-                                        <h3 class="title pb-4">
-                                            <a href="/productDescription" tabindex="-1">Ergorinex Caffeigestin</a>
-                                        </h3>
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-6">
-                                                <span class="price">Rs.15.00</span>
-                                            </div>
-                                            <div class="col-lg-6 text-end">
-                                                <a href="cart" class="cart-icon"><i
-                                                        class="fas fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-4 col-xl-4 product-custom">
-                                <div class="profile-widget">
-                                    <div class="doc-img">
-                                        <a href="/productDescription" tabindex="-1">
-                                            <img class="img-fluid" alt="Product image"
-                                                src="/assets/img/products/product3.jpg">
-                                        </a>
-                                        <a href="javascript:void(0)" class="fav-btn" tabindex="-1">
-                                            <i class="far fa-bookmark"></i>
-                                        </a>
-                                    </div>
-                                    <div class="pro-content">
-                                        <h3 class="title pb-4">
-                                            <a href="/productDescription" tabindex="-1">Alispirox Aerorenone</a>
-                                        </h3>
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-6">
-                                                <span class="price">Rs.26.00</span>
-                                            </div>
-                                            <div class="col-lg-6 text-end">
-                                                <a href="cart" class="cart-icon"><i
-                                                        class="fas fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-4 col-xl-4 product-custom">
-                                <div class="profile-widget">
-                                    <div class="doc-img">
-                                        <a href="/productDescription" tabindex="-1">
-                                            <img class="img-fluid" alt="Product image"
-                                                src="/assets/img/products/product10.jpg">
-                                        </a>
-                                        <a href="javascript:void(0)" class="fav-btn" tabindex="-1">
-                                            <i class="far fa-bookmark"></i>
-                                        </a>
-                                    </div>
-                                    <div class="pro-content">
-                                        <h3 class="title pb-4">
-                                            <a href="/productDescription" tabindex="-1">Lysofranil Dorzostin</a>
-                                        </h3>
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-6">
-                                                <span class="price">Rs.10.00</span>
-                                                <span class="price-strike">Rs.12.00</span>
-                                            </div>
-                                            <div class="col-lg-6 text-end">
-                                                <a href="cart" class="cart-icon"><i
-                                                        class="fas fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-4 col-xl-4 product-custom">
-                                <div class="profile-widget">
-                                    <div class="doc-img">
-                                        <a href="/productDescription" tabindex="-1">
-                                            <img class="img-fluid" alt="Product image"
-                                                src="/assets/img/products/product4.jpg">
-                                        </a>
-                                        <a href="javascript:void(0)" class="fav-btn" tabindex="-1">
-                                            <i class="far fa-bookmark"></i>
-                                        </a>
-                                    </div>
-                                    <div class="pro-content">
-                                        <h3 class="title pb-4">
-                                            <a href="/productDescription" tabindex="-1">Nitrolozin Zithrotropin</a>
-                                        </h3>
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-6">
-                                                <span class="price">Rs.12.00</span>
-                                            </div>
-                                            <div class="col-lg-6 text-end">
-                                                <a href="cart" class="cart-icon"><i
-                                                        class="fas fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-4 col-xl-4 product-custom">
-                                <div class="profile-widget">
-                                    <div class="doc-img">
-                                        <a href="/productDescription" tabindex="-1">
-                                            <img class="img-fluid" alt="Product image"
-                                                src="/assets/img/products/product14.jpg">
-                                        </a>
-                                        <a href="javascript:void(0)" class="fav-btn" tabindex="-1">
-                                            <i class="far fa-bookmark"></i>
-                                        </a>
-                                    </div>
-                                    <div class="pro-content">
-                                        <h3 class="title pb-4">
-                                            <a href="/productDescription" tabindex="-1">Cordacriptine Mardipine</a>
-                                        </h3>
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-6">
-                                                <span class="price">Rs.9.00</span>
-                                            </div>
-                                            <div class="col-lg-6 text-end">
-                                                <a href="cart" class="cart-icon"><i
-                                                        class="fas fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-4 col-xl-4 product-custom">
-                                <div class="profile-widget">
-                                    <div class="doc-img">
-                                        <a href="/productDescription" tabindex="-1">
-                                            <img class="img-fluid" alt="Product image"
-                                                src="/assets/img/products/product5.jpg">
-                                        </a>
-                                        <a href="javascript:void(0)" class="fav-btn" tabindex="-1">
-                                            <i class="far fa-bookmark"></i>
-                                        </a>
-                                    </div>
-                                    <div class="pro-content">
-                                        <h3 class="title pb-4">
-                                            <a href="/productDescription" tabindex="-1">Iconevist Ampyplex</a>
-                                        </h3>
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-6">
-                                                <span class="price">Rs.16.00</span>
-                                            </div>
-                                            <div class="col-lg-6 text-end">
-                                                <a href="cart" class="cart-icon"><i
-                                                        class="fas fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-4 col-xl-4 product-custom">
-                                <div class="profile-widget">
-                                    <div class="doc-img">
-                                        <a href="/productDescription" tabindex="-1">
-                                            <img class="img-fluid" alt="Product image"
-                                                src="/assets/img/products/product6.jpg">
-                                        </a>
-                                        <a href="javascript:void(0)" class="fav-btn" tabindex="-1">
-                                            <i class="far fa-bookmark"></i>
-                                        </a>
-                                    </div>
-                                    <div class="pro-content">
-                                        <h3 class="title pb-4">
-                                            <a href="/productDescription" tabindex="-1">Alcafsteride Omebide</a>
-                                        </h3>
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-6">
-                                                <span class="price">Rs.7.00</span>
-                                            </div>
-                                            <div class="col-lg-6 text-end">
-                                                <a href="cart" class="cart-icon"><i
-                                                        class="fas fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-4 col-xl-4 product-custom">
-                                <div class="profile-widget">
-                                    <div class="doc-img">
-                                        <a href="/productDescription" tabindex="-1">
-                                            <img class="img-fluid" alt="Product image"
-                                                src="/assets/img/products/product15.jpg">
-                                        </a>
-                                        <a href="javascript:void(0)" class="fav-btn" tabindex="-1">
-                                            <i class="far fa-bookmark"></i>
-                                        </a>
-                                    </div>
-                                    <div class="pro-content">
-                                        <h3 class="title pb-4">
-                                            <a href="/productDescription" tabindex="-1">Neubide Aborase</a>
-                                        </h3>
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-6">
-                                                <span class="price">Rs.30.00</span>
-                                            </div>
-                                            <div class="col-lg-6 text-end">
-                                                <a href="cart" class="cart-icon"><i
-                                                        class="fas fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-4 col-xl-4 product-custom">
-                                <div class="profile-widget">
-                                    <div class="doc-img">
-                                        <a href="/productDescription" tabindex="-1">
-                                            <img class="img-fluid" alt="Product image"
-                                                src="/assets/img/products/product7.jpg">
-                                        </a>
-                                        <a href="javascript:void(0)" class="fav-btn" tabindex="-1">
-                                            <i class="far fa-bookmark"></i>
-                                        </a>
-                                    </div>
-                                    <div class="pro-content">
-                                        <h3 class="title pb-4">
-                                            <a href="/productDescription" tabindex="-1">ITONE eye drops 10ml</a>
-                                        </h3>
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-6">
-                                                <span class="price">Rs.50.00</span>
-                                            </div>
-                                            <div class="col-lg-6 text-end">
-                                                <a href="cart" class="cart-icon"><i
-                                                        class="fas fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-4 col-xl-4 product-custom">
-                                <div class="profile-widget">
-                                    <div class="doc-img">
-                                        <a href="/productDescription" tabindex="-1">
-                                            <img class="img-fluid" alt="Product image"
-                                                src="/assets/img/products/product8.jpg">
-                                        </a>
-                                        <a href="javascript:void(0)" class="fav-btn" tabindex="-1">
-                                            <i class="far fa-bookmark"></i>
-                                        </a>
-                                    </div>
-                                    <div class="pro-content">
-                                        <h3 class="title pb-4">
-                                            <a href="/productDescription" tabindex="-1">Antatriene Drospiletra</a>
-                                        </h3>
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-6">
-                                                <span class="price">Rs.10.00</span>
-                                                <span class="price-strike">Rs.20.00</span>
-                                            </div>
-                                            <div class="col-lg-6 text-end">
-                                                <a href="cart" class="cart-icon"><i
-                                                        class="fas fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+
                         </div>
                         <div class="col-md-12 text-center">
                             <a href="#" class="btn book-btn1 mb-4">Load More</a>
@@ -748,9 +373,8 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
-                                    <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a
-                                            href="/" target="_blank"
-                                            style="color:#fff"> Technologies Pvt. Ltd.</a></p>
+                                    <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a href="/"
+                                            target="_blank" style="color:#fff"> Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">
@@ -792,7 +416,8 @@
                                 <div class="form-group">
                                     <label>Upload File</label>
                                     <div class="upload-medical-records">
-                                        <input class="form-control" type="file" (change)="selectFile($event)" name="user_file" id="user_files_mr">
+                                        <input class="form-control" type="file" (change)="selectFile($event)"
+                                            name="user_file" id="user_files_mr">
                                         <div class="upload-content dropzone">
                                             <div class="text-center">
                                                 <div class="upload-icon mb-2"><img src="/assets/img/upload-icon.png"

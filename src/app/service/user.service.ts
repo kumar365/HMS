@@ -14,7 +14,6 @@ import { Prescription } from '../model/prescription';
 import { Appointment } from '../model/appointment';
 import { Product } from '../model/product';
 import { Orders } from '../model/orders';
-import { Invoice } from '../model/invoice';
 
 
 const httpOptions = {
