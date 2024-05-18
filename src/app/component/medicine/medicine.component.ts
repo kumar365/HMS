@@ -109,6 +109,27 @@ export class MedicineComponent implements OnInit {
       const element = this.renderer.selectRootElement('#expiryDateString');
       setTimeout(() => element.focus(), 0);
       return false;
+    } else if (this.medicine.units == 0 || this.medicine.units == undefined) {
+      alert('Please Enter Medicine Units');
+      const element = this.renderer.selectRootElement('#units');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validateMedicineUnits(this.medicine.units)) {
+      const element = this.renderer.selectRootElement('#units');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.medicine.quantityPerUnit == 0 || this.medicine.quantityPerUnit == undefined) {
+      alert('Please Enter Quantity Per Unit');
+      const element = this.renderer.selectRootElement('#quantityPerUnit');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validateMedicineQuantityPerUnit(this.medicine.quantityPerUnit)) {
+      const element = this.renderer.selectRootElement('#quantityPerUnit');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.medicine.isPrescriptionRequired == "" || this.medicine.isPrescriptionRequired == undefined) {
+      alert('Please Select Is Prescription Required');
+      return false;
     } else if (this.medicine.medicineImage == undefined) {
       alert('Please Select Medicine Image');
       const element = this.renderer.selectRootElement('#medicineImage');

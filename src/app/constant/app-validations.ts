@@ -222,11 +222,30 @@ export class AppValidations {
         if (someday < today) {
             alert("The expiry date is before today's date. Please select a valid expiry date");
             return false;
-        } else if (someday = today) {
+        } else if (someday == today) {
             alert("The expiry date is today's date. Please select a valid expiry date");
             return false;
         } else {
             return true;
         }
     }
+    static validateMedicineUnits(units: number): boolean {
+        var unitsRegex = /^\d{1,3}$/;
+        if (unitsRegex.test(units.toString())) {
+            return true;
+        } else {
+            alert("Units value is not valid.");
+            return false;
+        }
+    }
+    static validateMedicineQuantityPerUnit(units: number): boolean {
+        var unitsRegex = /^\d{1,3}$/;
+        if (unitsRegex.test(units.toString())) {
+            return true;
+        } else {
+            alert("Quantity Per Unit value is not valid.");
+            return false;
+        }
+    }
+
 }
