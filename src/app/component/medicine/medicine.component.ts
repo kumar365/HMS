@@ -36,13 +36,11 @@ export class MedicineComponent implements OnInit {
     this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
-        this.getUserData();
+      this.getUserData();
     }
     this.id = this.route.snapshot.params['id'];
     if (this.id != null && this.id != undefined) {
-      this.medicineService.findById(this.id).subscribe((data: Medicine) => {
-        this.medicine = data;
-      });
+      this.getMedicineData();
     }
   }
   getUserData() {
@@ -50,6 +48,14 @@ export class MedicineComponent implements OnInit {
       this.currentUser = data;
       if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
         this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
+      }
+    });
+  }
+  getMedicineData() {
+    this.medicineService.findMedicineById(this.id, this.currentUserInfo.token).subscribe((data: Medicine) => {
+      this.medicine = data;
+      if (this.medicine.imageData != null && this.medicine.imageData != undefined) {
+        this.medicine.retrievedImage = 'data:image/jpeg;base64,' + this.medicine.imageData;
       }
     });
   }
@@ -96,6 +102,10 @@ export class MedicineComponent implements OnInit {
       return false;
     } else if (this.medicine.expiryDateString == "" || this.medicine.expiryDateString == undefined) {
       alert('Please Enter Expiry Date');
+      const element = this.renderer.selectRootElement('#expiryDateString');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validateMedicineExpiryDate(this.medicine.expiryDateString)) {
       const element = this.renderer.selectRootElement('#expiryDateString');
       setTimeout(() => element.focus(), 0);
       return false;

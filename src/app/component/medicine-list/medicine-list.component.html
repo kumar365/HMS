@@ -1,76 +1,279 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-       <a class="navbar-brand" href="#">{{ title }}</a> <button class="navbar-toggler" type="button"
-          data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon">
-          </span>
-       </button>
-       <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-             <li class="nav-item active">
-                <a class="nav-link" href="/">Home
-                   <span class="sr-only">(current)
-                   </span>
-                </a>
-             </li>
-             <li class="nav-item">
-                <a class="nav-link" href="/reports">Report</a>
-             </li>
-             <li class="nav-item">
-                <a class="nav-link" href="/medicine">Add Medicine</a>
-             </li>
-             <li class="nav-item">
-                <a class="nav-link" href="/accounts">Accounts</a>
-             </li>
-             <li class="nav-item">
-                <a class="nav-link" href="/loginEmail">About</a>
-             </li>
-          </ul>
-       </div>
-    </div>
- </nav>
- <!-- Page Content -->
- <div class="container">
-    <div class="row">
-       <div class="col-lg-12 text-center" style="padding-top: 20px;">
-          <div class="container" style="padding-left: 0px; padding-right: 0px;">
-             <div class="row">
-                <div class="col-sm" style="text-align: left;">
-                   {{ title }}
-                </div>
-                <div class="col-sm" style="text-align: right;">
-                   <button type="button" [routerLink]="'/medicine'" class="btn btn-primary">Add</button>
-                </div>
-             </div>
-          </div>
-          <div class="container box" style="margin-top: 10px;">
-             <table class="table table-striped">
-                <thead>
-                   <tr>
-                      <th>Name</th>
-                      <th>Price</th>
-                      <th>Expiry Date</th>
-                      <th>Units</th>
-                      <th>Total Quantity</th>
-                      <th>Prescription Required</th>
-                   </tr>
-                </thead>
-                <tbody>
-                   <tr *ngFor="let medicine of medicineList">
-                      <th scope="row">{{ medicine.name }}</th>
-                      <th>{{ medicine.medicinePrice}}</th>
-                      <th>{{ medicine.expiryDate}}</th>
-                      <td>{{ medicine.units }}</td>
-                      <td>{{ medicine.totalQuantity }}</td>
-                      <td>{{ medicine.isPrescriptionRequired }}</td>
-                      <td><button type="button" class="btn btn-primary" (click)="edit(medicine)">Edit</button> </td>
-                      <td><button type="button" class="btn btn-primary" (click)="delete(medicine)">Delete</button>
-                      </td>
-                   </tr>
-                </tbody>
-             </table>
-          </div>
-       </div>
-    </div>
- </div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <title>HMS</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+   <link href="/assets/img/favicon.png" rel="icon">
+
+   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+
+   <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+   <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
+
+   <link rel="stylesheet" href="/assets/css/feather.css">
+
+   <link rel="stylesheet" href="/assets/css/bootstrap-datetimepicker.min.css">
+
+   <link rel="stylesheet" href="/assets/plugins/select2/css/select2.min.css">
+
+   <link rel="stylesheet" href="/assets/css/custom.css">
+</head>
+
+<body>
+
+   <div class="main-wrapper">
+      <header class="header">
+         <nav class="navbar navbar-expand-lg header-nav">
+            <div class="navbar-header">
+               <a id="mobile_btn" href="javascript:void(0);">
+                  <span class="bar-icon">
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                  </span>
+               </a>
+               <a href="index" class="navbar-brand logo">
+                  <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+               </a>
+            </div>
+            <div class="main-menu-wrapper">
+               <div class="menu-header">
+                  <a href="index" class="menu-logo">
+                     <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
+                  </a>
+                  <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                     <i class="fas fa-times"></i>
+                  </a>
+               </div>
+               <ul class="main-nav">
+                  <li><a href="findDoctors">Find Doctors</a></li>
+                  <li><a href=" consult">Consultation</a></li>
+                  <li class="active"><a href="medicineOrder">Medicine Order</a></li>
+                  <li><a href="labTest">Lab Test</a></li>
+                  <li><a href="findSurgeons">Find Surgeons</a></li>
+                  <li><a href="bookAmbulance">Book Ambulance</a></li>
+                  <li class="has-submenu">
+                     <a href="javascript:void(0);">Services <i class="fas fa-chevron-down"></i></a>
+                     <ul class="submenu">
+                        <li><a href="searchAmbulance">Ambulance Service</a></li>
+                        <li><a href="staffingServices">Healthcare Staffing Services</a></li>
+                     </ul>
+                  </li>
+                  <li class="has-submenu">
+                     <a href="javascript:void(0);">Help <i class="fas fa-chevron-down"></i></a>
+                     <ul class="submenu">
+                        <li><a href="#">Health Tips</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="consultantsPanel">Consultants Panel</a></li>
+                     </ul>
+                  </li>
+               </ul>
+            </div>
+            <ul class="nav header-navbar-rht">
+               <!-- <li class="nav-item contact-item">
+        <div class="header-contact-img">
+        <i class="far fa-hospital"></i>
+        </div>
+        <div class="header-contact-detail">
+        <p class="contact-header">Tollfree Helpline</p>
+        <p class="contact-info-header">1800 1800 45</p>
+        </div>
+        </li> -->
+               <li class="nav-item">
+                  <a class="nav-link header-login" href="loginEmail">Login / Signup </a>
+               </li>
+            </ul>
+         </nav>
+      </header>
+
+      <div class="breadcrumb-bar-two">
+         <div class="container">
+            <div class="row align-items-center inner-banner">
+               <div class="col-md-12 col-12 text-center">
+                  <h2 class="breadcrumb-title">Medicine List</h2>
+                  <nav aria-label="breadcrumb" class="page-breadcrumb">
+                     <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index">Home</a></li>
+                        <li class="breadcrumb-item" aria-current="page">{{ title }}</li>
+                     </ol>
+                  </nav>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="content">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-7 col-lg-8 col-xl-12">
+                  <div class="card">
+                     <div class="card-body" style="padding-left: 20px;">
+                        <div class="col-lg-12 text-center" style="padding-top: 20px;">
+                           <div class="container" style="padding-left: 0px; padding-right: 0px;">
+                              <div class="row">
+                                 <div class="col-sm" style="text-align: left;padding-left: 50px;">
+                                    <h3><b>{{ title }}</b> </h3>
+                                 </div>
+                                 <div class="col-sm" style="text-align: right;">
+                                    <button type="button" [routerLink]="'/medicine'" class="btn btn-primary">Add
+                                       Medicine</button>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="container box" style="margin-top: 10px;">
+                              <table class="table table-striped">
+                                 <thead>
+                                    <tr>
+                                       <th>Name</th>
+                                       <th>Price</th>
+                                       <th>Expiry Date</th>
+                                       <th>Units</th>
+                                       <th>Total Quantity</th>
+                                       <th>Prescription Required</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr *ngFor="let medicine of medicineList">
+                                       <th scope="row">{{ medicine.name }}</th>
+                                       <th>{{ medicine.medicinePrice}}</th>
+                                       <th>{{ medicine.expiryDate}}</th>
+                                       <td>{{ medicine.units }}</td>
+                                       <td>{{ medicine.totalQuantity }}</td>
+                                       <td>{{ medicine.isPrescriptionRequired }}</td>
+                                       <td><button type="button" class="btn btn-primary"
+                                             (click)="edit(medicine)">Edit</button> </td>
+                                       <td><button type="button" class="btn btn-primary"
+                                             (click)="delete(medicine)">Delete</button>
+                                       </td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <footer class="footer">
+         <div class="footer-top">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-lg-3 col-md-6">
+                     <div class="footer-widget footer-about">
+                        <div class="footer-logo">
+                           <img src="/assets/img/footer-logo.png" alt="logo">
+                        </div>
+                        <div class="footer-about-content">
+                           <p>A healthcare product is the result of the interaction of capital, labour and
+                              entrepreneurship in the production process, which primarily aims to improve,
+                              maintain or prevent the deterioration of the health status of persons or reduce
+                              the consequences of ill health.</p>
+                           <div class="social-icon">
+                              <ul>
+                                 <li>
+                                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+                                 </li>
+
+                                 <li>
+                                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                 </li>
+
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+
+                  </div>
+                  <div class="col-lg-3 col-md-6">
+                     <div class="footer-widget footer-menu">
+                        <h2 class="footer-title">For Patients</h2>
+                        <ul>
+                           <li><a href="searchDoctors">Search for Doctors</a></li>
+                           <li><a href="login">Login</a></li>
+                           <li><a href="#">Training Videos</a></li>
+                           <li><a href="booking">Booking</a></li>
+                           <li><a href="patientDashboard">Patient Dashboard</a></li>
+                           <li><a href="#">Help</a></li>
+                           <li><a href="consultantsPanel">Consultants Panel</a></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col-lg-3 col-md-6">
+                     <div class="footer-widget footer-menu">
+                        <h2 class="footer-title">For Doctors</h2>
+                        <ul>
+                           <li><a href="#">Appointments</a></li>
+                           <li><a href="chat">Chat</a></li>
+                           <li><a href="login">Login</a></li>
+                           <li><a href="doctorRegistration">Register</a></li>
+                           <li><a href="doctorDashboard">Doctor Dashboard</a></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col-lg-3 col-md-6">
+                     <div class="footer-widget footer-contact">
+                        <h2 class="footer-title">Contact Us</h2>
+                        <div class="footer-contact-info">
+                           <div class="footer-address">
+                              <span><i class="fas fa-map-marker-alt"></i></span>
+                              <p>Pinnacle Prestige, Office No-405 <br />Road 2,KPHB colony,Hyd</p>
+                           </div>
+                           <p>
+                              <i class="fas fa-phone-alt"></i>
+                              +91-9096488159
+                           </p>
+                           <p class="mb-0 cf_email">
+                              <i class="fas fa-envelope"></i>
+                              <a href="#" style="color:#fff;"> info@hms.com</a>
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <div class="sidenav">
+            <a href="consultation"><img src="/assets/img/footer-banner.jpg"></a>
+         </div>
+
+         <div class="footer-bottom">
+            <div class="container-fluid">
+               <div class="copyright">
+                  <div class="row">
+                     <div class="col-md-6 col-lg-6">
+                        <div class="copyright-text">
+                           <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a href="/" target="_blank"
+                                 style="color:#fff"> Technologies Pvt. Ltd.</a></p>
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-lg-6">
+                        <div class="copyright-menu">
+                           <ul class="policy-menu">
+                              <li><a href="termsConditions">Terms and Conditions</a></li>
+                              <li><a href="privacyPolicy">Privacy Policy</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+   </div>
+   <script src="/assets/js/jquery-3.6.4.min.js"></script>
+   <script src="/assets/js/bootstrap.bundle.min.js"></script>
+   <script src="/assets/plugins/select2/js/select2.min.js"></script>
+   <script src="/assets/js/moment.min.js"></script>
+   <script src="/assets/js/bootstrap-datetimepicker.min.js"></script>
+   <script src="/assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+   <script src="/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+   <script src="/assets/js/script.js"></script>
+</body>
+
+</html>

@@ -67,7 +67,7 @@ export class AppConstants {
     public static GET_INVOICE_BY_ID = AppConstants.PAYMENT_URL + 'invoiceById/';
     public static MEDICINE_URL = AppConstants.API_BASE_URL + 'medicine/';
     public static ADD_MEDICINE = AppConstants.MEDICINE_URL + 'addMedicine';
-    public static GET_MEDICINE_BY_ID = AppConstants.MEDICINE_URL + 'getMedicineById';
+    public static GET_MEDICINE_BY_ID = AppConstants.MEDICINE_URL + 'getMedicineById/';
     public static DELETE_MEDICINE_BY_ID = AppConstants.MEDICINE_URL + 'deleteMedicineById/';
     public static GET_COUNTRIES = AppConstants.COMMON_URL + 'countries';
     public static GET_STATES = AppConstants.COMMON_URL + 'states';

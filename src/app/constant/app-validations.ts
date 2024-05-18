@@ -9,11 +9,11 @@ export class AppValidations {
         }
     }
     static validateMedicineName(name: string): boolean {
-        var nameRegex = /^[A-Za-z ]{3,50}$/;
+        var nameRegex = /^[A-Za-z][A-Za-z0-9_ ]{5,50}$/;
         if (nameRegex.test(name)) {
             return true;
         } else {
-            alert("Your name is not valid. Only characters A-Z and a-z are acceptable of length 3 to 16.");
+            alert("Medicine name is not valid. Only characters A-Z and a-z are acceptable of length 5 to 50.");
             return false;
         }
     }
@@ -214,6 +214,19 @@ export class AppValidations {
         } else {
             alert("Your address is not valid.");
             return false;
+        }
+    }
+    static validateMedicineExpiryDate(expiryDate: string): boolean {
+        var today = new Date();
+        var someday = new Date(expiryDate);
+        if (someday < today) {
+            alert("The expiry date is before today's date. Please select a valid expiry date");
+            return false;
+        } else if (someday = today) {
+            alert("The expiry date is today's date. Please select a valid expiry date");
+            return false;
+        } else {
+            return true;
         }
     }
 }

@@ -13,13 +13,6 @@ export class MedicineService {
 
   constructor(private httpClient: HttpClient) { }
 
-  // public save(medicine: Medicine, token: string) {
-  //   const httpOptions1 = {
-  //     headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
-  //   };
-  //   return this.httpClient.post<Medicine>(AppConstants.ADD_MEDICINE, medicine, httpOptions1);
-  // }
-
   public save(medicine: Medicine, token: string): Observable<MessageResponse> {
     const formData: FormData = new FormData();
     formData.append('file', medicine.medicineImage);
@@ -37,15 +30,17 @@ export class MedicineService {
     };
     return this.httpClient.get<Medicine[]>(AppConstants.ADD_MEDICINE, httpOptions1);
   }
-  public findById(id: any): Observable<Medicine> {
-    console.log("service id::" + id);
-    let queryParams = new HttpParams();
-    queryParams = queryParams.append("id", id);
-    return this.httpClient.get<Medicine>(AppConstants.API_BASE_URL + AppConstants.GET_MEDICINE_BY_ID, { params: queryParams });
+  public findMedicineById(id: any, token: string): Observable<Medicine> {
+    const httpOptions1 = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
+    };
+    return this.httpClient.get<Medicine>(AppConstants.GET_MEDICINE_BY_ID + id, httpOptions1);
   }
 
-  deleteMedicine(id: number): Observable<any> {
-    console.log("medicine id::" + id);
-    return this.httpClient.delete(AppConstants.API_BASE_URL + AppConstants.DELETE_MEDICINE_BY_ID + id, { responseType: 'text' });
+  deleteMedicine(id: number, token: string): Observable<any> {
+    const httpOptions1 = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
+    };
+    return this.httpClient.delete(AppConstants.DELETE_MEDICINE_BY_ID + id, httpOptions1);
   }
 }
