@@ -22,7 +22,7 @@ export class MedicineComponent implements OnInit {
   statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
-  medicine: Medicine = new Medicine();
+  medicine: Medicine = new Medicine;
   medicineList!: Medicine[];
   expiryDate: any;
   selectedFiles?: FileList;

@@ -1,7 +1,9 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Medicine } from 'src/app/model/medicine';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
+import { MedicineService } from 'src/app/service/medicine.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -16,9 +18,10 @@ export class ProductDescriptionComponent implements OnInit {
   statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
+  medicine: Medicine = new Medicine;
   retrievedImage: any;
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private storageService: StorageService,
-    private userService: UserService, private renderer: Renderer2) { }
+  constructor(private activatedRoute: ActivatedRoute, private storageService: StorageService,
+    private userService: UserService, private medicineService: MedicineService) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
@@ -30,10 +33,9 @@ export class ProductDescriptionComponent implements OnInit {
       console.log(params);
       this.id = params['id'];
       if (this.id != undefined && this.id > 0) {
-        this.getProductDetailsById(this.id);
+        this.getMedicineData();
       } else {
         alert('In valid product id');
-        //this.router.navigate(['/myPatients']);
       }
     });
   }
@@ -45,7 +47,12 @@ export class ProductDescriptionComponent implements OnInit {
       }
     });
   }
-  getProductDetailsById(id: any) {
-
+  getMedicineData() {
+    this.medicineService.findMedicineById(this.id, this.currentUserInfo.token).subscribe((data: Medicine) => {
+      this.medicine = data;
+      if (this.medicine.imageData != null && this.medicine.imageData != undefined) {
+        this.medicine.retrievedImage = 'data:image/jpeg;base64,' + this.medicine.imageData;
+      }
+    });
   }
 }

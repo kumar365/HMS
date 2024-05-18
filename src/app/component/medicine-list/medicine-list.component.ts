@@ -42,7 +42,6 @@ export class MedicineListComponent implements OnInit {
    delete(medicine: Medicine): void {
       this.medicineService.deleteMedicine(medicine.id,this.currentUserInfo.token).subscribe((data: string) => {
          this.message = data;
-         console.log('this.message::' + this.message);
          if (this.message === 'Medicine is deleted successfully') {
             this.getMedicineList();
          }

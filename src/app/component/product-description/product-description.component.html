@@ -120,11 +120,13 @@
                                 <div class="doctor-widget">
                                     <div class="doc-info-left">
                                         <div class="doctor-img1">
-                                            <img src="/assets/img/products/product.jpg" class="img-fluid"
-                                                alt="User Image">
+                                            <div *ngIf=medicine.retrievedImage>
+                                                <img [src]="medicine.retrievedImage" class="img-fluid"
+                                                    alt="Product image">
+                                            </div>
                                         </div>
                                         <div class="doc-info-cont">
-                                            <h4 class="doc-name mb-2">Benzaxapine Croplex</h4>
+                                            <h4 class="doc-name mb-2">{{medicine.name}}</h4>
                                             <p><span class="text-muted">Manufactured By </span> Hamdard (Wakf)
                                                 Laboratories</p>
 
@@ -271,8 +273,9 @@
                         <div class="card search-filter">
                             <div class="card-body">
                                 <div class="clini-infos mt-0">
-                                    <h2>Rs.19 <b class="text-lg strike">Rs.45</b> <span
-                                            class="text-lg text-success"><b>10% off</b></span></h2>
+                                    <h2>Rs.{{medicine.medicinePrice}} <b
+                                            class="text-lg strike">Rs.{{medicine.medicinePrice}}</b> <span
+                                            class="text-lg text-success"><b>{{medicine.discount}}% off</b></span></h2>
                                 </div>
                                 <span class="badge badge-primary">In stock</span>
                                 <div class="custom-increment pt-4">
@@ -283,8 +286,8 @@
                                                 <span><i class="fas fa-minus"></i></span>
                                             </button>
                                         </span>
-                                        <input type="text" id="quantity" name="quantity" class=" input-number"
-                                            value="10">
+                                        <input type="text" [(ngModel)]="medicine.totalQuantity" class="input-number"
+                                            id="totalQuantity" name="totalQuantity" #totalQuantity="ngModel">
                                         <span class="input-group-btn float-end">
                                             <button type="button" class="quantity-right-plus btn btn-success btn-number"
                                                 data-type="plus" data-field="">
@@ -454,9 +457,8 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
-                                    <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a
-                                            href="/" target="_blank"
-                                            style="color:#fff"> Technologies Pvt. Ltd.</a></p>
+                                    <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a href="/"
+                                            target="_blank" style="color:#fff"> Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">
@@ -491,7 +493,8 @@
                                 <div class="call-user">
                                     <img alt="User Image" src="/assets/img/doctors/doctor-thumb-02.jpg"
                                         class="call-avatar">
-                                    <h4>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</h4>
+                                    <h4>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}
+                                    </h4>
                                     <span>Connecting...</span>
                                 </div>
                                 <div class="call-items">
@@ -521,7 +524,8 @@
                                 <div class="call-user">
                                     <img class="call-avatar" src="/assets/img/doctors/doctor-thumb-02.jpg"
                                         alt="User Image">
-                                    <h4>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</h4>
+                                    <h4>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}
+                                    </h4>
                                     <span>Calling ...</span>
                                 </div>
                                 <div class="call-items">
