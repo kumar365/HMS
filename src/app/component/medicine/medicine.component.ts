@@ -17,6 +17,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class MedicineComponent implements OnInit {
   id: any;
+  title!: string;
   message: any;
   statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
@@ -33,6 +34,7 @@ export class MedicineComponent implements OnInit {
     private router: Router, private medicineService: MedicineService, private renderer: Renderer2) {
   }
   ngOnInit(): void {
+    this.title = "Add Medicine";
     this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
@@ -40,6 +42,7 @@ export class MedicineComponent implements OnInit {
     }
     this.id = this.route.snapshot.params['id'];
     if (this.id != null && this.id != undefined) {
+      this.title = "Edit Medicine";
       this.getMedicineData();
     }
   }
