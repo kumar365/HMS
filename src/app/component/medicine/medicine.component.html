@@ -198,9 +198,16 @@
                               <div class="col-12 col-md-5">
                                  <div class="form-group">
                                     <label>Discount Percentage</label>
-                                    <input type="text" [(ngModel)]="medicine.discount" class="form-control"
-                                       id="discount" name="discount" placeholder="Enter discount" required
-                                       #discount="ngModel">
+                                    <input type="text" (change)="onChangeDiscountPercentage()" [(ngModel)]="medicine.discountPercentage" class="form-control"
+                                       id="discountPercentage" name="discountPercentage" placeholder="Enter Discount Percentage" required
+                                       #discountPercentage="ngModel">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
+                                    <label>Vendor</label>
+                                    <input type="text" [(ngModel)]="medicine.vendor" id="vendor" name="vendor"
+                                       class="form-control" placeholder="Enter vendor" #vendor="ngModel">
                                  </div>
                               </div>
                            </div>

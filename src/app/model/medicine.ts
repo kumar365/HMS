@@ -1,3 +1,5 @@
+import { ProductDetails } from "./product-details";
+
 export class Medicine {
     id!: any;
     name!: string;
@@ -16,13 +18,15 @@ export class Medicine {
     medicineImageName!: string;
     files!: File[];
     imageData!: any;
+    vendor!: string;
+    productDetails!: ProductDetails;
     version!: string;
     ipAddress!: string;
     modifiedBy!: string;
     modified_date!: any;
     createdBy!: string;
     createdDate!: any;
-    discount!: any;
+    discountPercentage!: any;
     retrievedImage: any;
 }
 

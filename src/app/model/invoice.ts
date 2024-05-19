@@ -1,5 +1,5 @@
 import { Discount } from "./discount";
-import { Product } from "./product";
+import { Medicine } from "./medicine";
 import { User } from "./user";
 
 export class Invoice {
@@ -10,7 +10,7 @@ export class Invoice {
     appointmentID!: any;
     invoice!: string;
     amount!: number;
-    product!: Product;
+    medicine!: Medicine;
     disount!: Discount;
     version!: string;
     ipAddress!: string;

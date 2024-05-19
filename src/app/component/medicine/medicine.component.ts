@@ -133,6 +133,15 @@ export class MedicineComponent implements OnInit {
     } else if (this.medicine.isPrescriptionRequired == "" || this.medicine.isPrescriptionRequired == undefined) {
       alert('Please Select Is Prescription Required');
       return false;
+    } else if (this.medicine.vendor == "" || this.medicine.vendor == undefined) {
+      alert('Please Enter Vendor');
+      const element = this.renderer.selectRootElement('#vendor');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validateVendor(this.medicine.vendor)) {
+      const element = this.renderer.selectRootElement('#vendor');
+      setTimeout(() => element.focus(), 0);
+      return false;
     } else if (this.medicine.medicineImage == undefined) {
       alert('Please Select Medicine Image');
       const element = this.renderer.selectRootElement('#medicineImage');
@@ -171,6 +180,24 @@ export class MedicineComponent implements OnInit {
   getTotalQTY() {
     if (this.medicine.units > 0 && this.medicine.units != undefined && this.medicine.quantityPerUnit > 0 && this.medicine.quantityPerUnit != undefined) {
       this.medicine.totalQuantity = this.medicine.units * this.medicine.quantityPerUnit;
+    }
+  }
+
+  onChangeDiscountPercentage() {
+    if (this.medicine.discountPercentage == 0 || this.medicine.discountPercentage == undefined) {
+      alert('Please Enter Discount Percentage');
+      const element = this.renderer.selectRootElement('#discountPercentage');
+      setTimeout(() => element.focus(), 0);
+    } else if (this.medicine.discountPercentage < 0) {
+      this.medicine.discountPercentage = 0;
+      alert('Please Enter Discount Percentage value only in positive values');
+      const element = this.renderer.selectRootElement('#discountPercentage');
+      setTimeout(() => element.focus(), 0);
+    } else if (this.medicine.discountPercentage >= 100) {
+      this.medicine.discountPercentage = 0;
+      alert('Please Enter Discount Percentage Less than 100');
+      const element = this.renderer.selectRootElement('#discountPercentage');
+      setTimeout(() => element.focus(), 0);
     }
   }
 

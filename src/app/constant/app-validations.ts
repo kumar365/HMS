@@ -247,5 +247,13 @@ export class AppValidations {
             return false;
         }
     }
-
+    static validateVendor(vendor: string): boolean {
+        var vendorRegex = /^[A-Za-z()_ ]{5,55}$/;
+        if (vendorRegex.test(vendor)) {
+            return true;
+        } else {
+            alert("Vendor name is not valid. Only characters A-Z and a-z are acceptable of length 5 to 55.");
+            return false;
+        }
+    }
 }
