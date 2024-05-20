@@ -19,6 +19,7 @@ export class Medicine {
     files!: File[];
     imageData!: any;
     vendor!: string;
+    usedFor!: string[];
     productDetails!: ProductDetails;
     version!: string;
     ipAddress!: string;

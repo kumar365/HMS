@@ -198,9 +198,10 @@
                               <div class="col-12 col-md-5">
                                  <div class="form-group">
                                     <label>Discount Percentage</label>
-                                    <input type="text" (change)="onChangeDiscountPercentage()" [(ngModel)]="medicine.discountPercentage" class="form-control"
-                                       id="discountPercentage" name="discountPercentage" placeholder="Enter Discount Percentage" required
-                                       #discountPercentage="ngModel">
+                                    <input type="text" (change)="onChangeDiscountPercentage()"
+                                       [(ngModel)]="medicine.discountPercentage" class="form-control"
+                                       id="discountPercentage" name="discountPercentage"
+                                       placeholder="Enter Discount Percentage" required #discountPercentage="ngModel">
                                  </div>
                               </div>
                               <div class="col-12 col-md-5">
@@ -208,6 +209,78 @@
                                     <label>Vendor</label>
                                     <input type="text" [(ngModel)]="medicine.vendor" id="vendor" name="vendor"
                                        class="form-control" placeholder="Enter vendor" #vendor="ngModel">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
+                                    <label>Used For (Enter multiple ; separated values)</label>
+                                    <input type="text" id="usedFor" name="usedFor" class="form-control"
+                                       (change)="addUsedFor()" [(ngModel)]="usedFor" class="form-control"
+                                       placeholder="Enter Used For">
+                                 </div>
+                              </div>
+                              <h4><b>Product Details</b></h4>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
+                                    <label>SKU</label>
+                                    <input type="text" [(ngModel)]="medicine.productDetails.sku" id="sku" name="sku"
+                                       class="form-control" placeholder="Enter SKU" #sku="ngModel">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
+                                    <label>Description</label>
+                                    <input type="text" [(ngModel)]="medicine.productDetails.description"
+                                       id="description" name="description" class="form-control"
+                                       placeholder="Enter Description" #description="ngModel">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
+                                    <label>Highlights (Enter multiple ; separated values)</label>
+                                    <input type="text" id="highlights" name="highlights" (change)="addHighlights()"
+                                       [(ngModel)]="highlights" class="form-control" placeholder="Enter Highlights">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
+                                    <label>Directions for use</label>
+                                    <input type="text" [(ngModel)]="medicine.productDetails.directionsForUse"
+                                       id="directionsForUse" name="directionsForUse" class="form-control"
+                                       placeholder="Enter Directions for use" #directionsForUse="ngModel">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
+                                    <label>Storage</label>
+                                    <input type="text" [(ngModel)]="medicine.productDetails.storage" id="storage"
+                                       name="storage" class="form-control" placeholder="Enter Storage"
+                                       #storage="ngModel">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
+                                    <label>Administration Instructions</label>
+                                    <input type="text" [(ngModel)]="medicine.productDetails.administrationInstructions"
+                                       id="administrationInstructions" name="administrationInstructions"
+                                       class="form-control" placeholder="Enter Administration Instructions"
+                                       #administrationInstructions="ngModel">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
+                                    <label>Warning</label>
+                                    <input type="text" [(ngModel)]="medicine.productDetails.warning" id="warning"
+                                       name="warning" class="form-control" placeholder="Enter Warning"
+                                       #warning="ngModel">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
+                                    <label>Precaution</label>
+                                    <input type="text" [(ngModel)]="medicine.productDetails.precaution" id="precaution"
+                                       name="precaution" class="form-control" placeholder="Enter Precaution"
+                                       #precaution="ngModel">
                                  </div>
                               </div>
                            </div>

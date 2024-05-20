@@ -126,16 +126,12 @@
                                         </div>
                                         <div class="doc-info-cont">
                                             <h4 class="doc-name mb-2">{{medicine.name}}</h4>
-                                            <p><span class="text-muted">Manufactured By </span> Hamdard (Wakf)
-                                                Laboratories</p>
+                                            <p><span class="text-muted">Manufactured By </span> {{medicine.vendor}} </p>
 
                                             <div class="feature-product pt-4">
                                                 <span>Applied for:</span>
-                                                <ul>
-                                                    <li>Moisturization & Nourishment</li>
-                                                    <li>Blackhead Removal</li>
-                                                    <li>Anti-acne & Pimples</li>
-                                                    <li>Whitening & Fairness</li>
+                                                <ul *ngFor="let usedForString of medicine.usedFor">
+                                                    <li>{{usedForString}}</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -151,7 +147,6 @@
                                 <h3 class="pt-4">Product Details</h3>
                                 <hr>
 
-
                                 <div class="tab-content pt-3">
 
                                     <div role="tabpanel" id="doc_overview" class="tab-pane fade show active">
@@ -160,58 +155,21 @@
 
                                                 <div class="widget about-widget">
                                                     <h4 class="widget-title">Description</h4>
-                                                    <p>Safi syrup is best for purifying the blood. As it contains herbal
-                                                        extracts it can cure indigestion, constipation, nose bleeds and
-                                                        acne boils. It helps in the removal of the toxins from the
-                                                        blood. It improves the complexion and gives you a healthy life
-                                                    </p>
+                                                    <p>{{medicine.productDetails.description}}</p>
                                                 </div>
-
 
                                                 <div class="widget awards-widget">
                                                     <h4 class="widget-title">Highlights</h4>
                                                     <div class="experience-box">
-                                                        <ul class="experience-list">
+                                                        <ul class="experience-list"
+                                                            *ngFor="let highlightsString of medicine.productDetails.highlights">
                                                             <li>
                                                                 <div class="experience-user">
                                                                     <div class="before-circle"></div>
                                                                 </div>
                                                                 <div class="experience-content">
                                                                     <div class="timeline-content">
-                                                                        <p>Safi syrup is known for its best purifying
-                                                                            syrup for blood.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="experience-user">
-                                                                    <div class="before-circle"></div>
-                                                                </div>
-                                                                <div class="experience-content">
-                                                                    <div class="timeline-content">
-                                                                        <p>It helps in eliminating the toxins from the
-                                                                            bloodstream.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="experience-user">
-                                                                    <div class="before-circle"></div>
-                                                                </div>
-                                                                <div class="experience-content">
-                                                                    <div class="timeline-content">
-                                                                        <p>It improves digestion.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="experience-user">
-                                                                    <div class="before-circle"></div>
-                                                                </div>
-                                                                <div class="experience-content">
-                                                                    <div class="timeline-content">
-                                                                        <p>It also helps in indigestion and
-                                                                            constipation.</p>
+                                                                        <p>{{highlightsString}}</p>
                                                                     </div>
                                                                 </div>
                                                             </li>
@@ -219,43 +177,29 @@
                                                     </div>
                                                 </div>
 
-
                                                 <div class="widget about-widget">
                                                     <h4 class="widget-title">Directions for use</h4>
-                                                    <p>Adults: Take 2 tablespoons once a day in a glass full of water.
-                                                    </p>
+                                                    <p>{{medicine.productDetails.directionsForUse}}</p>
                                                 </div>
-
 
                                                 <div class="widget about-widget">
                                                     <h4 class="widget-title">Storage</h4>
-                                                    <p>Store this syrup at room temperature protected from sunlight,
-                                                        heat, and moisture. Keep away from reaching out of children and
-                                                        pets. Ensure that the unused medicine is disposed of properly.
-                                                    </p>
+                                                    <p>{{medicine.productDetails.storage}}</p>
                                                 </div>
-
 
                                                 <div class="widget about-widget">
                                                     <h4 class="widget-title">Administration Instructions</h4>
-                                                    <p>Shake the bottle before its use. This syrup can be taken with or
-                                                        without food. The quantity consumed should not be lesser or
-                                                        greater than the prescribed one.</p>
+                                                    <p>{{medicine.productDetails.administrationInstructions}}</p>
                                                 </div>
-
 
                                                 <div class="widget about-widget">
                                                     <h4 class="widget-title">Warning</h4>
-                                                    <p>This is not recommended for the pregnant women and lactating
-                                                        mothers.</p>
+                                                    <p>{{medicine.productDetails.warning}}</p>
                                                 </div>
-
 
                                                 <div class="widget about-widget mb-3">
                                                     <h4 class="widget-title">Precaution</h4>
-                                                    <p class="mb-0">Syrup has to be disposed of properly after 3 years
-                                                        from manufactured date and it is not recommended to use after
-                                                        the date.</p>
+                                                    <p>{{medicine.productDetails.precaution}}</p>
                                                 </div>
 
                                             </div>
@@ -274,7 +218,8 @@
                                 <div class="clini-infos mt-0">
                                     <h2>Rs.{{medicine.medicinePrice}} <b
                                             class="text-lg strike">Rs.{{medicine.medicinePrice}}</b> <span
-                                            class="text-lg text-success"><b>{{medicine.discountPercentage}}% off</b></span></h2>
+                                            class="text-lg text-success"><b>{{medicine.discountPercentage}}%
+                                                off</b></span></h2>
                                 </div>
                                 <span class="badge badge-primary">In stock</span>
                                 <div class="custom-increment pt-4">
@@ -302,7 +247,8 @@
                                 </div>
                                 <div class="card flex-fill mt-4 mb-0">
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">SKU <span class="float-end">201902-0057</span></li>
+                                        <li class="list-group-item">SKU <span
+                                                class="float-end">{{medicine.productDetails.sku}}</span></li>
                                         <li class="list-group-item">Pack Size <span class="float-end">100g</span></li>
                                         <li class="list-group-item">Unit Count <span class="float-end">200ml</span></li>
                                         <li class="list-group-item">Country <span class="float-end">India</span></li>

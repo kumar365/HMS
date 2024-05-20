@@ -2,8 +2,8 @@ export class ProductDetails {
     id!: any;
     name!: string;
     sku!: string;
-    discription!: string;
-    highlights!: string;
+    description!: string;
+    highlights!: string[];
     directionsForUse!: string;
     storage!: string;
     administrationInstructions!: string;

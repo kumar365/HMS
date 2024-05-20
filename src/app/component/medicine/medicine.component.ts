@@ -4,6 +4,7 @@ import { AppValidations } from 'src/app/constant/app-validations';
 import { MessageConstants } from 'src/app/constant/message-constants';
 import { Medicine } from 'src/app/model/medicine';
 import { MessageResponse } from 'src/app/model/message-response';
+import { ProductDetails } from 'src/app/model/product-details';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
 import { MedicineService } from 'src/app/service/medicine.service';
@@ -29,6 +30,8 @@ export class MedicineComponent implements OnInit {
   currentFile?: File;
   progress = 0;
   preview = '';
+  usedFor: string = '';
+  highlights: string = '';
   retrievedImage: any;
   constructor(private storageService: StorageService, private route: ActivatedRoute, private userService: UserService,
     private router: Router, private medicineService: MedicineService, private renderer: Renderer2) {
@@ -59,6 +62,30 @@ export class MedicineComponent implements OnInit {
       this.medicine = data;
       if (this.medicine.imageData != null && this.medicine.imageData != undefined) {
         this.medicine.retrievedImage = 'data:image/jpeg;base64,' + this.medicine.imageData;
+        this.medicine.medicineImage = this.medicine.imageData;
+      }
+      if (this.medicine.productDetails == null && this.medicine.productDetails == undefined) {
+        this.medicine.productDetails = new ProductDetails;
+      }
+      if (this.medicine.usedFor != null && this.medicine.usedFor != undefined) {
+        this.usedFor = '';
+        for (let index = 0; index < this.medicine.usedFor.length; index++) {
+          if (index == 0) {
+            this.usedFor = this.medicine.usedFor[index];
+          } else {
+            this.usedFor = this.usedFor + "; " + this.medicine.usedFor[index];
+          }
+        }
+      }
+      if (this.medicine.productDetails.highlights != null && this.medicine.productDetails.highlights != undefined) {
+        this.usedFor = '';
+        for (let index = 0; index < this.medicine.productDetails.highlights.length; index++) {
+          if (index == 0) {
+            this.highlights = this.medicine.productDetails.highlights[index];
+          } else {
+            this.highlights = this.highlights + "; " + this.medicine.productDetails.highlights[index];
+          }
+        }
       }
     });
   }
@@ -85,7 +112,12 @@ export class MedicineComponent implements OnInit {
     }
   }
   validateMedicineData(): boolean {
-    if (this.medicine.name == "" || this.medicine.name == undefined) {
+    if (this.medicine.medicineImage == undefined) {
+      alert('Please Select Medicine Image');
+      const element = this.renderer.selectRootElement('#medicineImage');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.medicine.name == "" || this.medicine.name == undefined) {
       alert('Please Enter Medicine Name');
       const element = this.renderer.selectRootElement('#name');
       setTimeout(() => element.focus(), 0);
@@ -142,9 +174,9 @@ export class MedicineComponent implements OnInit {
       const element = this.renderer.selectRootElement('#vendor');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (this.medicine.medicineImage == undefined) {
-      alert('Please Select Medicine Image');
-      const element = this.renderer.selectRootElement('#medicineImage');
+    } else if (this.medicine.usedFor == null || this.medicine.usedFor == undefined) {
+      alert('Please Enter Used For');
+      const element = this.renderer.selectRootElement('#usedFor');
       setTimeout(() => element.focus(), 0);
       return false;
     } else {
@@ -154,6 +186,9 @@ export class MedicineComponent implements OnInit {
 
   onSubmit() {
     if (this.validateMedicineData()) {
+      if (this.medicine.productDetails != null && this.medicine.productDetails != undefined) {
+        this.medicine.productDetails.name = this.medicine.name;
+      }
       this.medicineService.save(this.medicine, this.currentUserInfo.token).subscribe((data: MessageResponse) => {
         this.message = data.message;
         if (this.message == MessageConstants.MedicineMessage) {
@@ -198,6 +233,21 @@ export class MedicineComponent implements OnInit {
       alert('Please Enter Discount Percentage Less than 100');
       const element = this.renderer.selectRootElement('#discountPercentage');
       setTimeout(() => element.focus(), 0);
+    }
+  }
+
+  addUsedFor() {
+    this.medicine.usedFor = [];
+    const usedForArray = this.usedFor.split(";");
+    for (let index = 0; index < usedForArray.length; index++) {
+      this.medicine.usedFor.push(usedForArray[index]);
+    }
+  }
+  addHighlights() {
+    this.medicine.productDetails.highlights = [];
+    const highlightsArray = this.highlights.split(";");
+    for (let index = 0; index < highlightsArray.length; index++) {
+      this.medicine.productDetails.highlights.push(highlightsArray[index]);
     }
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Medicine } from 'src/app/model/medicine';
+import { ProductDetails } from 'src/app/model/product-details';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
 import { MedicineService } from 'src/app/service/medicine.service';
@@ -52,6 +53,9 @@ export class ProductDescriptionComponent implements OnInit {
       this.medicine = data;
       if (this.medicine.imageData != null && this.medicine.imageData != undefined) {
         this.medicine.retrievedImage = 'data:image/jpeg;base64,' + this.medicine.imageData;
+      }
+      if (this.medicine.productDetails == null && this.medicine.productDetails == undefined) {
+        this.medicine.productDetails = new ProductDetails;
       }
     });
   }
