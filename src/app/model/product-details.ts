@@ -2,6 +2,9 @@ export class ProductDetails {
     id!: any;
     name!: string;
     sku!: string;
+    packSize!: string;
+    unitCount!: string;
+    country!: string;
     description!: string;
     highlights!: string[];
     directionsForUse!: string;

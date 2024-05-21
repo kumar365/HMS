@@ -256,4 +256,13 @@ export class AppValidations {
             return false;
         }
     }
+    static validateDescription(description: string, name: string): boolean {
+        var descriptionRegex = /^(.|\s)*[a-zA-Z]+(.|\s)*$/;
+        if (descriptionRegex.test(description)) {
+            return true;
+        } else {
+            alert("Your "+name+" is not valid.");
+            return false;
+        }
+    }
 }

@@ -179,8 +179,98 @@ export class MedicineComponent implements OnInit {
       const element = this.renderer.selectRootElement('#usedFor');
       setTimeout(() => element.focus(), 0);
       return false;
+    } else if (!this.validateProductDetails()) {
+      return false;
     } else {
       return true;
+    }
+  }
+  validateProductDetails(): boolean {
+    if (this.medicine.productDetails != null && this.medicine.productDetails != undefined) {
+      if (this.medicine.productDetails.sku == "" || this.medicine.productDetails.sku == undefined) {
+        alert('Please Enter SKU');
+        const element = this.renderer.selectRootElement('#sku');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (this.medicine.productDetails.packSize == "" || this.medicine.productDetails.packSize == undefined) {
+        alert('Please Enter Pack Size');
+        const element = this.renderer.selectRootElement('#packSize');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (this.medicine.productDetails.unitCount == "" || this.medicine.productDetails.unitCount == undefined) {
+        alert('Please Enter Unit Count');
+        const element = this.renderer.selectRootElement('#unitCount');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (this.medicine.productDetails.country == "" || this.medicine.productDetails.country == undefined) {
+        alert('Please Enter Country');
+        const element = this.renderer.selectRootElement('#country');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (this.medicine.productDetails.description == "" || this.medicine.productDetails.description == undefined) {
+        alert('Please Enter Medicine Description');
+        const element = this.renderer.selectRootElement('#description');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (!AppValidations.validateDescription(this.medicine.productDetails.description, 'Description')) {
+        const element = this.renderer.selectRootElement('#description');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (this.medicine.productDetails.highlights == null || this.medicine.productDetails.highlights == undefined) {
+        alert('Please Enter Medicine Highlights');
+        const element = this.renderer.selectRootElement('#highlights');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (this.medicine.productDetails.directionsForUse == "" || this.medicine.productDetails.directionsForUse == undefined) {
+        alert('Please Enter Directions For Use');
+        const element = this.renderer.selectRootElement('#directionsForUse');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (!AppValidations.validateDescription(this.medicine.productDetails.directionsForUse, 'Directions For Use')) {
+        const element = this.renderer.selectRootElement('#directionsForUse');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (this.medicine.productDetails.storage == "" || this.medicine.productDetails.storage == undefined) {
+        alert('Please Enter Medicine Storage');
+        const element = this.renderer.selectRootElement('#storage');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (!AppValidations.validateDescription(this.medicine.productDetails.storage, 'Storage')) {
+        const element = this.renderer.selectRootElement('#storage');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (this.medicine.productDetails.administrationInstructions == "" || this.medicine.productDetails.administrationInstructions == undefined) {
+        alert('Please Enter Administration Instructions');
+        const element = this.renderer.selectRootElement('#administrationInstructions');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (!AppValidations.validateDescription(this.medicine.productDetails.administrationInstructions, 'Administration Instructions')) {
+        const element = this.renderer.selectRootElement('#administrationInstructions');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (this.medicine.productDetails.warning == "" || this.medicine.productDetails.warning == undefined) {
+        alert('Please Enter warning');
+        const element = this.renderer.selectRootElement('#warning');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (!AppValidations.validateDescription(this.medicine.productDetails.warning, 'Warning')) {
+        const element = this.renderer.selectRootElement('#warning');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (this.medicine.productDetails.precaution == "" || this.medicine.productDetails.precaution == undefined) {
+        alert('Please Enter Precaution');
+        const element = this.renderer.selectRootElement('#precaution');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (!AppValidations.validateDescription(this.medicine.productDetails.precaution, 'Precaution')) {
+        const element = this.renderer.selectRootElement('#precaution');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      return false;
     }
   }
 

@@ -229,6 +229,30 @@
                               </div>
                               <div class="col-12 col-md-5">
                                  <div class="form-group">
+                                    <label>Pack Size</label>
+                                    <input type="text" [(ngModel)]="medicine.productDetails.packSize" id="packSize"
+                                       name="packSize" class="form-control" placeholder="Enter Pack Size"
+                                       #packSize="ngModel">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
+                                    <label>Unit Count</label>
+                                    <input type="text" [(ngModel)]="medicine.productDetails.unitCount" id="unitCount"
+                                       name="unitCount" class="form-control" placeholder="Enter Unit Count"
+                                       #unitCount="ngModel">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
+                                    <label>Country</label>
+                                    <input type="text" [(ngModel)]="medicine.productDetails.country" id="country"
+                                       name="country" class="form-control" placeholder="Enter Country"
+                                       #country="ngModel">
+                                 </div>
+                              </div>
+                              <div class="col-12 col-md-5">
+                                 <div class="form-group">
                                     <label>Description</label>
                                     <input type="text" [(ngModel)]="medicine.productDetails.description"
                                        id="description" name="description" class="form-control"
