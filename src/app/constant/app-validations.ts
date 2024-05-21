@@ -256,6 +256,42 @@ export class AppValidations {
             return false;
         }
     }
+    static validateSKU(sku: string): boolean {
+        var skuRegex = /^[A-Za-z0-9]{5,15}\-\/[0-9]{1,4}$/;
+        if (skuRegex.test(sku)) {
+            return true;
+        } else {
+            alert("SKU value is not valid.");
+            return false;
+        }
+    }
+    static validatePackSize(packSize: string): boolean {
+        var packSizeRegex = /^[0-9]{1,4}[A-Za-z]{2,16}$/;
+        if (packSizeRegex.test(packSize)) {
+            return true;
+        } else {
+            alert("Pack Size value is not valid.");
+            return false;
+        }
+    }
+    static validateUnitCount(unitCount: string): boolean {
+        var unitCountRegex = /^[0-9]{1,4}[A-Za-z]{2,16}$/;
+        if (unitCountRegex.test(unitCount)) {
+            return true;
+        } else {
+            alert("Unit Count value is not valid.");
+            return false;
+        }
+    }
+    static validateCountry(country: string): boolean {
+        var countryRegex = /^[A-Za-z ]{4,50}$/;
+        if (countryRegex.test(country)) {
+            return true;
+        } else {
+            alert("Country value is not valid.");
+            return false;
+        }
+    }
     static validateDescription(description: string, name: string): boolean {
         var descriptionRegex = /^(.|\s)*[a-zA-Z]+(.|\s)*$/;
         if (descriptionRegex.test(description)) {

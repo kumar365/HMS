@@ -192,8 +192,16 @@ export class MedicineComponent implements OnInit {
         const element = this.renderer.selectRootElement('#sku');
         setTimeout(() => element.focus(), 0);
         return false;
+      } else if (!AppValidations.validateSKU(this.medicine.productDetails.sku)) {
+        const element = this.renderer.selectRootElement('#sku');
+        setTimeout(() => element.focus(), 0);
+        return false;
       } else if (this.medicine.productDetails.packSize == "" || this.medicine.productDetails.packSize == undefined) {
         alert('Please Enter Pack Size');
+        const element = this.renderer.selectRootElement('#packSize');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (!AppValidations.validatePackSize(this.medicine.productDetails.packSize)) {
         const element = this.renderer.selectRootElement('#packSize');
         setTimeout(() => element.focus(), 0);
         return false;
@@ -202,8 +210,16 @@ export class MedicineComponent implements OnInit {
         const element = this.renderer.selectRootElement('#unitCount');
         setTimeout(() => element.focus(), 0);
         return false;
+      } else if (!AppValidations.validateUnitCount(this.medicine.productDetails.unitCount)) {
+        const element = this.renderer.selectRootElement('#unitCount');
+        setTimeout(() => element.focus(), 0);
+        return false;
       } else if (this.medicine.productDetails.country == "" || this.medicine.productDetails.country == undefined) {
         alert('Please Enter Country');
+        const element = this.renderer.selectRootElement('#country');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (!AppValidations.validateCountry(this.medicine.productDetails.country)) {
         const element = this.renderer.selectRootElement('#country');
         setTimeout(() => element.focus(), 0);
         return false;
