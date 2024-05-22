@@ -257,7 +257,7 @@ export class AppValidations {
         }
     }
     static validateSKU(sku: string): boolean {
-        var skuRegex = /^[A-Za-z0-9]{5,15}\-\/[0-9]{1,4}$/;
+        var skuRegex = /^[0-9 -]{5,20}$/;
         if (skuRegex.test(sku)) {
             return true;
         } else {
@@ -266,7 +266,7 @@ export class AppValidations {
         }
     }
     static validatePackSize(packSize: string): boolean {
-        var packSizeRegex = /^[0-9]{1,4}[A-Za-z]{2,16}$/;
+        var packSizeRegex = /^[0-9]{1,4}[A-Za-z]{1,5}$/;
         if (packSizeRegex.test(packSize)) {
             return true;
         } else {
@@ -275,7 +275,7 @@ export class AppValidations {
         }
     }
     static validateUnitCount(unitCount: string): boolean {
-        var unitCountRegex = /^[0-9]{1,4}[A-Za-z]{2,16}$/;
+        var unitCountRegex = /^[0-9]{1,4}[A-Za-z]{1,5}$/;
         if (unitCountRegex.test(unitCount)) {
             return true;
         } else {
