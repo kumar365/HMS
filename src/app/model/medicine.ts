@@ -6,7 +6,7 @@ export class Medicine {
     medicineType!: string;
     medicineCategory!: string;
     medicineRegNumber!: string;
-    medicinePrice!: string;
+    medicinePrice!: number;
     expiryDate!: any;
     expiryDateString!: string;
     units!: number;
@@ -29,5 +29,6 @@ export class Medicine {
     createdDate!: any;
     discountPercentage!: any;
     retrievedImage: any;
+    quantity1!: number;
 }
 

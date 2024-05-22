@@ -12,7 +12,6 @@ import { MedicalRecords } from '../model/medical-records';
 import { Ambulance } from '../model/ambulance';
 import { Prescription } from '../model/prescription';
 import { Appointment } from '../model/appointment';
-import { Product } from '../model/product';
 import { Orders } from '../model/orders';
 
 
@@ -176,18 +175,6 @@ export class UserService {
     };
     return this.httpClient.get<Appointment[]>(AppConstants.GET_DOCTOR_APPOINTMENT_LIST_TODAY + id, httpOptions1);
   }
-  public saveProduct(product: Product, token: String): Observable<ApiResponse> {
-    const httpOptions1 = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
-    };
-    return this.httpClient.post<ApiResponse>(AppConstants.ADD_PRODUCT, Product, httpOptions1);
-  }
-  public getProductList(userInfo: UserInfo): Observable<Product[]> {
-    const httpOptions1 = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + userInfo.token })
-    };
-    return this.httpClient.get<Product[]>(AppConstants.GET_PRODUCT_LIST + userInfo.id, httpOptions1);
-  }
   public getPatientList(token: string): Observable<User[]> {
     const httpOptions1 = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
@@ -212,5 +199,5 @@ export class UserService {
     };
     return this.httpClient.get<Orders[]>(AppConstants.GET_ORDERS_LIST + userInfo.id, httpOptions1);
   }
- }
+}
 

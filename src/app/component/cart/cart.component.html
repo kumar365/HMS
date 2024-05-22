@@ -125,33 +125,39 @@
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody *ngFor="let medicine of medicineList">
                                             <tr>
                                                 <td>
                                                     <h2 class="table-avatar">
-                                                        <a href="productDescription" class="avatar avatar-sm me-2"><img
-                                                                class="avatar-img"
-                                                                src="/assets/img/products/product.jpg"
-                                                                alt="User Image"></a>
+                                                        <a href="productDescription?id={{medicine.id}}"
+                                                            class="avatar avatar-sm me-2">
+                                                            <div *ngIf=medicine.retrievedImage>
+                                                                <img [src]="medicine.retrievedImage" class="avatar-img"
+                                                                    alt="Product image">
+                                                            </div>
+                                                        </a>
                                                     </h2>
-                                                    <a href="productDescription">Benzaxapine Croplex</a>
+                                                    <a
+                                                        href="productDescription?id={{medicine.id}}">{{medicine.name}}</a>
                                                 </td>
-                                                <td>26565</td>
-                                                <td>Rs19</td>
+                                                <td>{{medicine.productDetails.sku}}</td>
+                                                <td>Rs{{medicine.medicinePrice}}</td>
                                                 <td class="text-center">
                                                     <div class="custom-increment cart">
                                                         <div class="input-group1">
                                                             <span class="input-group-btn">
                                                                 <button type="button"
+                                                                    (click)="onClick('minus',medicine.id)"
                                                                     class="quantity-left-minus btn btn-danger btn-number"
                                                                     data-type="minus" data-field="">
                                                                     <span><i class="fas fa-minus"></i></span>
                                                                 </button>
                                                             </span>
                                                             <input type="text" id="quantity1" name="quantity1"
-                                                                class=" input-number" value="10">
+                                                                class="input-number" [value]="medicine.quantity1">
                                                             <span class="input-group-btn">
                                                                 <button type="button"
+                                                                    (click)="onClick('plus',medicine.id)"
                                                                     class="quantity-right-plus btn btn-success btn-number"
                                                                     data-type="plus" data-field="">
                                                                     <span><i class="fas fa-plus"></i></span>
@@ -160,7 +166,8 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td class="text-center">Rs19</td>
+                                                <td class="text-center">Rs{{medicine.medicinePrice*medicine.quantity1}}
+                                                </td>
                                                 <td class="text-end">
                                                     <div class="table-action">
                                                         <a href="javascript:void(0);"
@@ -170,182 +177,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="productDescription" class="avatar avatar-sm me-2"><img
-                                                                class="avatar-img"
-                                                                src="/assets/img/products/product1.jpg"
-                                                                alt="User Image"></a>
-                                                    </h2>
-                                                    <a href="productDescription">Ombinazol Bonibamol</a>
-                                                </td>
-                                                <td>865727</td>
-                                                <td>Rs22</td>
-                                                <td class="text-center">
-                                                    <div class="custom-increment cart">
-                                                        <div class="input-group1">
-                                                            <span class="input-group-btn">
-                                                                <button type="button"
-                                                                    class="quantity-left-minus btn btn-danger btn-number"
-                                                                    data-type="minus" data-field="">
-                                                                    <span><i class="fas fa-minus"></i></span>
-                                                                </button>
-                                                            </span>
-                                                            <input type="text" id="quantity2" name="quantity2"
-                                                                class=" input-number" value="10">
-                                                            <span class="input-group-btn">
-                                                                <button type="button"
-                                                                    class="quantity-right-plus btn btn-success btn-number"
-                                                                    data-type="plus" data-field="">
-                                                                    <span><i class="fas fa-plus"></i></span>
-                                                                </button>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-center">Rs22</td>
-                                                <td class="text-end">
-                                                    <div class="table-action">
-                                                        <a href="javascript:void(0);"
-                                                            class="btn btn-sm bg-danger-light">
-                                                            <i class="fas fa-times"></i>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="productDescription" class="avatar avatar-sm me-2"><img
-                                                                class="avatar-img"
-                                                                src="/assets/img/products/product2.jpg"
-                                                                alt="User Image"></a>
-                                                    </h2>
-                                                    <a href="productDescription">Dantotate Dantodazole</a>
-                                                </td>
-                                                <td>978656</td>
-                                                <td>Rs10</td>
-                                                <td class="text-center">
-                                                    <div class="custom-increment cart">
-                                                        <div class="input-group1">
-                                                            <span class="input-group-btn">
-                                                                <button type="button"
-                                                                    class="quantity-left-minus btn btn-danger btn-number"
-                                                                    data-type="minus" data-field="">
-                                                                    <span><i class="fas fa-minus"></i></span>
-                                                                </button>
-                                                            </span>
-                                                            <input type="text" id="quantity3" name="quantity3"
-                                                                class=" input-number" value="10">
-                                                            <span class="input-group-btn">
-                                                                <button type="button"
-                                                                    class="quantity-right-plus btn btn-success btn-number"
-                                                                    data-type="plus" data-field="">
-                                                                    <span><i class="fas fa-plus"></i></span>
-                                                                </button>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-center">Rs10</td>
-                                                <td class="text-end">
-                                                    <div class="table-action">
-                                                        <a href="javascript:void(0);"
-                                                            class="btn btn-sm bg-danger-light">
-                                                            <i class="fas fa-times"></i>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="productDescription" class="avatar avatar-sm me-2"><img
-                                                                class="avatar-img"
-                                                                src="/assets/img/products/product3.jpg"
-                                                                alt="User Image"></a>
-                                                    </h2>
-                                                    <a href="productDescription">Alispirox Aerorenone</a>
-                                                </td>
-                                                <td>543252</td>
-                                                <td>Rs26</td>
-                                                <td class="text-center">
-                                                    <div class="custom-increment cart">
-                                                        <div class="input-group1">
-                                                            <span class="input-group-btn">
-                                                                <button type="button"
-                                                                    class="quantity-left-minus btn btn-danger btn-number"
-                                                                    data-type="minus" data-field="">
-                                                                    <span><i class="fas fa-minus"></i></span>
-                                                                </button>
-                                                            </span>
-                                                            <input type="text" id="quantity4" name="quantity4"
-                                                                class=" input-number" value="10">
-                                                            <span class="input-group-btn">
-                                                                <button type="button"
-                                                                    class="quantity-right-plus btn btn-success btn-number"
-                                                                    data-type="plus" data-field="">
-                                                                    <span><i class="fas fa-plus"></i></span>
-                                                                </button>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-center">Rs26</td>
-                                                <td class="text-end">
-                                                    <div class="table-action">
-                                                        <a href="javascript:void(0);"
-                                                            class="btn btn-sm bg-danger-light">
-                                                            <i class="fas fa-times"></i>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="productDescription" class="avatar avatar-sm me-2"><img
-                                                                class="avatar-img"
-                                                                src="/assets/img/products/product4.jpg"
-                                                                alt="User Image"></a>
-                                                    </h2>
-                                                    <a href="productDescription">Nitrolozin Zithrotropin</a>
-                                                </td>
-                                                <td>634534</td>
-                                                <td>Rs12</td>
-                                                <td class="text-center">
-                                                    <div class="custom-increment cart">
-                                                        <div class="input-group1">
-                                                            <span class="input-group-btn">
-                                                                <button type="button"
-                                                                    class="quantity-left-minus btn btn-danger btn-number"
-                                                                    data-type="minus" data-field="">
-                                                                    <span><i class="fas fa-minus"></i></span>
-                                                                </button>
-                                                            </span>
-                                                            <input type="text" id="quantity5" name="quantity5"
-                                                                class=" input-number" value="10">
-                                                            <span class="input-group-btn">
-                                                                <button type="button"
-                                                                    class="quantity-right-plus btn btn-success btn-number"
-                                                                    data-type="plus" data-field="">
-                                                                    <span><i class="fas fa-plus"></i></span>
-                                                                </button>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-center">Rs12</td>
-                                                <td class="text-end">
-                                                    <div class="table-action">
-                                                        <a href="javascript:void(0);"
-                                                            class="btn btn-sm bg-danger-light">
-                                                            <i class="fas fa-times"></i>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -362,8 +194,9 @@
                                 <div class="booking-summary">
                                     <div class="booking-item-wrap">
                                         <div class="cart1">
-                                            Subtotal <span class="xds">Rs.5,877</span><br />
-                                            Shipping <span class="xds">Rs.25</span>
+                                            Subtotal <span
+                                                class="xds">Rs.{{medicine.medicinePrice*medicine.quantity1}}</span><br />
+                                            Shipping <span class="xds">Rs.10</span>
                                         </div>
 
                                         <ul class="booking-fee pt-4">
@@ -373,7 +206,8 @@
                                             <ul class="booking-total-list">
                                                 <li>
                                                     <span>Total</span>
-                                                    <span class="total-cost">Rs.160</span>
+                                                    <span
+                                                        class="total-cost">Rs.{{(medicine.medicinePrice*medicine.quantity1)+10}}</span>
                                                 </li>
                                                 <li>
                                                     <div class="clinic-booking pt-4">

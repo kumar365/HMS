@@ -184,9 +184,9 @@ export class AppValidations {
             return false;
         }
     }
-    static validatePrice(price: string): boolean {
+    static validatePrice(price: number): boolean {
         var priceRegex = /^\d+(\.\d{1,2})?$/;
-        if (priceRegex.test(price)) {
+        if (priceRegex.test(price.toString())) {
             if (+price < 0) {
                 alert("Price should be greater than Zero(>0).");
                 return false;

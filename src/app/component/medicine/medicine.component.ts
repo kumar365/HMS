@@ -126,7 +126,7 @@ export class MedicineComponent implements OnInit {
       const element = this.renderer.selectRootElement('#name');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (this.medicine.medicinePrice == "" || this.medicine.medicinePrice == undefined) {
+    } else if (this.medicine.medicinePrice <= 0 || this.medicine.medicinePrice == undefined) {
       alert('Please Enter Medicine Price');
       const element = this.renderer.selectRootElement('#medicinePrice');
       setTimeout(() => element.focus(), 0);
