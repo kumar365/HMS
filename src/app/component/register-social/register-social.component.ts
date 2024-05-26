@@ -14,12 +14,18 @@ export class RegisterSocialComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
-
+  showPassword: boolean = true;
+  showPasswordConfirm: boolean = true;
   constructor(private authService: AuthService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
   }
-
+  toggleShow() {
+    this.showPassword = !this.showPassword;
+  }
+  toggleShowConfirm() {
+    this.showPasswordConfirm = !this.showPasswordConfirm;
+  }
   validateRegistrationForm(): boolean {
     //alert('validateLoginForm');
     if (this.form.displayName == "" || this.form.displayName == undefined) {

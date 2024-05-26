@@ -22,6 +22,7 @@ export class LoginSocialComponent implements OnInit {
   errorMessage = '';
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
+  showPassword: boolean = true;
   googleURL = AppConstants.GOOGLE_AUTH_URL;
   facebookURL = AppConstants.FACEBOOK_AUTH_URL;
   githubURL = AppConstants.GITHUB_AUTH_URL;
@@ -43,6 +44,9 @@ export class LoginSocialComponent implements OnInit {
       this.isLoggedIn = false;
       this.currentUserInfo = this.storageService.getDoctorUser();
     }
+  }
+  toggleShow() {
+    this.showPassword = !this.showPassword;
   }
   validateLoginForm(): boolean {
     if (this.form.username == "" || this.form.username == undefined) {

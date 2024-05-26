@@ -19,6 +19,9 @@ export class ChangePasswordComponent implements OnInit {
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
   formData!: FormGroup;
+  showPasswordOld: boolean = true;
+  showPasswordNew: boolean = true;
+  showPasswordConfirm: boolean = true;
   retrievedImage: any;
   constructor(private storageService: StorageService, private userService: UserService, private renderer: Renderer2) { }
 
@@ -38,6 +41,15 @@ export class ChangePasswordComponent implements OnInit {
         this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
       }
     });
+  }
+  toggleShowOld() {
+    this.showPasswordOld = !this.showPasswordOld;
+  }
+  toggleShowNew() {
+    this.showPasswordNew = !this.showPasswordNew;
+  }
+  toggleShowConfirm() {
+    this.showPasswordConfirm = !this.showPasswordConfirm;
   }
   validateChangePasswordData(data: any): boolean {
     if (data.oldPassword == "" || data.oldPassword == undefined) {

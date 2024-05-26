@@ -12,8 +12,10 @@
                         placeholder="Username" required autofocus>
                      <br>
                      <label for="inputPassword" class="sr-only">Password</label>
-                     <input type="password" id="inputPassword" class="form-control" formControlName="password"
-                        placeholder="Password" required>
+                     <input [type]="showPassword ? 'password' : 'text'" id="inputPassword" class="form-control"
+                        formControlName="password" placeholder="Password" required>
+                     <span (click)="toggleShow()"
+                        [class]="showPassword ? 'feather-eye toggle-password-sub' :'feather-eye-off toggle-password-sub'"></span>
                      <br>
                      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                   </form>

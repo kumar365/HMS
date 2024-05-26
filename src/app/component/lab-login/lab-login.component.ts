@@ -14,6 +14,7 @@ export class LabLoginComponent implements OnInit {
   statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
+  showPassword: boolean = true;
   retrievedImage: any;
   constructor(private storageService: StorageService, private userService: UserService) { }
 
@@ -31,5 +32,8 @@ export class LabLoginComponent implements OnInit {
         this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
       }
     });
+  }
+  toggleShow() {
+    this.showPassword = !this.showPassword;
   }
 }

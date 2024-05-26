@@ -38,6 +38,7 @@ export class AddAmbulanceComponent implements OnInit {
       }
     });
   }
+
   onSubmit() {
     if (this.validateAmbulanceData()) {
       console.log('this.currentUserInfo.token ::' + this.currentUserInfo.token);

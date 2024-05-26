@@ -14,8 +14,12 @@ export class AmbulanceLoginComponent implements OnInit {
 
   errorMessage = '';
   ambulance: Ambulance = new Ambulance;
+  showPassword: boolean = true;
   constructor(private authService: AuthService, private router: Router, private renderer: Renderer2) { }
   ngOnInit(): void {
+  }
+  toggleShow() {
+    this.showPassword = !this.showPassword;
   }
   onSubmit() {
     if (this.validateAmbulanceLoginData()) {

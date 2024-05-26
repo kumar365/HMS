@@ -115,32 +115,33 @@
                                     </div>
                                     <form #ambulanceRegisterForm="ngForm" (ngSubmit)="onSubmit()">
                                         <div class="form-group form-focus">
-                                            <!-- <input type="text" class="form-control floating"> -->
                                             <input type="text" [(ngModel)]="ambulance.fullName" id="fullName"
                                                 name="fullName" placeholder="Enter Full Name"
                                                 class="form-control floating" #fullName="ngModel">
                                             <label class="focus-label">Full Name</label>
                                         </div>
                                         <div class="form-group form-focus">
-                                            <!-- <input type="text" class="form-control floating"> -->
                                             <input type="text" [(ngModel)]="ambulance.mobileNumber" id="mobileNumber"
                                                 name="mobileNumber" placeholder="Enter Mobile Number"
                                                 class="form-control floating" #mobileNumber="ngModel">
                                             <label class="focus-label">Mobile Number</label>
                                         </div>
                                         <div class="form-group form-focus">
-                                            <!-- <input type="password" class="form-control floating"> -->
-                                            <input type="password" [(ngModel)]="ambulance.password" id="password"
-                                                name="password" placeholder="Enter Password"
-                                                class="form-control floating" #password="ngModel">
+                                            <input [type]="showPassword ? 'password' : 'text'"
+                                                [(ngModel)]="ambulance.password" id="password" name="password"
+                                                placeholder="Enter Password" class="form-control floating"
+                                                #password="ngModel">
+                                            <span (click)="toggleShow()"
+                                                [class]="showPassword ? 'feather-eye toggle-password-sub' :'feather-eye-off toggle-password-sub'"></span>
                                             <label class="focus-label">Enter Password</label>
                                         </div>
                                         <div class="form-group form-focus">
-                                            <!-- <input type="password" class="form-control floating"> -->
-                                            <input type="password" [(ngModel)]="ambulance.confirmPassword"
-                                                id="confirmPassword" name="confirmPassword"
-                                                placeholder="Enter Confirm Password" class="form-control floating"
-                                                #confirmPassword="ngModel">
+                                            <input [type]="showPasswordConfirm ? 'password' : 'text'"
+                                                [(ngModel)]="ambulance.confirmPassword" id="confirmPassword"
+                                                name="confirmPassword" placeholder="Enter Confirm Password"
+                                                class="form-control floating" #confirmPassword="ngModel">
+                                            <span (click)="toggleShowConfirm()"
+                                                [class]="showPasswordConfirm ? 'feather-eye toggle-password-sub' :'feather-eye-off toggle-password-sub'"></span>
                                             <label class="focus-label">Confirm Password</label>
                                         </div>
                                         <div class="text-end">
@@ -149,7 +150,6 @@
                                         <button class="btn btn-primary w-100 btn-lg login-btn"
                                             type="submit">Signup</button>
                                     </form>
-
                                 </div>
                             </div>
                         </div>

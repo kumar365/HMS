@@ -15,12 +15,12 @@ import { UserService } from 'src/app/service/user.service';
 export class LoginMobileComponent implements OnInit {
 
   form: any = {};
-  isLoggedIn = false;
-  isLoginFailed = false;
+  isLoggedIn: boolean = false;
+  isLoginFailed: boolean = false;
   errorMessage = '';
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
-
+  showPassword: boolean = true;
   constructor(private authService: AuthService, private storageService: StorageService,
     private userService: UserService, private router: Router, private renderer: Renderer2) { }
 
@@ -37,6 +37,9 @@ export class LoginMobileComponent implements OnInit {
       this.isLoggedIn = false;
       this.currentUserInfo = this.storageService.getDoctorUser();
     }
+  }
+  toggleShow() {
+    this.showPassword = !this.showPassword;
   }
   validateLoginForm(): boolean {
     if (this.form.phoneNumber == "" || this.form.phoneNumber == undefined) {
@@ -74,11 +77,16 @@ export class LoginMobileComponent implements OnInit {
               this.storageService.savePatientToken(data.accessToken);
               this.getPatientUserData();
               this.router.navigate(['/patientDashboard']);
-            } else if (data.accessToken && this.currentUser.userType  == 'doctor') {
+            } else if (data.accessToken && this.currentUser.userType == 'doctor') {
               this.storageService.saveDoctorUserInfo(data.user);
               this.storageService.saveDoctorToken(data.accessToken);
               this.getDoctorUserData();
               this.router.navigate(['/doctorDashboard']);
+            } else if (data.accessToken && this.currentUser.userType == 'admin') {
+              this.storageService.saveDoctorUserInfo(data.user);
+              this.storageService.saveDoctorToken(data.accessToken);
+              this.getDoctorUserData();
+              this.router.navigate(['/adminDashboard']);
             }
           }
         },

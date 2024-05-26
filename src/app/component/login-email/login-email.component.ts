@@ -16,8 +16,8 @@ import { UserService } from 'src/app/service/user.service';
 export class LoginEmailComponent implements OnInit {
 
   form: any = {};
-  isLoggedIn = false;
-  isLoginFailed = false;
+  isLoggedIn: boolean = false;
+  isLoginFailed: boolean = false;
   errorMessage = '';
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
@@ -25,6 +25,7 @@ export class LoginEmailComponent implements OnInit {
   facebookURL = AppConstants.FACEBOOK_AUTH_URL;
   githubURL = AppConstants.GITHUB_AUTH_URL;
   linkedinURL = AppConstants.LINKEDIN_AUTH_URL;
+  showPassword: boolean = true;
 
   constructor(private authService: AuthService, private storageService: StorageService,
     private userService: UserService, private router: Router, private renderer: Renderer2) { }
@@ -42,6 +43,9 @@ export class LoginEmailComponent implements OnInit {
       this.isLoggedIn = false;
       this.currentUserInfo = this.storageService.getDoctorUser();
     }
+  }
+  toggleShow() {
+    this.showPassword = !this.showPassword;
   }
   validateLoginForm(): boolean {
     //alert('validateLoginForm');

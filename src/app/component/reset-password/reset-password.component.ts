@@ -15,7 +15,10 @@ export class ResetPasswordComponent implements OnInit {
   statusFlag: boolean = false;
   user: User = new User;
   token: any;
+  showPassword: boolean = true;
+  showPasswordConfirm: boolean = true;
   redirectUrl: any;
+  
   constructor(private authService: AuthService, private activatedRoute: ActivatedRoute,
     private renderer: Renderer2) { }
 
@@ -34,7 +37,12 @@ export class ResetPasswordComponent implements OnInit {
       this.user = data;
     });
   }
-
+  toggleShow() {
+    this.showPassword = !this.showPassword;
+  }
+  toggleShowConfirm() {
+    this.showPasswordConfirm = !this.showPasswordConfirm;
+  }
   validateResetPasswordData(): boolean {
     if (this.user.email == "" || this.user.email == undefined) {
       alert('Please eneter Email');

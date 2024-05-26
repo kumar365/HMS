@@ -4,7 +4,7 @@ import { MessageConstants } from 'src/app/constant/message-constants';
 import { Ambulance } from 'src/app/model/ambulance';
 import { MessageResponse } from 'src/app/model/message-response';
 import { AuthService } from 'src/app/service/auth.service';
-import { UserService } from 'src/app/service/user.service';
+
 
 @Component({
   selector: 'app-ambulance-register',
@@ -15,11 +15,18 @@ export class AmbulanceRegisterComponent implements OnInit {
   message: any;
   statusFlag: boolean = false;
   ambulance: Ambulance = new Ambulance;
+  showPassword: boolean = true;
+  showPasswordConfirm: boolean = true;
   constructor(private authService: AuthService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
   }
-
+  toggleShow() {
+    this.showPassword = !this.showPassword;
+  }
+  toggleShowConfirm() {
+    this.showPassword = !this.showPassword;
+  }
   onSubmit() {
     if (this.validateAmbulanceData()) {
       this.authService.registerAmbulance(this.ambulance).subscribe((data: MessageResponse) => {

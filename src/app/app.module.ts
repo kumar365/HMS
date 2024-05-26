@@ -105,6 +105,7 @@ import { ResetPasswordComponent } from './component/reset-password/reset-passwor
 import { SearchTestsComponent } from './component/search-tests/search-tests.component';
 import { ImageUploadComponent } from './component/image-upload/image-upload.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -201,7 +202,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     StaffingServicesComponent,
     ResetPasswordComponent,
     SearchTestsComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,

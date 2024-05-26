@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <meta charset="utf-8">
     <title>HMS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 
-    <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon">
+    <link href="/assets/img/favicon.png" rel="icon">
 
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/assets/css/custom.css">
 </head>
 
-<body class="login-body">
+<body>
 
     <div class="main-wrapper">
 
@@ -48,6 +48,7 @@
                     <ul class="main-nav">
                         <li class="active"><a href="findDoctors">Find Doctors</a></li>
                         <li><a href="consult">Consultation</a></li>
+
                         <li><a href="medicineOrder">Medicine Order</a></li>
                         <li><a href="labTest">Lab Test</a></li>
                         <li><a href="findSurgeons">Find Surgeons</a></li>
@@ -72,7 +73,7 @@
                 <ul class="nav header-navbar-rht">
                     <!-- <li class="nav-item contact-item">
         <div class="header-contact-img">
-        <i class="far fa-hospital"></i>
+        <i class="far fa-hospital"></i> 
         </div>
         <div class="header-contact-detail">
         <p class="contact-header">Tollfree Helpline</p>
@@ -87,66 +88,149 @@
         </header>
 
 
-        <div class="login-content-info">
+        <div class="breadcrumb-bar-two">
             <div class="container">
-
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="account-content">
-                            <div class="login-shapes">
-                                <div class="shape-img-left">
-                                    <img src="/assets/img/shape-01.png" alt="">
-                                </div>
-                                <div class="shape-img-right">
-                                    <img src="/assets/img/shape-02.png" alt="">
-                                </div>
-                            </div>
-                            <div class="account-info">
-                                <div class="login-back">
-                                    <a href="loginEmail"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
-                                </div>
-                                <div class="login-title">
-                                    <h3>Password Reset</h3>
-                                    <p class="mb-0">Enter your email and we will send you a link to reset your password.
-                                    </p>
-                                </div>
-                                <div *ngIf="statusFlag" class="alert alert-danger" role="alert">
-                                    {{ message }}
-                                </div>
-                                <form #forgotPasswordForm="ngForm" (ngSubmit)="onSubmit()">
-                                    <div class="form-group">
-                                        <label>E-mail</label>
-                                        <input type="text" [(ngModel)]="user.email" id="email" name="email"
-                                            placeholder="example@email.com" class="form-control" #email="ngModel"
-                                            readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input [type]="showPassword ? 'password' : 'text'"
-                                            [(ngModel)]="user.newPassword" id="newPassword" name="newPassword"
-                                            class="form-control" #newPassword="ngModel">
-                                        <span (click)="toggleShow()"
-                                            [class]="showPassword ? 'feather-eye toggle-password-sub' :'feather-eye-off toggle-password-sub'"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Confirm Password</label>
-                                        <input [type]="showPasswordConfirm ? 'password' : 'text'"
-                                            [(ngModel)]="user.confirmPassword" id="confirmPassword"
-                                            name="confirmPassword" class="form-control" #confirmPassword="ngModel">
-                                        <span (click)="toggleShowConfirm()"
-                                            [class]="showPasswordConfirm ? 'feather-eye toggle-password-sub' :'feather-eye-off toggle-password-sub'"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <button class="btn btn-block" type="submit">Submit</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                <div class="row align-items-center inner-banner">
+                    <div class="col-md-12 col-12 text-center">
+                        <h2 class="breadcrumb-title">Admin Dashboard</h2>
+                        <nav aria-label="breadcrumb" class="page-breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="adminDashboard">Home</a></li>
+                                <li class="breadcrumb-item" aria-current="page">Admin Dashboard</li>
+                            </ol>
+                        </nav>
                     </div>
                 </div>
-
             </div>
         </div>
+
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+
+                        <div class="profile-sidebar">
+                            <div class="widget-profile pro-widget-content">
+                                <div class="profile-info-widget">
+                                    <a href="#" class="booking-doc-img">
+                                        <div *ngIf=retrievedImage>
+                                            <img [src]="retrievedImage" alt="User Image">
+                                        </div>
+                                    </a>
+                                    <div class="profile-det-info">
+                                        <h3>
+                                            {{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dashboard-widget">
+                                <nav class="dashboard-menu">
+                                    <ul>
+                                        <li class="active">
+                                            <a href="adminDashboard">
+                                                <i class="fas fa-columns"></i>
+                                                <span>Dashboard</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="medicine">
+                                                <i class="fas fa-calendar-check"></i>
+                                                <span>Add Medicine</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="medicineList">
+                                                <i class="fas fa-user-injured"></i>
+                                                <span>Medicine List</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fas fa-calendar-check"></i>
+                                                <span>Add Lab Test</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fas fa-user-injured"></i>
+                                                <span>Lab Test List</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="profileSettings">
+                                                <i class="fas fa-user-cog"></i>
+                                                <span>Profile Settings</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="changePassword">
+                                                <i class="fas fa-lock"></i>
+                                                <span>Change Password</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="logout">
+                                                <i class="fas fa-sign-out-alt"></i>
+                                                <span>Logout</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-7 col-lg-8 col-xl-9">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card dash-card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-12 col-lg-4">
+                                                <div class="dash-widget dct-border-rht">
+                                                    <div class="circle-bar circle-bar1">
+                                                        <div class="circle-graph1" data-percent="75">
+                                                            <img src="/assets/img/icon-01.png" class="img-fluid"
+                                                                alt="patient">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-lg-4">
+                                                <div class="dash-widget dct-border-rht">
+                                                    <div class="circle-bar circle-bar2">
+                                                        <div class="circle-graph2" data-percent="65">
+                                                            <img src="/assets/img/icon-02.png" class="img-fluid"
+                                                                alt="Patient">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-lg-4">
+                                                <div class="dash-widget">
+                                                    <div class="circle-bar circle-bar3">
+                                                        <div class="circle-graph3" data-percent="50">
+                                                            <img src="/assets/img/icon-03.png" class="img-fluid"
+                                                                alt="Patient">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <footer class="footer">
 
@@ -157,13 +241,15 @@
 
                             <div class="footer-widget footer-about">
                                 <div class="footer-logo">
-                                    <img src="/assets/img/footer-logo.png" alt="logo">
+                                    <img src="/assets/img/logo-whte.png" alt="aidxpert">
                                 </div>
                                 <div class="footer-about-content">
                                     <p>A healthcare product is the result of the interaction of capital, labour and
                                         entrepreneurship in the production process, which primarily aims to improve,
-                                        maintain or prevent the deterioration of the health status of persons or reduce
-                                        the consequences of ill health.</p>
+                                        maintain or
+                                        prevent the deterioration of the health status of persons or reduce the
+                                        consequences of
+                                        ill health.</p>
                                     <div class="social-icon">
                                         <ul>
                                             <li>
@@ -205,7 +291,7 @@
                                     <li><a href="#">Chat</a></li>
                                     <li><a href="#">Login</a></li>
                                     <li><a href="#">Register</a></li>
-                                    <li><a href="#">Doctor Dashboard</a></li>
+                                    <li><a href="#">Admin Dashboard</a></li>
                                 </ul>
                             </div>
 
@@ -235,11 +321,6 @@
                 </div>
             </div>
 
-
-            <div class="sidenav">
-                <a href="consultation"><img src="/assets/img/footer-banner.jpg"></a>
-            </div>
-
             <div class="footer-bottom">
                 <div class="container-fluid">
 
@@ -248,8 +329,8 @@
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
                                     <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a
-                                            href="https://technologies.com" target="_blank"
-                                            style="color:#fff">Technologies Pvt. Ltd.</a></p>
+                                            href="https://abc.com" target="_blank" style="color:#fff">
+                                            Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">
@@ -270,9 +351,6 @@
 
         </footer>
 
-        <div class="mouse-cursor cursor-outer"></div>
-        <div class="mouse-cursor cursor-inner"></div>
-
     </div>
 
 
@@ -280,7 +358,10 @@
 
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
 
-    <script src="/assets/js/feather.min.js"></script>
+    <script src="/assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+    <script src="/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+
+    <script src="/assets/js/circle-progress.min.js"></script>
 
     <script src="/assets/js/script.js"></script>
 </body>

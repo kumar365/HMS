@@ -119,11 +119,15 @@
                                             <label class="focus-label">Email</label>
                                         </div>
                                         <div class="form-group form-focus">
-                                            <input type="password" class="form-control floating">
+                                            <input [type]="showPassword ? 'password' : 'text'" class="form-control floating">
+                                            <span (click)="toggleShow()"
+                                                [class]="showPassword ? 'feather-eye toggle-password-sub' :'feather-eye-off toggle-password-sub'"></span>
                                             <label class="focus-label">Enter Password</label>
                                         </div>
                                         <div class="form-group form-focus">
-                                            <input type="password" class="form-control floating">
+                                            <input [type]="showPasswordConfirm ? 'password' : 'text'" class="form-control floating">
+                                            <span (click)="toggleShowConfirm()"
+                                                [class]="showPassword ? 'feather-eye toggle-password-sub' :'feather-eye-off toggle-password-sub'"></span>
                                             <label class="focus-label">Confirm Password</label>
                                         </div>
                                         <div class="text-end">

@@ -93,6 +93,7 @@ import { DoctorProfileComponent } from './component/doctor-profile/doctor-profil
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 import { SearchTestsComponent } from './component/search-tests/search-tests.component';
 import { ImageUploadComponent } from './component/image-upload/image-upload.component';
+import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   { path: 'index', component: HomeComponent },
@@ -100,6 +101,7 @@ const routes: Routes = [
   { path: 'addAmbulance', component: AddAmbulanceComponent },
   { path: 'addBilling', component: AddBillingComponent },
   { path: 'addPrescription', component: AddPrescriptionComponent },
+  { path: 'adminDashboard', component: AdminDashboardComponent },
   { path: 'ambBookingSuccess', component: AmbBookingSuccessComponent },
   { path: 'ambCheckout', component: AmbCheckoutComponent },
   { path: 'ambulanceBooking', component: AmbulanceBookingComponent },

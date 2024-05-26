@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
    isLoginFailed = false;
    errorMessage = '';
    roles: string[] = [];
-
+   showPassword: boolean = true;
    constructor(private authService: AuthService, private storageService: StorageService, private router: Router) { }
 
    ngOnInit() {
@@ -33,7 +33,9 @@ export class LoginComponent implements OnInit {
          this.roles = this.storageService.getUser().roles;
       }
    }
-
+   toggleShow() {
+      this.showPassword = !this.showPassword;
+   }
    onSubmit(data: any) {
       this.userName = data.userName;
       this.password = data.password;
@@ -43,7 +45,7 @@ export class LoginComponent implements OnInit {
 
       this.authService.login(this.userName, this.password)
          .subscribe((user: User) => {
-            console.log('user:: '+user);
+            console.log('user:: ' + user);
             console.log("token :: " + user.token);
             this.storageService.saveUser(user);
             this.isLoginFailed = false;
@@ -51,9 +53,9 @@ export class LoginComponent implements OnInit {
             // this.roles = this.storageService.getUser().roles;
             //this.reloadPage();
             if (user.token) {
-               this.router.navigate(['/patientDashboard']);   
+               this.router.navigate(['/patientDashboard']);
             }
-           
+
             for (let index = 0; index < this.roles.length; index++) {
                const element = this.roles[index];
                if (element == 'ROLE_PATIENT') {
