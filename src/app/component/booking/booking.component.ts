@@ -20,6 +20,7 @@ export class BookingComponent implements OnInit {
   currentUser: User = new User;
   doctor: User = new User;
   retrievedImage: any;
+  retrievedImageDoctor: any;
   appointment: Appointment = new Appointment;
 
   constructor(private storageService: StorageService, private userService: UserService, private commonService: CommonService,
@@ -51,6 +52,9 @@ export class BookingComponent implements OnInit {
   getDoctorData() {
     this.commonService.getDoctorById(this.id).subscribe((data: User) => {
       this.doctor = data;
+      if (this.doctor.imageData != null && this.doctor.imageData != undefined) {
+        this.retrievedImageDoctor = 'data:image/jpeg;base64,' + this.doctor.imageData;
+      }
     });
   }
   onSubmit() {

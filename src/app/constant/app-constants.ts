@@ -69,6 +69,8 @@ export class AppConstants {
     public static ADD_MEDICINE = AppConstants.MEDICINE_URL + 'addMedicine';
     public static GET_MEDICINE_BY_ID = AppConstants.MEDICINE_URL + 'getMedicineById/';
     public static DELETE_MEDICINE_BY_ID = AppConstants.MEDICINE_URL + 'deleteMedicineById/';
+    public static SAVE_CART_ITEMS = AppConstants.MEDICINE_URL + 'saveCartItems';
+    public static GET_CART_ITEMS_LIST = AppConstants.MEDICINE_URL + 'cartItemsList/';
     public static GET_COUNTRIES = AppConstants.COMMON_URL + 'countries';
     public static GET_STATES = AppConstants.COMMON_URL + 'states';
     public static GET_STATES_BY_ID = AppConstants.COMMON_URL + 'states/';

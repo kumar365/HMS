@@ -3,8 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppValidations } from 'src/app/constant/app-validations';
 import { Appointment } from 'src/app/model/appointment';
 import { CardDetails } from 'src/app/model/card-details';
+import { CartItems } from 'src/app/model/cart-items';
+import { Medicine } from 'src/app/model/medicine';
+import { ProductDetails } from 'src/app/model/product-details';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
+import { MedicineService } from 'src/app/service/medicine.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -14,21 +18,29 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./product-checkout.component.css']
 })
 export class ProductCheckoutComponent implements OnInit {
+  id: any;
   message: any;
   statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
   appointment: Appointment = new Appointment;
   termsAndConditionsFlag: Boolean = false;
+  cartItemsList!: CartItems[];
   retrievedImage: any;
+  totalCost!: number;
   constructor(private route: ActivatedRoute, private router: Router, private storageService: StorageService,
-    private userService: UserService, private renderer: Renderer2) { }
+    private userService: UserService, private medicineService: MedicineService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
+    this.totalCost = 0;
     this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();
+    }
+    this.id = this.route.snapshot.params['id'];
+    if (this.id != null && this.id != undefined) {
+      this.getCartItemsData();
     }
     this.appointment.cardDetails = new CardDetails;
   }
@@ -46,6 +58,23 @@ export class ProductCheckoutComponent implements OnInit {
     }
   }
 
+  getCartItemsData() {
+    this.medicineService.getCartItemsData(this.id, this.currentUserInfo.token).subscribe((data: CartItems[]) => {
+      this.cartItemsList = data;
+      for (let index = 0; index < this.cartItemsList.length; index++) {
+        if (this.cartItemsList[index].medicine != null && this.cartItemsList[index].medicine != undefined) {
+          this.totalCost += this.cartItemsList[index].medicine.medicinePrice * this.cartItemsList[index].quantity;
+          if (this.cartItemsList[index].medicine.productDetails == null && this.cartItemsList[index].medicine.productDetails == undefined) {
+            this.cartItemsList[index].medicine.productDetails = new ProductDetails;
+          }
+        } else {
+          this.cartItemsList[index].medicine = new Medicine;
+        }
+      }
+    });
+  }
+
+
   changeTermsAndConditions() {
     this.termsAndConditionsFlag = !this.termsAndConditionsFlag;
     if (this.termsAndConditionsFlag) {
@@ -56,7 +85,6 @@ export class ProductCheckoutComponent implements OnInit {
   }
 
   validateProductCheckoutDetails(): boolean {
-    //alert('in side validateProductCheckoutDetails');
     if (this.appointment.patientUser.firstName == "" || this.appointment.patientUser.firstName == undefined) {
       alert('Please Enter First Name');
       const element = this.renderer.selectRootElement('#firstName');

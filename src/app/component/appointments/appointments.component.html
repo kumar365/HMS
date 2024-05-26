@@ -151,7 +151,7 @@
                             <div class="widget-profile pro-widget-content">
                                 <div class="profile-info-widget">
                                     <a href="#" class="booking-doc-img">
-                                         <div *ngIf=retrievedImage>
+                                        <div *ngIf=retrievedImage>
                                             <img [src]="retrievedImage" alt="User Image">
                                         </div>
                                     </a>
@@ -224,7 +224,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                             <a href="logout">
+                                            <a href="logout">
                                                 <i class="fas fa-sign-out-alt"></i>
                                                 <span>Logout</span>
                                             </a>
@@ -255,14 +255,16 @@
                                     </div>
                                 </div>
                                 <div class="appointment-action">
-                                    <a href="#" (click)="onView(appointment.id)" class="btn btn-sm bg-info-light" data-bs-toggle="modal"
-                                        data-bs-target="#appt_details">
+                                    <a href="#" (click)="onView(appointment.id)" class="btn btn-sm bg-info-light"
+                                        data-bs-toggle="modal" data-bs-target="#appt_details">
                                         <i class="far fa-eye"></i> View
                                     </a>
-                                    <a href="javascript:void(0);" (click)="onAccept(appointment.id)" class="btn btn-sm bg-success-light">
+                                    <a href="javascript:void(0);" (click)="onAccept(appointment.id)"
+                                        class="btn btn-sm bg-success-light">
                                         <i class="fas fa-check"></i> Accept
                                     </a>
-                                    <a href="javascript:void(0);" (click)="onCancel(appointment.id)" class="btn btn-sm bg-danger-light">
+                                    <a href="javascript:void(0);" (click)="onCancel(appointment.id)"
+                                        class="btn btn-sm bg-danger-light">
                                         <i class="fas fa-times"></i> Cancel
                                     </a>
                                 </div>
@@ -408,7 +410,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <span class="title">#APT{{this.appointment.id}}</span>
-                                        <span class="text">{{this.appointment.appointmentDate | date:'dd MMM yyyy' }} 10:00 AM</span>
+                                        <span class="text">{{this.appointment.appointmentDate | date:'dd MMM yyyy' }}
+                                            10:00 AM</span>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="text-end">

@@ -301,7 +301,9 @@
                                     <div class="booking-doctor-left">
                                         <div class="booking-doctor-img">
                                             <a href="doctorProfile?id={{doctor.id}}">
-                                                <img src="/assets/img/doctors/doctor-01.jpg" alt="">
+                                                <div *ngIf=retrievedImageDoctor>
+                                                    <img [src]="retrievedImageDoctor" alt="User Image">
+                                                </div>
                                             </a>
                                         </div>
                                         <div class="booking-doctor-info">
@@ -442,7 +444,7 @@
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
                                     <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a
-                                            href="https://abc.com" target="_blank" style="color:#fff"> 
+                                            href="https://abc.com" target="_blank" style="color:#fff">
                                             Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageConstants } from 'src/app/constant/message-constants';
+import { ApiResponse } from 'src/app/model/api-response';
 import { Appointment } from 'src/app/model/appointment';
+import { CartItems } from 'src/app/model/cart-items';
 import { Medicine } from 'src/app/model/medicine';
 import { ProductDetails } from 'src/app/model/product-details';
 import { User } from 'src/app/model/user';
@@ -23,6 +26,8 @@ export class CartComponent implements OnInit {
   appointment: Appointment = new Appointment;
   medicine: Medicine = new Medicine;
   medicineList: Medicine[] = [];
+  cartItems: CartItems = new CartItems;
+  cartItemsList: CartItems[] = [];
   retrievedImage: any;
   constructor(private activatedRoute: ActivatedRoute, private storageService: StorageService, private userService: UserService,
     private router: Router, private medicineService: MedicineService) { }
@@ -81,6 +86,19 @@ export class CartComponent implements OnInit {
 
   }
   onSubmit() {
-    this.router.navigate(['/productCheckout']);
+    for (let index = 0; index < this.medicineList.length; index++) {
+      this.cartItems = new CartItems;
+      this.cartItems.medicine = this.medicineList[index];
+      this.cartItems.quantity = this.medicineList[index].quantity1;
+      this.cartItemsList.push(this.cartItems);
+    }
+    if (this.cartItemsList.length > 0 && this.currentUserInfo != null) {
+      this.medicineService.saveCartItems(this.cartItemsList, this.currentUserInfo.token).subscribe((data: ApiResponse) => {
+        this.message = data.message;
+        if (this.message == MessageConstants.CartItemsMessage) {
+          this.router.navigate(['/productCheckout', { id: this.medicine.id }]);
+        }
+      });
+    }
   }
 }
