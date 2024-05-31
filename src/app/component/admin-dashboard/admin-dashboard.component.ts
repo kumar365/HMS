@@ -45,7 +45,10 @@ export class AdminDashboardComponent implements OnInit {
           this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
         }
       } else {
-        this.router.navigate(['/loginEmail']);
+        if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
+          this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
+        }
+        //this.router.navigate(['/loginEmail']);
       }
     });
   }

@@ -94,6 +94,8 @@ import { ResetPasswordComponent } from './component/reset-password/reset-passwor
 import { SearchTestsComponent } from './component/search-tests/search-tests.component';
 import { ImageUploadComponent } from './component/image-upload/image-upload.component';
 import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
+import { AdminProfileSettingsComponent } from './component/admin-profile-settings/admin-profile-settings.component';
+import { AdminChangePasswordComponent } from './component/admin-change-password/admin-change-password.component';
 
 const routes: Routes = [
   { path: 'index', component: HomeComponent },
@@ -101,7 +103,9 @@ const routes: Routes = [
   { path: 'addAmbulance', component: AddAmbulanceComponent },
   { path: 'addBilling', component: AddBillingComponent },
   { path: 'addPrescription', component: AddPrescriptionComponent },
+  { path: 'adminChangePassword', component: AdminChangePasswordComponent },
   { path: 'adminDashboard', component: AdminDashboardComponent },
+  { path: 'adminProfileSettings', component: AdminProfileSettingsComponent },
   { path: 'ambBookingSuccess', component: AmbBookingSuccessComponent },
   { path: 'ambCheckout', component: AmbCheckoutComponent },
   { path: 'ambulanceBooking', component: AmbulanceBookingComponent },

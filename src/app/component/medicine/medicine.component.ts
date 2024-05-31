@@ -51,12 +51,12 @@ export class MedicineComponent implements OnInit {
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
-      this.currentUser = data;
-      if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
-        this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
-      }
+       this.currentUser = data;
+       if (this.currentUser.imageData != null && this.currentUser.imageData != undefined) {
+          this.retrievedImage = 'data:image/jpeg;base64,' + this.currentUser.imageData;
+       }
     });
-  }
+ }
   getMedicineData() {
     this.medicineService.findMedicineById(this.id, this.currentUserInfo.token).subscribe((data: Medicine) => {
       this.medicine = data;

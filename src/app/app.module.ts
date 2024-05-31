@@ -106,6 +106,8 @@ import { SearchTestsComponent } from './component/search-tests/search-tests.comp
 import { ImageUploadComponent } from './component/image-upload/image-upload.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
+import { AdminProfileSettingsComponent } from './component/admin-profile-settings/admin-profile-settings.component';
+import { AdminChangePasswordComponent } from './component/admin-change-password/admin-change-password.component';
 
 @NgModule({
   declarations: [
@@ -203,7 +205,9 @@ import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashb
     ResetPasswordComponent,
     SearchTestsComponent,
     ImageUploadComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    AdminProfileSettingsComponent,
+    AdminChangePasswordComponent
   ],
   imports: [
     BrowserModule,

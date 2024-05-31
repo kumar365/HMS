@@ -15,16 +15,13 @@
 
    <link rel="stylesheet" href="/assets/css/feather.css">
 
-   <link rel="stylesheet" href="/assets/css/bootstrap-datetimepicker.min.css">
-
-   <link rel="stylesheet" href="/assets/plugins/select2/css/select2.min.css">
-
    <link rel="stylesheet" href="/assets/css/custom.css">
 </head>
 
 <body>
 
    <div class="main-wrapper">
+
       <header class="header">
          <nav class="navbar navbar-expand-lg header-nav">
             <div class="navbar-header">
@@ -49,9 +46,10 @@
                   </a>
                </div>
                <ul class="main-nav">
-                  <li><a href="findDoctors">Find Doctors</a></li>
-                  <li><a href=" consult">Consultation</a></li>
-                  <li class="active"><a href="medicineOrder">Medicine Order</a></li>
+                  <li class="active"><a href="findDoctors">Find Doctors</a></li>
+                  <li><a href="consult">Consultation</a></li>
+
+                  <li><a href="medicineOrder">Medicine Order</a></li>
                   <li><a href="labTest">Lab Test</a></li>
                   <li><a href="findSurgeons">Find Surgeons</a></li>
                   <li><a href="bookAmbulance">Book Ambulance</a></li>
@@ -75,7 +73,7 @@
             <ul class="nav header-navbar-rht">
                <!-- <li class="nav-item contact-item">
         <div class="header-contact-img">
-        <i class="far fa-hospital"></i>
+        <i class="far fa-hospital"></i> 
         </div>
         <div class="header-contact-detail">
         <p class="contact-header">Tollfree Helpline</p>
@@ -89,25 +87,101 @@
          </nav>
       </header>
 
+
       <div class="breadcrumb-bar-two">
          <div class="container">
             <div class="row align-items-center inner-banner">
                <div class="col-md-12 col-12 text-center">
-                  <h2 class="breadcrumb-title">Medicine List</h2>
+                  <h2 class="breadcrumb-title">Admin Dashboard</h2>
                   <nav aria-label="breadcrumb" class="page-breadcrumb">
                      <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index">Home</a></li>
-                        <li class="breadcrumb-item" aria-current="page">{{ title }}</li>
+                        <li class="breadcrumb-item"><a href="adminDashboard">Home</a></li>
+                        <li class="breadcrumb-item" aria-current="page">Medicine List</li>
                      </ol>
                   </nav>
                </div>
             </div>
          </div>
       </div>
+
       <div class="content">
          <div class="container">
             <div class="row">
-               <div class="col-md-7 col-lg-8 col-xl-12">
+               <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+
+                  <div class="profile-sidebar">
+                     <div class="widget-profile pro-widget-content">
+                        <div class="profile-info-widget">
+                           <a href="#" class="booking-doc-img">
+                              <div *ngIf=retrievedImage>
+                                 <img [src]="retrievedImage" alt="User Image">
+                              </div>
+                           </a>
+                           <div class="profile-det-info">
+                              <h3>
+                                 {{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}
+                              </h3>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="dashboard-widget">
+                        <nav class="dashboard-menu">
+                           <ul>
+                              <li class="active">
+                                 <a href="adminDashboard">
+                                    <i class="fas fa-columns"></i>
+                                    <span>Dashboard</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="medicine">
+                                    <i class="fas fa-calendar-check"></i>
+                                    <span>Add Medicine</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="medicineList">
+                                    <i class="fas fa-user-injured"></i>
+                                    <span>Medicine List</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="#">
+                                    <i class="fas fa-calendar-check"></i>
+                                    <span>Add Lab Test</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="#">
+                                    <i class="fas fa-user-injured"></i>
+                                    <span>Lab Test List</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="adminProfileSettings">
+                                    <i class="fas fa-user-cog"></i>
+                                    <span>Profile Settings</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="adminChangePassword">
+                                    <i class="fas fa-lock"></i>
+                                    <span>Change Password</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="logout">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span>Logout</span>
+                                 </a>
+                              </li>
+                           </ul>
+                        </nav>
+                     </div>
+                  </div>
+
+               </div>
+               <div class="col-md-7 col-lg-8 col-xl-9">
                   <div class="card">
                      <div class="card-body" style="padding-left: 20px;">
                         <div class="col-lg-12 text-center" style="padding-top: 20px;">
@@ -154,25 +228,34 @@
                         </div>
                      </div>
                   </div>
+
+
+
                </div>
+
             </div>
          </div>
       </div>
 
+
       <footer class="footer">
-         <div class="footer-top">
+
+         <div class="footer-top aos"><!-- data-aos="fade-up" -->
             <div class="container-fluid">
                <div class="row">
                   <div class="col-lg-3 col-md-6">
+
                      <div class="footer-widget footer-about">
                         <div class="footer-logo">
-                           <img src="/assets/img/footer-logo.png" alt="logo">
+                           <img src="/assets/img/logo-whte.png" alt="aidxpert">
                         </div>
                         <div class="footer-about-content">
                            <p>A healthcare product is the result of the interaction of capital, labour and
                               entrepreneurship in the production process, which primarily aims to improve,
-                              maintain or prevent the deterioration of the health status of persons or reduce
-                              the consequences of ill health.</p>
+                              maintain or
+                              prevent the deterioration of the health status of persons or reduce the
+                              consequences of
+                              ill health.</p>
                            <div class="social-icon">
                               <ul>
                                  <li>
@@ -190,32 +273,37 @@
 
                   </div>
                   <div class="col-lg-3 col-md-6">
+
                      <div class="footer-widget footer-menu">
                         <h2 class="footer-title">For Patients</h2>
                         <ul>
-                           <li><a href="searchDoctors">Search for Doctors</a></li>
-                           <li><a href="login">Login</a></li>
+                           <li><a href="#">Search for Doctors</a></li>
+                           <li><a href="#">Login</a></li>
                            <li><a href="#">Training Videos</a></li>
-                           <li><a href="booking">Booking</a></li>
-                           <li><a href="patientDashboard">Patient Dashboard</a></li>
+                           <li><a href="#">Booking</a></li>
+                           <li><a href="#">Patient Dashboard</a></li>
                            <li><a href="#">Help</a></li>
                            <li><a href="consultantsPanel">Consultants Panel</a></li>
                         </ul>
                      </div>
+
                   </div>
                   <div class="col-lg-3 col-md-6">
+
                      <div class="footer-widget footer-menu">
                         <h2 class="footer-title">For Doctors</h2>
                         <ul>
                            <li><a href="#">Appointments</a></li>
-                           <li><a href="chat">Chat</a></li>
-                           <li><a href="login">Login</a></li>
-                           <li><a href="doctorRegistration">Register</a></li>
-                           <li><a href="doctorDashboard">Doctor Dashboard</a></li>
+                           <li><a href="#">Chat</a></li>
+                           <li><a href="#">Login</a></li>
+                           <li><a href="#">Register</a></li>
+                           <li><a href="#">Admin Dashboard</a></li>
                         </ul>
                      </div>
+
                   </div>
                   <div class="col-lg-3 col-md-6">
+
                      <div class="footer-widget footer-contact">
                         <h2 class="footer-title">Contact Us</h2>
                         <div class="footer-contact-info">
@@ -233,46 +321,54 @@
                            </p>
                         </div>
                      </div>
+
                   </div>
                </div>
             </div>
          </div>
 
-         <div class="sidenav">
-            <a href="consultation"><img src="/assets/img/footer-banner.jpg"></a>
-         </div>
-
          <div class="footer-bottom">
             <div class="container-fluid">
+
                <div class="copyright">
                   <div class="row">
                      <div class="col-md-6 col-lg-6">
                         <div class="copyright-text">
-                           <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a href="/" target="_blank"
-                                 style="color:#fff"> Technologies Pvt. Ltd.</a></p>
+                           <p class="mb-0">&copy; 2023 HMS. All rights reserved. Powered by <a href="https://abc.com"
+                                 target="_blank" style="color:#fff">
+                                 Technologies Pvt. Ltd.</a></p>
                         </div>
                      </div>
                      <div class="col-md-6 col-lg-6">
+
                         <div class="copyright-menu">
                            <ul class="policy-menu">
                               <li><a href="termsConditions">Terms and Conditions</a></li>
                               <li><a href="privacyPolicy">Privacy Policy</a></li>
                            </ul>
                         </div>
+
                      </div>
                   </div>
                </div>
+
             </div>
          </div>
+
       </footer>
+
    </div>
+
+
    <script src="/assets/js/jquery-3.6.4.min.js"></script>
+
    <script src="/assets/js/bootstrap.bundle.min.js"></script>
-   <script src="/assets/plugins/select2/js/select2.min.js"></script>
-   <script src="/assets/js/moment.min.js"></script>
-   <script src="/assets/js/bootstrap-datetimepicker.min.js"></script>
+
    <script src="/assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
    <script src="/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+
+   <script src="/assets/js/circle-progress.min.js"></script>
+
    <script src="/assets/js/script.js"></script>
 </body>
 

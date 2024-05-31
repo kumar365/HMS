@@ -113,7 +113,9 @@
               <div class="widget-profile pro-widget-content">
                 <div class="profile-info-widget">
                   <a href="#" class="booking-doc-img">
-                    <img src="/assets/img/clients/client-01.jpg" alt="User Image">
+                     <div *ngIf=retrievedImage>
+                                                            <img [src]="retrievedImage" alt="User Image">
+                                                        </div>
                   </a>
                   <div class="profile-det-info">
                     <h3>{{currentUser.firstName}}&nbsp;{{currentUser.middleName}}&nbsp;{{currentUser.lastName}}</h3>
