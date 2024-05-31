@@ -40,6 +40,11 @@ export class MyPatientsComponent implements OnInit {
   getPatientList() {
     this.userService.getPatientListById(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: User[]) => {
       this.patientList = data;
+      for (let index = 0; index < this.patientList.length; index++) {
+        if (this.patientList[index].imageData != null && this.patientList[index].imageData != undefined) {
+          this.patientList[index].retrievedImage = 'data:image/jpeg;base64,' + this.patientList[index].imageData;
+        }
+      }
     });
   }
 }

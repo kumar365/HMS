@@ -47,4 +47,5 @@ export class User {
     confirmPassword!: string;
     hospital!: Hospital;
     refId!: any;
+    retrievedImage!: any;
 }
