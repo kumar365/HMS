@@ -28,7 +28,7 @@ export class ProductCheckoutComponent implements OnInit {
   cartItemsList!: CartItems[];
   retrievedImage: any;
   totalCost!: number;
-  constructor(private route: ActivatedRoute, private router: Router, private storageService: StorageService,
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private storageService: StorageService,
     private userService: UserService, private medicineService: MedicineService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
@@ -38,7 +38,7 @@ export class ProductCheckoutComponent implements OnInit {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();
     }
-    this.id = this.route.snapshot.params['id'];
+    this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id != null && this.id != undefined) {
       this.getCartItemsData();
     }

@@ -5,6 +5,7 @@ import { AmbBooking } from 'src/app/model/amb-booking';
 import { Ambulance } from 'src/app/model/ambulance';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
+import { CommonService } from 'src/app/service/common.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -14,14 +15,17 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./ambulance-booking.component.css']
 })
 export class AmbulanceBookingComponent implements OnInit {
+  id: any;
   message: any;
   statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
+  ambulance: Ambulance = new Ambulance;
   ambBooking: AmbBooking = new AmbBooking;
   retrievedImage: any;
-  constructor(private route: ActivatedRoute, private router: Router, private storageService: StorageService,
-    private userService: UserService, private renderer: Renderer2) { }
+  currentDate: Date = new Date;
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private storageService: StorageService,
+    private userService: UserService, private renderer: Renderer2, private commonService: CommonService) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
@@ -29,6 +33,13 @@ export class AmbulanceBookingComponent implements OnInit {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();
     }
+    this.activatedRoute.queryParams.subscribe(params => {
+      console.log(params);
+      this.id = params['id'];
+      if (this.id != undefined) {
+        this.getAmbulanceData();
+      }
+    });
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
@@ -38,9 +49,15 @@ export class AmbulanceBookingComponent implements OnInit {
       }
     });
   }
+  getAmbulanceData() {
+    this.commonService.getAmbulanceDetails(this.id).subscribe((data: Ambulance) => {
+      this.ambulance = data;
+      this.ambBooking.ambulanceType = this.ambulance.type;
+    });
+  }
   onSubmit() {
     if (this.validateAmbulanceBooking()) {
-      this.router.navigate(['/ambCheckout']);
+      this.router.navigate(['/ambCheckout', { id: this.ambulance.id }]);
     }
   }
   validateAmbulanceBooking(): boolean {

@@ -193,8 +193,8 @@
                                     <div class="booking-doctor-left">
 
                                         <div class="booking-doctor-info">
-                                            <h4><a href="#" style="color: #fff;">Hyd Healthcare Services</a></h4>
-                                            <p>Contact No:+91984563217</p>
+                                            <h4><a href="#" style="color: #fff;">{{ambulance.fullName}}</a></h4>
+                                            <p>Contact No:+{{ambulance.mobileNumber}}</p>
                                         </div>
                                     </div>
 
@@ -206,8 +206,8 @@
                                 <div class="booking-list">
                                     <div class="booking-date-list">
                                         <ul>
-                                            <li>Booking Date: <span>Sun, 30 Aug 2022</span></li>
-                                            <li>Booking Time: <span>10.00 AM</span></li>
+                                            <li>Booking Date: <span>{{currentDate | date:'dd, MMM yyyy'}}</span></li>
+                                            <li>Booking Time: <span>{{ currentDate | date:'HH:mm a'}}</span></li>
                                         </ul>
                                     </div>
                                     <div class="booking-doctor-right">

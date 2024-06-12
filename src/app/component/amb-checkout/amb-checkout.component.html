@@ -103,7 +103,6 @@
             </div>
         </div>
 
-
         <div class="content">
             <div class="container">
                 <div class="row">
@@ -115,7 +114,6 @@
                                         <h4 class="card-title">Payment Method</h4>
                                         <div class="payment-list">
                                             <label class="payment-radio credit-card-option">
-                                                <!-- <input type="radio" name="radio" checked> -->
                                                 <input type="radio" [(ngModel)]="ambBooking.paymentMethod"
                                                     value="Credit card or Debit card" id="paymentMethod"
                                                     name="paymentMethod" class="form-control" #paymentMethod="ngModel">
@@ -126,7 +124,6 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group card-label">
                                                         <label for="card_name">Name on Card</label>
-                                                        <!-- <input class="form-control" id="card_name" type="text"> -->
                                                         <input type="text"
                                                             [(ngModel)]="ambBooking.cardDetails.nameOnCard"
                                                             placeholder="Name on Card" id="nameOnCard" name="nameOnCard"
@@ -174,7 +171,6 @@
 
                                         <div class="payment-list">
                                             <label class="payment-radio paypal-option">
-                                                <!-- <input type="radio" name="radio"> -->
                                                 <input type="radio" [(ngModel)]="ambBooking.paymentMethod" value="Gpay"
                                                     id="paymentMethod" name="paymentMethod" class="form-control"
                                                     #paymentMethod="ngModel">
@@ -184,7 +180,6 @@
                                         </div>
                                         <div class="payment-list">
                                             <label class="payment-radio paypal-option">
-                                                <!-- <input type="radio" name="radio"> -->
                                                 <input type="radio" [(ngModel)]="ambBooking.paymentMethod" value="Paytm"
                                                     id="paymentMethod" name="paymentMethod" class="form-control"
                                                     #paymentMethod="ngModel">
@@ -194,7 +189,6 @@
                                         </div>
                                         <div class="payment-list">
                                             <label class="payment-radio paypal-option">
-                                                <!-- <input type="radio" name="radio"> -->
                                                 <input type="radio" [(ngModel)]="ambBooking.paymentMethod" value="UPI"
                                                     id="paymentMethod" name="paymentMethod" class="form-control"
                                                     #paymentMethod="ngModel">
@@ -233,8 +227,8 @@
                                     <div class="booking-doctor-left">
 
                                         <div class="booking-doctor-info">
-                                            <h4><a href="#" style="color: #fff;">Hyd Healthcare Services</a></h4>
-                                            <p>Contact No:+91984563217</p>
+                                            <h4><a href="#" style="color: #fff;">{{ambulance.fullName}}</a></h4>
+                                            <p>Contact No:+{{ambulance.mobileNumber}}</p>
                                         </div>
                                     </div>
 
@@ -246,8 +240,8 @@
                                 <div class="booking-list">
                                     <div class="booking-date-list">
                                         <ul>
-                                            <li>Booking Date: <span>Sun, 30 Aug 2022</span></li>
-                                            <li>Booking Time: <span>10.00 AM</span></li>
+                                            <li>Booking Date: <span>{{currentDate | date:'dd, MMM yyyy'}}</span></li>
+                                            <li>Booking Time: <span>{{ currentDate | date:'HH:mm a'}}</span></li>
                                         </ul>
                                     </div>
                                     <div class="booking-doctor-right">

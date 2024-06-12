@@ -51,6 +51,9 @@ export class CommonService {
   getAmbulanceList(): Observable<Ambulance[]> {
     return this.httpClient.get<Ambulance[]>(AppConstants.GET_AMBULANCES, httpOptions);
   }
+  getAmbulanceDetails(id: number): Observable<Ambulance> {
+    return this.httpClient.get<Ambulance>(AppConstants.GET_AMBULANCE_DETAILS_BY_ID + id, httpOptions);
+  }
   getTestDetailsList(): Observable<TestDetails[]> {
     return this.httpClient.get<TestDetails[]>(AppConstants.GET_TEST_DETAILS_LIST, httpOptions);
   }

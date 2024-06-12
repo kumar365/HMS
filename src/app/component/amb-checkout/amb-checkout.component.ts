@@ -2,9 +2,11 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppValidations } from 'src/app/constant/app-validations';
 import { AmbBooking } from 'src/app/model/amb-booking';
+import { Ambulance } from 'src/app/model/ambulance';
 import { CardDetails } from 'src/app/model/card-details';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
+import { CommonService } from 'src/app/service/common.service';
 import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
 
@@ -14,15 +16,18 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./amb-checkout.component.css']
 })
 export class AmbCheckoutComponent implements OnInit {
+  id: any;
   message: any;
   statusFlag: boolean = false;
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
+  ambulance: Ambulance = new Ambulance;
   ambBooking: AmbBooking = new AmbBooking;
   termsAndConditionsFlag: Boolean = false;
   retrievedImage: any;
-  constructor(private route: ActivatedRoute, private router: Router, private storageService: StorageService,
-    private userService: UserService, private renderer: Renderer2) { }
+  currentDate: Date = new Date;
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private storageService: StorageService,
+    private userService: UserService, private renderer: Renderer2, private commonService: CommonService) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
@@ -31,6 +36,10 @@ export class AmbCheckoutComponent implements OnInit {
       this.getUserData();
     }
     this.ambBooking.cardDetails = new CardDetails;
+    this.id = this.activatedRoute.snapshot.params['id'];
+    if (this.id != null && this.id != undefined) {
+      this.getAmbulanceData();
+    }
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
@@ -40,7 +49,12 @@ export class AmbCheckoutComponent implements OnInit {
       }
     });
   }
-
+  getAmbulanceData() {
+    this.commonService.getAmbulanceDetails(this.id).subscribe((data: Ambulance) => {
+      this.ambulance = data;
+      this.ambBooking.ambulanceType = this.ambulance.type;
+    });
+  }
   onSubmit() {
     if (this.validateAmbulancePaymentData()) {
       this.router.navigate(['/ambBookingSuccess']);
