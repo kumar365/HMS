@@ -297,27 +297,27 @@
                                 <h4 class="card-title">Cart Summary</h4>
                             </div>
                             <div class="card-body">
-                                <h5 style="color: #efdd19;">Selected Test - <span> T3 T4 TSH</span></h5>
+                                <h5 style="color: #efdd19;">Selected Test - <span> {{testDetails.testName}}</span></h5>
 
                                 <div class="booking-summary">
                                     <div class="booking-item-wrap">
                                         <ul class="booking-date pb-0">
-                                            <li>Date <span> 16 April 2023</span></li>
+                                            <li>Date <span>&nbsp;{{currentDate | date:'dd MMM yyyy'}}</span></li>
 
                                         </ul>
                                         <ul class="booking-date pb-0">
 
-                                            <li>Time <span>10:00 AM</span></li>
+                                            <li>Time <span>&nbsp; 10:00 AM</span></li>
                                         </ul>
                                         <ul class="booking-fee">
-                                            <li>Test Fee <span>Rs.400/-</span></li>
+                                            <li>Test Fee <span>Rs.{{testDetails.testCost}}/-</span></li>
                                             <li>Sample Pickup Fee <span>Rs.100/-</span></li>
                                         </ul>
                                         <div class="booking-total">
                                             <ul class="booking-total-list">
                                                 <li>
                                                     <span>Total</span>
-                                                    <span class="total-cost">Rs.500/-</span>
+                                                    <span class="total-cost">Rs.{{testDetails.testCost+100}}/-</span>
                                                 </li>
                                             </ul>
                                         </div>

@@ -216,7 +216,31 @@
                                                 <label for="name">Test Name</label>
                                                 <input type="text" [(ngModel)]="testDetails.testName"
                                                     class="form-control" id="name" name="name"
-                                                    placeholder="Enter testDetails name" required #name="ngModel">
+                                                    placeholder="Enter Test name" required #name="ngModel">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-5">
+                                            <div class="form-group">
+                                                <label for="name">Test Category</label>
+                                                <select [(ngModel)]="testDetails.testCategory" id="testCategory"
+                                                    name="testCategory" class="form-select form-control"
+                                                    #testCategory="ngModel">
+                                                    <option value="">Select Test Category</option>
+                                                    <option value="hematology">Hematology</option>
+                                                    <option value="chemistry">Chemistry</option>
+                                                    <option value="serology/immunology">Serology/Immunology</option>
+                                                    <option value="microbiology">Microbiology</option>
+                                                    <option value="toxicology">Toxicology</option>
+                                                    <option value="pathology/cytology">Pathology/Cytology</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-5">
+                                            <div class="form-group">
+                                                <label for="name">Test Code</label>
+                                                <input type="text" [(ngModel)]="testDetails.testCode"
+                                                    class="form-control" id="testCode" name="testCode"
+                                                    placeholder="Enter Test Code" required #testCode="ngModel">
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-5">
@@ -236,6 +260,43 @@
                                                     #labName="ngModel">
                                             </div>
                                         </div>
+
+                                        <div class="col-12 col-md-5">
+                                            <div class="form-group">
+                                                <label>Lab Address</label>
+                                                <input type="text" [(ngModel)]="testDetails.labAddress" id="labAddress"
+                                                    name="labAddress" class="form-control"
+                                                    placeholder="Enter Lab Address" #labAddress="ngModel">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-5">
+                                            <div class="form-group">
+                                                <label>Benefits</label>
+                                                <input type="text" [(ngModel)]="testDetails.benefits" id="benefits"
+                                                    name="benefits" class="form-control" placeholder="Enter Benefits"
+                                                    #benefits="ngModel">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-5">
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <input type="text" [(ngModel)]="testDetails.description"
+                                                    id="description" name="description" class="form-control"
+                                                    placeholder="Enter Description" #description="ngModel">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-5">
+                                            <div class="form-group">
+                                                <label>Sample Requirement</label>
+                                                <input type="text" [(ngModel)]="testDetails.sampleRequirement"
+                                                    id="sampleRequirement" name="sampleRequirement" class="form-control"
+                                                    placeholder="Enter Sample Requirement" #sampleRequirement="ngModel">
+                                            </div>
+                                        </div>
+
 
                                     </div>
                                     <div class="submit-section">

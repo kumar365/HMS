@@ -3,7 +3,7 @@ export class Discount {
     discountName!: string;
     discountValue!: any;
     discountPercentage!: any;
-    discription!: string;
+    description!: string;
     version!: string;
     ipAddress!: string;
     createdBy!: string;

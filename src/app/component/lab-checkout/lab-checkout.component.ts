@@ -25,10 +25,13 @@ export class LabCheckoutComponent implements OnInit {
   termsAndConditionsFlag: Boolean = false;
   testDetails: TestDetails = new TestDetails;
   retrievedImage: any;
+  currentDate: any;
   constructor(private router: Router, private storageService: StorageService, private userService: UserService,
     private commonService: CommonService, private renderer: Renderer2, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.currentUserInfo = this.storageService.getUser();
+    this.currentDate = new Date;
     this.activatedRoute.queryParams.subscribe(params => {
       console.log(params);
       this.id = params['id'];
@@ -37,7 +40,6 @@ export class LabCheckoutComponent implements OnInit {
       }
       this.getTestDetails();
     });
-    this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();

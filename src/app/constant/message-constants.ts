@@ -19,5 +19,5 @@ export class MessageConstants {
     public static StaffingMessage = 'Staffing needs sent successfully';
     public static MedicineMessage = 'Medicine added successfully!';
     public static CartItemsMessage = 'Cart Items saved successfully!';
-    public static TestDetailsMessage= 'Test details added successfully!';
+    public static TestDetailsMessage= 'Test Details added successfully!';
 }

@@ -26,7 +26,7 @@ export class SearchTestsComponent implements OnInit {
   availabilityNext14DaysFlag: boolean = false;
   retrievedImage: any;
   constructor(private storageService: StorageService, private userService: UserService,
-     private commonService: CommonService) { }
+    private commonService: CommonService) { }
 
   ngOnInit(): void {
     this.currentUserInfo = this.storageService.getUser();
@@ -52,6 +52,11 @@ export class SearchTestsComponent implements OnInit {
   getTestDetailsList() {
     this.commonService.getTestDetailsList().subscribe((data: TestDetails[]) => {
       this.testDetailsList = data;
+      for (let index = 0; index < this.testDetailsList.length; index++) {
+        if (this.testDetailsList[index].imageData != null && this.testDetailsList[index].imageData != undefined) {
+          this.testDetailsList[index].retrievedImage = 'data:image/jpeg;base64,' + this.testDetailsList[index].imageData;
+        }
+      }
     });
   }
 }

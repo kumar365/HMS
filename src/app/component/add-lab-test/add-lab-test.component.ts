@@ -39,6 +39,10 @@ export class AddLabTestComponent implements OnInit {
   ngOnInit(): void {
     this.title = "Add Test Details";
     this.currentUserInfo = this.storageService.getUser();
+
+    if (this.testDetails != null && (this.testDetails.testCategory == null || this.testDetails.testCategory == undefined)) {
+      this.testDetails.testCategory = "";
+    }
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();
@@ -95,12 +99,29 @@ export class AddLabTestComponent implements OnInit {
       setTimeout(() => element.focus(), 0);
       return false;
     } else if (this.testDetails.testName == "" || this.testDetails.testName == undefined) {
-      alert('Please Enter TestDetails Name');
+      alert('Please Enter Test Name');
       const element = this.renderer.selectRootElement('#testName');
       setTimeout(() => element.focus(), 0);
       return false;
     } else if (!AppValidations.validateName(this.testDetails.testName)) {
       const element = this.renderer.selectRootElement('#name');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.testDetails.testCategory == "" || this.testDetails.testCategory == undefined) {
+      alert('Please Enter Test Category');
+      return false;
+    } else if (this.testDetails.testCode == "" || this.testDetails.testCode == undefined) {
+      alert('Please Enter Test Code');
+      const element = this.renderer.selectRootElement('#testCode');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.testDetails.testCost <= 0 || this.testDetails.testCost == undefined) {
+      alert('Please Enter Test Price');
+      const element = this.renderer.selectRootElement('#testCost');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validatePrice(this.testDetails.testCost)) {
+      const element = this.renderer.selectRootElement('#testCost');
       setTimeout(() => element.focus(), 0);
       return false;
     } else if (this.testDetails.labName == "" || this.testDetails.labName == undefined) {
@@ -112,13 +133,32 @@ export class AddLabTestComponent implements OnInit {
       const element = this.renderer.selectRootElement('#labName');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (this.testDetails.testCost <= 0 || this.testDetails.testCost == undefined) {
-      alert('Please Enter Test Price');
-      const element = this.renderer.selectRootElement('#testCost');
+    } else if (this.testDetails.labAddress == "" || this.testDetails.labAddress == undefined) {
+      alert('Please Enter Lab Address');
+      const element = this.renderer.selectRootElement('#labAddress');
       setTimeout(() => element.focus(), 0);
       return false;
-    } else if (!AppValidations.validatePrice(this.testDetails.testCost)) {
-      const element = this.renderer.selectRootElement('#testCost');
+    } else if (!AppValidations.validateAddress(this.testDetails.labAddress)) {
+      const element = this.renderer.selectRootElement('#labAddress');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.testDetails.benefits == "" || this.testDetails.benefits == undefined) {
+      alert('Please Enter Benefits');
+      const element = this.renderer.selectRootElement('#benefits');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.testDetails.description == "" || this.testDetails.description == undefined) {
+      alert('Please Enter Description');
+      const element = this.renderer.selectRootElement('#description');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!AppValidations.validateDescription(this.testDetails.description, 'Test')) {
+      const element = this.renderer.selectRootElement('#description');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.testDetails.sampleRequirement == "" || this.testDetails.sampleRequirement == undefined) {
+      alert('Please Enter Sample Requirement');
+      const element = this.renderer.selectRootElement('#sampleRequirement');
       setTimeout(() => element.focus(), 0);
       return false;
     } else {
@@ -132,6 +172,7 @@ export class AddLabTestComponent implements OnInit {
         this.message = data.message;
         if (this.message == MessageConstants.TestDetailsMessage) {
           this.statusFlag = true;
+          this.testDetails = new TestDetails;
           this.goToTestDetailsList();
         }
       });
@@ -139,7 +180,7 @@ export class AddLabTestComponent implements OnInit {
   }
 
   goToTestDetailsList() {
-    this.router.navigate(['/testDetailsList']);
+    this.router.navigate(['/labTestList']);
   }
 
 }

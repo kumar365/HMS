@@ -7,7 +7,7 @@ export class TestDetails {
     labName!: string;
     labAddress!: string;
     benefits!: string;
-    discription!: string;
+    description!: string;
     sampleRequirement!: string;
     version!: string;
     ipAddress!: string;

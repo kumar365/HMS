@@ -81,12 +81,6 @@ export class CommonService {
     }));
     return this.httpClient.post<ApiResponse>(AppConstants.SEND_STAFFFING_DATA_FILE, formData);
   }
-  public findTestDetailsById(id: any, token: string): Observable<TestDetails> {
-    const httpOptions1 = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
-    };
-    return this.httpClient.get<TestDetails>(AppConstants.GET_TEST_DETAILS_BY_ID + id, httpOptions1);
-  }
   public saveTetestDetails(testDetails: TestDetails, token: string): Observable<MessageResponse> {
     const formData: FormData = new FormData();
     formData.append('file', testDetails.testImage);
@@ -97,6 +91,12 @@ export class CommonService {
       headers: new HttpHeaders({ 'Authorization': "Bearer " + token })
     };
     return this.httpClient.post<ApiResponse>(AppConstants.ADD_TEST_DETAILS, formData, httpOptions1);
+  }
+  public findTestDetailsById(id: any, token: string): Observable<TestDetails> {
+    const httpOptions1 = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
+    };
+    return this.httpClient.get<TestDetails>(AppConstants.GET_TEST_DETAILS_BY_ID + id, httpOptions1);
   }
   public deleteTestDetails(testId: any, token: string): Observable<any> {
     const httpOptions1 = {

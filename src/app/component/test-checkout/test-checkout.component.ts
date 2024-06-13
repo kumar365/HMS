@@ -20,10 +20,13 @@ export class TestCheckoutComponent implements OnInit {
   currentUser: User = new User;
   testDetails: TestDetails = new TestDetails;
   retrievedImage: any;
+  currentDate: any;
   constructor(private storageService: StorageService, private userService: UserService,
     private commonService: CommonService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.currentDate = new Date;
+    this.currentUserInfo = this.storageService.getUser();
     this.activatedRoute.queryParams.subscribe(params => {
       console.log(params);
       this.id = params['id'];
@@ -32,7 +35,6 @@ export class TestCheckoutComponent implements OnInit {
       }
       this.getTestDetails();
     });
-    this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();

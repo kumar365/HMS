@@ -380,8 +380,10 @@
                                                 <div class="doc-info-left">
                                                     <div class="doctor-img">
                                                         <a href="doctorProfile?id={{doctor.id}}">
-                                                            <img src="/assets/img/doctors/doctor-13.jpg"
-                                                                class="img-fluid" alt="">
+                                                            <div *ngIf=testDetails.retrievedImage>
+                                                                <img [src]="testDetails.retrievedImage"
+                                                                    class="img-fluid" alt="Test Image">
+                                                            </div>
                                                         </a>
                                                         <div class="favourite-btn">
                                                             <a href="javascript:void(0)" class="favourite-icon">
@@ -391,14 +393,15 @@
                                                     </div>
                                                     <div class="doc-info-cont">
                                                         <h4 class="doc-name">
-                                                            <a href="doctorProfile?id={{doctor.id}}">{{testDetails.testName}}</a>
+                                                            <a
+                                                                href="doctorProfile?id={{doctor.id}}">{{testDetails.testName}}</a>
                                                             <i class="fas fa-circle-check"></i>
                                                         </h4>
-                                                        <p class="doc-speciality">MBBS, Dentist</p>
+                                                        <p class="doc-speciality">{{testDetails.testCategory}}</p>
                                                         <div class="clinic-details">
                                                             <p class="doc-location">
                                                                 <i class="feather-map-pin"></i>
-                                                                <span>0.9</span> mi - Hyd, {{testDetails.labName}} <a
+                                                                <span>0.9</span> mi - {{testDetails.labAddress}}, {{testDetails.labName}} <a
                                                                     href="javascript:void(0);">Get Direction</a>
                                                             </p>
                                                             <p class="doc-location">
