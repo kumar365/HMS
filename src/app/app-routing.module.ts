@@ -96,12 +96,15 @@ import { ImageUploadComponent } from './component/image-upload/image-upload.comp
 import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
 import { AdminProfileSettingsComponent } from './component/admin-profile-settings/admin-profile-settings.component';
 import { AdminChangePasswordComponent } from './component/admin-change-password/admin-change-password.component';
+import { LabTestListComponent } from './component/lab-test-list/lab-test-list.component';
+import { AddLabTestComponent } from './component/add-lab-test/add-lab-test.component';
 
 const routes: Routes = [
   { path: 'index', component: HomeComponent },
   { path: 'accounts', component: AccountsComponent },
   { path: 'addAmbulance', component: AddAmbulanceComponent },
   { path: 'addBilling', component: AddBillingComponent },
+  { path: 'addLabTest', component: AddLabTestComponent },
   { path: 'addPrescription', component: AddPrescriptionComponent },
   { path: 'adminChangePassword', component: AdminChangePasswordComponent },
   { path: 'adminDashboard', component: AdminDashboardComponent },
@@ -149,6 +152,7 @@ const routes: Routes = [
   { path: 'labOragnSpecificTest', component: LabOragnSpecificTestComponent },
   { path: 'labRegister', component: LabRegisterComponent },
   { path: 'labTest', component: LabTestComponent },
+  { path: 'labTestList', component: LabTestListComponent },
   { path: 'login', component: LoginComponent },
   { path: 'loginEmail', component: LoginEmailComponent },
   { path: 'loginMobile', component: LoginMobileComponent },

@@ -13,4 +13,9 @@ export class TestDetails {
     ipAddress!: string;
     createdBy!: string;
     createdDate!: any;
+    testImage!: File;
+    testImageName!: string;
+    files!: File[];
+    imageData!: any;
+    retrievedImage: any;
 }

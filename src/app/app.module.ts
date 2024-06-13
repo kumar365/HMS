@@ -108,6 +108,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
 import { AdminProfileSettingsComponent } from './component/admin-profile-settings/admin-profile-settings.component';
 import { AdminChangePasswordComponent } from './component/admin-change-password/admin-change-password.component';
+import { LabTestListComponent } from './component/lab-test-list/lab-test-list.component';
+import { AddLabTestComponent } from './component/add-lab-test/add-lab-test.component';
 
 @NgModule({
   declarations: [
@@ -207,7 +209,9 @@ import { AdminChangePasswordComponent } from './component/admin-change-password/
     ImageUploadComponent,
     AdminDashboardComponent,
     AdminProfileSettingsComponent,
-    AdminChangePasswordComponent
+    AdminChangePasswordComponent,
+    LabTestListComponent,
+    AddLabTestComponent
   ],
   imports: [
     BrowserModule,

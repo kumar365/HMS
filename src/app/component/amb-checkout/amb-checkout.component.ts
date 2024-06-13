@@ -68,6 +68,11 @@ export class AmbCheckoutComponent implements OnInit {
       return false;
     } else if (this.ambBooking.paymentMethod == "Credit card or Debit card" && !this.validateCardDetails()) {
       return false;
+    } else if (this.ambBooking.termsAndConditions == "" || this.ambBooking.termsAndConditions == "N" || this.ambBooking.termsAndConditions == undefined) {
+      alert('Please Accept Terms & Conditions');
+      const element = this.renderer.selectRootElement('#termsAndConditions');
+      setTimeout(() => element.focus(), 0);
+      return false;
     } else {
       return true;
     }

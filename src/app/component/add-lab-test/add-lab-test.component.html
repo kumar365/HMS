@@ -49,7 +49,7 @@
                         <li class="active"><a href="findDoctors">Find Doctors</a></li>
                         <li><a href="consult">Consultation</a></li>
 
-                        <li><a href="medicineOrder">Medicine Order</a></li>
+                        <li><a href="testDetailsOrder">testDetails Order</a></li>
                         <li><a href="labTest">Lab Test</a></li>
                         <li><a href="findSurgeons">Find Surgeons</a></li>
                         <li><a href="bookAmbulance">Book Ambulance</a></li>
@@ -96,7 +96,7 @@
                         <nav aria-label="breadcrumb" class="page-breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="adminDashboard">Home</a></li>
-                                <li class="breadcrumb-item" aria-current="page">Admin Change Password</li>
+                                <li class="breadcrumb-item" aria-current="page">Add Test Details</li>
                             </ol>
                         </nav>
                     </div>
@@ -183,56 +183,69 @@
                     </div>
                     <div class="col-md-7 col-lg-8 col-xl-9">
                         <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-12 col-lg-6">
-                                        <div *ngIf="changePasswordFlag" class="alert alert-danger" role="alert">
-                                            {{ message }}
+                            <div class="card-body" style="padding-left: 200px;">
+                                <div *ngIf="statusFlag" class="alert alert-danger" role="alert">
+                                    {{ message }}
+                                </div>
+                                <form #addLabTestForm="ngForm" (ngSubmit)="onSubmit()">
+                                    <div class="row form-row">
+                                        <div class="col-12 col-md-12">
+                                            <div class="form-group">
+                                                <div class="change-avatar">
+                                                    <div class="profile-img">
+                                                        <div *ngIf=testDetails.retrievedImage>
+                                                            <img [src]="testDetails.retrievedImage" alt="Product image">
+                                                        </div>
+                                                    </div>
+                                                    <div class="upload-img">
+                                                        <div class="change-photo-btn">
+                                                            <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                                            <input type="file" [(ngModel)]="testDetails.testImage"
+                                                                id="testImage" name="testImage" accept="image/*"
+                                                                class="upload" (change)="selectFile($event)"
+                                                                #testImage="ngModel">
+                                                        </div>
+                                                        <small class="form-text text-muted">Allowed JPG, GIF or PNG. Max
+                                                            size of 2MB</small>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <form [formGroup]="formData" (ngSubmit)="onSubmit(formData.value)">
+                                        <div class="col-12 col-md-5">
                                             <div class="form-group">
-                                                <div class="pass-group">
-                                                    <label>Old Password</label>
-                                                    <input [type]="showPasswordOld ? 'password' : 'text'"
-                                                        id="oldPassword" required formControlName="oldPassword"
-                                                        class="form-control">
-                                                    <span (click)="toggleShowOld()"
-                                                        [class]="showPasswordOld ? 'feather-eye toggle-password-sub' :'feather-eye-off toggle-password-sub'"></span>
-                                                </div>
+                                                <label for="name">Test Name</label>
+                                                <input type="text" [(ngModel)]="testDetails.testName"
+                                                    class="form-control" id="name" name="name"
+                                                    placeholder="Enter testDetails name" required #name="ngModel">
                                             </div>
+                                        </div>
+                                        <div class="col-12 col-md-5">
                                             <div class="form-group">
-                                                <div class="pass-group">
-                                                    <label>New Password</label>
-                                                    <input [type]="showPasswordNew ? 'password' : 'text'"
-                                                        id="newPassword" required formControlName="newPassword"
-                                                        class="form-control">
-                                                    <span (click)="toggleShowNew()"
-                                                        [class]="showPasswordNew ? 'feather-eye toggle-password-sub' :'feather-eye-off toggle-password-sub'"></span>
-                                                </div>
+                                                <label for="name">Test Cost</label>
+                                                <input type="text" [(ngModel)]="testDetails.testCost"
+                                                    class="form-control" id="testCost" name="testCost"
+                                                    placeholder="Enter Test Cost" required #testCost="ngModel">
                                             </div>
+                                        </div>
 
+                                        <div class="col-12 col-md-5">
                                             <div class="form-group">
-                                                <div class="pass-group">
-                                                    <label>Confirm Password</label>
-                                                    <input [type]="showPasswordConfirm ? 'password' : 'text'"
-                                                        id="confirmPassword" required formControlName="confirmPassword"
-                                                        class="form-control">
-                                                    <span (click)="toggleShowConfirm()"
-                                                        [class]="showPasswordConfirm ? 'feather-eye toggle-password-sub' :'feather-eye-off toggle-password-sub'"></span>
-                                                </div>
+                                                <label>Lab Name</label>
+                                                <input type="text" [(ngModel)]="testDetails.labName" id="labName"
+                                                    name="labName" class="form-control" placeholder="Enter Lab Name"
+                                                    #labName="ngModel">
                                             </div>
-                                            <div class="submit-section">
-                                                <button type="submit" class="btn btn-primary submit-btn">Save
-                                                    Changes</button>
-                                            </div>
-                                        </form>
+                                        </div>
 
                                     </div>
-                                </div>
+                                    <div class="submit-section">
+                                        <button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-
                     </div>
+
                 </div>
             </div>
         </div>

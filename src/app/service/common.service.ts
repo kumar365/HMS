@@ -11,6 +11,7 @@ import { ApiResponse } from '../model/api-response';
 import { Appointment } from '../model/appointment';
 import { Ambulance } from '../model/ambulance';
 import { Staffing } from '../model/staffing';
+import { MessageResponse } from '../model/message-response';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,7 +20,6 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class CommonService {
-
   constructor(private httpClient: HttpClient) { }
 
   public findCountries(): Observable<Country[]> {
@@ -45,22 +45,22 @@ export class CommonService {
     return this.httpClient.get<User[]>(AppConstants.GET_DOCTOR_LIST, httpOptions);
   }
 
-  getDoctorById(id: any): Observable<User> {
+  public getDoctorById(id: any): Observable<User> {
     return this.httpClient.get<User>(AppConstants.GET_DOCTOR_BY_ID + id, httpOptions);
   }
-  getAmbulanceList(): Observable<Ambulance[]> {
+  public getAmbulanceList(): Observable<Ambulance[]> {
     return this.httpClient.get<Ambulance[]>(AppConstants.GET_AMBULANCES, httpOptions);
   }
-  getAmbulanceDetails(id: number): Observable<Ambulance> {
+  public getAmbulanceDetails(id: number): Observable<Ambulance> {
     return this.httpClient.get<Ambulance>(AppConstants.GET_AMBULANCE_DETAILS_BY_ID + id, httpOptions);
   }
-  getTestDetailsList(): Observable<TestDetails[]> {
+  public getTestDetailsList(): Observable<TestDetails[]> {
     return this.httpClient.get<TestDetails[]>(AppConstants.GET_TEST_DETAILS_LIST, httpOptions);
   }
-  getTestDetails(id: number): Observable<TestDetails> {
+  public getTestDetails(id: number): Observable<TestDetails> {
     return this.httpClient.get<TestDetails>(AppConstants.GET_TEST_DETAILS + id, httpOptions);
   }
-  sendUserQuestion(form: any): Observable<ApiResponse> {
+  public sendUserQuestion(form: any): Observable<ApiResponse> {
     return this.httpClient.post<ApiResponse>(AppConstants.SEND_USER_QUESTION, {
       name: form.name,
       email: form.email,
@@ -70,15 +70,38 @@ export class CommonService {
   public saveAppointment(appointment: Appointment): Observable<ApiResponse> {
     return this.httpClient.post<ApiResponse>(AppConstants.ADD_APPOINTMENT, appointment, httpOptions);
   }
-  sendStaffingData(staffing: Staffing): Observable<ApiResponse> {
+  public sendStaffingData(staffing: Staffing): Observable<ApiResponse> {
     return this.httpClient.post<ApiResponse>(AppConstants.SEND_STAFFFING_DATA, staffing, httpOptions);
   }
-  sendStaffingDataWithFile(staffing: Staffing): Observable<ApiResponse> {
+  public sendStaffingDataWithFile(staffing: Staffing): Observable<ApiResponse> {
     const formData: FormData = new FormData();
     formData.append('file', staffing.file);
     formData.append('staffing', new Blob([JSON.stringify(staffing)], {
       type: 'application/json'
     }));
     return this.httpClient.post<ApiResponse>(AppConstants.SEND_STAFFFING_DATA_FILE, formData);
+  }
+  public findTestDetailsById(id: any, token: string): Observable<TestDetails> {
+    const httpOptions1 = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
+    };
+    return this.httpClient.get<TestDetails>(AppConstants.GET_TEST_DETAILS_BY_ID + id, httpOptions1);
+  }
+  public saveTetestDetails(testDetails: TestDetails, token: string): Observable<MessageResponse> {
+    const formData: FormData = new FormData();
+    formData.append('file', testDetails.testImage);
+    formData.append('testDetails', new Blob([JSON.stringify(testDetails)], {
+      type: 'application/json'
+    }));
+    const httpOptions1 = {
+      headers: new HttpHeaders({ 'Authorization': "Bearer " + token })
+    };
+    return this.httpClient.post<ApiResponse>(AppConstants.ADD_TEST_DETAILS, formData, httpOptions1);
+  }
+  public deleteTestDetails(testId: any, token: string): Observable<any> {
+    const httpOptions1 = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': "Bearer " + token })
+    };
+    return this.httpClient.delete(AppConstants.DELETE_TEST_DETAILS_BY_ID + testId, httpOptions1);
   }
 }

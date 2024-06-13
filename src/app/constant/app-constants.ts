@@ -78,9 +78,11 @@ export class AppConstants {
     public static GET_DISTRICTS_BY_ID = AppConstants.COMMON_URL + 'districts/';
     public static UPLOAD_FILE = AppConstants.COMMON_URL + 'uploadFile';
     public static GET_DOCTOR_LIST = AppConstants.COMMON_URL + 'doctorList';
-    public static ADD_TEST_DETAILS = AppConstants.COMMON_URL + 'addTestDetails';
     public static GET_AMBULANCES = AppConstants.COMMON_URL + 'getAmbulances';
     public static GET_AMBULANCE_DETAILS_BY_ID  = AppConstants.COMMON_URL + 'getAmbulanceDetailsById/';
+    public static ADD_TEST_DETAILS = AppConstants.COMMON_URL + 'addTestDetails';
+    public static GET_TEST_DETAILS_BY_ID = AppConstants.COMMON_URL + 'getTestDetailsById/';
+    public static DELETE_TEST_DETAILS_BY_ID = AppConstants.COMMON_URL + 'deleteTestDetailsById/';
     public static GET_TEST_DETAILS = AppConstants.COMMON_URL + 'testDetails/';
     public static GET_TEST_DETAILS_LIST = AppConstants.COMMON_URL + 'testDetailsList';
     public static GET_DOCTOR_BY_ID = AppConstants.COMMON_URL + 'getDoctorDetailsById/';
