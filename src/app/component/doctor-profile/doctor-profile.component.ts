@@ -55,6 +55,9 @@ export class DoctorProfileComponent implements OnInit {
   getDoctorData() {
     this.commonService.getDoctorById(this.id).subscribe((data: User) => {
       this.doctor = data;
+      if (this.doctor.imageData != null && this.doctor.imageData != undefined) {
+        this.doctor.retrievedImage = 'data:image/jpeg;base64,' + this.doctor.imageData;
+      }
     });
   }
   changeTermsAndConditions() {

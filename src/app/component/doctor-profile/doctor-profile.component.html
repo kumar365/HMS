@@ -119,8 +119,12 @@
                         <div class="doctor-widget-one">
                             <div class="doc-info-left">
                                 <div class="doctor-img">
-                                    <img src="/assets/img/doctors/doctor-thumb-02.jpg" class="img-fluid"
-                                        alt="User Image">
+                                    <div *ngIf=!doctor.retrievedImage>
+                                        <img src="/assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
+                                    </div>
+                                    <div *ngIf=doctor.retrievedImage>
+                                        <img [src]="doctor.retrievedImage" class="img-fluid" alt="User Image">
+                                    </div>
                                 </div>
                                 <div class="doc-info-cont">
                                     <h4 class="doc-name">
@@ -938,7 +942,7 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
-                                    <p class="mb-0">&copy; 2023  HealingXpert. All rights reserved. Powered by <a
+                                    <p class="mb-0">&copy; 2023 HealingXpert. All rights reserved. Powered by <a
                                             href="https://abc.com" target="_blank" style="color:#fff"> Technologies Pvt.
                                             Ltd.</a></p>
                                 </div>

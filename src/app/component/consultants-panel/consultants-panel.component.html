@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Consultants -  HealingXpert</title>
+    <title>Consultants - HealingXpert</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 
     <link href="/assets/img/favicon.png" rel="icon">
@@ -206,20 +206,28 @@
                                 <h3 class="title pharmacy-title"> HealingXpert's Consultants Panel</h3>
                             </div>
                         </div>
-                        <div class="row row-grid" *ngFor="let doctor of doctorsList">
+                        <div class="row row-grid">
 
-                            <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="col-md-6 col-lg-4 col-xl-3" *ngFor="let doctor of doctorsList">
                                 <div class="card widget-profile pat-widget-profile">
                                     <div class="card-body">
                                         <div class="pro-widget-content">
                                             <div class="profile-info-widget">
                                                 <a href="doctorProfile?id={{doctor.id}}" class="booking-doc-img">
-                                                    <img src="/assets/img/dr-profile-pic.jpg" alt="mdurairaj">
+                                                    <div *ngIf=!doctor.retrievedImage>
+                                                        <img src="/assets/img/dr-profile-pic.jpg" alt="mdurairaj">
+                                                    </div>
+                                                    <div *ngIf=doctor.retrievedImage>
+                                                        <img [src]="doctor.retrievedImage" alt="User Image">
+                                                    </div>
                                                 </a>
                                                 <div class="profile-det-info">
-                                                    <h3><a href="doctorProfile?id={{doctor.id}}">{{doctor.displayName}}</a></h3>
+                                                    <h3><a
+                                                            href="doctorProfile?id={{doctor.id}}">{{doctor.displayName}}</a>
+                                                    </h3>
                                                     <div class="patient-details">
-                                                        <h5>{{doctor.displayName}} a cardiac surgeon, practicing Pediatric
+                                                        <h5>{{doctor.displayName}} a cardiac surgeon, practicing
+                                                            Pediatric
                                                             and Adult Cardiac Surgery.</h5>
                                                         <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i> Hyd,
                                                             India</h5>
@@ -234,7 +242,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
 
                         </div>
                     </div>
@@ -332,7 +340,7 @@
 
 
             <div class="sidenav">
-                 <!-- <a href="consultation"><img src="/assets/img/footer-banner\.jpg"></a> --> 
+                <!-- <a href="consultation"><img src="/assets/img/footer-banner\.jpg"></a> -->
             </div>
 
             <div class="footer-bottom">
@@ -342,8 +350,8 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
-                                    <p class="mb-0">&copy; 2023  HealingXpert. All rights reserved. Powered by <a href="/"
-                                            target="_blank" style="color:#fff"> Technologies Pvt. Ltd.</a></p>
+                                    <p class="mb-0">&copy; 2023 HealingXpert. All rights reserved. Powered by <a
+                                            href="/" target="_blank" style="color:#fff"> Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">

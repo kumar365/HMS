@@ -17,7 +17,7 @@ export class ConsultantsPanelComponent implements OnInit {
   currentUser: User = new User;
   doctorsList: User[] = [];
   retrievedImage: any;
-  constructor(private storageService: StorageService, private userService: UserService, 
+  constructor(private storageService: StorageService, private userService: UserService,
     private commonService: CommonService) { }
 
   ngOnInit(): void {
@@ -39,6 +39,11 @@ export class ConsultantsPanelComponent implements OnInit {
   getDoctorsList() {
     this.commonService.getDoctorsList().subscribe((data: User[]) => {
       this.doctorsList = data;
+      for (let index = 0; index < this.doctorsList.length; index++) {
+        if (this.doctorsList[index].imageData != null && this.doctorsList[index].imageData != undefined) {
+          this.doctorsList[index].retrievedImage = 'data:image/jpeg;base64,' + this.doctorsList[index].imageData;
+        }
+      }
     });
   }
   getDoctorsListConditional() {
