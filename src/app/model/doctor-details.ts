@@ -14,4 +14,6 @@ export class DoctorDetails {
     clinicVisitFee!: number;
     teleConsultationFee!: number;
     videoConsultFee!: number;
+    service!: string;
+    specialization!: string;
 }

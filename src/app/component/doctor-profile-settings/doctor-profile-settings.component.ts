@@ -209,6 +209,8 @@ export class DoctorProfileSettingsComponent implements OnInit {
       return false;
     } else if (!this.validatePricing()) {
       return false;
+    } else if (!this.validateServiceAndSpecialization()) {
+      return false;
     } else {
       return true;
     }
@@ -244,7 +246,7 @@ export class DoctorProfileSettingsComponent implements OnInit {
       return false;
     }
   }
-  
+
   validatePricing(): boolean {
     if (this.currentUser.doctorDetails != null && this.currentUser.doctorDetails != undefined) {
       if (this.currentUser.doctorDetails.clinicVisitFee <= 0 || this.currentUser.doctorDetails.clinicVisitFee == undefined) {
@@ -281,7 +283,25 @@ export class DoctorProfileSettingsComponent implements OnInit {
       return false;
     }
   }
-
+  validateServiceAndSpecialization(): boolean {
+    if (this.currentUser.doctorDetails != null && this.currentUser.doctorDetails != undefined) {
+      if (this.currentUser.doctorDetails.service == "" || this.currentUser.doctorDetails.service == undefined) {
+        alert('Please eneter Service Details');
+        const element = this.renderer.selectRootElement('#service');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (this.currentUser.doctorDetails.specialization == "" || this.currentUser.doctorDetails.specialization == undefined) {
+        alert('Please eneter specialization Details');
+        const element = this.renderer.selectRootElement('#specialization');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      return false;
+    }
+  }
 
   onSubmit() {
     if (this.validateUserData()) {
