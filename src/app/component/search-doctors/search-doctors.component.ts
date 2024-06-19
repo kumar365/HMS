@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchDoctorFilter } from 'src/app/model/search-doctor-filter';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
 import { CommonService } from 'src/app/service/common.service';
@@ -16,13 +17,32 @@ export class SearchDoctorsComponent implements OnInit {
   currentUserInfo: UserInfo = new UserInfo;
   currentUser: User = new User;
   doctorsList: User[] = [];
-  maleGenderFlag: boolean = false;
-  femaleGenderFlag: boolean = false;
-  availabilityTodayFlag: boolean = false;
-  availabilityTomorrowFlag: boolean = false;
-  availabilityNext7DaysFlag: boolean = false;
-  availabilityNext14DaysFlag: boolean = false;
+  doctorsListBKP: User[] = [];
   retrievedImage: any;
+  filter: SearchDoctorFilter = new SearchDoctorFilter;
+
+  genderList = [
+    { label: 'Male', selected: false },
+    { label: 'Female', selected: false }
+  ];
+
+  availabilityList = [
+    { label: 'Available Today', selected: false },
+    { label: 'Available Tomorrow', selected: false },
+    { label: 'Available in Next 7 Days', selected: false },
+    { label: 'Available in Next 30 Days', selected: false }
+  ];
+
+  specialityList = [
+    { label: 'Urology', selected: false },
+    { label: 'Ophthalmology', selected: false },
+    { label: 'Cardiology', selected: false }
+  ];
+
+  experienceList = [
+    { label: '1-5 Years', selected: false },
+    { label: '5+ Years', selected: false }
+  ];
   constructor(private storageService: StorageService, private userService: UserService,
     private commonService: CommonService) { }
 
@@ -45,35 +65,70 @@ export class SearchDoctorsComponent implements OnInit {
   getDoctorsList() {
     this.commonService.getDoctorsList().subscribe((data: User[]) => {
       this.doctorsList = data;
+      this.doctorsListBKP = this.doctorsList;
     });
   }
-  genderChecked(type: string) {
-    if (type == '1') {
-      this.maleGenderFlag = !this.maleGenderFlag;
-    } else {
-      this.femaleGenderFlag = !this.femaleGenderFlag;
+  genderChecked(event: any) {
+    if (event.target.value === 'Male' && event.target.checked) {
+      this.doctorsList = this.doctorsList.filter(d => d.gender === 'Male')
+    } else if (event.target.value === 'Female' && event.target.checked) {
+      this.doctorsList = this.doctorsList.filter(d => d.gender === 'Female')
+    } else if (event.target.value === 'Male' && !event.target.checked) {
+      this.doctorsList = this.doctorsListBKP;
+    } else if (event.target.value === 'Female' && !event.target.checked) {
+      this.doctorsList = this.doctorsListBKP;
     }
-    this.commonService.getDoctorsListConditional(this.maleGenderFlag).subscribe((data: User[]) => {
-      this.doctorsList = data;
-      console.log('data length::' + data.length);
-    });
   }
-  availabilityChecked(type: string) {
-    if (type == '1') {
-      this.availabilityTodayFlag = !this.availabilityTodayFlag;
+  availabilityChecked(event: any) {
+    if (event.target.value === 'Available Today' && event.target.checked) {
+      this.doctorsList = this.doctorsListBKP;
+    } else if (event.target.value === 'Available Tomorrow' && event.target.checked) {
+      this.doctorsList = this.doctorsListBKP;
+    } else if (event.target.value === 'Available in Next 7 Days' && event.target.checked) {
+      this.doctorsList = this.doctorsListBKP;
+    } else if (event.target.value === 'Available in Next 30 Days' && event.target.checked) {
+      this.doctorsList = this.doctorsListBKP;
+    } else if (event.target.value === 'Available Today' && !event.target.checked) {
+      this.doctorsList = this.doctorsListBKP;
+    } else if (event.target.value === 'Available Tomorrow' && !event.target.checked) {
+      this.doctorsList = this.doctorsListBKP;
+    } else if (event.target.value === 'Available in Next 7 Days'! && event.target.checked) {
+      this.doctorsList = this.doctorsListBKP;
+    } else if (event.target.value === 'Available in Next 30 Days'! && event.target.checked) {
+      this.doctorsList = this.doctorsListBKP;
     }
-    if (type == '2') {
-      this.availabilityTomorrowFlag = !this.availabilityTomorrowFlag;
+  }
+  specialityChecked(event: any) {
+    if (event.target.value === 'Urology' && event.target.checked) {
+      this.doctorsList = this.doctorsListBKP;
+    } else if (event.target.value === 'Ophthalmology' && event.target.checked) {
+      this.doctorsList = this.doctorsListBKP;
+    } else if (event.target.value === 'Cardiology' && event.target.checked) {
+      this.doctorsList = this.doctorsListBKP;
+    } else if (event.target.value === 'Urology' && !event.target.checked) {
+      this.doctorsList = this.doctorsListBKP;
+    } else if (event.target.value === 'Ophthalmology' && !event.target.checked) {
+      this.doctorsList = this.doctorsListBKP;
+    } else if (event.target.value === 'Cardiology'! && event.target.checked) {
+      this.doctorsList = this.doctorsListBKP;
     }
-    if (type == '3') {
-      this.availabilityNext7DaysFlag = !this.availabilityNext7DaysFlag;
+  }
+  experienceChecked(event: any) {
+    if (event.target.value === '1-5 Years' && event.target.checked) {
+      this.doctorsList = this.doctorsListBKP;
+    } else if (event.target.value === '5+ Years' && event.target.checked) {
+      this.doctorsList = this.doctorsListBKP;
+    } else if (event.target.value === '1-5 Years' && !event.target.checked) {
+      this.doctorsList = this.doctorsListBKP;
+    } else if (event.target.value === '5+ Years' && !event.target.checked) {
+      this.doctorsList = this.doctorsListBKP;
     }
-    if (type == '4') {
-      this.availabilityNext14DaysFlag = !this.availabilityNext14DaysFlag;
-    }
-    this.commonService.getDoctorsListConditional(this.availabilityTodayFlag).subscribe((data: User[]) => {
-      this.doctorsList = data;
-      console.log('data length::' + data.length);
-    });
+  }
+  resetFilters() {
+    this.doctorsList = this.doctorsListBKP;
+    this.genderList.forEach(item => item.selected = false);
+    this.availabilityList.forEach(item => item.selected = false);
+    this.specialityList.forEach(item => item.selected = false);
+    this.experienceList.forEach(item => item.selected = false);
   }
 }

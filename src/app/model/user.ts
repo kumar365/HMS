@@ -1,5 +1,6 @@
 import { City } from "./city";
 import { Country } from "./country";
+import { DoctorDetails } from "./doctor-details";
 import { Hospital } from "./hospital";
 import { State } from "./state";
 
@@ -45,7 +46,7 @@ export class User {
     oldPassword!: string;
     newPassword!: string;
     confirmPassword!: string;
-    hospital!: Hospital;
     refId!: any;
     retrievedImage!: any;
+    doctorDetails!:DoctorDetails;
 }

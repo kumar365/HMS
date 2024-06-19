@@ -63,9 +63,6 @@ export class AdminProfileSettingsComponent implements OnInit {
       if (this.currentUser.city == null || this.currentUser.city == undefined) {
         this.currentUser.city = new City;
       }
-      if (this.currentUser.hospital == null || this.currentUser.hospital == undefined) {
-        this.currentUser.hospital = new Hospital;
-      }
       this.currentUser.dateOfBirthString = this.convertDateToDateString(this.currentUser.dateOfBirth);
       this.currentUser.token = this.storageService.getDoctorToken();
     });

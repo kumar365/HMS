@@ -106,11 +106,8 @@
                 </div>
             </div>
         </div>
-
-
         <div class="doctor-content content">
             <div class="container">
-
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 map-view">
                         <div class="row">
@@ -120,28 +117,20 @@
                                         <h4 class="filter-title">Filter</h4>
                                     </div>
                                     <div class="filter-details">
-
                                         <div class="filter-grid">
                                             <h4>
                                                 <a href="#collapseone" data-bs-toggle="collapse">Gender</a>
                                             </h4>
                                             <div id="collapseone" class="collapse show">
                                                 <div class="filter-collapse">
-                                                    <ul>
+                                                    <ul *ngFor="let gender of genderList">
                                                         <li>
                                                             <label class="custom_check d-inline-flex">
-                                                                <input type="checkbox" (click)="genderChecked('1')"
-                                                                    name="gender">
-                                                                <span class="checkmark"></span>
-                                                                Male Gender
-                                                            </label>
-                                                        </li>
-                                                        <li>
-                                                            <label class="custom_check d-inline-flex">
-                                                                <input type="checkbox" (click)="genderChecked('2')"
-                                                                    name="gender">
-                                                                <span class="checkmark"></span>
-                                                                Female Gender
+                                                                <input type="checkbox" name="gender"
+                                                                    [checked]="gender.selected" [value]="gender.label"
+                                                                    (change)="genderChecked($event)"><span
+                                                                    class="checkmark"></span>{{
+                                                                gender.label }}
                                                             </label>
                                                         </li>
                                                     </ul>
@@ -155,48 +144,21 @@
                                             </h4>
                                             <div id="collapsetwo" class="collapse show">
                                                 <div class="filter-collapse">
-                                                    <ul>
+                                                    <ul *ngFor="let availability of availabilityList">
                                                         <li>
                                                             <label class="custom_check d-inline-flex">
-                                                                <input type="checkbox"
-                                                                    (click)="availabilityChecked('1')"
-                                                                    name="availability">
-                                                                <span class="checkmark"></span>
-                                                                Available Today
-                                                            </label>
-                                                        </li>
-                                                        <li>
-                                                            <label class="custom_check d-inline-flex">
-                                                                <input type="checkbox"
-                                                                    (click)="availabilityChecked('2')"
-                                                                    name="availability">
-                                                                <span class="checkmark"></span>
-                                                                Available Tomorrow
-                                                            </label>
-                                                        </li>
-                                                        <li>
-                                                            <label class="custom_check d-inline-flex">
-                                                                <input type="checkbox"
-                                                                    (click)="availabilityChecked('3')"
-                                                                    name="availability">
-                                                                <span class="checkmark"></span>
-                                                                Available in Next 7 Days
-                                                            </label>
-                                                        </li>
-                                                        <li>
-                                                            <label class="custom_check d-inline-flex">
-                                                                <input type="checkbox"
-                                                                    (click)="availabilityChecked('4')"
-                                                                    name="availability">
-                                                                <span class="checkmark"></span>
-                                                                Available in Next 30 Days
+                                                                <input type="checkbox" name="availability"
+                                                                    [checked]="availability.selected"
+                                                                    [value]="availability.label"
+                                                                    (change)="availabilityChecked($event)"><span
+                                                                    class="checkmark"></span>{{
+                                                                availability.label }}
                                                             </label>
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
-
 
                                         <div class="filter-grid">
                                             <h4>
@@ -222,40 +184,27 @@
                                             </div>
                                         </div>
 
-
                                         <div class="filter-grid">
                                             <h4>
                                                 <a href="#collapsefour" data-bs-toggle="collapse">Speciality</a>
                                             </h4>
                                             <div id="collapsefour" class="collapse show">
                                                 <div class="filter-collapse">
-                                                    <ul>
+                                                    <ul *ngFor="let speciality of specialityList">
                                                         <li>
                                                             <label class="custom_check d-inline-flex">
-                                                                <input type="checkbox" name="speciality">
-                                                                <span class="checkmark"></span>
-                                                                Urology
-                                                            </label>
-                                                        </li>
-                                                        <li>
-                                                            <label class="custom_check d-inline-flex">
-                                                                <input type="checkbox" name="speciality">
-                                                                <span class="checkmark"></span>
-                                                                Ophthalmology
-                                                            </label>
-                                                        </li>
-                                                        <li>
-                                                            <label class="custom_check d-inline-flex">
-                                                                <input type="checkbox" name="speciality">
-                                                                <span class="checkmark"></span>
-                                                                Cardiology
+                                                                <input type="checkbox" name="speciality"
+                                                                    [checked]="speciality.selected"
+                                                                    [value]="speciality.label"
+                                                                    (change)="specialityChecked($event)"><span
+                                                                    class="checkmark"></span>{{
+                                                                speciality.label }}
                                                             </label>
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
-
 
                                         <div class="filter-grid">
                                             <h4>
@@ -263,26 +212,21 @@
                                             </h4>
                                             <div id="collapsefive" class=" collapse show">
                                                 <div class="filter-collapse">
-                                                    <ul>
+                                                    <ul *ngFor="let experience of experienceList">
                                                         <li>
                                                             <label class="custom_check d-inline-flex">
-                                                                <input type="checkbox" name="experience">
-                                                                <span class="checkmark"></span>
-                                                                1-5 Years
-                                                            </label>
-                                                        </li>
-                                                        <li>
-                                                            <label class="custom_check d-inline-flex">
-                                                                <input type="checkbox" name="experience">
-                                                                <span class="checkmark"></span>
-                                                                5+ Years
+                                                                <input type="checkbox" name="experience"
+                                                                    [checked]="experience.selected"
+                                                                    [value]="experience.label"
+                                                                    (change)="experienceChecked($event)"><span
+                                                                    class="checkmark"></span>{{
+                                                                experience.label }}
                                                             </label>
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
-
 
                                         <div class="filter-grid">
                                             <h4>
@@ -412,18 +356,15 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
-
-
                                         <div class="filter-btn apply-btn">
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <a href="javascript:void(0);" class="btn btn-primary">Apply</a>
+                                                    <!-- <button class="btn btn-primary" (click)="filterBy()"
+                                                        type="button">Apply</button> -->
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="javascript:void(0);"
-                                                        class="btn btn-outline-primary">Reset</a>
+                                                     <button class="btn btn-outline-primary" (click)="resetFilters()"
+                                                        type="button">Reset</button> 
                                                 </div>
                                             </div>
                                         </div>
@@ -510,7 +451,8 @@
                                                     </div>
                                                     <div class="doc-info-cont">
                                                         <h4 class="doc-name">
-                                                            <a href="doctorProfile?id={{doctor.id}}">{{doctor.displayName}}</a>
+                                                            <a
+                                                                href="doctorProfile?id={{doctor.id}}">{{doctor.displayName}}</a>
                                                             <i class="fas fa-circle-check"></i>
                                                         </h4>
                                                         <p class="doc-speciality">MBBS, Dentist</p>
@@ -542,15 +484,18 @@
                                                                     Today</span>
                                                             </li>
                                                             <li><i class="feather-thumbs-up available-icon"></i> 98%
-                                                                <span class="votes">(252 Votes)</span></li>
+                                                                <span class="votes">(252 Votes)</span>
+                                                            </li>
                                                             <li>Rs.600/- <i
                                                                     class="feather-info available-info-icon"></i>
                                                             </li>
                                                         </ul>
                                                     </div>
                                                     <div class="clinic-booking book-appoint">
-                                                        <a class="btn btn-primary" href="booking?id={{doctor.id}}">Book Appointment</a>
-                                                        <a class="btn btn-primary-light" href="booking2?id={{doctor.id}}">Book Online
+                                                        <a class="btn btn-primary" href="booking?id={{doctor.id}}">Book
+                                                            Appointment</a>
+                                                        <a class="btn btn-primary-light"
+                                                            href="booking2?id={{doctor.id}}">Book Online
                                                             Consultation</a>
                                                     </div>
                                                 </div>
@@ -696,8 +641,8 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
-                                    <p class="mb-0">&copy; 2023  HealingXpert. All rights reserved. Powered by <a href="/"
-                                            target="_blank" style="color:#fff"> Technologies Pvt. Ltd.</a></p>
+                                    <p class="mb-0">&copy; 2023 HealingXpert. All rights reserved. Powered by <a
+                                            href="/" target="_blank" style="color:#fff"> Technologies Pvt. Ltd.</a></p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">

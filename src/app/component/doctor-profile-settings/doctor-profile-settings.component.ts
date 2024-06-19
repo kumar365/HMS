@@ -5,6 +5,7 @@ import { AppValidations } from 'src/app/constant/app-validations';
 import { MessageConstants } from 'src/app/constant/message-constants';
 import { City } from 'src/app/model/city';
 import { Country } from 'src/app/model/country';
+import { DoctorDetails } from 'src/app/model/doctor-details';
 import { Hospital } from 'src/app/model/hospital';
 import { MessageResponse } from 'src/app/model/message-response';
 import { State } from 'src/app/model/state';
@@ -63,8 +64,11 @@ export class DoctorProfileSettingsComponent implements OnInit {
       if (this.currentUser.city == null || this.currentUser.city == undefined) {
         this.currentUser.city = new City;
       }
-      if (this.currentUser.hospital == null || this.currentUser.hospital == undefined) {
-        this.currentUser.hospital = new Hospital;
+      if (this.currentUser.doctorDetails == null || this.currentUser.doctorDetails == undefined) {
+        this.currentUser.doctorDetails = new DoctorDetails;
+        if (this.currentUser.doctorDetails != null && (this.currentUser.doctorDetails.hospital == null || this.currentUser.doctorDetails.hospital == undefined)) {
+          this.currentUser.doctorDetails.hospital = new Hospital;
+        }
       }
       this.currentUser.dateOfBirthString = this.convertDateToDateString(this.currentUser.dateOfBirth);
       this.currentUser.token = this.storageService.getDoctorToken();
@@ -106,18 +110,39 @@ export class DoctorProfileSettingsComponent implements OnInit {
     }
   }
 
-  onSubmit() {
-    if (this.validateUserData()) {
-      this.currentUser.token = this.storageService.getDoctorToken();
-      this.userService.updateProfile(this.currentUser).subscribe((data: MessageResponse) => {
-        this.message = data.message;
-        if (this.message == MessageConstants.UpdateProfileMessage) {
-          this.storageService.saveDoctorUser(this.currentUser);
-          this.profileStatusFlag = true;
-        }
+  getCountries() {
+    this.commonService.findCountries().subscribe((data: Country[]) => {
+      this.countries = data;
+      this.states = [];
+    });
+  }
+  getStates() {
+    this.commonService.findStates().subscribe((stateData: State[]) => {
+      this.states = stateData;
+      this.cities = [];
+    });
+  }
+  getStatesById(countryId: number) {
+    if (countryId > 0) {
+      this.commonService.findStatesByCountryId(countryId).subscribe((stateData: State[]) => {
+        this.states = stateData;
+        this.cities = [];
       });
     }
   }
+  getCities() {
+    this.commonService.findCities().subscribe((cityData: City[]) => {
+      this.cities = cityData;
+    });
+  }
+  getCitiesById(stateId: number) {
+    if (stateId > 0) {
+      this.commonService.findCitiesByStateId(stateId).subscribe((cityData: City[]) => {
+        this.cities = cityData;
+      });
+    }
+  }
+
   validateUserData(): boolean {
     if (this.currentUser.firstName == "" || this.currentUser.firstName == undefined) {
       alert('Please eneter First Name');
@@ -166,48 +191,112 @@ export class DoctorProfileSettingsComponent implements OnInit {
       const element = this.renderer.selectRootElement('#biography');
       setTimeout(() => element.focus(), 0);
       return false;
+    } else if (!this.validateClinicInfoData()) {
+      return false;
     } else if (this.currentUser.address == "" || this.currentUser.address == undefined) {
       alert('Please Enter Address');
       const element = this.renderer.selectRootElement('#address');
       setTimeout(() => element.focus(), 0);
       return false;
+    } else if (!AppValidations.validateAddress(this.currentUser.address)) {
+      const element = this.renderer.selectRootElement('#address');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (this.currentUser.pinCode == "" || this.currentUser.pinCode == undefined) {
+      alert('Please Enter Postal Code');
+      const element = this.renderer.selectRootElement('#pinCode');
+      setTimeout(() => element.focus(), 0);
+      return false;
+    } else if (!this.validatePricing()) {
+      return false;
     } else {
       return true;
     }
   }
+  validateClinicInfoData(): boolean {
+    if (this.currentUser.doctorDetails != null && this.currentUser.doctorDetails != undefined) {
+      if (this.currentUser.doctorDetails.hospital != null && this.currentUser.doctorDetails.hospital != undefined) {
+        if (this.currentUser.doctorDetails.hospital.name == "" || this.currentUser.doctorDetails.hospital.name == undefined) {
+          alert('Please eneter Hospital Name');
+          const element = this.renderer.selectRootElement('#hospitalName');
+          setTimeout(() => element.focus(), 0);
+          return false;
+        } else if (!AppValidations.validateName(this.currentUser.doctorDetails.hospital.name)) {
+          const element = this.renderer.selectRootElement('#hospitalName');
+          setTimeout(() => element.focus(), 0);
+          return false;
+        } else if (this.currentUser.doctorDetails.hospital.address == "" || this.currentUser.doctorDetails.hospital.address == undefined) {
+          alert('Please eneter Hospital Address');
+          const element = this.renderer.selectRootElement('#hospitalAddress');
+          setTimeout(() => element.focus(), 0);
+          return false;
+        } else if (!AppValidations.validateAddress(this.currentUser.doctorDetails.hospital.address)) {
+          const element = this.renderer.selectRootElement('#hospitalAddress');
+          setTimeout(() => element.focus(), 0);
+          return false;
+        } else {
+          return true;
+        }
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+  
+  validatePricing(): boolean {
+    if (this.currentUser.doctorDetails != null && this.currentUser.doctorDetails != undefined) {
+      if (this.currentUser.doctorDetails.clinicVisitFee <= 0 || this.currentUser.doctorDetails.clinicVisitFee == undefined) {
+        alert('Please eneter Clinic Visit Fees');
+        const element = this.renderer.selectRootElement('#clinicVisitFee');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (!AppValidations.validatePrice(this.currentUser.doctorDetails.clinicVisitFee)) {
+        const element = this.renderer.selectRootElement('#clinicVisitFee');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (this.currentUser.doctorDetails.teleConsultationFee <= 0 || this.currentUser.doctorDetails.teleConsultationFee == undefined) {
+        alert('Please eneter Tele Consultation Fees');
+        const element = this.renderer.selectRootElement('#teleConsultationFee');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (!AppValidations.validatePrice(this.currentUser.doctorDetails.teleConsultationFee)) {
+        const element = this.renderer.selectRootElement('#teleConsultationFee');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (this.currentUser.doctorDetails.videoConsultFee <= 0 || this.currentUser.doctorDetails.videoConsultFee == undefined) {
+        alert('Please eneter Video Consultation Fees');
+        const element = this.renderer.selectRootElement('#videoConsultFee');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (!AppValidations.validatePrice(this.currentUser.doctorDetails.videoConsultFee)) {
+        const element = this.renderer.selectRootElement('#videoConsultFee');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      return false;
+    }
+  }
 
-  getCountries() {
-    this.commonService.findCountries().subscribe((data: Country[]) => {
-      this.countries = data;
-      this.states = [];
-    });
-  }
-  getStates() {
-    this.commonService.findStates().subscribe((stateData: State[]) => {
-      this.states = stateData;
-      this.cities = [];
-    });
-  }
-  getStatesById(countryId: number) {
-    if (countryId > 0) {
-      this.commonService.findStatesByCountryId(countryId).subscribe((stateData: State[]) => {
-        this.states = stateData;
-        this.cities = [];
+
+  onSubmit() {
+    if (this.validateUserData()) {
+      this.currentUser.token = this.storageService.getDoctorToken();
+      this.userService.updateProfile(this.currentUser).subscribe((data: MessageResponse) => {
+        this.message = data.message;
+        if (this.message == MessageConstants.UpdateProfileMessage) {
+          this.storageService.saveDoctorUser(this.currentUser);
+          this.profileStatusFlag = true;
+        }
       });
     }
   }
-  getCities() {
-    this.commonService.findCities().subscribe((cityData: City[]) => {
-      this.cities = cityData;
-    });
-  }
-  getCitiesById(stateId: number) {
-    if (stateId > 0) {
-      this.commonService.findCitiesByStateId(stateId).subscribe((cityData: City[]) => {
-        this.cities = cityData;
-      });
-    }
-  }
+
+
   onChangeCountry() {
     let countryId = this.currentUser.country.id;
     if (countryId > 0) {

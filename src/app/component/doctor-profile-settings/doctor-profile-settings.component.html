@@ -191,7 +191,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                             <a href="logout">
+                                            <a href="logout">
                                                 <i class="fas fa-sign-out-alt"></i>
                                                 <span>Logout</span>
                                             </a>
@@ -329,7 +329,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Clinic Name</label>
-                                                <input type="text" [(ngModel)]="currentUser.hospital.name"
+                                                <input type="text" [(ngModel)]="currentUser.doctorDetails.hospital.name"
                                                     id="hospitalName" name="hospitalName" placeholder="Clinic Name"
                                                     class="form-control" #hospitalName="ngModel">
                                             </div>
@@ -337,13 +337,14 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Clinic Address</label>
-                                                <input type="text" [(ngModel)]="currentUser.hospital.address"
+                                                <input type="text"
+                                                    [(ngModel)]="currentUser.doctorDetails.hospital.address"
                                                     id="hospitalAddress" name="hospitalAddress"
                                                     placeholder="Clinic Address" class="form-control"
                                                     #hospitalAddress="ngModel">
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
+                                        <!-- <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Clinic Images</label>
                                                 <form action="#" class="dropzone"></form>
@@ -362,7 +363,7 @@
                                                             class="far fa-trash-alt"></i></a>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -447,7 +448,10 @@
                                                     <input type="checkbox" name="checkbox"> Clinic Visit
                                                 </label>
                                                 <div class="col-12 col-md-6 col-lg-4">
-                                                    <input type="text" class="form-control" placeholder="Add Price">
+                                                    <input type="text"
+                                                        [(ngModel)]="currentUser.doctorDetails.clinicVisitFee"
+                                                        id="clinicVisitFee" name="clinicVisitFee" class="form-control"
+                                                        #clinicVisitFee="ngModel" placeholder="Add Price">
                                                 </div>
 
                                             </div>
@@ -456,7 +460,11 @@
                                                     <input type="checkbox" name="checkbox"> Tele Consultation
                                                 </label>
                                                 <div class="col-12 col-md-6 col-lg-4">
-                                                    <input type="text" class="form-control" placeholder="Add Price">
+                                                    <input type="text"
+                                                        [(ngModel)]="currentUser.doctorDetails.teleConsultationFee"
+                                                        id="teleConsultationFee" name="teleConsultationFee"
+                                                        class="form-control" #teleConsultationFee="ngModel"
+                                                        placeholder="Add Price">
                                                 </div>
                                             </div>
                                             <div class="checkbox mb-3">
@@ -464,7 +472,10 @@
                                                     <input type="checkbox" name="checkbox"> Video Consultation
                                                 </label>
                                                 <div class="col-12 col-md-6 col-lg-4">
-                                                    <input type="text" class="form-control" placeholder="Add Price">
+                                                    <input type="text"
+                                                        [(ngModel)]="currentUser.doctorDetails.videoConsultFee"
+                                                        id="videoConsultFee" name="videoConsultFee" class="form-control"
+                                                        #videoConsultFee="ngModel" placeholder="Add Price">
                                                 </div>
                                             </div>
                                         </div>
@@ -748,7 +759,7 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
-                                    <p class="mb-0">&copy; 2023  HealingXpert. All rights reserved. Powered by <a
+                                    <p class="mb-0">&copy; 2023 HealingXpert. All rights reserved. Powered by <a
                                             href="https://technologies.com" target="_blank" style="color:#fff">l
                                             Technologies Pvt. Ltd.</a></p>
                                 </div>
