@@ -18,9 +18,11 @@ export class AvailableTimingsComponent implements OnInit {
   currentUser: User = new User;
   doctorSlot: DoctorSlot = new DoctorSlot;
   retrievedImage: any;
+  currentDate: any;
   constructor(private router: Router, private storageService: StorageService, private userService: UserService) { }
 
   ngOnInit(): void {
+    this.currentDate = new Date;
     this.currentUserInfo = this.storageService.getUser();
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();

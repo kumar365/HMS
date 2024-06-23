@@ -1,17 +1,18 @@
-import { Education } from "./education";
 import { User } from "./user";
 
 export class DoctorEducation {
     id!: any;
-    doctorUser!: User;
-    education!: Education;
+    doctorName!: string;
+    degreeName!: string;
     university!: string;
     fromYear!: string;
     address!: string;
     country!: string;
     toYear!: string;
+    yearOfCompletion!: string;
     version!: string;
     ipAddress!: string;
     createdBy!: string;
     createdDate!: any;
+    index!: any;
 }

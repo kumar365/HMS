@@ -116,7 +116,7 @@
                         <div class="profile-sidebar">
                             <div class="widget-profile pro-widget-content">
                                 <div class="profile-info-widget">
-                                    <a href="#" class="booking-doc-img">
+                                    <a href="doctorDashboard" class="booking-doc-img">
                                         <div *ngIf=retrievedImage>
                                             <img [src]="retrievedImage" alt="User Image">
                                         </div>
@@ -324,6 +324,32 @@
                             </div>
                             <div class="card">
                                 <div class="card-body">
+                                    <h4 class="card-title">Doctor Registration Info</h4>
+                                    <div class="row form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Name</label>
+                                                <input type="text" [(ngModel)]="currentUser.doctorDetails.name"
+                                                    id="doctorDetailsName" name="doctorDetailsName" placeholder="Name"
+                                                    class="form-control" #doctorDetailsName="ngModel" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Registration Number</label>
+                                                <input type="text"
+                                                    [(ngModel)]="currentUser.doctorDetails.registrationNumber"
+                                                    id="registrationNumber" name="registrationNumber"
+                                                    placeholder="Registration Number" class="form-control"
+                                                    #registrationNumber="ngModel">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
                                     <h4 class="card-title">Clinic Info</h4>
                                     <div class="row form-row">
                                         <div class="col-md-6">
@@ -514,23 +540,44 @@
                                     <div class="education-info">
                                         <div class="row form-row education-cont">
                                             <div class="col-12 col-md-10 col-lg-11">
-                                                <div class="row form-row">
+                                                <div class="row form-row"
+                                                    *ngFor="let doctorEducation of currentUser.doctorDetails.doctorEducations;let i = index">
                                                     <div class="col-12 col-md-6 col-lg-4">
                                                         <div class="form-group">
-                                                            <label>Degree</label>
-                                                            <input type="text" class="form-control">
+                                                            <label>Degree Name</label>
+                                                            <input type="text" [(ngModel)]="doctorEducation.degreeName"
+                                                                id="degreeName{{i}}" name="degreeName{{i}}"
+                                                                class="form-control" placeholder="Enter Degree Name"
+                                                                #degreeName{{i}}="ngModel">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-md-6 col-lg-4">
                                                         <div class="form-group">
-                                                            <label>College/Institute</label>
-                                                            <input type="text" class="form-control">
+                                                            <label>College/Institute Name</label>
+                                                            <input type="text" [(ngModel)]="doctorEducation.university"
+                                                                id="university{{i}}" name="university{{i}}"
+                                                                class="form-control"
+                                                                placeholder="Enter College/Institute Name"
+                                                                #university{{i}}="ngModel">
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 col-md-6 col-lg-4">
+                                                    <div class="col-12 col-md-6 col-lg-3">
                                                         <div class="form-group">
                                                             <label>Year of Completion</label>
-                                                            <input type="text" class="form-control">
+                                                            <input type="text"
+                                                                [(ngModel)]="doctorEducation.yearOfCompletion"
+                                                                id="yearOfCompletion{{i}}" name="yearOfCompletion{{i}}"
+                                                                placeholder="Enter Year of Completion"
+                                                                class="form-control" #yearOfCompletion{{i}}="ngModel">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-md-6 col-lg-1">
+                                                        <div class="form-group">
+                                                            <label>Delete</label>
+                                                            <a (click)="deleteEducation(doctorEducation.index)"
+                                                                class="btn btn-sm bg-danger-light">
+                                                                <i class="fas fa-trash-alt"></i>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -538,8 +585,9 @@
                                         </div>
                                     </div>
                                     <div class="add-more">
-                                        <a href="javascript:void(0);" class="add-education"><i
-                                                class="fa fa-plus-circle"></i> Add More</a>
+                                        <a (click)="addEducation()" class="add-education"><i
+                                                class="fa fa-plus-circle"></i>
+                                            Add More</a>
                                     </div>
                                 </div>
                             </div>
@@ -549,29 +597,50 @@
                                     <div class="experience-info">
                                         <div class="row form-row experience-cont">
                                             <div class="col-12 col-md-10 col-lg-12">
-                                                <div class="row form-row">
+                                                <div class="row form-row"
+                                                    *ngFor="let experience of currentUser.doctorDetails.doctorExperiences;let i = index">
                                                     <div class="col-12 col-md-6 col-lg-4">
                                                         <div class="form-group">
                                                             <label>Hospital Name</label>
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" [(ngModel)]="experience.hospitalName"
+                                                                id="hospitalName{{i}}" name="hospitalName{{i}}"
+                                                                class="form-control" placeholder="Enter Hospital Name"
+                                                                #hospitalName{{i}}="ngModel">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-md-6 col-lg-2">
                                                         <div class="form-group">
-                                                            <label>From</label>
-                                                            <input type="text" class="form-control">
+                                                            <label>From Year</label>
+                                                            <input type="text" [(ngModel)]="experience.fromYear"
+                                                                id="fromYear{{i}}" name="fromYear{{i}}"
+                                                                class="form-control" placeholder="Enter From Year"
+                                                                #fromYear{{i}}="ngModel">
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-md-6 col-lg-2">
                                                         <div class="form-group">
-                                                            <label>To</label>
-                                                            <input type="text" class="form-control">
+                                                            <label>To Year</label>
+                                                            <input type="text" [(ngModel)]="experience.toYear"
+                                                                id="toYear{{i}}" name="toYear{{i}}" class="form-control"
+                                                                placeholder="Enter To Year" #toYear{{i}}="ngModel">
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 col-md-6 col-lg-4">
+                                                    <div class="col-12 col-md-6 col-lg-3">
                                                         <div class="form-group">
                                                             <label>Designation</label>
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" [(ngModel)]="experience.designation"
+                                                                id="designation{{i}}" name="designation{{i}}"
+                                                                class="form-control" placeholder="Enter Designation"
+                                                                #designation{{i}}="ngModel">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-md-6 col-lg-1">
+                                                        <div class="form-group">
+                                                            <label>Delete</label>
+                                                            <a (click)="deleteExperience(experience.index)"
+                                                                class="btn btn-sm bg-danger-light">
+                                                                <i class="fas fa-trash-alt"></i>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -579,8 +648,9 @@
                                         </div>
                                     </div>
                                     <div class="add-more">
-                                        <a href="javascript:void(0);" class="add-experience"><i
-                                                class="fa fa-plus-circle"></i> Add More</a>
+                                        <a (click)="addExperience()" class="add-experience"><i
+                                                class="fa fa-plus-circle"></i>
+                                            Add More</a>
                                     </div>
                                 </div>
                             </div>
@@ -588,24 +658,37 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Awards</h4>
                                     <div class="awards-info">
-                                        <div class="row form-row awards-cont">
+                                        <div class="row form-row awards-cont"
+                                            *ngFor="let awards of currentUser.doctorDetails.doctorAwards;let i = index">
                                             <div class="col-12 col-md-5">
                                                 <div class="form-group">
                                                     <label>Awards</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" [(ngModel)]="awards.awardName"
+                                                        id="awardName{{i}}" name="awardName{{i}}" class="form-control"
+                                                        placeholder="Enter Awards" #awardName{{i}}="ngModel">
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-5">
                                                 <div class="form-group">
                                                     <label>Year</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" [(ngModel)]="awards.year" id="year{{i}}"
+                                                        name="year{{i}}" class="form-control" placeholder="Enter Year"
+                                                        #year{{i}}="ngModel">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-1">
+                                                <div class="form-group">
+                                                    <label>Delete</label>
+                                                    <a (click)="deleteAwards(awards.index)"
+                                                        class="btn btn-sm bg-danger-light">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="add-more">
-                                        <a href="javascript:void(0);" class="add-award"><i
-                                                class="fa fa-plus-circle"></i>
+                                        <a (click)="addAwards()" class="add-award"><i class="fa fa-plus-circle"></i>
                                             Add More</a>
                                     </div>
                                 </div>
@@ -614,18 +697,32 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Memberships</h4>
                                     <div class="membership-info">
-                                        <div class="row form-row membership-cont">
+                                        <div class="row form-row membership-cont"
+                                            *ngFor="let memberships of currentUser.doctorDetails.doctorMemberships;let i = index">
                                             <div class="col-12 col-md-10 col-lg-5">
                                                 <div class="form-group">
                                                     <label>Memberships</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" [(ngModel)]="memberships.name"
+                                                        id="memberships{{i}}" name="memberships{{i}}"
+                                                        class="form-control" placeholder="Enter Memberships"
+                                                        #memberships{{i}}="ngModel">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 ol-md-10 col-lg-1">
+                                                <div class="form-group">
+                                                    <label>Delete</label>
+                                                    <a (click)="deleteMemberships(memberships.index)"
+                                                        class="btn btn-sm bg-danger-light">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="add-more">
-                                        <a href="javascript:void(0);" class="add-membership"><i
-                                                class="fa fa-plus-circle"></i> Add More</a>
+                                        <a (click)="addMemberships()" class="add-membership"><i
+                                                class="fa fa-plus-circle"></i>
+                                            Add More</a>
                                     </div>
                                 </div>
                             </div>
@@ -633,23 +730,39 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Registrations</h4>
                                     <div class="registrations-info">
-                                        <div class="row form-row reg-cont">
+                                        <div class="row form-row reg-cont"
+                                            *ngFor="let registration of currentUser.doctorDetails.doctorRegistrations;let i = index">
                                             <div class="col-12 col-md-5">
                                                 <div class="form-group">
                                                     <label>Registrations</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" [(ngModel)]="registration.registrationName"
+                                                        id="registrationName{{i}}" name="registrationName{{i}}"
+                                                        class="form-control" placeholder="Enter Registrations"
+                                                        #registrationName{{i}}="ngModel">
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-5">
                                                 <div class="form-group">
                                                     <label>Year</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" [(ngModel)]="registration.year"
+                                                        id="registrationYear{{i}}" name="registrationYear{{i}}"
+                                                        class="form-control" placeholder="Enter Year"
+                                                        #registrationYear{{i}}="ngModel">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-1">
+                                                <div class="form-group">
+                                                    <label>Delete</label>
+                                                    <a (click)="deleteRegistration(registration.index)"
+                                                        class="btn btn-sm bg-danger-light">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="add-more">
-                                        <a href="javascript:void(0);" class="add-reg"><i class="fa fa-plus-circle"></i>
+                                        <a (click)="addRegistration()" class="add-reg"><i class="fa fa-plus-circle"></i>
                                             Add
                                             More</a>
                                     </div>

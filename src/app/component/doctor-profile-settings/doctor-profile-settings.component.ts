@@ -5,7 +5,12 @@ import { AppValidations } from 'src/app/constant/app-validations';
 import { MessageConstants } from 'src/app/constant/message-constants';
 import { City } from 'src/app/model/city';
 import { Country } from 'src/app/model/country';
+import { DoctorAwards } from 'src/app/model/doctor-awards';
 import { DoctorDetails } from 'src/app/model/doctor-details';
+import { DoctorEducation } from 'src/app/model/doctor-education';
+import { DoctorExperience } from 'src/app/model/doctor-experience';
+import { DoctorMemberships } from 'src/app/model/doctor-memberships';
+import { DoctorRegistration } from 'src/app/model/doctor-registration';
 import { Hospital } from 'src/app/model/hospital';
 import { MessageResponse } from 'src/app/model/message-response';
 import { State } from 'src/app/model/state';
@@ -34,6 +39,7 @@ export class DoctorProfileSettingsComponent implements OnInit {
   progress = 0;
   preview = '';
   retrievedImage: any;
+
   constructor(private storageService: StorageService, private userService: UserService, private router: Router,
     private commonService: CommonService, private renderer: Renderer2) { }
 
@@ -48,6 +54,31 @@ export class DoctorProfileSettingsComponent implements OnInit {
     this.getCountries();
     this.getStates();
     this.getCities();
+    if (this.currentUser.doctorDetails.doctorEducations.length == 0) {
+      let doctorEducation = new DoctorEducation;
+      doctorEducation.index = 1;
+      this.currentUser.doctorDetails.doctorEducations.push(doctorEducation);
+    }
+    if (this.currentUser.doctorDetails.doctorExperiences.length == 0) {
+      let doctorExperience = new DoctorExperience;
+      doctorExperience.index = 1;
+      this.currentUser.doctorDetails.doctorExperiences.push(doctorExperience);
+    }
+    if (this.currentUser.doctorDetails.doctorAwards.length == 0) {
+      let doctorAwards = new DoctorAwards;
+      doctorAwards.index = 1;
+      this.currentUser.doctorDetails.doctorAwards.push(doctorAwards);
+    }
+    if (this.currentUser.doctorDetails.doctorMemberships.length == 0) {
+      let doctorMemberships = new DoctorMemberships;
+      doctorMemberships.index = 1;
+      this.currentUser.doctorDetails.doctorMemberships.push(doctorMemberships);
+    }
+    if (this.currentUser.doctorDetails.doctorRegistrations.length == 0) {
+      let doctorRegistration = new DoctorRegistration;
+      doctorRegistration.index = 1;
+      this.currentUser.doctorDetails.doctorRegistrations.push(doctorRegistration);
+    }
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
@@ -68,6 +99,11 @@ export class DoctorProfileSettingsComponent implements OnInit {
         this.currentUser.doctorDetails = new DoctorDetails;
         if (this.currentUser.doctorDetails != null && (this.currentUser.doctorDetails.hospital == null || this.currentUser.doctorDetails.hospital == undefined)) {
           this.currentUser.doctorDetails.hospital = new Hospital;
+        }
+      }
+      if (this.currentUser.doctorDetails.doctorEducations.length > 0) {
+        for (let index = 0; index < this.currentUser.doctorDetails.doctorEducations.length; index++) {
+          this.currentUser.doctorDetails.doctorEducations[index].index = index + 1;
         }
       }
       this.currentUser.dateOfBirthString = this.convertDateToDateString(this.currentUser.dateOfBirth);
@@ -191,6 +227,8 @@ export class DoctorProfileSettingsComponent implements OnInit {
       const element = this.renderer.selectRootElement('#biography');
       setTimeout(() => element.focus(), 0);
       return false;
+    } else if (!this.validateRegistrationData()) {
+      return false;
     } else if (!this.validateClinicInfoData()) {
       return false;
     } else if (this.currentUser.address == "" || this.currentUser.address == undefined) {
@@ -213,6 +251,21 @@ export class DoctorProfileSettingsComponent implements OnInit {
       return false;
     } else {
       return true;
+    }
+  }
+  validateRegistrationData(): boolean {
+    if (this.currentUser.doctorDetails != null && this.currentUser.doctorDetails != undefined) {
+      this.currentUser.doctorDetails.name = this.currentUser.displayName;
+      if (this.currentUser.doctorDetails.registrationNumber == "" || this.currentUser.doctorDetails.registrationNumber == undefined) {
+        alert('Please eneter Registration Number');
+        const element = this.renderer.selectRootElement('#registrationNumber');
+        setTimeout(() => element.focus(), 0);
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      return false;
     }
   }
   validateClinicInfoData(): boolean {
@@ -350,6 +403,46 @@ export class DoctorProfileSettingsComponent implements OnInit {
         this.currentUser.city = this.cities[index];
       }
     }
+  }
+  addEducation() {
+    let doctorEducation = new DoctorEducation;
+    doctorEducation.index = this.currentUser.doctorDetails.doctorEducations.length + 1;
+    this.currentUser.doctorDetails.doctorEducations.push(doctorEducation);
+  }
+  deleteEducation(index: any) {
+    this.currentUser.doctorDetails.doctorEducations = this.currentUser.doctorDetails.doctorEducations.filter(obj => obj.index != index);
+  }
+  addExperience() {
+    let doctorExperience = new DoctorExperience;
+    doctorExperience.index = this.currentUser.doctorDetails.doctorExperiences.length + 1;
+    this.currentUser.doctorDetails.doctorExperiences.push(doctorExperience);
+  }
+  deleteExperience(index: any) {
+    this.currentUser.doctorDetails.doctorExperiences = this.currentUser.doctorDetails.doctorExperiences.filter(obj => obj.index != index);
+  }
+  addAwards() {
+    let doctorAwards = new DoctorAwards;
+    doctorAwards.index = this.currentUser.doctorDetails.doctorAwards.length + 1;
+    this.currentUser.doctorDetails.doctorAwards.push(doctorAwards);
+  }
+  deleteAwards(index: any) {
+    this.currentUser.doctorDetails.doctorAwards = this.currentUser.doctorDetails.doctorAwards.filter(obj => obj.index != index);
+  }
+  addMemberships() {
+    let doctorMemberships = new DoctorMemberships;
+    doctorMemberships.index = this.currentUser.doctorDetails.doctorMemberships.length + 1;
+    this.currentUser.doctorDetails.doctorMemberships.push(doctorMemberships);
+  }
+  deleteMemberships(index: any) {
+    this.currentUser.doctorDetails.doctorMemberships = this.currentUser.doctorDetails.doctorMemberships.filter(obj => obj.index != index);
+  }
+  addRegistration() {
+    let doctorRegistration = new DoctorRegistration;
+    doctorRegistration.index = this.currentUser.doctorDetails.doctorRegistrations.length + 1;
+    this.currentUser.doctorDetails.doctorRegistrations.push(doctorRegistration);
+  }
+  deleteRegistration(index: any) {
+    this.currentUser.doctorDetails.doctorRegistrations = this.currentUser.doctorDetails.doctorRegistrations.filter(obj => obj.index != index);
   }
   reloadPage(): void {
     window.location.reload();

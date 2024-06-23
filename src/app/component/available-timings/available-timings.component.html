@@ -105,12 +105,10 @@
             </div>
         </div>
 
-
         <div class="content">
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
-
                         <div class="profile-sidebar">
                             <div class="widget-profile pro-widget-content">
                                 <div class="profile-info-widget">
@@ -215,7 +213,7 @@
                                                                 <div class="me-3">
                                                                     <input type="date" class="form-control"
                                                                         name="schedule_date" id="schedule_date"
-                                                                        value="DD-MM-YY" min="2021-05-21">
+                                                                        value="DD-MM-YYYY" min="{{currentDate| date:'yyyy-MM-dd'}}">
                                                                 </div>
                                                                 <div class="search-time-mobile">
                                                                     <input type="submit" name="submit" value="Search"

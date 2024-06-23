@@ -1,19 +1,24 @@
-import { Education } from "./education";
-import { Experience } from "./experience";
+import { DoctorAwards } from "./doctor-awards";
+import { DoctorEducation } from "./doctor-education";
+import { DoctorExperience } from "./doctor-experience";
+import { DoctorMemberships } from "./doctor-memberships";
+import { DoctorRegistration } from "./doctor-registration";
 import { Hospital } from "./hospital";
-import { Qualification } from "./qualification";
-import { User } from "./user";
 
 export class DoctorDetails {
     id!: number;
-    doctorUser!: User;
-    qualification!: Qualification[];
-    education!: Education;
+    name!: string;
+    registrationNumber!: string;
     hospital!: Hospital;
-    experience!: Experience[];
     clinicVisitFee!: number;
     teleConsultationFee!: number;
     videoConsultFee!: number;
     service!: string;
     specialization!: string;
+    rating!: any;
+    doctorEducations!: DoctorEducation[];
+    doctorExperiences!: DoctorExperience[];
+    doctorAwards!: DoctorAwards[];
+    doctorMemberships!: DoctorMemberships[];
+    doctorRegistrations!: DoctorRegistration[];
 }

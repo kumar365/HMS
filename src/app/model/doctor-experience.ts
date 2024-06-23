@@ -1,11 +1,10 @@
-import { User } from "./user";
-
-export class Experience {
+export class DoctorExperience {
     id!: number;
-    doctorUser!: User;
+    doctorName!: string;
     hospitalName!: string;
     fromYear!: string;
     toYear!: string;
     experienceData!: string;
     designation!: string;
+    index!: any;
 }
