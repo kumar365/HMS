@@ -116,13 +116,6 @@ export class DoctorProfileSettingsComponent implements OnInit {
   }
   pad(s: any) { return (s < 10) ? '0' + s : s; }
 
-  uploadFile() {
-    this.currentUser.token = this.storageService.getDoctorToken();
-    this.userService.uploadFile(this.currentUser).subscribe((data: MessageResponse) => {
-      this.message = data.message;
-      alert(this.message);
-    });
-  }
   selectFile(event: any): void {
     this.preview = '';
     this.progress = 0;

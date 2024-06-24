@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AppValidations } from 'src/app/constant/app-validations';
 import { MessageConstants } from 'src/app/constant/message-constants';
 import { City } from 'src/app/model/city';
@@ -26,8 +27,12 @@ export class ProfileSettingsComponent implements OnInit {
   states: State[] = [];
   cities: City[] = [];
   formData!: FormGroup;
+  selectedFiles?: FileList;
+  currentFile?: File;
+  progress = 0;
+  preview = '';
   retrievedImage: any;
-  constructor(private storageService: StorageService, private userService: UserService,
+  constructor(private storageService: StorageService, private userService: UserService, private router: Router,
     private commonService: CommonService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
@@ -35,6 +40,8 @@ export class ProfileSettingsComponent implements OnInit {
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();
+    } else {
+      this.router.navigate(['/loginEmail']);
     }
     this.getCountries();
     this.getStates();
@@ -65,17 +72,29 @@ export class ProfileSettingsComponent implements OnInit {
   }
   pad(s: any) { return (s < 10) ? '0' + s : s; }
 
-  onSubmit() {
-    if (this.validateUserData()) {
-      this.userService.updateProfile(this.currentUser).subscribe((data: MessageResponse) => {
-        this.message = data.message;
-        if (this.message == MessageConstants.UpdateProfileMessage) {
-          this.storageService.saveUser(this.currentUser);
-          this.statusFlag = true;
+  selectFile(event: any): void {
+    this.preview = '';
+    this.progress = 0;
+    this.selectedFiles = event.target.files;
+    if (this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+      if (file) {
+        this.preview = '';
+        this.currentFile = file;
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          console.log(e.target.result);
+          this.preview = e.target.result;
+        };
+        this.currentUser.profileImage = this.currentFile;
+        for (let i = 0; i < this.selectedFiles.length; i++) {
+          this.currentUser.files.push(this.selectedFiles[i]);
         }
-      });
+        reader.readAsDataURL(this.currentFile);
+      }
     }
   }
+
   validateUserData(): boolean {
     if (this.currentUser.firstName == "" || this.currentUser.firstName == undefined) {
       alert('Please eneter First Name');
@@ -102,8 +121,8 @@ export class ProfileSettingsComponent implements OnInit {
       return false;
     } else if (this.currentUser.bloodGroup == "" || this.currentUser.bloodGroup == undefined) {
       alert('Please Select Blood Group');
-      const element = this.renderer.selectRootElement('#bloodGroup');
-      setTimeout(() => element.focus(), 0);
+      // const element = this.renderer.selectRootElement('#bloodGroup');
+      // setTimeout(() => element.focus(), 0);
       return false;
     } else if (this.currentUser.email == "" || this.currentUser.email == undefined) {
       alert('Please eneter Email');
@@ -139,18 +158,18 @@ export class ProfileSettingsComponent implements OnInit {
       return false;
     } else if (this.currentUser.country.name == "" || this.currentUser.country.name == undefined) {
       alert('Please Select Country');
-      const element = this.renderer.selectRootElement('#country');
-      setTimeout(() => element.focus(), 0);
+      // const element = this.renderer.selectRootElement('#country');
+      // setTimeout(() => element.focus(), 0);
       return false;
     } else if (this.currentUser.state.name == "" || this.currentUser.state.name == undefined) {
       alert('Please Select state');
-      const element = this.renderer.selectRootElement('#state');
-      setTimeout(() => element.focus(), 0);
+      // const element = this.renderer.selectRootElement('#state');
+      // setTimeout(() => element.focus(), 0);
       return false;
     } else if (this.currentUser.city.name == "" || this.currentUser.city.name == undefined) {
       alert('Please Select city');
-      const element = this.renderer.selectRootElement('#city');
-      setTimeout(() => element.focus(), 0);
+      // const element = this.renderer.selectRootElement('#city');
+      // setTimeout(() => element.focus(), 0);
       return false;
     } else if (this.currentUser.pinCode == "" || this.currentUser.pinCode == undefined) {
       alert('Please Enter Zip Code');
@@ -161,7 +180,6 @@ export class ProfileSettingsComponent implements OnInit {
       return true;
     }
   }
-
   getCountries() {
     this.commonService.findCountries().subscribe((data: Country[]) => {
       this.countries = data;
@@ -191,6 +209,18 @@ export class ProfileSettingsComponent implements OnInit {
     if (stateId > 0) {
       this.commonService.findCitiesByStateId(stateId).subscribe((cityData: City[]) => {
         this.cities = cityData;
+      });
+    }
+  }
+  onSubmit() {
+    if (this.validateUserData()) {
+      this.currentUser.token = this.storageService.getToken();
+      this.userService.updateProfile(this.currentUser).subscribe((data: MessageResponse) => {
+        this.message = data.message;
+        if (this.message == MessageConstants.UpdateProfileMessage) {
+          this.storageService.saveUser(this.currentUser);
+          this.statusFlag = true;
+        }
       });
     }
   }

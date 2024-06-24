@@ -155,8 +155,8 @@ export class AdminProfileSettingsComponent implements OnInit {
       return false;
     } else if (this.currentUser.bloodGroup == "" || this.currentUser.bloodGroup == undefined) {
       alert('Please Select Blood Group');
-      const element = this.renderer.selectRootElement('#bloodGroup');
-      setTimeout(() => element.focus(), 0);
+      // const element = this.renderer.selectRootElement('#bloodGroup');
+      // setTimeout(() => element.focus(), 0);
       return false;
     } else if (this.currentUser.address == "" || this.currentUser.address == undefined) {
       alert('Please Enter Address');
@@ -165,18 +165,18 @@ export class AdminProfileSettingsComponent implements OnInit {
       return false;
     } else if (this.currentUser.country.name == "" || this.currentUser.country.name == undefined) {
       alert('Please Select Country');
-      const element = this.renderer.selectRootElement('#country');
-      setTimeout(() => element.focus(), 0);
+      // const element = this.renderer.selectRootElement('#country');
+      // setTimeout(() => element.focus(), 0);
       return false;
     } else if (this.currentUser.state.name == "" || this.currentUser.state.name == undefined) {
       alert('Please Select state');
-      const element = this.renderer.selectRootElement('#state');
-      setTimeout(() => element.focus(), 0);
+      // const element = this.renderer.selectRootElement('#state');
+      // setTimeout(() => element.focus(), 0);
       return false;
     } else if (this.currentUser.city.name == "" || this.currentUser.city.name == undefined) {
       alert('Please Select city');
-      const element = this.renderer.selectRootElement('#city');
-      setTimeout(() => element.focus(), 0);
+      // const element = this.renderer.selectRootElement('#city');
+      // setTimeout(() => element.focus(), 0);
       return false;
     } else if (this.currentUser.pinCode == "" || this.currentUser.pinCode == undefined) {
       alert('Please Enter Zip Code');
