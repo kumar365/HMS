@@ -116,7 +116,7 @@
                             <div class="widget-profile pro-widget-content">
                                 <div class="profile-info-widget">
                                     <a href="#" class="booking-doc-img">
-                                         <div *ngIf=retrievedImage>
+                                        <div *ngIf=retrievedImage>
                                             <img [src]="retrievedImage" alt="User Image">
                                         </div>
                                     </a>
@@ -190,7 +190,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                             <a href="logout">
+                                            <a href="logout">
                                                 <i class="fas fa-sign-out-alt"></i>
                                                 <span>Logout</span>
                                             </a>
@@ -227,108 +227,70 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="card schedule-widget mb-0">
-
                                                         <div class="schedule-header">
-
                                                             <div class="schedule-nav">
                                                                 <ul class="nav nav-tabs nav-justified">
-                                                                    <li class="nav-item">
-                                                                        <a class="nav-link" data-bs-toggle="tab"
-                                                                            href="#slot_sunday">Sunday</a>
-                                                                    </li>
-                                                                    <li class="nav-item">
-                                                                        <a class="nav-link active" data-bs-toggle="tab"
-                                                                            href="#slot_monday">Monday</a>
-                                                                    </li>
-                                                                    <li class="nav-item">
-                                                                        <a class="nav-link" data-bs-toggle="tab"
-                                                                            href="#slot_tuesday">Tuesday</a>
-                                                                    </li>
-                                                                    <li class="nav-item">
-                                                                        <a class="nav-link" data-bs-toggle="tab"
-                                                                            href="#slot_wednesday">Wednesday</a>
-                                                                    </li>
-                                                                    <li class="nav-item">
-                                                                        <a class="nav-link" data-bs-toggle="tab"
-                                                                            href="#slot_thursday">Thursday</a>
-                                                                    </li>
-                                                                    <li class="nav-item">
-                                                                        <a class="nav-link" data-bs-toggle="tab"
-                                                                            href="#slot_friday">Friday</a>
-                                                                    </li>
-                                                                    <li class="nav-item">
-                                                                        <a class="nav-link" data-bs-toggle="tab"
-                                                                            href="#slot_saturday">Saturday</a>
+                                                                    <li class="nav-item" *ngFor="let day of daysList">
+                                                                        <a [class]="day.selected ? 'nav-link active':'nav-link'"
+                                                                            data-bs-toggle="tab"
+                                                                            href="{{day.id}}">{{day.label}}</a>
                                                                     </li>
                                                                 </ul>
                                                             </div>
-
                                                         </div>
 
-
                                                         <div class="tab-content schedule-cont">
-
-                                                            <div id="slot_sunday" class="tab-pane fade">
-                                                                <h4 class="card-title d-flex justify-content-between">
-                                                                    <span>Time Slots</span>
-                                                                    <a class="edit-link" data-bs-toggle="modal" (click)="checkSlotDuration()"
-                                                                        href="#add_time_slot"><i
-                                                                            class="fa fa-plus-circle"></i> Add Slot</a>
-                                                                </h4>
-                                                                <p class="text-muted mb-0">Not Available</p>
-                                                            </div>
-
 
                                                             <div id="slot_monday" class="tab-pane fade show active">
                                                                 <h4 class="card-title d-flex justify-content-between">
                                                                     <span>Time Slots</span>
-                                                                    <a class="edit-link" data-bs-toggle="modal"
-                                                                        href="#edit_time_slot"><i
+                                                                    <a class="edit-link" *ngIf="!isSlotListHaveData"
+                                                                        data-bs-toggle="modal"
+                                                                        (click)="checkSlotDuration()"
+                                                                        href="#add_time_slot"><i
+                                                                            class="fa fa-plus-circle"></i> Add Slot</a>
+                                                                    <a class="edit-link" *ngIf="isSlotListHaveData"
+                                                                        data-bs-toggle="modal" href="#edit_time_slot"><i
                                                                             class="fa fa-edit me-1"></i>Edit</a>
                                                                 </h4>
 
-                                                                <div class="doc-times">
-                                                                    <div class="doc-slot-list">
-                                                                        8:00 pm - 11:30 pm
-                                                                        <a href="javascript:void(0)"
-                                                                            class="delete_schedule">
-                                                                            <i class="fa fa-times"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="doc-slot-list">
-                                                                        11:30 pm - 1:30 pm
-                                                                        <a href="javascript:void(0)"
-                                                                            class="delete_schedule">
-                                                                            <i class="fa fa-times"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="doc-slot-list">
-                                                                        3:00 pm - 5:00 pm
-                                                                        <a href="javascript:void(0)"
-                                                                            class="delete_schedule">
-                                                                            <i class="fa fa-times"></i>
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="doc-slot-list">
-                                                                        6:00 pm - 11:00 pm
-                                                                        <a href="javascript:void(0)"
+                                                                <div class="doc-times" *ngIf="isSlotListHaveData">
+                                                                    <div class="doc-slot-list"
+                                                                        *ngFor="let slot of slotList">
+                                                                        {{slot.startTime}} - {{slot.endTime}}
+                                                                        <a (click)="deleteSlot(slot.index)"
                                                                             class="delete_schedule">
                                                                             <i class="fa fa-times"></i>
                                                                         </a>
                                                                     </div>
                                                                 </div>
-
                                                             </div>
 
 
                                                             <div id="slot_tuesday" class="tab-pane fade">
                                                                 <h4 class="card-title d-flex justify-content-between">
                                                                     <span>Time Slots</span>
-                                                                    <a class="edit-link" data-bs-toggle="modal"
+                                                                    <a class="edit-link" *ngIf="!isSlotListHaveData"
+                                                                        data-bs-toggle="modal"
+                                                                        (click)="checkSlotDuration()"
                                                                         href="#add_time_slot"><i
                                                                             class="fa fa-plus-circle"></i> Add Slot</a>
+                                                                    <a class="edit-link" *ngIf="isSlotListHaveData"
+                                                                        data-bs-toggle="modal" href="#edit_time_slot"><i
+                                                                            class="fa fa-edit me-1"></i>Edit</a>
                                                                 </h4>
-                                                                <p class="text-muted mb-0">Not Available</p>
+                                                                <p class="text-muted mb-0" *ngIf="!isSlotListHaveData">
+                                                                    Not Available</p>
+                                                                <div class="doc-times" *ngIf="isSlotListHaveData">
+                                                                    <div class="doc-slot-list"
+                                                                        *ngFor="let slot of slotList">
+                                                                        {{slot.startTime}} - {{slot.endTime}}
+                                                                        <a (click)="deleteSlot(slot.index)"
+                                                                            class="delete_schedule">
+                                                                            <i class="fa fa-times"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
                                                             </div>
 
 
@@ -336,6 +298,7 @@
                                                                 <h4 class="card-title d-flex justify-content-between">
                                                                     <span>Time Slots</span>
                                                                     <a class="edit-link" data-bs-toggle="modal"
+                                                                        (click)="checkSlotDuration()"
                                                                         href="#add_time_slot"><i
                                                                             class="fa fa-plus-circle"></i> Add Slot</a>
                                                                 </h4>
@@ -347,28 +310,40 @@
                                                                 <h4 class="card-title d-flex justify-content-between">
                                                                     <span>Time Slots</span>
                                                                     <a class="edit-link" data-bs-toggle="modal"
+                                                                        (click)="checkSlotDuration()"
                                                                         href="#add_time_slot"><i
                                                                             class="fa fa-plus-circle"></i> Add Slot</a>
                                                                 </h4>
                                                                 <p class="text-muted mb-0">Not Available</p>
                                                             </div>
-
 
                                                             <div id="slot_friday" class="tab-pane fade">
                                                                 <h4 class="card-title d-flex justify-content-between">
                                                                     <span>Time Slots</span>
                                                                     <a class="edit-link" data-bs-toggle="modal"
+                                                                        (click)="checkSlotDuration()"
                                                                         href="#add_time_slot"><i
                                                                             class="fa fa-plus-circle"></i> Add Slot</a>
                                                                 </h4>
                                                                 <p class="text-muted mb-0">Not Available</p>
                                                             </div>
 
-
                                                             <div id="slot_saturday" class="tab-pane fade">
                                                                 <h4 class="card-title d-flex justify-content-between">
                                                                     <span>Time Slots</span>
                                                                     <a class="edit-link" data-bs-toggle="modal"
+                                                                        (click)="checkSlotDuration()"
+                                                                        href="#add_time_slot"><i
+                                                                            class="fa fa-plus-circle"></i> Add Slot</a>
+                                                                </h4>
+                                                                <p class="text-muted mb-0">Not Available</p>
+                                                            </div>
+
+                                                            <div id="slot_sunday" class="tab-pane fade">
+                                                                <h4 class="card-title d-flex justify-content-between">
+                                                                    <span>Time Slots</span>
+                                                                    <a class="edit-link" data-bs-toggle="modal"
+                                                                        (click)="checkSlotDuration()"
                                                                         href="#add_time_slot"><i
                                                                             class="fa fa-plus-circle"></i> Add Slot</a>
                                                                 </h4>
@@ -485,8 +460,9 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-6">
                                 <div class="copyright-text">
-                                    <p class="mb-0">&copy; 2023  HealingXpert. All rights reserved. Powered by <a
-                                            href="https://HealingXpert.com" target="_blank" style="color:#fff"> Technologies Pvt.
+                                    <p class="mb-0">&copy; 2023 HealingXpert. All rights reserved. Powered by <a
+                                            href="https://HealingXpert.com" target="_blank" style="color:#fff">
+                                            Technologies Pvt.
                                             Ltd.</a></p>
                                 </div>
                             </div>
@@ -525,12 +501,12 @@
                         <div class="hours-info">
                             <div class="row form-row hours-cont">
                                 <div class="col-12 col-md-10">
-                                    <div class="row form-row">
-                                        <div class="col-12 col-md-6">
+                                    <div class="row form-row" *ngFor="let slot of slotList;let i = index">
+                                        <div class="col-12 col-md-5">
                                             <div class="form-group">
                                                 <label>Start Time</label>
-                                                <select [(ngModel)]="doctorSlot.startTime" id="startTime"
-                                                    name="startTime" (change)="updateEndTime()"
+                                                <select [(ngModel)]="slot.startTime" id="startTime" name="startTime"
+                                                    (change)="updateSlotEndTime(slot.index,i)"
                                                     class="form-select form-control" #startTime="ngModel">
                                                     <option value="">Select</option>
                                                     <option *ngFor="let startTime of startTimeList" [value]="startTime">
@@ -538,16 +514,24 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-6">
+                                        <div class="col-12 col-md-5">
                                             <div class="form-group">
                                                 <label>End Time</label>
-                                                <select [(ngModel)]="doctorSlot.endTime" id="endTime" name="endTime"
-                                                    (change)="updateStartTime()" class="form-select form-control"
-                                                    #endTime="ngModel">
+                                                <select [(ngModel)]="slot.endTime" id="endTime" name="endTime"
+                                                    (change)="updateSlotStartTime(slot.index,i)"
+                                                    class="form-select form-control" #endTime="ngModel">
                                                     <option value="">Select</option>
                                                     <option *ngFor="let endTime of endTimeList" [value]="endTime">
                                                         {{endTime}}</option>
                                                 </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-1" *ngIf="slot.index>1">
+                                            <div class="form-group">
+                                                <label>Delete</label>
+                                                <a (click)="deleteSlot(slot.index)" class="btn btn-sm bg-danger-light">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -555,7 +539,7 @@
                             </div>
                         </div>
                         <div class="add-more mb-3">
-                            <a href="javascript:void(0);" class="add-hours"><i class="fa fa-plus-circle"></i> Add
+                            <a (click)="addMoreSlot()" class="add-hours"><i class="fa fa-plus-circle"></i> Add
                                 More</a>
                         </div>
                         <div class="submit-section text-center">

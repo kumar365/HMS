@@ -7,9 +7,6 @@ import { StorageService } from 'src/app/service/storage.service';
 import { UserService } from 'src/app/service/user.service';
 
 
-
-
-
 @Component({
   selector: 'app-find-doctors',
   templateUrl: './find-doctors.component.html',

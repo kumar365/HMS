@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { faSleigh } from '@fortawesome/free-solid-svg-icons';
 import { DoctorSlot } from 'src/app/model/doctor-slot';
+import { Slot } from 'src/app/model/slot';
 import { User } from 'src/app/model/user';
 import { UserInfo } from 'src/app/model/user-info';
 import { StorageService } from 'src/app/service/storage.service';
@@ -20,8 +21,21 @@ export class ScheduleTimingsComponent implements OnInit {
   doctorSlot: DoctorSlot = new DoctorSlot;
   startTimeList: string[] = [];
   endTimeList: string[] = [];
+  slotList: Slot[] = [];
+  isSlotListHaveData: boolean = false;
   showDiv: boolean = false;
   retrievedImage: any;
+
+  daysList = [
+    { label: 'MONDAY', id: '#slot_monday', selected: true },
+    { label: 'TUESDAY', id: '#slot_tuesday', selected: false },
+    { label: 'WEDNESDAY', id: '#slot_wednesday', selected: false },
+    { label: 'THURSDAY', id: '#slot_thursday', selected: false },
+    { label: 'FRIDAY', id: '#slot_friday', selected: false },
+    { label: 'SATURDAY', id: '#slot_saturday', selected: false },
+    { label: 'SUNDAY', id: '#slot_sunday', selected: false }
+  ];
+
   constructor(private router: Router, private storageService: StorageService,
     private userService: UserService, private renderer: Renderer2) { }
 
@@ -34,6 +48,11 @@ export class ScheduleTimingsComponent implements OnInit {
       this.router.navigate(['/loginEmail']);
     }
     this.doctorSlot.slotDuration = 0;
+    if (this.slotList.length == 0) {
+      let slot = new Slot;
+      slot.index = 1;
+      this.slotList.push(slot);
+    }
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
@@ -55,7 +74,7 @@ export class ScheduleTimingsComponent implements OnInit {
   getTimeIntervals() {
     this.startTimeList = [];
     this.endTimeList = [];
-    this.makeTimeIntervals('9:00', '17:00', this.doctorSlot.slotDuration);
+    this.makeTimeIntervals('9:00', '19:00', this.doctorSlot.slotDuration);
   }
   makeTimeIntervals(startTime: any, endTime: any, increment: any) {
     startTime = startTime.toString().split(':');
@@ -87,13 +106,34 @@ export class ScheduleTimingsComponent implements OnInit {
   pad(n: any) {
     return (n < 10) ? '0' + n.toString() : n;
   }
-  addSlot() {
-    this.doctorSlot.startTime = "";
-    this.doctorSlot.endTime = "";
+
+  addMoreSlot() {
+    let slot = new Slot;
+    slot.index = this.slotList.length + 1;
+    this.slotList.push(slot);
   }
-  updateStartTime() {
-    this.doctorSlot.startTime = this.getStartTime(this.doctorSlot.endTime, this.doctorSlot.slotDuration);
+  deleteSlot(index: any) {
+    this.slotList = this.slotList.filter(obj => obj.index != index);
   }
+  updateSlotStartTime(slotIndex: number, counter: number) {
+    alert("slotIndex:: " + slotIndex);
+    alert("counter:: " + counter);
+    for (let i = 0; i < this.slotList.length; i++) {
+      if (this.slotList[i].index === slotIndex && this.slotList[i].index === counter + 1) {
+        this.slotList[i].startTime = this.getStartTime(this.slotList[i].endTime, this.doctorSlot.slotDuration);
+      }
+    }
+  }
+  updateSlotEndTime(slotIndex: number, counter: number) {
+    alert("slotIndex:: " + slotIndex);
+    alert("counter:: " + counter);
+    for (let i = 0; i < this.slotList.length; i++) {
+      if (this.slotList[i].index === slotIndex && this.slotList[i].index === counter + 1) {
+        this.slotList[i].endTime = this.getEndTime(this.slotList[i].startTime, this.doctorSlot.slotDuration);
+      }
+    }
+  }
+
   getStartTime(endTime: any, increment: any): any {
     endTime = endTime.toString().split(':');
     var endHr = parseInt(endTime[0], 10);
@@ -112,9 +152,6 @@ export class ScheduleTimingsComponent implements OnInit {
     startTime = endHr + ':' + this.pad(endMin);
     return startTime;
   }
-  updateEndTime() {
-    this.doctorSlot.endTime = this.getEndTime(this.doctorSlot.startTime, this.doctorSlot.slotDuration);
-  }
 
   getEndTime(startTime: any, increment: any): any {
     startTime = startTime.toString().split(':');
@@ -132,26 +169,29 @@ export class ScheduleTimingsComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.validateTimings()) {
-      this.showDiv = false;
+    if (this.validateSlotTimings()) {
+      if (this.slotList.length > 0) {
+        this.isSlotListHaveData = true;
+      }
+      //this.showDiv = false;
     }
   }
 
-  validateTimings(): boolean {
-    if (this.doctorSlot.startTime == "" || this.doctorSlot.startTime == undefined) {
-      alert('Please Select Start Time');
-      // const element = this.renderer.selectRootElement('#startTime');
-      // setTimeout(() => element.focus(), 0);
-      return false;
-    } else if (this.doctorSlot.endTime == "" || this.doctorSlot.endTime == undefined) {
-      alert('Please Select End Time');
-      // const element = this.renderer.selectRootElement('#endTime');
-      // setTimeout(() => element.focus(), 0);
-      return false;
-    } else {
-      return true;
+  validateSlotTimings(): boolean {
+    for (let index = 0; index < this.slotList.length; index++) {
+      const element = this.slotList[index];
+      if (this.slotList[index].startTime == "" || this.slotList[index].startTime == undefined) {
+        alert('Please Select Start Time');
+        // const element = this.renderer.selectRootElement('#startTime');
+        // setTimeout(() => element.focus(), 0);
+        return false;
+      } else if (this.slotList[index].endTime == "" || this.slotList[index].endTime == undefined) {
+        alert('Please Select End Time');
+        // const element = this.renderer.selectRootElement('#endTime');
+        // setTimeout(() => element.focus(), 0);
+        return false;
+      }
     }
-
+    return true;
   }
-
 }
