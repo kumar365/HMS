@@ -110,6 +110,7 @@ import { AdminProfileSettingsComponent } from './component/admin-profile-setting
 import { AdminChangePasswordComponent } from './component/admin-change-password/admin-change-password.component';
 import { LabTestListComponent } from './component/lab-test-list/lab-test-list.component';
 import { AddLabTestComponent } from './component/add-lab-test/add-lab-test.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -228,7 +229,7 @@ import { AddLabTestComponent } from './component/add-lab-test/add-lab-test.compo
     BrowserAnimationsModule,
     FontAwesomeModule
   ],
-  providers: [BackButtonDisableModule],
+  providers: [BackButtonDisableModule,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {

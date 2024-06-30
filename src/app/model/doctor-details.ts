@@ -3,6 +3,7 @@ import { DoctorEducation } from "./doctor-education";
 import { DoctorExperience } from "./doctor-experience";
 import { DoctorMemberships } from "./doctor-memberships";
 import { DoctorRegistration } from "./doctor-registration";
+import { DoctorSlot } from "./doctor-slot";
 import { Hospital } from "./hospital";
 
 export class DoctorDetails {
@@ -21,4 +22,5 @@ export class DoctorDetails {
     doctorAwards!: DoctorAwards[];
     doctorMemberships!: DoctorMemberships[];
     doctorRegistrations!: DoctorRegistration[];
+    doctorSlots!: DoctorSlot[];
 }

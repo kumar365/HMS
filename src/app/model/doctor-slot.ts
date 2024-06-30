@@ -1,21 +1,22 @@
+import { DoctorDetails } from "./doctor-details";
+import { Slot } from "./slot";
 import { User } from "./user";
 
 export class DoctorSlot {
     id!: any;
-    doctorUser!: User;
+    doctorDetails!: DoctorDetails;
     dayWeek!: number;
     slotDuration!: number;
     slotStart!: any;
     slotEnd!: any;
-    slotDate!: any;
+    slotDate!: Date;
+    dayName!: string;
+    slots!: Slot[];
     status!: string;
-    patientUser!: User;
     dayWeekText!: string;
-    price!: number;
+    isBooked!:boolean;
     version!: string;
     ipAddress!: string;
     createdBy!: string;
     createdDate!: any;
-    startTime!: any;
-    endTime!: any;
 }
