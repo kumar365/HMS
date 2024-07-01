@@ -225,6 +225,11 @@ export class ScheduleTimingsComponent implements OnInit {
       this.doctorSlot.slotDuration = this.slotDurationSunday;
       this.slotList = this.slotListSunday.slice();
     }
+    for (let i = 0; i < this.slotList.length; i++) {
+      this.slotList[i].index = i + 1;
+     // alert(this.slotList[i].);
+    }
+    this.makeTimeIntervals('9:00', '19:00', this.doctorSlot.slotDuration);
     this.showEditDiv = true;
   }
   getTimeIntervals() {
