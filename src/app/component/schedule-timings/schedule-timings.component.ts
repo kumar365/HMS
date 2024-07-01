@@ -227,7 +227,6 @@ export class ScheduleTimingsComponent implements OnInit {
     }
     for (let i = 0; i < this.slotList.length; i++) {
       this.slotList[i].index = i + 1;
-     // alert(this.slotList[i].);
     }
     this.makeTimeIntervals('9:00', '19:00', this.doctorSlot.slotDuration);
     this.showEditDiv = true;
@@ -365,7 +364,7 @@ export class ScheduleTimingsComponent implements OnInit {
               doctorSlot.slots[index].status = 'Slot Created';
               doctorSlot.slots[index].isBooked = false;
             }
-            doctorSlot.status = 'Slot Created';
+            doctorSlot.status = 'Slots Created';
             doctorSlot.isBooked = false;
             if (this.currentUser.doctorDetails.doctorSlots != null && this.currentUser.doctorDetails.doctorSlots != undefined) {
               this.currentUser.doctorDetails.doctorSlots.push(doctorSlot);
@@ -395,7 +394,7 @@ export class ScheduleTimingsComponent implements OnInit {
               doctorSlot.slots[index].status = 'Slot Created';
               doctorSlot.slots[index].isBooked = false;
             }
-            doctorSlot.status = 'Slot Created';
+            doctorSlot.status = 'Slots Created';
             doctorSlot.isBooked = false;
             if (this.currentUser.doctorDetails.doctorSlots != null && this.currentUser.doctorDetails.doctorSlots != undefined) {
               this.currentUser.doctorDetails.doctorSlots.push(doctorSlot);
@@ -425,7 +424,7 @@ export class ScheduleTimingsComponent implements OnInit {
               doctorSlot.slots[index].status = 'Slot Created';
               doctorSlot.slots[index].isBooked = false;
             }
-            doctorSlot.status = 'Slot Created';
+            doctorSlot.status = 'Slots Created';
             doctorSlot.isBooked = false;
             if (this.currentUser.doctorDetails.doctorSlots != null && this.currentUser.doctorDetails.doctorSlots != undefined) {
               this.currentUser.doctorDetails.doctorSlots.push(doctorSlot);
@@ -455,7 +454,7 @@ export class ScheduleTimingsComponent implements OnInit {
               doctorSlot.slots[index].status = 'Slot Created';
               doctorSlot.slots[index].isBooked = false;
             }
-            doctorSlot.status = 'Slot Created';
+            doctorSlot.status = 'Slots Created';
             doctorSlot.isBooked = false;
             if (this.currentUser.doctorDetails.doctorSlots != null && this.currentUser.doctorDetails.doctorSlots != undefined) {
               this.currentUser.doctorDetails.doctorSlots.push(doctorSlot);
@@ -485,7 +484,7 @@ export class ScheduleTimingsComponent implements OnInit {
               doctorSlot.slots[index].status = 'Slot Created';
               doctorSlot.slots[index].isBooked = false;
             }
-            doctorSlot.status = 'Slot Created';
+            doctorSlot.status = 'Slots Created';
             doctorSlot.isBooked = false;
             if (this.currentUser.doctorDetails.doctorSlots != null && this.currentUser.doctorDetails.doctorSlots != undefined) {
               this.currentUser.doctorDetails.doctorSlots.push(doctorSlot);
@@ -515,7 +514,7 @@ export class ScheduleTimingsComponent implements OnInit {
               doctorSlot.slots[index].status = 'Slot Created';
               doctorSlot.slots[index].isBooked = false;
             }
-            doctorSlot.status = 'Slot Created';
+            doctorSlot.status = 'Slots Created';
             doctorSlot.isBooked = false;
             if (this.currentUser.doctorDetails.doctorSlots != null && this.currentUser.doctorDetails.doctorSlots != undefined) {
               this.currentUser.doctorDetails.doctorSlots.push(doctorSlot);

@@ -14,9 +14,10 @@ export class DoctorSlot {
     slots!: Slot[];
     status!: string;
     dayWeekText!: string;
-    isBooked!:boolean;
+    isBooked!: boolean;
     version!: string;
     ipAddress!: string;
     createdBy!: string;
     createdDate!: any;
+    scheduleDate!: Date;
 }
