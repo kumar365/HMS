@@ -436,7 +436,7 @@
                             <tbody *ngFor="let bill of billList;">
                               <tr>
                                 <td>
-                                  <a href="invoiceView">#INV-{{bill.invoiceId}}</a>
+                                  <a href="invoiceView?id={{bill.invoiceId}}">#INV-{{bill.invoiceId}}</a>
                                 </td>
                                 <td>
                                   <h2 class="table-avatar">
@@ -451,7 +451,7 @@
                                 <td>{{bill.createdDate | date:'dd MMM yyyy'}}</td>
                                 <td class="text-end">
                                   <div class="table-action">
-                                    <a href="invoiceView" class="btn btn-sm bg-info-light">
+                                    <a href="invoiceView?id={{bill.invoiceId}}" class="btn btn-sm bg-info-light">
                                       <i class="far fa-eye"></i> View
                                     </a>
                                     <a href="javascript:void(0);" class="btn btn-sm bg-primary-light">

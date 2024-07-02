@@ -27,10 +27,10 @@ export class InvoicesComponent implements OnInit {
     if (this.currentUserInfo != null) {
       this.currentUserInfo.token = this.storageService.getToken();
       this.getUserData();
+      this.getInvoiceList();
     } else {
       this.router.navigate(['/loginEmail']);
     }
-    this.getInvoiceList();
   }
   getUserData() {
     this.userService.getUser(this.currentUserInfo).subscribe((data: User) => {
@@ -44,9 +44,12 @@ export class InvoicesComponent implements OnInit {
     this.paymentService.getInvoiceList(this.currentUserInfo.id, this.currentUserInfo.token).subscribe((data: Invoice[]) => {
       this.invoiceList = data;
       for (let index = 0; index < this.invoiceList.length; index++) {
-        this.invoiceList[index].retrievedImage = this.retrievedImage;
-        if (this.invoiceList[index].patientUser != null && this.invoiceList[index].patientUser.imageData != null && this.invoiceList[index].patientUser.imageData != undefined) {
-          this.invoiceList[index].retrievedImage = 'data:image/jpeg;base64,' + this.invoiceList[index].patientUser.imageData;
+        if (this.invoiceList[index].patientUser != null && this.invoiceList[index].patientUser != undefined) {
+          if (this.invoiceList[index].patientUser.imageData != null && this.invoiceList[index].patientUser.imageData != undefined) {
+            this.invoiceList[index].retrievedImage = 'data:image/jpeg;base64,' + this.invoiceList[index].patientUser.imageData;
+          }
+        } else {
+          this.invoiceList[index].patientUser = new User();
         }
       }
     });

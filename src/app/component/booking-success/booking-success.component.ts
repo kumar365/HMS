@@ -37,7 +37,8 @@ export class BookingSuccessComponent implements OnInit {
   }
   onSubmit() {
     if (this.validateBookingConsultation()) {
-      this.router.navigate(['/invoiceView']);
+      this.router.navigate(['/invoiceView']);//?id={{invoiceId}}
+     // this.router.navigate(['/invoiceView', { id: this.ambulance.id }]);
     }
   }
   validateBookingConsultation(): boolean {

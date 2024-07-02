@@ -7,4 +7,5 @@ export class Orders {
     paymentGateway!: string;
     trackOrder!: any;
     status!: string;
+    invoiceID!: any;
 }

@@ -215,7 +215,7 @@
                                                         <tbody *ngFor="let orders of ordersList;let i = index">
                                                             <tr>
                                                                 <td>{{i+1}}</td>
-                                                                <td><a href="invoiceView">{{orders.orderId}}</a></td>
+                                                                <td><a href="invoiceView?id={{orders.invoiceID}}">{{orders.orderId}}</a></td>
                                                                 <td>3 Nov 2023 <span class="d-block text-info">11.00
                                                                         AM</span></td>
                                                                 <td>{{orders.pharmacyName}}</td>
